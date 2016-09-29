@@ -40,10 +40,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -119,7 +126,25 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataWebSite.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataWebSite.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataWebSite.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataWebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DataWebSite.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataWebSite.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Models\Navbar.cs" />
+    <Compile Include="Models\tbl_product.cs">
+      <DependentUpon>DataWebSite.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -570,6 +595,7 @@
     <Content Include="css\style-responsive.css" />
     <Content Include="css\style.css" />
     <Content Include="css\validationEngine.jquery.css" />
+    <Content Include="Detail.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -912,6 +938,23 @@
     <Content Include="fonts\MBNDSwis-Bold.ttf" />
     <Content Include="fonts\MBNDSwis-Italic.ttf" />
     <Content Include="fonts\MBNDSwis.ttf" />
+    <EntityDeploy Include="Models\DataWebSite.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>DataWebSite.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\DataWebSite.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataWebSite.edmx</DependentUpon>
+      <LastGenOutput>DataWebSite.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\DataWebSite.edmx.diagram">
+      <DependentUpon>DataWebSite.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\DataWebSite.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>DataWebSite.edmx</DependentUpon>
+      <LastGenOutput>DataWebSite.cs</LastGenOutput>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\flot-data.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -958,6 +1001,12 @@
     <Content Include="Views\Default\Header.cshtml" />
     <Content Include="Views\Default\Footer.cshtml" />
     <Content Include="Views\Default\Slider.cshtml" />
+    <Content Include="Views\Default\ProductsNew.cshtml" />
+    <Content Include="Views\Default\ProductType1.cshtml" />
+    <Content Include="Views\Default\ProductType2.cshtml" />
+    <Content Include="Views\Default\ProductType3.cshtml" />
+    <Content Include="Views\Default\ProductType4.cshtml" />
+    <Content Include="Views\Default\ProductType5.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -970,6 +1019,9 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
