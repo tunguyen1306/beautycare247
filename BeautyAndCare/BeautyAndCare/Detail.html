@@ -21,13 +21,15 @@
     <meta property="og:site_name" content="VellBeauty" />
 
     <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+        (function (i, s, o, g, r, a, m) {
+            i['GoogleAnalyticsObject'] = r; i[r] = i[r] || function () {
+                (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date(); a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0]; a.async = 1; a.src = g; m.parentNode.insertBefore(a, m)
+        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-  ga('create', 'UA-71291272-1', 'auto');
-  ga('send', 'pageview');
+        ga('create', 'UA-71291272-1', 'auto');
+        ga('send', 'pageview');
 
     </script>
 
@@ -64,13 +66,13 @@
 <body>
     <div id="fb-root"></div>
     <script>
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, "script", "facebook-jssdk"));</script>
+        (function (d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.6";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, "script", "facebook-jssdk"));</script>
 
 
     <!-- Include popup so sanh -->
@@ -407,22 +409,22 @@
     </header>
 
     <script type="text/javascript">
-$(document).ready(function(){
-$("#menu-icon").on("click", function () {
-        $("#menu-gadget .menu").slideToggle();
-        $(this).toggleClass("active");
-    });
+        $(document).ready(function () {
+            $("#menu-icon").on("click", function () {
+                $("#menu-gadget .menu").slideToggle();
+                $(this).toggleClass("active");
+            });
 
-    $('#menu-gadget .menu').find('li>ul').before('<i class="fa fa-angle-down"></i>');
-    $('#menu-gadget .menu li i').on("click", function () {
-        if ($(this).hasClass('fa-angle-up')) {
-            $(this).removeClass('fa-angle-up').parent('li').find('> ul').slideToggle();
-        }
-        else {
-            $(this).addClass('fa-angle-up').parent('li').find('> ul').slideToggle();
-        }
-    });
-});
+            $('#menu-gadget .menu').find('li>ul').before('<i class="fa fa-angle-down"></i>');
+            $('#menu-gadget .menu li i').on("click", function () {
+                if ($(this).hasClass('fa-angle-up')) {
+                    $(this).removeClass('fa-angle-up').parent('li').find('> ul').slideToggle();
+                }
+                else {
+                    $(this).addClass('fa-angle-up').parent('li').find('> ul').slideToggle();
+                }
+            });
+        });
     </script>
 
     <script type="text/javascript">
@@ -430,16 +432,17 @@ $("#menu-icon").on("click", function () {
 
         $(window).bind('scroll', function () {
             if ($(window).scrollTop() > num) {
-                $('.isStuck').css('top','-48px');
-                $('.isStuck').css('visibility','hidden');
-                $('.isStuck').css('width','100%');
-                $('.isStuck').css('margin-top','hidden');
-                $('.isStuck').css('visibility','hidden');
+                $('.isStuck').css('top', '-48px');
+                $('.isStuck').css('visibility', 'hidden');
+                $('.isStuck').css('width', '100%');
+                $('.isStuck').css('margin-top', 'hidden');
+                $('.isStuck').css('visibility', 'hidden');
             } else {
                 $('#main-header1').removeClass('fixed');
             }
         });
-    </script><div class="wrap-bg">
+    </script>
+    <div class="wrap-bg">
         <div class="container">
             <div class="row row-offcanvas row-offcanvas-left">
                 <div class="f-container">
@@ -472,19 +475,19 @@ $("#menu-icon").on("click", function () {
                             <div class="f-module-page-body ">
                                 <div class="f-product-view">
                                     <script type="text/javascript">
-dataLayer.push({
-  'ecommerce': {
-    'detail': {
-      'actionField': {'list': 'DANH-MUC'},
-      'products': [{
-        'id': "132717",
-        'name': "KEM DƯỠNG TRẮNG BODY KJ STYLE BIKYAKU GEL - 150G",
-        'price': "490000.00.00",
-        'category': "CHĂM SÓC CƠ THỂ"
-       }]
-     }
-   }
-});
+                                        dataLayer.push({
+                                            'ecommerce': {
+                                                'detail': {
+                                                    'actionField': { 'list': 'DANH-MUC' },
+                                                    'products': [{
+                                                        'id': "132717",
+                                                        'name': "KEM DƯỠNG TRẮNG BODY KJ STYLE BIKYAKU GEL - 150G",
+                                                        'price': "490000.00.00",
+                                                        'category': "CHĂM SÓC CƠ THỂ"
+                                                    }]
+                                                }
+                                            }
+                                        });
                                     </script>
                                     <div class="f-product-view-info row">
                                         <div class="f-product-view-info-image col-md-7">
@@ -511,24 +514,24 @@ dataLayer.push({
                                             </div>
 
                                             <script type="text/javascript">
-function appendImage (img) {
-$('#f-pr-image-zoom-id').attr('src',img);
-$('#f-pr-image-zoom-id').attr('src',img);
-}
-$(document).ready(function() {
+                                                function appendImage(img) {
+                                                    $('#f-pr-image-zoom-id').attr('src', img);
+                                                    $('#f-pr-image-zoom-id').attr('src', img);
+                                                }
+                                                $(document).ready(function () {
 
 
-//
-// $("#f-pr-image-zoom-id").bind("click", function(e) {
-// 	alert(121);
-// 	// var ez = $('#f-pr-image-zoom-id').data('elevateZoom');
-// 	// $.fancybox(ez.getGalleryList());
-// 	// return false;
-// });
-// 	//--------------
-$("#f-pr-image-zoom-gallery").owlCarousel();
+                                                    //
+                                                    // $("#f-pr-image-zoom-id").bind("click", function(e) {
+                                                    // 	alert(121);
+                                                    // 	// var ez = $('#f-pr-image-zoom-id').data('elevateZoom');
+                                                    // 	// $.fancybox(ez.getGalleryList());
+                                                    // 	// return false;
+                                                    // });
+                                                    // 	//--------------
+                                                    $("#f-pr-image-zoom-gallery").owlCarousel();
 
-});
+                                                });
                                             </script>
                                         </div>
                                         <div class="f-product-view-info-detail col-md-5">
@@ -707,21 +710,21 @@ $("#f-pr-image-zoom-gallery").owlCarousel();
                                     <script type="text/javascript" src="http://vell.vn/themes/themes_custom//162/985/statics/scripts/zoomsl-3.0.min.js"></script>
                                     <script type="text/javascript" src="http://vell.vn/themes/themes_custom//162/985/statics/scripts/newsScrollerDefault-rightToleft-bottomTotop.js"></script>
                                     <script type="text/javascript">
-jQuery(function(){
-if(!$.fn.imagezoomsl){
+                                        jQuery(function () {
+                                            if (!$.fn.imagezoomsl) {
 
-$('.msg').show();
-return;
-}
-     else $('.msg').hide();
-$('.my-foto').imagezoomsl({
+                                                $('.msg').show();
+                                                return;
+                                            }
+                                            else $('.msg').hide();
+                                            $('.my-foto').imagezoomsl({
 
-   zoomrange: [1, 10],
-   cursorshadeborder: "1px solid #000",
-   magnifiereffectanimate: "fadeIn",
-   magnifierpos: "left"
-});
-});
+                                                zoomrange: [1, 10],
+                                                cursorshadeborder: "1px solid #000",
+                                                magnifiereffectanimate: "fadeIn",
+                                                magnifierpos: "left"
+                                            });
+                                        });
                                     </script><div class="f-product-view-tab">
                                         <div class="f-product-view-tab-header">
                                             <ul id="f-pr-page-view-tabid" class="nav-tabs">
@@ -833,7 +836,7 @@ $('.my-foto').imagezoomsl({
                                         </div>
                                     </div>
                                     <script type="text/javascript">
-var productList=[];
+                                        var productList = [];
                                     </script>
                                     <div class="f-page-split">
                                         <div class="f-page-split-title"><h3>Sản phẩm cùng danh mục</h3></div>
@@ -863,13 +866,13 @@ var productList=[];
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="437447";// ID sản phẩm
-tmp_item['name']="Plus Hyaluronic Solute Serum";// Tên sản phẩm
-tmp_item['price']="450000.00.00";// Giá
-tmp_item['position']=1;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "437447";// ID sản phẩm
+                                                        tmp_item['name'] = "Plus Hyaluronic Solute Serum";// Tên sản phẩm
+                                                        tmp_item['price'] = "450000.00.00";// Giá
+                                                        tmp_item['position'] = 1;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                     <div class="col-sm-3 col-xs-12">
@@ -895,13 +898,13 @@ productList.push(tmp_item);
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="188683";// ID sản phẩm
-tmp_item['name']="Xịt dưỡng tóc Roiche Light Oil Mist";// Tên sản phẩm
-tmp_item['price']="470000.00.00";// Giá
-tmp_item['position']=2;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "188683";// ID sản phẩm
+                                                        tmp_item['name'] = "Xịt dưỡng tóc Roiche Light Oil Mist";// Tên sản phẩm
+                                                        tmp_item['price'] = "470000.00.00";// Giá
+                                                        tmp_item['position'] = 2;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                     <div class="col-sm-3 col-xs-12">
@@ -927,13 +930,13 @@ productList.push(tmp_item);
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="188630";// ID sản phẩm
-tmp_item['name']="Mặt nạ dưỡng da 7 miếng Quality First Mask";// Tên sản phẩm
-tmp_item['price']="180000.00.00";// Giá
-tmp_item['position']=3;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "188630";// ID sản phẩm
+                                                        tmp_item['name'] = "Mặt nạ dưỡng da 7 miếng Quality First Mask";// Tên sản phẩm
+                                                        tmp_item['price'] = "180000.00.00";// Giá
+                                                        tmp_item['position'] = 3;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                     <div class="col-sm-3 col-xs-12">
@@ -959,13 +962,13 @@ productList.push(tmp_item);
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="85176";// ID sản phẩm
-tmp_item['name']="Amino Moisture Cleansing Gel";// Tên sản phẩm
-tmp_item['price']="730000.00.00";// Giá
-tmp_item['position']=4;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "85176";// ID sản phẩm
+                                                        tmp_item['name'] = "Amino Moisture Cleansing Gel";// Tên sản phẩm
+                                                        tmp_item['price'] = "730000.00.00";// Giá
+                                                        tmp_item['position'] = 4;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                     <div class="col-sm-3 col-xs-12">
@@ -991,13 +994,13 @@ productList.push(tmp_item);
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="83885";// ID sản phẩm
-tmp_item['name']="Kem dưỡng mắt Plus Intensive Eye Cream";// Tên sản phẩm
-tmp_item['price']="730000.00.00";// Giá
-tmp_item['position']=5;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "83885";// ID sản phẩm
+                                                        tmp_item['name'] = "Kem dưỡng mắt Plus Intensive Eye Cream";// Tên sản phẩm
+                                                        tmp_item['price'] = "730000.00.00";// Giá
+                                                        tmp_item['position'] = 5;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                     <div class="col-sm-3 col-xs-12">
@@ -1023,13 +1026,13 @@ productList.push(tmp_item);
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="77927";// ID sản phẩm
-tmp_item['name']="Mặt nạ chống lão hóa -  Quality 1st mask 30 miếng";// Tên sản phẩm
-tmp_item['price']="630000.00.00";// Giá
-tmp_item['position']=6;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "77927";// ID sản phẩm
+                                                        tmp_item['name'] = "Mặt nạ chống lão hóa -  Quality 1st mask 30 miếng";// Tên sản phẩm
+                                                        tmp_item['price'] = "630000.00.00";// Giá
+                                                        tmp_item['position'] = 6;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                     <div class="col-sm-3 col-xs-12">
@@ -1055,13 +1058,13 @@ productList.push(tmp_item);
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="373386";// ID sản phẩm
-tmp_item['name']="PLus Solute Serum";// Tên sản phẩm
-tmp_item['price']="450000.00.00";// Giá
-tmp_item['position']=7;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "373386";// ID sản phẩm
+                                                        tmp_item['name'] = "PLus Solute Serum";// Tên sản phẩm
+                                                        tmp_item['price'] = "450000.00.00";// Giá
+                                                        tmp_item['position'] = 7;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                     <div class="col-sm-3 col-xs-12">
@@ -1087,13 +1090,13 @@ productList.push(tmp_item);
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="372649";// ID sản phẩm
-tmp_item['name']="Kuramoto Bijin Sake Lotion Sữa dưỡng men rượu";// Tên sản phẩm
-tmp_item['price']="640000.00.00";// Giá
-tmp_item['position']=8;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "372649";// ID sản phẩm
+                                                        tmp_item['name'] = "Kuramoto Bijin Sake Lotion Sữa dưỡng men rượu";// Tên sản phẩm
+                                                        tmp_item['price'] = "640000.00.00";// Giá
+                                                        tmp_item['position'] = 8;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                     <div class="col-sm-3 col-xs-12">
@@ -1119,13 +1122,13 @@ productList.push(tmp_item);
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="75601";// ID sản phẩm
-tmp_item['name']="Bột giảm cân Bonita Graseed";// Tên sản phẩm
-tmp_item['price']="500000.00.00";// Giá
-tmp_item['position']=9;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "75601";// ID sản phẩm
+                                                        tmp_item['name'] = "Bột giảm cân Bonita Graseed";// Tên sản phẩm
+                                                        tmp_item['price'] = "500000.00.00";// Giá
+                                                        tmp_item['position'] = 9;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                     <div class="col-sm-3 col-xs-12">
@@ -1151,13 +1154,13 @@ productList.push(tmp_item);
                                                     </div>
 
                                                     <script type="text/javascript">
-var tmp_item={};
-tmp_item['list']="Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
-tmp_item['id']="177545";// ID sản phẩm
-tmp_item['name']="Dầu dưỡng thể Roiche Oil Cream";// Tên sản phẩm
-tmp_item['price']="560000.00.00";// Giá
-tmp_item['position']=10;// String vị trí hiển thị /tang tu 1 -> xx
-productList.push(tmp_item);
+                                                        var tmp_item = {};
+                                                        tmp_item['list'] = "Sản phẩm cùng danh mục";// Trang danh mục DANH MỤC
+                                                        tmp_item['id'] = "177545";// ID sản phẩm
+                                                        tmp_item['name'] = "Dầu dưỡng thể Roiche Oil Cream";// Tên sản phẩm
+                                                        tmp_item['price'] = "560000.00.00";// Giá
+                                                        tmp_item['position'] = 10;// String vị trí hiển thị /tang tu 1 -> xx
+                                                        productList.push(tmp_item);
                                                     </script>
 
                                                 </div>
@@ -1167,10 +1170,10 @@ productList.push(tmp_item);
                                     </div>
 
                                     <script type="text/javascript">
-dataLayer.push({
-  'event': 'product_impressions',
-  'data_product_impressions': productList
-});
+                                        dataLayer.push({
+                                            'event': 'product_impressions',
+                                            'data_product_impressions': productList
+                                        });
 
                                     </script>
 
@@ -1196,9 +1199,9 @@ dataLayer.push({
                         <script src="http://vell.vn/modules/product/themes/resource/js/productrater.js"></script>
 
                         <script type="text/javascript">
- $(document).ready(function() {
-       Likeproduct.init();
-    });
+                            $(document).ready(function () {
+                                Likeproduct.init();
+                            });
 
                         </script>
                     </div>
@@ -1308,9 +1311,9 @@ dataLayer.push({
             </div>
             <script type="text/javascript">
 
-$(".lentop").click(function(event){
-  $('html, body').animate({ scrollTop: 0 }, 1000);
-});
+                $(".lentop").click(function (event) {
+                    $('html, body').animate({ scrollTop: 0 }, 1000);
+                });
             </script>
         </div>
         <div class="miniCart-top">
@@ -1325,14 +1328,14 @@ $(".lentop").click(function(event){
     <script type="text/javascript" src="http://vell.vn/modules/product/themes/resource/js/product.js"></script>
 
     <script type="text/javascript">
-    $(document).ready(function() {
-        $('body').data('home_url', 'http://vell.vn');
-        //$('body').data('page_url', '');
-        $('body').data('extension', '.html');
-        Product.init();
-        WebCommon.init();
-       // alert("-Golbal aler- "+$('body').data('home_url'));
-    });
+        $(document).ready(function () {
+            $('body').data('home_url', 'http://vell.vn');
+            //$('body').data('page_url', '');
+            $('body').data('extension', '.html');
+            Product.init();
+            WebCommon.init();
+            // alert("-Golbal aler- "+$('body').data('home_url'));
+        });
     </script>
     <!-- End quan ly toan bo layout web -->
     <!-- Include cac file script -->
@@ -1354,44 +1357,44 @@ $(".lentop").click(function(event){
     <script type="text/javascript" src="http://vell.vn/themes/themes_custom//162/985/statics/scripts/jcarousellite_1.0.1c4.js"></script>
     <!-- End include cac file script-->
     <script type="text/javascript">
-                function BNCcallback(data){
-                    console.log(data);
-                }
-                    var url = document.URL;
-                    var idW = '985';
-                    var uid='';
-                    var title = document.title;
-                    var bncScript = document.createElement('script');
-                    bncScript.src = "http://analytic.webbnc.vn/index.php?page=analytics&sub=analytics&func=analytics&idw="+idW+"&url="+url+"&title="+title;
-                    document.body.appendChild(bncScript);
+        function BNCcallback(data) {
+            console.log(data);
+        }
+        var url = document.URL;
+        var idW = '985';
+        var uid = '';
+        var title = document.title;
+        var bncScript = document.createElement('script');
+        bncScript.src = "http://analytic.webbnc.vn/index.php?page=analytics&sub=analytics&func=analytics&idw=" + idW + "&url=" + url + "&title=" + title;
+        document.body.appendChild(bncScript);
 
-                    var appsScript = document.createElement('script');
-                    appsScript.src = "http://apps.webbnc.vn/app3/themes/default/js/iframeResizer.js";
-                    document.body.appendChild(appsScript);
+        var appsScript = document.createElement('script');
+        appsScript.src = "http://apps.webbnc.vn/app3/themes/default/js/iframeResizer.js";
+        document.body.appendChild(appsScript);
 
-                    var appsScript = document.createElement('script');
-                    appsScript.src = "http://apps.webbnc.vn/app3/?token=t2d32243i202r2x272y2z2g162b2b3x2s2g2227312y233x2p202a2c1r2w143r242d1b3a3s213e273q2v1h1e1q203b3a31223c1p1";
-                    setTimeout(function(){ document.body.appendChild(appsScript); }, 1000);
-
-
-
-                    dataLayer = [];
-                    dataLayer.push({
-                        "event": "webPresent",
-                        "webId": "985", // ID web
-                        "webName": "vellsheena12",
-                        "webGAPropertyId": "" // ID analytics VGA
-                    });
-                var _gaq = _gaq || [];
-                 _gaq.push(["_setAccount", "UA-43176424-1"]);
-                  _gaq.push(["_trackPageview"]);
+        var appsScript = document.createElement('script');
+        appsScript.src = "http://apps.webbnc.vn/app3/?token=t2d32243i202r2x272y2z2g162b2b3x2s2g2227312y233x2p202a2c1r2w143r242d1b3a3s213e273q2v1h1e1q203b3a31223c1p1";
+        setTimeout(function () { document.body.appendChild(appsScript); }, 1000);
 
 
-                  (function() {
-                    var ge = document.createElement("script"); ge.type = "text/javascript"; ge.async = true;
-                    ge.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
-                    var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ge, s);
-                  })();
+
+        dataLayer = [];
+        dataLayer.push({
+            "event": "webPresent",
+            "webId": "985", // ID web
+            "webName": "vellsheena12",
+            "webGAPropertyId": "" // ID analytics VGA
+        });
+        var _gaq = _gaq || [];
+        _gaq.push(["_setAccount", "UA-43176424-1"]);
+        _gaq.push(["_trackPageview"]);
+
+
+        (function () {
+            var ge = document.createElement("script"); ge.type = "text/javascript"; ge.async = true;
+            ge.src = ("https:" == document.location.protocol ? "https://ssl" : "http://www") + ".google-analytics.com/ga.js";
+            var s = document.getElementsByTagName("script")[0]; s.parentNode.insertBefore(ge, s);
+        })();
 
     </script>
 

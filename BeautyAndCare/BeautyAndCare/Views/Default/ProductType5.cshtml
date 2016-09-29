@@ -1,4 +1,5 @@
-﻿<div class="clearfix"></div>
+﻿@model IEnumerable<BeautyAndCare.Models.tbl_product>
+<div class="clearfix"></div>
 <div class="clearfix"></div>
 <div class="v2-home-catepr">
     <div class="container">
@@ -11,243 +12,39 @@
                 <div class="tab-content">
 
 
-                    <div class="v2-home-catepr-showul owl-carousel-cate-6" id="product-content-42109">
-                        <div class="v2-home-catepr-showli" id="like-product-item-437447">
-                            <div class="v2-home-catepr-showul-item">
-                                <div class="f-pr-item-img">
-                                    <a data-id="437447" data-name="Plus Hyaluronic Solute Serum" data-price-float="450000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="1" href="http://vell.vn/plus-hyaluronic-solute-serum-1-1-437447.html" title="Plus Hyaluronic Solute Serum"><img alt="Plus Hyaluronic Solute Serum" src="http://s2.webbnc.vn/uploadv2/web/98/985/product/2016/09/19/08/20/1474273514_img_0644.jpg.jpg" id="f-pr-image-zoom-id-cate-437447" class="img-responsive BNC-image-add-cart-437447" /></a>
+                    <div class="v2-home-catepr-showul owl-carousel-cate-6">
+                        @foreach (var item in Model)
+                        {
+                            <div class="v2-home-catepr-showli">
+                                <div class="v2-home-catepr-showul-item">
+                                    <div class="f-pr-item-img">
+                                        <a data-id="437447" data-name="Plus Hyaluronic Solute Serum" data-price-float="450000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="1" href="http://vell.vn/plus-hyaluronic-solute-serum-1-1-437447.html" title="Plus Hyaluronic Solute Serum"><img alt="Plus Hyaluronic Solute Serum" src="http://s2.webbnc.vn/uploadv2/web/98/985/product/2016/09/19/08/20/1474273514_img_0644.jpg.jpg" id="f-pr-image-zoom-id-cate-437447" class="img-responsive BNC-image-add-cart-437447" /></a>
 
-                                </div>
-
-                                <div class="f-pr-item-boxdetail">
-                                    <h3><a data-id="437447" data-name="Plus Hyaluronic Solute Serum" data-price-float="450000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="1" class="f-pr-item-name" href="http://vell.vn/plus-hyaluronic-solute-serum-1-1-437447.html" title="Plus Hyaluronic Solute Serum">Plus Hyaluronic Solute Serum</a></h3>
-
-                                    <div class="f-pr-item-price-gr">
-
-                                        <p class="f-pr-item-price">450.000 đ</p>
                                     </div>
 
-                                    <div id="stars" data-text-login="Vui lòng đăng nhập trước khi đánh giá" data-is-login="0" onclick="relogin()" data-is-rater="" data-name="Plus Hyaluronic Solute Serum" data-id-product="437447" class="starrr" data-rating='0'></div>
+                                    <div class="f-pr-item-boxdetail">
+                                        <h3><a data-id="437447" data-name="Plus Hyaluronic Solute Serum" data-price-float="450000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="1" class="f-pr-item-name" href="http://vell.vn/plus-hyaluronic-solute-serum-1-1-437447.html" title="Plus Hyaluronic Solute Serum">Plus Hyaluronic Solute Serum</a></h3>
 
-                                    <div class="f-pr-item-action">
-                                        <a data-id="437447" data-name="Plus Hyaluronic Solute Serum" data-price-float="450000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="1" data-pjax="#fast-container" data-product-id="437447" class="quickview nbh-popup-with-move-anim" data-href="#fast-dialog" href="http://vell.vn/plus-hyaluronic-solute-serum-1-1-437447.html">Xem nhanh</a>
-                                        <a href="javascript:void(0)" class="add-cart BNC-add-cart v2-home-pr-item-action-buy " data-price-float="450000.00.00" data-name="Plus Hyaluronic Solute Serum" data-type="tab-home" data-price="Array" data-product="437447" data-quantity="1" data-total-quantity="100">Đặt hàng</a>
+                                        <div class="f-pr-item-price-gr">
+
+                                            <p class="f-pr-item-price">450.000 đ</p>
+                                        </div>
+
+                                        <div id="stars" data-text-login="Vui lòng đăng nhập trước khi đánh giá" data-is-login="0" onclick="relogin()" data-is-rater="" data-name="Plus Hyaluronic Solute Serum" data-id-product="437447" class="starrr" data-rating='0'></div>
+
+                                        <div class="f-pr-item-action">
+                                            <a data-id="437447" data-name="Plus Hyaluronic Solute Serum" data-price-float="450000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="1" data-pjax="#fast-container" data-product-id="437447" class="quickview nbh-popup-with-move-anim" data-href="#fast-dialog" href="http://vell.vn/plus-hyaluronic-solute-serum-1-1-437447.html">Xem nhanh</a>
+                                            <a href="javascript:void(0)" class="add-cart BNC-add-cart v2-home-pr-item-action-buy " data-price-float="450000.00.00" data-name="Plus Hyaluronic Solute Serum" data-type="tab-home" data-price="Array" data-product="437447" data-quantity="1" data-total-quantity="100">Đặt hàng</a>
+                                        </div>
                                     </div>
+
+
+
                                 </div>
-
-
-
                             </div>
-                        </div>
-                        <div class="v2-home-catepr-showli" id="like-product-item-188683">
-                            <div class="v2-home-catepr-showul-item">
-                                <div class="f-pr-item-img">
-                                    <a data-id="188683" data-name="Xịt dưỡng tóc Roiche Light Oil Mist" data-price-float="470000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="2" href="http://vell.vn/xit-duong-toc-roiche-light-oil-mist-1-1-188683.html" title="Xịt dưỡng tóc Roiche Light Oil Mist"><img alt="Xịt dưỡng tóc Roiche Light Oil Mist" src="http://s2.webbnc.vn/uploadv2/web/98/985/product/2016/03/21/03/15/1458530407_roiche.png" id="f-pr-image-zoom-id-cate-188683" class="img-responsive BNC-image-add-cart-188683" /></a>
-
-                                </div>
-
-                                <div class="f-pr-item-boxdetail">
-                                    <h3><a data-id="188683" data-name="Xịt dưỡng tóc Roiche Light Oil Mist" data-price-float="470000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="2" class="f-pr-item-name" href="http://vell.vn/xit-duong-toc-roiche-light-oil-mist-1-1-188683.html" title="Xịt dưỡng tóc Roiche Light Oil Mist">Xịt dưỡng tóc Roiche Light Oil Mist</a></h3>
-
-                                    <div class="f-pr-item-price-gr">
-
-                                        <p class="f-pr-item-price">470.000 đ</p>
-                                    </div>
-
-                                    <div id="stars" data-text-login="Vui lòng đăng nhập trước khi đánh giá" data-is-login="0" onclick="relogin()" data-is-rater="" data-name="Xịt dưỡng tóc Roiche Light Oil Mist" data-id-product="188683" class="starrr" data-rating='0'></div>
-
-                                    <div class="f-pr-item-action">
-                                        <a data-id="188683" data-name="Xịt dưỡng tóc Roiche Light Oil Mist" data-price-float="470000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="2" data-pjax="#fast-container" data-product-id="188683" class="quickview nbh-popup-with-move-anim" data-href="#fast-dialog" href="http://vell.vn/xit-duong-toc-roiche-light-oil-mist-1-1-188683.html">Xem nhanh</a>
-                                        <a href="javascript:void(0)" class="add-cart BNC-add-cart v2-home-pr-item-action-buy " data-price-float="470000.00.00" data-name="Xịt dưỡng tóc Roiche Light Oil Mist" data-type="tab-home" data-price="Array" data-product="188683" data-quantity="1" data-total-quantity="100">Đặt hàng</a>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                        <div class="v2-home-catepr-showli" id="like-product-item-76073">
-                            <div class="v2-home-catepr-showul-item">
-                                <div class="f-pr-item-img">
-                                    <a data-id="76073" data-name="KUWA Collagen Q10 - Nhật bản" data-price-float="550000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="3" href="http://vell.vn/kuwa-collagen-q10-nhat-ban-1-1-76073.html" title="KUWA Collagen Q10 - Nhật bản"><img alt="KUWA Collagen Q10 - Nhật bản" src="http://s2.webbnc.vn/uploadv2/web/98/985/product/2015/10/23/11/53/1445575711_46.png" id="f-pr-image-zoom-id-cate-76073" class="img-responsive BNC-image-add-cart-76073" /></a>
-
-                                </div>
-
-                                <div class="f-pr-item-boxdetail">
-                                    <h3><a data-id="76073" data-name="KUWA Collagen Q10 - Nhật bản" data-price-float="550000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="3" class="f-pr-item-name" href="http://vell.vn/kuwa-collagen-q10-nhat-ban-1-1-76073.html" title="KUWA Collagen Q10 - Nhật bản">KUWA Collagen Q10 - Nhật bản</a></h3>
-
-                                    <div class="f-pr-item-price-gr">
-
-                                        <p class="f-pr-item-price">550.000 đ</p>
-                                    </div>
-
-                                    <div id="stars" data-text-login="Vui lòng đăng nhập trước khi đánh giá" data-is-login="0" onclick="relogin()" data-is-rater="" data-name="KUWA Collagen Q10 - Nhật bản" data-id-product="76073" class="starrr" data-rating='0'></div>
-
-                                    <div class="f-pr-item-action">
-                                        <a data-id="76073" data-name="KUWA Collagen Q10 - Nhật bản" data-price-float="550000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="3" data-pjax="#fast-container" data-product-id="76073" class="quickview nbh-popup-with-move-anim" data-href="#fast-dialog" href="http://vell.vn/kuwa-collagen-q10-nhat-ban-1-1-76073.html">Xem nhanh</a>
-                                        <a href="javascript:void(0)" class="add-cart BNC-add-cart v2-home-pr-item-action-buy " data-price-float="550000.00.00" data-name="KUWA Collagen Q10 - Nhật bản" data-type="tab-home" data-price="Array" data-product="76073" data-quantity="1" data-total-quantity="100">Đặt hàng</a>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                        <div class="v2-home-catepr-showli" id="like-product-item-177192">
-                            <div class="v2-home-catepr-showul-item">
-                                <div class="f-pr-item-img">
-                                    <a data-id="177192" data-name="Tinh dầu gạo Komeyu" data-price-float="460000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="4" href="http://vell.vn/tinh-dau-gao-komeyu-1-1-177192.html" title="Tinh dầu gạo Komeyu"><img alt="Tinh dầu gạo Komeyu" src="http://s2.webbnc.vn/uploadv2/web/98/985/product/2016/03/10/03/34/1457581143_11201738_564edbf8473aa_360.png" id="f-pr-image-zoom-id-cate-177192" class="img-responsive BNC-image-add-cart-177192" /></a>
-
-                                </div>
-
-                                <div class="f-pr-item-boxdetail">
-                                    <h3><a data-id="177192" data-name="Tinh dầu gạo Komeyu" data-price-float="460000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="4" class="f-pr-item-name" href="http://vell.vn/tinh-dau-gao-komeyu-1-1-177192.html" title="Tinh dầu gạo Komeyu">Tinh dầu gạo Komeyu</a></h3>
-
-                                    <div class="f-pr-item-price-gr">
-
-                                        <p class="f-pr-item-price">460.000 đ</p>
-                                    </div>
-
-                                    <div id="stars" data-text-login="Vui lòng đăng nhập trước khi đánh giá" data-is-login="0" onclick="relogin()" data-is-rater="" data-name="Tinh dầu gạo Komeyu" data-id-product="177192" class="starrr" data-rating='0'></div>
-
-                                    <div class="f-pr-item-action">
-                                        <a data-id="177192" data-name="Tinh dầu gạo Komeyu" data-price-float="460000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="4" data-pjax="#fast-container" data-product-id="177192" class="quickview nbh-popup-with-move-anim" data-href="#fast-dialog" href="http://vell.vn/tinh-dau-gao-komeyu-1-1-177192.html">Xem nhanh</a>
-                                        <a href="javascript:void(0)" class="add-cart BNC-add-cart v2-home-pr-item-action-buy " data-price-float="460000.00.00" data-name="Tinh dầu gạo Komeyu" data-type="tab-home" data-price="Array" data-product="177192" data-quantity="1" data-total-quantity="100">Đặt hàng</a>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                        <div class="v2-home-catepr-showli" id="like-product-item-246587">
-                            <div class="v2-home-catepr-showul-item">
-                                <div class="f-pr-item-img">
-                                    <a data-id="246587" data-name="Kem dưỡng mỡ ngựa Horse Oil Cream" data-price-float="390000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="5" href="http://vell.vn/kem-duong-mo-ngua-horse-oil-cream-1-1-246587.html" title="Kem dưỡng mỡ ngựa Horse Oil Cream"><img alt="Kem dưỡng mỡ ngựa Horse Oil Cream" src="http://s2.webbnc.vn/uploadv2/web/98/985/product/2016/04/14/07/24/1460618973_4562163837450.jpg" id="f-pr-image-zoom-id-cate-246587" class="img-responsive BNC-image-add-cart-246587" /></a>
-
-                                </div>
-
-                                <div class="f-pr-item-boxdetail">
-                                    <h3><a data-id="246587" data-name="Kem dưỡng mỡ ngựa Horse Oil Cream" data-price-float="390000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="5" class="f-pr-item-name" href="http://vell.vn/kem-duong-mo-ngua-horse-oil-cream-1-1-246587.html" title="Kem dưỡng mỡ ngựa Horse Oil Cream">Kem dưỡng mỡ ngựa Horse Oil Cream</a></h3>
-
-                                    <div class="f-pr-item-price-gr">
-
-                                        <p class="f-pr-item-price">390.000 đ</p>
-                                    </div>
-
-                                    <div id="stars" data-text-login="Vui lòng đăng nhập trước khi đánh giá" data-is-login="0" onclick="relogin()" data-is-rater="" data-name="Kem dưỡng mỡ ngựa Horse Oil Cream" data-id-product="246587" class="starrr" data-rating='0'></div>
-
-                                    <div class="f-pr-item-action">
-                                        <a data-id="246587" data-name="Kem dưỡng mỡ ngựa Horse Oil Cream" data-price-float="390000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="5" data-pjax="#fast-container" data-product-id="246587" class="quickview nbh-popup-with-move-anim" data-href="#fast-dialog" href="http://vell.vn/kem-duong-mo-ngua-horse-oil-cream-1-1-246587.html">Xem nhanh</a>
-                                        <a href="javascript:void(0)" class="add-cart BNC-add-cart v2-home-pr-item-action-buy " data-price-float="390000.00.00" data-name="Kem dưỡng mỡ ngựa Horse Oil Cream" data-type="tab-home" data-price="Array" data-product="246587" data-quantity="1" data-total-quantity="100">Đặt hàng</a>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                        <div class="v2-home-catepr-showli" id="like-product-item-246580">
-                            <div class="v2-home-catepr-showul-item">
-                                <div class="f-pr-item-img">
-                                    <a data-id="246580" data-name="Serum kích thích mọc mi Avancé Lash Serum EX" data-price-float="460000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="6" href="http://vell.vn/serum-kich-thich-moc-mi-1-1-246580.html" title="Serum kích thích mọc mi Avancé Lash Serum EX"><img alt="Serum kích thích mọc mi Avancé Lash Serum EX" src="http://s2.webbnc.vn/uploadv2/web/98/985/product/2016/04/14/06/39/1460616314_4531560300065_c.jpg" id="f-pr-image-zoom-id-cate-246580" class="img-responsive BNC-image-add-cart-246580" /></a>
-
-                                </div>
-
-                                <div class="f-pr-item-boxdetail">
-                                    <h3><a data-id="246580" data-name="Serum kích thích mọc mi Avancé Lash Serum EX" data-price-float="460000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="6" class="f-pr-item-name" href="http://vell.vn/serum-kich-thich-moc-mi-1-1-246580.html" title="Serum kích thích mọc mi Avancé Lash Serum EX">Serum kích thích mọc mi Avancé Lash Serum EX</a></h3>
-
-                                    <div class="f-pr-item-price-gr">
-
-                                        <p class="f-pr-item-price">460.000 đ</p>
-                                    </div>
-
-                                    <div id="stars" data-text-login="Vui lòng đăng nhập trước khi đánh giá" data-is-login="0" onclick="relogin()" data-is-rater="" data-name="Serum kích thích mọc mi Avancé Lash Serum EX" data-id-product="246580" class="starrr" data-rating='0'></div>
-
-                                    <div class="f-pr-item-action">
-                                        <a data-id="246580" data-name="Serum kích thích mọc mi Avancé Lash Serum EX" data-price-float="460000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="6" data-pjax="#fast-container" data-product-id="246580" class="quickview nbh-popup-with-move-anim" data-href="#fast-dialog" href="http://vell.vn/serum-kich-thich-moc-mi-1-1-246580.html">Xem nhanh</a>
-                                        <a href="javascript:void(0)" class="add-cart BNC-add-cart v2-home-pr-item-action-buy " data-price-float="460000.00.00" data-name="Serum kích thích mọc mi Avancé Lash Serum EX" data-type="tab-home" data-price="Array" data-product="246580" data-quantity="1" data-total-quantity="100">Đặt hàng</a>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                        <div class="v2-home-catepr-showli" id="like-product-item-69167">
-                            <div class="v2-home-catepr-showul-item">
-                                <div class="f-pr-item-img">
-                                    <a data-id="69167" data-name="VITAMIN BỔ SUNG KHOÁNG VI LƯỢNG VÀ TĂNG ĐỀ KHÁNG" data-price-float="350000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="7" href="http://vell.vn/kem-duong-da-05-1-1-69167.html" title="VITAMIN BỔ SUNG KHOÁNG VI LƯỢNG VÀ TĂNG ĐỀ KHÁNG"><img alt="VITAMIN BỔ SUNG KHOÁNG VI LƯỢNG VÀ TĂNG ĐỀ KHÁNG" src="http://s2.webbnc.vn/uploadv2/web/98/985/product/2015/10/15/11/36/1444883557_07081210_53bb6142630c9.jpg" id="f-pr-image-zoom-id-cate-69167" class="img-responsive BNC-image-add-cart-69167" /></a>
-
-                                </div>
-
-                                <div class="f-pr-item-boxdetail">
-                                    <h3><a data-id="69167" data-name="VITAMIN BỔ SUNG KHOÁNG VI LƯỢNG VÀ TĂNG ĐỀ KHÁNG" data-price-float="350000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="7" class="f-pr-item-name" href="http://vell.vn/kem-duong-da-05-1-1-69167.html" title="VITAMIN BỔ SUNG KHOÁNG VI LƯỢNG VÀ TĂNG ĐỀ KHÁNG">VITAMIN BỔ SUNG KHOÁNG VI LƯỢNG VÀ TĂNG ĐỀ KHÁNG</a></h3>
-
-                                    <div class="f-pr-item-price-gr">
-
-                                        <p class="f-pr-item-price">350.000 đ</p>
-                                    </div>
-
-                                    <div id="stars" data-text-login="Vui lòng đăng nhập trước khi đánh giá" data-is-login="0" onclick="relogin()" data-is-rater="" data-name="VITAMIN BỔ SUNG KHOÁNG VI LƯỢNG VÀ TĂNG ĐỀ KHÁNG" data-id-product="69167" class="starrr" data-rating='0'></div>
-
-                                    <div class="f-pr-item-action">
-                                        <a data-id="69167" data-name="VITAMIN BỔ SUNG KHOÁNG VI LƯỢNG VÀ TĂNG ĐỀ KHÁNG" data-price-float="350000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="7" data-pjax="#fast-container" data-product-id="69167" class="quickview nbh-popup-with-move-anim" data-href="#fast-dialog" href="http://vell.vn/kem-duong-da-05-1-1-69167.html">Xem nhanh</a>
-                                        <a href="javascript:void(0)" class="add-cart BNC-add-cart v2-home-pr-item-action-buy " data-price-float="350000.00.00" data-name="VITAMIN BỔ SUNG KHOÁNG VI LƯỢNG VÀ TĂNG ĐỀ KHÁNG" data-type="tab-home" data-price="Array" data-product="69167" data-quantity="1" data-total-quantity="100">Đặt hàng</a>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
-                        <div class="v2-home-catepr-showli" id="like-product-item-83989">
-                            <div class="v2-home-catepr-showul-item">
-                                <div class="f-pr-item-img">
-                                    <a data-id="83989" data-name="Kem dưỡng da nhau thau Plus Placenta Moist Rich Cream" data-price-float="730000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="8" href="http://vell.vn/kem-duong-trang-da-nhau-thai-tong-hop-placental-moist-rich--1-1-83989.html" title="Kem dưỡng da nhau thau Plus Placenta Moist Rich Cream"><img alt="Kem dưỡng da nhau thau Plus Placenta Moist Rich Cream" src="http://s2.webbnc.vn/uploadv2/web/98/985/product/2016/06/22/11/44/1466596164_03181530_56eba08903e7a_800.jpg" id="f-pr-image-zoom-id-cate-83989" class="img-responsive BNC-image-add-cart-83989" /></a>
-
-                                </div>
-
-                                <div class="f-pr-item-boxdetail">
-                                    <h3><a data-id="83989" data-name="Kem dưỡng da nhau thau Plus Placenta Moist Rich Cream" data-price-float="730000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="8" class="f-pr-item-name" href="http://vell.vn/kem-duong-trang-da-nhau-thai-tong-hop-placental-moist-rich--1-1-83989.html" title="Kem dưỡng da nhau thau Plus Placenta Moist Rich Cream">Kem dưỡng da nhau thau Plus Placenta Moist Rich Cream</a></h3>
-
-                                    <div class="f-pr-item-price-gr">
-
-                                        <p class="f-pr-item-price">730.000 đ</p>
-                                    </div>
-
-                                    <div id="stars" data-text-login="Vui lòng đăng nhập trước khi đánh giá" data-is-login="0" onclick="relogin()" data-is-rater="" data-name="Kem dưỡng da nhau thau Plus Placenta Moist Rich Cream" data-id-product="83989" class="starrr" data-rating='0'></div>
-
-                                    <div class="f-pr-item-action">
-                                        <a data-id="83989" data-name="Kem dưỡng da nhau thau Plus Placenta Moist Rich Cream" data-price-float="730000.00.00" data-title="BÁN CHẠY TRONG TUẦN" data-position="8" data-pjax="#fast-container" data-product-id="83989" class="quickview nbh-popup-with-move-anim" data-href="#fast-dialog" href="http://vell.vn/kem-duong-trang-da-nhau-thai-tong-hop-placental-moist-rich--1-1-83989.html">Xem nhanh</a>
-                                        <a href="javascript:void(0)" class="add-cart BNC-add-cart v2-home-pr-item-action-buy " data-price-float="730000.00.00" data-name="Kem dưỡng da nhau thau Plus Placenta Moist Rich Cream" data-type="tab-home" data-price="Array" data-product="83989" data-quantity="1" data-total-quantity="100">Đặt hàng</a>
-                                    </div>
-                                </div>
-
-
-
-                            </div>
-                        </div>
+                        }
                     </div>
 
-                    <script type="text/javascript">
-                                            $(document).ready(function () {
-                                                $(".owl-carousel-cate-6").owlCarousel({
-                                                    items: 4, //10 items above 1000px browser width
-                                                    itemsDesktop: [1000, 4], //5 items between 1000px and 901px
-                                                    itemsDesktopSmall: [900, 3], // betweem 900px and 601px
-                                                    itemsTablet: [600, 2], //2 items between 600 and 0
-                                                    itemsMobile: false, // itemsMobile disabled - inherit from itemsTablet option
-                                                    pagination: false,
-                                                    navigation: true,
-                                                });
-                                            });
-
-                                            $(document).ready(function () {
-                                                $('.tab-content .owl-carousel-cate-6 .owl-controls .owl-prev').append('<i class="fa fa-chevron-left"></i>');
-                                                $('.tab-content .owl-carousel-cate-6 .owl-controls .owl-next').append('<i class="fa fa-chevron-right"></i>');
-                                            });
-                    </script>
                     <a href="http://vell.vn/ban-chay-trong-tuan-2-1-42109.html" class="view-more hidden-sm hidden-xs">Xem tất cả</a>
                 </div>
                 <div class="clearfix"></div>

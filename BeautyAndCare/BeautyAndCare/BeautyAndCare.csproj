@@ -1007,6 +1007,7 @@
     <Content Include="Views\Default\ProductType3.cshtml" />
     <Content Include="Views\Default\ProductType4.cshtml" />
     <Content Include="Views\Default\ProductType5.cshtml" />
+    <Content Include="Views\Default\Detail.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

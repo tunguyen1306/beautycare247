@@ -11,11 +11,21 @@
                            where data.id_category_products == 2
                            select data;
     var dataProductType2 = from data in db.tbl_product
+                           where data.id_category_products == 3
+                           select data;
+    var dataProductType3 = from data in db.tbl_product
+                           where data.id_category_products == 4
+                           select data;
+    var dataProductType4 = from data in db.tbl_product
+                           where data.id_category_products == 5
+                           select data;
+    var dataProductType5 = from data in db.tbl_product
+                           where data.id_category_products == 6
                            select data;
 }
 
 <!-- Include popup so sanh -->
-<div id="f-compare" status="closed">
+@*<div id="f-compare" status="closed">
     <div class="f-compare-title"> <i></i><span>So sánh sản phẩm</span> </div>
     <div class="f-compare-body">
         <ul class="f-compare-ul no-margin no-padding">
@@ -24,7 +34,7 @@
         <div class="f-compare-info">chọn tối đa 4 sản phẩm</div>
         <div class="f-compare-button"> <a href="compare-view.html">So sánh </a> </div>
     </div>
-</div>
+</div>*@
 <!-- End include popup so sanh-->
 <!-- Quan ly toan bo layout web -->
 <h1 style="display: none">VellBeauty</h1>
@@ -72,18 +82,15 @@
                 @Html.Partial("ProductType2", dataProductType2.ToList())
                 <!--End CHĂM SÓC CƠ THỂ-->
                 <!--TRANG ĐIỂM-->
-                @Html.Partial("ProductType3")
+                @Html.Partial("ProductType3", dataProductType3.ToList())
                 <!--End TRANG ĐIỂM-->
                 <!--THỰC PHẨM CHỨC NĂNG-->
-                @Html.Partial("ProductType4")
+                @Html.Partial("ProductType4", dataProductType4.ToList())
 
                 <!--BÁN CHẠY TRONG TUẦN-->
-                @Html.Partial("ProductType5")
+                @Html.Partial("ProductType5", dataProductType5.ToList())
                 <!--End BÁN CHẠY TRONG TUẦN-->
                 <div class="clearfix"></div>
-
-
-
                 <div class="f-center-module">
                     <div class="container">
 
@@ -294,7 +301,7 @@
 <!--FOTER-->
 @Html.Partial("Footer")
 <!--END FOTER-->
-<div class="f-miniCart-miniv2" data-status="hide" style="right: -250px;">
+@*<div class="f-miniCart-miniv2" data-status="hide" style="right: -250px;">
     <div class="f-miniCart-miniv2-toolbar">
         <div class="miniv2-toolbar-close" style="visibility: hidden;"><span>×</span></div>
         <div class="miniv2-toolbar-name">
@@ -317,5 +324,5 @@
             <li><center>Hiện chưa có sản phẩm nào trong giỏ hàng của bạn</center></li>
         </ul>
     </div>
-</div>
+</div>*@
 
