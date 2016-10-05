@@ -601,6 +601,19 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Home.html" />
+    <Content Include="Template\css\bootstrap.min.css" />
+    <Content Include="Template\css\color_scheme_1.css" />
+    <Content Include="Template\css\css.css" />
+    <Content Include="Template\css\fl-outicons.css" />
+    <Content Include="Template\css\font-awesome.min.css" />
+    <Content Include="Template\css\jquery.fancybox.css" />
+    <Content Include="Template\css\material-design.css" />
+    <Content Include="Template\css\material-icons.css" />
+    <Content Include="Template\css\owl.carousel.css" />
+    <Content Include="Template\css\owl.transitions.css" />
+    <Content Include="Template\css\photoswipe.css" />
+    <Content Include="Template\css\stylesheet.css" />
+    <Content Include="Template\HomeTemplate.html" />
     <Content Include="js\bootstrap.js" />
     <Content Include="js\cusInWeb.js" />
     <Content Include="js\fastCart.js" />
@@ -1012,7 +1025,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="img\" />
-    <Folder Include="Template\" />
+    <Folder Include="Template\img\" />
+    <Folder Include="Template\js\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
