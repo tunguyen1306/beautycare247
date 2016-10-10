@@ -1,0 +1,257 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/LayOutNew.cshtml";
+}
+
+<!--HEADER--->
+@Html.Partial("Header")
+<!--END HEADER--->
+<div class="container">
+    <ul class="breadcrumb">
+        <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home"><i class="fa fa-home"></i></a></li>
+        <li><span>Contact Us</span></li>
+    </ul>
+    <div class="row">
+        <div id="content" class="col-sm-12 contact_page">
+            <h1 class="no-line">Contact Us</h1>
+            <div class="map">
+                      </div>
+
+            <div class="col-sm-4">
+                <div class="box twitter soc_info text-center">
+                    <div class="box-heading">
+                        <h3>Twitter Timeline</h3>
+                    </div>
+                    <div id="twitterRefresher" class="box-content">
+                        <iframe id="twitter-widget-0" scrolling="no" frameborder="0" allowtransparency="true" allowfullscreen="true" class="twitter-timeline twitter-timeline-rendered" style="position: static; visibility: visible; display: inline-block; width: 290px; height: 410px; padding: 0px; border: none; max-width: 100%; min-width: 180px; margin-top: 0px; margin-bottom: 0px; min-height: 200px;" data-widget-id="517285297164267522" title="Twitter Timeline"></iframe>
+                    </div>
+                </div>
+            </div>
+            <script>
+                window.twttr = (function (d, s, id) {
+                    var t, js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) return;
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "https://platform.twitter.com/widgets.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                    return window.twttr || (t = {
+                        _e: [], ready: function (f) {
+                            t._e.push(f)
+                        }
+                    });
+                }(document, "script", "twitter-wjs"));
+
+                // Twitter refresher "class"
+                var TwitterRefresh = function (options) {
+                    this.id = options.id;
+                    this.code = options.code;
+                }
+
+                TwitterRefresh.prototype.doRefresh = function () {
+                    document.getElementById(this.id).innerHTML = this.code;
+                    if (document.getElementById('twitter-wjs') != null) {
+                        document.getElementById('twitter-wjs').remove();
+                    }
+                    window.twttr = (function (d, s, id) {
+                        var t, js, fjs = d.getElementsByTagName(s)[0];
+                        if (d.getElementById(id)) return;
+                        js = d.createElement(s);
+                        js.id = id;
+                        js.src = "https://platform.twitter.com/widgets.js";
+                        fjs.parentNode.insertBefore(js, fjs);
+                        return window.twttr || (t = {
+                            _e: [], ready: function (f) {
+                                t._e.push(f)
+                            }
+                        });
+                    }(document, "script", "twitter-wjs"));
+
+                }
+
+                // Create new instance
+                var twtrefresher = new TwitterRefresh({
+                    id: 'twitterRefresher',
+                    code: '<a class="twitter-timeline" width="290" height="410" data-theme="dark" href="TemplateMonster" data-tweet-limit="" data-widget-id="517285297164267522"></a>'
+                });
+
+                ;
+                (function ($) {
+                    $(window).on('resize', function () {
+
+                    })
+                })(jQuery)
+
+
+            </script><div class="col-sm-4">
+                <div id="fb-root" class=" fb_reset"><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div><iframe name="fb_xdm_frame_http" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_http" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="http://staticxx.facebook.com/connect/xd_arbiter/r/P5DLcu0KGJB.js?version=42#channel=f366a930d26e74&amp;origin=http%3A%2F%2Flivedemo00.template-help.com" style="border: none;"></iframe><iframe name="fb_xdm_frame_https" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" id="fb_xdm_frame_https" aria-hidden="true" title="Facebook Cross Domain Communication Frame" tabindex="-1" src="https://staticxx.facebook.com/connect/xd_arbiter/r/P5DLcu0KGJB.js?version=42#channel=f366a930d26e74&amp;origin=http%3A%2F%2Flivedemo00.template-help.com" style="border: none;"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0px; width: 0px;"><div></div></div></div>
+                <div class="box facebook info text-center">
+                    <div class="box-heading">
+                        <h3>Facebook Box</h3>
+                    </div>
+                    <div class="box-content">
+                        <div class="fb-page fb_iframe_widget" data-href="https://www.facebook.com/TemplateMonster" data-width="290" data-height="410" data-hide-cover="false" data-show-facepile="true" data-show-posts="true" style="display: block;" fb-xfbml-state="rendered" fb-iframe-plugin-query="app_id=&amp;container_width=360&amp;height=410&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FTemplateMonster&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=true&amp;show_posts=true&amp;width=290"><span style="vertical-align: bottom; width: 290px; height: 410px;"><iframe name="fce733e5de7fc4" width="290px" height="410px" frameborder="0" allowtransparency="true" allowfullscreen="true" scrolling="no" title="fb:page Facebook Social Plugin" src="https://www.facebook.com/v2.3/plugins/page.php?app_id=&amp;channel=http%3A%2F%2Fstaticxx.facebook.com%2Fconnect%2Fxd_arbiter%2Fr%2FP5DLcu0KGJB.js%3Fversion%3D42%23cb%3Dfc215beeef397c%26domain%3Dlivedemo00.template-help.com%26origin%3Dhttp%253A%252F%252Flivedemo00.template-help.com%252Ff366a930d26e74%26relation%3Dparent.parent&amp;container_width=360&amp;height=410&amp;hide_cover=false&amp;href=https%3A%2F%2Fwww.facebook.com%2FTemplateMonster&amp;locale=en_US&amp;sdk=joey&amp;show_facepile=true&amp;show_posts=true&amp;width=290" style="border: none; visibility: visible; width: 290px; height: 410px; transform: none;" class=""></iframe></span></div>
+                    </div>
+                </div>
+            </div>
+            <script>
+                window.fbAsyncInit = function () {
+                    var id = '';
+                    if (id == '') {
+                        id = false;
+                    }
+                    FB.init({
+                        appId: id,
+                        xfbml: true,
+                        version: 'v2.3'
+                    });
+                };
+
+                (function (d, s, id) {
+                    var js, fjs = d.getElementsByTagName(s)[0];
+                    if (d.getElementById(id)) {
+                        return;
+                    }
+                    js = d.createElement(s);
+                    js.id = id;
+                    js.src = "//connect.facebook.net/en_US/sdk.js";
+                    fjs.parentNode.insertBefore(js, fjs);
+                }(document, 'script', 'facebook-jssdk'));
+
+
+                ;
+                (function ($) {
+                    var o = $('.fb-page');
+
+                    $(window).load(function () {
+                        o.css({ 'display': 'block' })
+                        .find('span').css({
+                            'width': '100%',
+                            'display': 'block',
+                            'text-align': 'inherit'
+                        })
+                        .find('iframe').css({
+                            'display': 'inline-block',
+                            'position': 'static'
+                        });
+                    });
+
+                    $(window).on('load resize', function () {
+                        if (o.parent().width() < o.find('iframe').width()) {
+                            o.find('iframe').css({
+                                'transform': 'scale(' + (o.width() / o.find('iframe').width()) + ')',
+                                'transform-origin': '0% 0%'
+                            })
+                            .parent().css({
+                                'height': (o.find('iframe').height() * (o.width() / o.find('iframe').width())) + 'px'
+                            });
+                        } else {
+                            o
+                            .find('span').css({
+                                'height': o.find('iframe').height() + 'px'
+                            })
+                            .find('iframe').css({
+                                'transform': 'none'
+                            });
+                        }
+                    });
+                })(jQuery);
+            </script><div class="col-sm-4">
+                <div class="box pinterest soc_info text-center">
+                    <div class="box-heading">
+                        <h3>Pinterest Profile Widget</h3>
+                    </div>
+                    <div class="box-content">
+                        <span class="PIN_1476116182281_embed_grid PIN_1476116182281_c2" data-pin-log="embed_grid" data-pin-href="https://www.pinterest.com" style="width: 310px;"><span class="PIN_1476116182281_hd" data-pin-href="https://www.pinterest.com/templatemonster/" data-pin-log="embed_grid"><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/templatemonster/" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/avatars/templatemonster_1464876241_60.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/avatars/templatemonster_1464876241_60.jpg&quot;);"></span><span class="PIN_1476116182281_pinner" data-pin-href="https://www.pinterest.com/templatemonster/" data-pin-log="embed_grid">Template Monster</span></span><span class="PIN_1476116182281_bd" data-pin-href="https://www.pinterest.com" data-pin-log="embed_grid" style="height: 300px;"><span class="PIN_1476116182281_ct" data-pin-href="https://www.pinterest.com" data-pin-log="embed_grid"><span class="PIN_1476116182281_col" data-pin-href="https://www.pinterest.com" data-pin-log="embed_grid"><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/329818372694341609" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506780556" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/d4/fd/fc/d4fdfc4248721931687e1314bffd5579.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/d4/fd/fc/d4fdfc4248721931687e1314bffd5579.jpg&quot;); background-color: rgb(255, 255, 255); padding-bottom: 59.4937%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506780239" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506778616" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/197314027404044493" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506775522" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506773986" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506772289" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/360780620133582270" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506767211" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/329818372694325492" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506764846" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/f4/e7/7d/f4e77dd56a7b41e89ae92d42e0e2f16e.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/f4/e7/7d/f4e77dd56a7b41e89ae92d42e0e2f16e.jpg&quot;); background-color: rgb(235, 143, 10); padding-bottom: 300%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506763609" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506763016" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/9e/67/2b/9e672bfd02b2b4e64872dbbc9b16c7e5.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/9e/67/2b/9e672bfd02b2b4e64872dbbc9b16c7e5.jpg&quot;); background-color: rgb(137, 97, 60); padding-bottom: 266.667%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506761753" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506760756" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/462181980492901241" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/0d/ca/f5/0dcaf5e8e5bfc8d1ae509456cce6ff80.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/0d/ca/f5/0dcaf5e8e5bfc8d1ae509456cce6ff80.jpg&quot;); background-color: rgb(159, 150, 138); padding-bottom: 166.667%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506757089" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/21321798215530599" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506753524" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/c7/9d/df/c79ddfb736488977036940aa99711afa.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/c7/9d/df/c79ddfb736488977036940aa99711afa.jpg&quot;); background-color: rgb(251, 251, 252); padding-bottom: 120.675%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506752636" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506751260" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506750157" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/73/1f/9d/731f9d26a3e6c365efb4cd4a8e009965.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/73/1f/9d/731f9d26a3e6c365efb4cd4a8e009965.jpg&quot;); background-color: rgb(255, 255, 255); padding-bottom: 521.941%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/745697650770296519" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/247557310747567063" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/462181980492890359" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/f5/16/22/f51622d0d7ba07d92d0a26db7939b83d.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/f5/16/22/f51622d0d7ba07d92d0a26db7939b83d.jpg&quot;); background-color: rgb(77, 48, 55); padding-bottom: 365.823%;"></span></span><span class="PIN_1476116182281_col" data-pin-href="https://www.pinterest.com" data-pin-log="embed_grid"><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506782055" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/d4/fd/fc/d4fdfc4248721931687e1314bffd5579.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/d4/fd/fc/d4fdfc4248721931687e1314bffd5579.jpg&quot;); background-color: rgb(255, 255, 255); padding-bottom: 59.4937%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/243194448608441379" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/f3/a9/b4/f3a9b4eb5204e5d994fe7f29e2e99e49.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/f3/a9/b4/f3a9b4eb5204e5d994fe7f29e2e99e49.jpg&quot;); background-color: rgb(158, 145, 142); padding-bottom: 309.283%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506779696" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506777691" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506776542" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506774503" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506773543" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506771209" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/f4/e7/7d/f4e77dd56a7b41e89ae92d42e0e2f16e.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/f4/e7/7d/f4e77dd56a7b41e89ae92d42e0e2f16e.jpg&quot;); background-color: rgb(235, 143, 10); padding-bottom: 300%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/243194448608433956" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506766405" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506765208" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/218776494378760223" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506763471" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506762580" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506761204" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/745697650770298243" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506758098" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506756220" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/f4/e7/7d/f4e77dd56a7b41e89ae92d42e0e2f16e.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/f4/e7/7d/f4e77dd56a7b41e89ae92d42e0e2f16e.jpg&quot;); background-color: rgb(235, 143, 10); padding-bottom: 300%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/329818372694313289" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506751386" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/11/10/fd/1110fd199860f19f5b5acacbfe5572b6.jpg&quot;); background-color: rgb(247, 247, 247); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506750491" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/243194448608426408" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/60/fe/ca/60fecae86f4e1ff1a6143a770d99b2d6.jpg&quot;); background-color: rgb(47, 76, 94); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/353251164506749371" data-pin-log="embed_grid" data-pin-src="http://media-cache-ak0.pinimg.com/237x/c5/de/32/c5de32c946c4395f96b5eb7a2c91b460.jpg" style="background-image: url(&quot;http://media-cache-ak0.pinimg.com/237x/c5/de/32/c5de32c946c4395f96b5eb7a2c91b460.jpg&quot;); background-color: rgb(31, 31, 31); padding-bottom: 296.61%;"></span><span class="PIN_1476116182281_img" data-pin-href="https://www.pinterest.com/pin/243194448608426188" data-pin-log="embed_grid" data-pin-src="http://media-cache-ec0.pinimg.com/237x/73/1f/9d/731f9d26a3e6c365efb4cd4a8e009965.jpg" style="background-image: url(&quot;http://media-cache-ec0.pinimg.com/237x/73/1f/9d/731f9d26a3e6c365efb4cd4a8e009965.jpg&quot;); background-color: rgb(255, 255, 255); padding-bottom: 521.941%;"></span></span></span></span><span class="PIN_1476116182281_ft" data-pin-href="https://www.pinterest.com/templatemonster/pins/follow/?guid=JSeTo3QVt8DV" data-pin-log="embed_user_ft"><span class="PIN_1476116182281_button" data-pin-href="https://www.pinterest.com/templatemonster/pins/follow/?guid=JSeTo3QVt8DV" data-pin-log="embed_user_ft"><span class="PIN_1476116182281_label PIN_1476116182281_bottom" data-pin-href="https://www.pinterest.com/templatemonster/pins/follow/?guid=JSeTo3QVt8DV" data-pin-log="embed_user_ft"><span class="PIN_1476116182281_string" data-pin-href="https://www.pinterest.com/templatemonster/pins/follow?guid=JSeTo3QVt8DV" data-pin-log="embed_user_ft">Follow On </span><span class="PIN_1476116182281_logo" data-pin-href="https://www.pinterest.com/templatemonster/pins/follow?guid=JSeTo3QVt8DV" data-pin-log="embed_user_ft"></span></span></span></span></span>
+                    </div>
+                </div>
+            </div>
+            <script>
+                (function (d) {
+                    var f = d.getElementsByTagName('SCRIPT')[0], p = d.createElement('SCRIPT');
+                    p.type = 'text/javascript';
+                    p.async = true;
+                    p.src = '//assets.pinterest.com/js/pinit.js';
+                    f.parentNode.insertBefore(p, f);
+                }(document));
+            </script>
+            <div class="clear"></div>
+            <h3>Our Location</h3>
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <a href="./">
+                                <img src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/logo-360x53.png" alt="Cosmetorix" title="Cosmetorix" class="img-thumbnail">
+                            </a>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="icon material-design-phone370">
+                                <strong>Telephone</strong><br>
+                                <a href="callto:+3(800)2345-6789">+3(800)2345-6789</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="icon fa-key">
+                                <strong>Opening Hours</strong><br>
+                                7 Days a week from 9:00 am to 7:00 pm
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <strong>Address</strong><br>
+                            <address>
+                                <a href="//maps.google.com/maps?q=40.6700%2C+-73.9400&amp;hl=en-gb&amp;t=m&amp;z=15" target="_blank">
+                                    4578 Marmora road, glasgow d04 89 gr
+                                </a>
+                            </address>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="icon fa-fax">
+                                <strong>Fax</strong><br>
+                                <a href="callto:800-4569-9876">800-4569-9876</a>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="icon fa-comments-o">
+                                <strong>Comments</strong><br>
+                                We are glad to hear from you
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <form action="http://livedemo00.template-help.com/opencart_59086/index.php?route=information/contact" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <fieldset>
+                    <legend>Contact Form</legend>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name">Your Name</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="name" value="" id="input-name" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-email">E-Mail Address</label>
+                        <div class="col-sm-10">
+                            <input type="text" name="email" value="" id="input-email" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-enquiry">Enquiry</label>
+                        <div class="col-sm-10">
+                            <textarea name="enquiry" rows="10" id="input-enquiry" class=""></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+                <div class="buttons">
+                    <div class="pull-right">
+                        <input class="btn btn-primary" type="submit" value="Submit">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<!-- FOOTER--->
+@Html.Partial("Footer")
+<!--END FOOTER--->

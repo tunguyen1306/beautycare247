@@ -1,0 +1,246 @@
+/*========================================================
+                   Bootstrap Reset
+=========================================================*/
+.bootstrap-datetimepicker-widget td.day:hover,
+.bootstrap-datetimepicker-widget td.minute:hover,
+.bootstrap-datetimepicker-widget td.hour:hover,
+.bootstrap-datetimepicker-widget td.second:hover,
+.bootstrap-datetimepicker-widget thead tr:first-child th:hover,
+.bootstrap-datetimepicker-widget td span:hover {
+  color: #f2c545; }
+.bootstrap-datetimepicker-widget a[data-action]:hover,
+.bootstrap-datetimepicker-widget .timepicker td > span:hover {
+  color: #f2c545; }
+
+.cart > button .cart-total2 {
+  background: #f2c545; }
+
+header .nav > .toggle_cont > li > a:hover, header .nav > .toggle_cont > li > a:focus, header .nav > .toggle_cont > li > a:active, header .nav > .toggle_cont > li > a.current {
+  color: #f2c545; }
+
+.box-language .toggle span:first-child:before, .box-currency .toggle span:first-child:before {
+  background: #da7d2e; }
+.box-language .toggle:hover span:first-child, .box-language .toggle.active span:first-child, .box-currency .toggle:hover span:first-child, .box-currency .toggle.active span:first-child {
+  color: #f2c545; }
+.box-language .toggle:hover:after, .box-language .toggle.active:after, .box-currency .toggle:hover:after, .box-currency .toggle.active:after {
+  color: #f2c545; }
+
+a {
+  color: #f2c545; }
+  a:visited {
+    color: #f2c545; }
+  a:hover, a:focus, a:active {
+    color: #da7d2e; }
+
+input[type="checkbox"] + label:hover {
+  color: #f2c545; }
+
+.bootstrap-datetimepicker-widget td.day:hover,
+.bootstrap-datetimepicker-widget td.minute:hover,
+.bootstrap-datetimepicker-widget td.hour:hover,
+.bootstrap-datetimepicker-widget td.second:hover,
+.bootstrap-datetimepicker-widget thead tr:first-child th:hover,
+.bootstrap-datetimepicker-widget td span:hover {
+  color: #f2c545; }
+
+/*========================================================
+                       Other styles
+=========================================================*/
+.box.account ul a:hover,
+.box.affilate ul a:hover,
+.manufacturer-content div a:hover,
+#content ul.list-unstyled a:hover,
+.manufacturer-content div a:before,
+#content ul.list-unstyled a:before,
+.counter:hover, .counter:focus:hover,
+input[type="checkbox"] + label:after,
+.article-title,
+.article-sub-title span:before,
+.article-description ul li, .article-description ol li,
+.related-article h4,
+.article-comment .comment-date:before,
+.reply-cancel,
+aside #blog-search a:hover,
+.checkout-cart #content .table a,
+.checkout-checkout #content .table-responsive .table tfoot tr:last-child td:last-child,
+.link,
+.link:focus,
+.link:visited,
+.terms_conditions_page h4::before,
+.datepicker .prev:hover,
+.datepicker .prev.active,
+.datepicker .next:hover,
+.datepicker .next.active,
+.datepicker .day:hover,
+.datepicker .day.active,
+.datepicker .year:hover,
+.datepicker .year.active,
+.datepicker .month:hover,
+.datepicker .month.active,
+.datepicker .picker-switch:hover,
+.datepicker .picker-switch.active,
+.cart > button i,
+header .button-wishlist i,
+.cart > button:hover strong,
+header .button-wishlist:hover,
+header .button-wishlist:focus,
+header .button-wishlist:active,
+.cart .total + .text-right .btn-view:hover,
+.cart .total + .text-right .btn-view:active,
+.cart .total + .text-right .btn-view:focus,
+.banners > div .s-desc h3 span,
+h1 i,
+.product-thumb .image > .quickview,
+.product-btn i,
+.owl-carousel .owl-prev div:hover,
+.owl-carousel .owl-nav div:hover,
+.quickview-style .price-new,
+.quickview-style .price,
+.newsletter .newsletter-button,
+.box-subcat li .name a,
+.box-subcat li .name a:visited,
+.product-filter .sbToggle:before,
+.product-filter a.compare-total,
+.product-gallery .image-thumb .bx-wrapper .bx-next,
+.product-gallery .image-thumb .bx-wrapper .bx-prev,
+.review-author strong,
+div.required .control-label:after,
+#product .quantity .price-section .price-new,
+#product .sbHolder > .sbToggle,
+.testimonials blockquote:before,
+.contact_page .icon::before,
+.account-account h3 i {
+  color: #f2c545; }
+
+.sf-menu .sf-mega a:hover, .sf-menu .sf-mega a:focus, .sf-menu .sf-mega a:active,
+.product-btn:hover,
+.product-btn:focus,
+.product-btn:active,
+.name a:hover,
+.name a:focus,
+.name a:active,
+.common-home #content .blog_articles h3 a:hover,
+.common-home #content .blog_articles h3 a:focus,
+.common-home #content .blog_articles h3 a:active,
+footer a:hover,
+footer a:focus,
+footer a:active,
+.sf-menu .sf-mega .box [id*="tab-single-latest-"] .product-thumb .caption .name__aside a:hover,
+.sf-menu .sf-mega .box [id*="tab-single-latest-"] .product-thumb .caption .name__aside a:focus,
+.sf-menu .sf-mega .box [id*="tab-single-latest-"] .product-thumb .caption .name__aside a:active,
+.social-list a:hover,
+.social-list a:focus,
+.social-list a:active,
+.copyright a:hover,
+.copyright a:focus,
+.copyright a:active,
+.product-filter a.compare-total:hover,
+.product-filter a.compare-total:focus,
+.product-filter a.compare-total:active,
+.product-filter .compare-total span:hover,
+.product-filter .compare-total span:focus,
+.product-filter .compare-total span:active,
+.breadcrumb a:hover,
+.breadcrumb a:focus,
+.breadcrumb a:active {
+  color: #f2c545; }
+
+.breadcrumb a:hover i, .breadcrumb a:focus i, .breadcrumb a:active i {
+  color: #f2c545; }
+
+.box-subcat li .name a:hover, .box-subcat li .name a:focus, .box-subcat li .name a:active,
+.product-gallery .image-thumb .bx-wrapper .bx-next:hover,
+.product-gallery .image-thumb .bx-wrapper .bx-next:focus,
+.product-gallery .image-thumb .bx-wrapper .bx-next:active,
+.product-gallery .image-thumb .bx-wrapper .bx-prev:hover,
+.product-gallery .image-thumb .bx-wrapper .bx-prev:focus,
+.product-gallery .image-thumb .bx-wrapper .bx-prev:active,
+#content ul.list-unstyled a:hover,
+#content ul.list-unstyled a:focus,
+#content ul.list-unstyled a:active,
+.manufacturer-list .manufacturer-content a:hover,
+.manufacturer-list .manufacturer-content a:focus,
+.manufacturer-list .manufacturer-content a:active {
+  color: #da7d2e; }
+
+.thumbnail a:hover img {
+  border-color: #f2c545; }
+
+#list-view:hover, #list-view.active, #grid-view:hover, #grid-view.active {
+  color: #f2c545; }
+
+.sbToggle:hover:before,
+.sbToggle.sbToggleOpen:before {
+  color: #da7d2e; }
+
+.sf-menu > li > a:after {
+  background-color: #f5ee7b; }
+
+.top-search i:hover, .top-search i:focus, .top-search i:active, .top-search i.active {
+  color: #f2c545; }
+
+.search button:hover, .search button:focus:hover, .search button:active:hover {
+  color: #f2c545; }
+
+.sale {
+  color: #da7d2e;
+  border-color: #da7d2e; }
+
+.fa-stack i.active {
+  color: #f5ee7b; }
+
+.product_tabs .product-review-form .required.stars input:checked ~ span:before, .product_tabs .product-review-form .required.stars input:hover + span:before, .product_tabs .product-review-form .required.stars input:hover ~ span:before {
+  color: #f5ee7b; }
+
+.sf-menu li.sfHover > a, .sf-menu li > a:hover, .sf-menu li > a.active {
+  color: #f2c545; }
+
+.sf-menu .sf-mega {
+  border-color: #f2c545; }
+
+.sf-menu .sf-mega .box [id*="tab-single-latest-"] + .view-all:after,
+footer h3:before,
+footer h4:before,
+.privacy_page ol li h4:before {
+  background-color: #f2c545; }
+
+.banners > div a:hover .s-desc h3 span,
+.product-thumb .image > .quickview:hover {
+  color: #da7d2e; }
+
+.cart .name a:hover, .cart .name a:focus, .cart .name a:active {
+  color: #f2c545; }
+
+.box-language .toggle_cont > li > a:hover, .box-language .toggle_cont > li > a:active, .box-language .toggle_cont > li > a:focus, .box-language .toggle_cont > li > a.selected, .box-language .toggle_cont > li > button:hover, .box-language .toggle_cont > li > button:active, .box-language .toggle_cont > li > button:focus, .box-language .toggle_cont > li > button.selected, .box-currency .toggle_cont > li > a:hover, .box-currency .toggle_cont > li > a:active, .box-currency .toggle_cont > li > a:focus, .box-currency .toggle_cont > li > a.selected, .box-currency .toggle_cont > li > button:hover, .box-currency .toggle_cont > li > button:active, .box-currency .toggle_cont > li > button:focus, .box-currency .toggle_cont > li > button.selected {
+  color: #f2c545; }
+
+.btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary:visited:active, .btn-primary:visited:focus, .btn-primary:visited:hover, .btn-primary:active:focus, .btn-primary:focus:active {
+  color: #f2c545;
+  border-color: #f2c545; }
+
+.bootstrap-datetimepicker-widget td.day.active,
+.bootstrap-datetimepicker-widget td.day.active:hover,
+input[type="radio"]:checked + label:after,
+.cart .total + .text-right .btn-view:before {
+  background: #f2c545; }
+
+#habla_window_div #habla_topbar_div {
+  background: #f2c545 !important; }
+
+.product_tabs .nav-tabs > li > a:hover, .product_tabs .nav-tabs > li > a:focus {
+  border-right-color: #f2c545; }
+
+.product_tabs .nav-tabs > li.active > a {
+  border-right-color: #f2c545; }
+  .product_tabs .nav-tabs > li.active > a:hover, .product_tabs .nav-tabs > li.active > a:focus {
+    border-right-color: #f2c545; }
+
+.icon-box i {
+  border: 2px solid #f2c545;
+  color: #f2c545; }
+
+.contact_page .icon::before {
+  border: 2px solid #f2c545; }
+
+.terms_conditions_page h4::before {
+  background: none; }

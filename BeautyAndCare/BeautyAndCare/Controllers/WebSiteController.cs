@@ -13,5 +13,29 @@ namespace BeautyAndCare.Controllers
         {
             return View();
         }
+        public ActionResult Header()
+        {
+            return View();
+        }
+        public ActionResult Footer()
+        {
+            return View();
+        }
+        public ActionResult Login()
+        {
+            return View();
+        }
+        public ActionResult Register()
+        {
+            return View();
+        }
+        public ActionResult Contact()
+        {
+            return View();
+        }
+        public ActionResult Breadcrumb()
+        {
+            return View();
+        }
     }
 }

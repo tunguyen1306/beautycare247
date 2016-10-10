@@ -592,6 +592,9 @@
     <Content Include="Home.html" />
     <Content Include="Template\css\bootstrap.min.css" />
     <Content Include="Template\css\color_scheme_1.css" />
+    <Content Include="Template\css\color_scheme_2.css" />
+    <Content Include="Template\css\color_scheme_3.css" />
+    <Content Include="Template\css\color_scheme_4.css" />
     <Content Include="Template\css\css.css" />
     <Content Include="Template\css\fl-outicons.css" />
     <Content Include="Template\css\font-awesome.min.css" />
@@ -956,6 +959,7 @@
     <Content Include="Template\js\bootstrap-tabcollapse.js" />
     <Content Include="Template\js\bootstrap.min.js" />
     <Content Include="Template\js\common.js" />
+    <Content Include="Template\js\CusWeb.js" />
     <Content Include="Template\js\device.min.js" />
     <Content Include="Template\js\jquery-2.1.1.min.js" />
     <Content Include="Template\js\jquery.cookies.js" />
@@ -967,6 +971,7 @@
     <Content Include="Template\js\jquery.unveil.min.js" />
     <Content Include="Template\js\livesearch.min.js" />
     <Content Include="Template\js\owl.carousel.min.js" />
+    <Content Include="Template\js\owl.carousel\owl.carousel.min.js" />
     <Content Include="Template\js\script.js" />
     <Content Include="Template\js\style_switcher_demo.js" />
     <Content Include="Template\js\superfish.min.js" />
@@ -1023,6 +1028,15 @@
     <Content Include="Template\fonts\MBNDSwis-Bold.ttf" />
     <Content Include="Template\fonts\MBNDSwis-Italic.ttf" />
     <Content Include="Template\fonts\MBNDSwis.ttf" />
+    <Content Include="Template\fonts\fl-outicons.eot" />
+    <Content Include="Template\fonts\fl-outicons.ttf" />
+    <Content Include="Template\fonts\fl-outicons.woff" />
+    <Content Include="Views\WebSite\Header.cshtml" />
+    <Content Include="Views\WebSite\Footer.cshtml" />
+    <Content Include="Views\WebSite\Register.cshtml" />
+    <Content Include="Views\WebSite\Contact.cshtml" />
+    <Content Include="Views\WebSite\Login.cshtml" />
+    <Content Include="Views\WebSite\Breadcrumb.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

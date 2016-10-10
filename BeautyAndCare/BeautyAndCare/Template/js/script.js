@@ -211,7 +211,7 @@ jQuery(document).ready(function(){
 	var o1 = $('.testimonials'),
 	o2 = $('.box-carousel');
 	if (o1.length > 0 || o2.length > 0) {
-		include('js/owl.carousel.min.js');
+	    include('js/owl.carousel/owl.carousel.min.js');
 		var settings = {
 			nav: true,
 			navClass: ['owl-prev fa fa-angle-left', 'owl-next fa fa-angle-right'],
