@@ -1,10 +1,15 @@
-﻿
+﻿@using BeautyAndCare.Models;
+@using System.Linq;
 @{
-    ViewBag.Title = "Login";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LayOutNew.cshtml";
+    WebSiteEntities db = new WebSiteEntities();
+    var queryMenu = from data in db.tblMenus
+                    where data.StatusMenu == 1
+                    select data;
 }
 <!--HEADER--->
-@Html.Partial("Header")
+@Html.Partial("Header", queryMenu.ToList())
 <!--END HEADER--->
 <div class="container">
     <ul class="breadcrumb">

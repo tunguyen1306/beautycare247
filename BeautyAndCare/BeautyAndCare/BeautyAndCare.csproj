@@ -40,14 +40,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.5.0.0\lib\net45\EntityFramework.dll</HintPath>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Data.Entity" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
@@ -127,24 +130,43 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\DataWebSite.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataWebSite.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DataWebSite.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataWebSite.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\DataWebSite.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DataWebSite.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Models\Navbar.cs" />
-    <Compile Include="Models\tbl_product.cs">
-      <DependentUpon>DataWebSite.tt</DependentUpon>
+    <Compile Include="Models\tblAll.cs" />
+    <Compile Include="Models\tblCategory.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblMenu.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblProduct.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblPromotion.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblType.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblTypeUser.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblUser.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebSite.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSite.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebSite.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\WebSite.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>WebSite.edmx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -590,6 +612,16 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Home.html" />
+    <Content Include="Models\WebSite.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSite.edmx</DependentUpon>
+      <LastGenOutput>WebSite.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\WebSite.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>WebSite.edmx</DependentUpon>
+      <LastGenOutput>WebSite.cs</LastGenOutput>
+    </Content>
     <Content Include="Template\css\bootstrap.min.css" />
     <Content Include="Template\css\color_scheme_1.css" />
     <Content Include="Template\css\color_scheme_2.css" />
@@ -605,6 +637,7 @@
     <Content Include="Template\css\owl.transitions.css" />
     <Content Include="Template\css\photoswipe.css" />
     <Content Include="Template\css\stylesheet.css" />
+    <Content Include="Template\DetailTemplate.html" />
     <Content Include="Template\fonts\fontawesome-webfont.svg" />
     <Content Include="Template\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Template\HomeTemplate.html" />
@@ -923,22 +956,12 @@
     <Content Include="fonts\MBNDSwis-Bold.ttf" />
     <Content Include="fonts\MBNDSwis-Italic.ttf" />
     <Content Include="fonts\MBNDSwis.ttf" />
-    <EntityDeploy Include="Models\DataWebSite.edmx">
+    <EntityDeploy Include="Models\WebSite.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DataWebSite.Designer.cs</LastGenOutput>
+      <LastGenOutput>WebSite.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Models\DataWebSite.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataWebSite.edmx</DependentUpon>
-      <LastGenOutput>DataWebSite.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\DataWebSite.edmx.diagram">
-      <DependentUpon>DataWebSite.edmx</DependentUpon>
-    </Content>
-    <Content Include="Models\DataWebSite.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DataWebSite.edmx</DependentUpon>
-      <LastGenOutput>DataWebSite.cs</LastGenOutput>
+    <Content Include="Models\WebSite.edmx.diagram">
+      <DependentUpon>WebSite.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\flot-data.js" />
@@ -1037,6 +1060,9 @@
     <Content Include="Views\WebSite\Contact.cshtml" />
     <Content Include="Views\WebSite\Login.cshtml" />
     <Content Include="Views\WebSite\Breadcrumb.cshtml" />
+    <Content Include="Views\WebSite\viewProducts.cshtml" />
+    <Content Include="Views\WebSite\Detail.cshtml" />
+    <Content Include="Views\WebSite\NewProducts.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1071,7 +1097,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>29128</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:29128/</IISUrl>
+          <IISUrl>http://localhost:29129/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

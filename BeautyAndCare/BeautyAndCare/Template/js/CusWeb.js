@@ -6,14 +6,18 @@
         $('body').removeClass('common-home');
 
     }
-    else if (url.indexOf('/WebSite/Index')) {
+    if (url.indexOf('/WebSite/Index')) {
 
         $('body').addClass('common-home');
 
     }
-    else if (url.indexOf('/WebSite/Login')) {
+    if (url.indexOf('/WebSite/Login')) {
 
         $('body').addClass('account-login');
+
+    } if (url.indexOf('/WebSite/Register')) {
+
+        $('body').addClass('account-register');
 
     }
 });

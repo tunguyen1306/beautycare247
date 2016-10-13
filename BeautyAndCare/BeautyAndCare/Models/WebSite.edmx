@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="WebSiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCategory" Type="nvarchar" MaxLength="250" />
+          <Property Name="StatusCategory" Type="int" />
+        </EntityType>
+        <EntityType Name="tblMenu">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameMenu" Type="nvarchar" MaxLength="250" />
+          <Property Name="NameMenu_en" Type="nvarchar" MaxLength="250" />
+          <Property Name="IdParentMenu" Type="int" />
+          <Property Name="StatusMenu" Type="int" />
+          <Property Name="OrderMenu" Type="int" />
+          <Property Name="IsParent" Type="int" />
+          <Property Name="LinkMenu" Type="varchar" MaxLength="500" />
+        </EntityType>
+        <EntityType Name="tblProducts">
+          <Key>
+            <PropertyRef Name="IdProducts" />
+          </Key>
+          <Property Name="IdProducts" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameProducts" Type="nvarchar" MaxLength="250" />
+          <Property Name="IdCategoryProducts" Type="int" />
+          <Property Name="PriceProducts" Type="varchar" MaxLength="50" />
+          <Property Name="ShortDesProducts" Type="nvarchar" MaxLength="500" />
+          <Property Name="DescriptionProducts" Type="nvarchar(max)" />
+          <Property Name="StatusProducts" Type="int" />
+          <Property Name="CreateDateProducts" Type="datetime" />
+          <Property Name="ModifiDateProducts" Type="datetime" />
+          <Property Name="CreateUserProducts" Type="nvarchar" MaxLength="50" />
+          <Property Name="ModifiUserProducts" Type="nvarchar" MaxLength="50" />
+          <Property Name="NameProducts_en" Type="nvarchar" MaxLength="250" />
+          <Property Name="ShortDesProducts_en" Type="nvarchar" MaxLength="500" />
+          <Property Name="DescriptionProducts_en" Type="nvarchar(max)" />
+          <Property Name="IdTypeProducts" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPromotion">
+          <Key>
+            <PropertyRef Name="IdCode" />
+          </Key>
+          <Property Name="IdCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameCode" Type="varchar" MaxLength="50" />
+          <Property Name="StatusCode" Type="int" />
+          <Property Name="DateBegin" Type="datetime" />
+          <Property Name="DateEnd" Type="datetime" />
+        </EntityType>
+        <EntityType Name="tblType">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameType" Type="nvarchar" MaxLength="250" />
+          <Property Name="StatusType" Type="int" />
+        </EntityType>
+        <EntityType Name="tblTypeUser">
+          <Key>
+            <PropertyRef Name="IdTypeUser" />
+          </Key>
+          <Property Name="IdTypeUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameTypeUser" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameUser" Type="nvarchar" MaxLength="250" />
+          <Property Name="PassUser" Type="varchar" MaxLength="250" />
+          <Property Name="IdTypeUser" Type="int" />
+          <Property Name="TotalPointUser" Type="float" />
+          <Property Name="PhoneUser" Type="int" />
+          <Property Name="EmailUser" Type="varchar" MaxLength="250" />
+          <Property Name="FirtNameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="LastNameUser" Type="nvarchar" MaxLength="50" />
+          <Property Name="AddressUser" Type="nvarchar" MaxLength="250" />
+          <Property Name="SubscribeUser" Type="bit" />
+        </EntityType>
+        <EntityContainer Name="WebSiteModelStoreContainer">
+          <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblProducts" EntityType="Self.tblProducts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPromotion" EntityType="Self.tblPromotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblType" EntityType="Self.tblType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblTypeUser" EntityType="Self.tblTypeUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="WebSiteModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="tblMenu">
+          <Key>
+            <PropertyRef Name="IdMenu" />
+          </Key>
+          <Property Name="IdMenu" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameMenu" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NameMenu_en" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdParentMenu" Type="Int32" />
+          <Property Name="StatusMenu" Type="Int32" />
+          <Property Name="OrderMenu" Type="Int32" />
+          <Property Name="IsParent" Type="Int32" />
+          <Property Name="LinkMenu" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="WebSiteEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="tblMenus" EntityType="Self.tblMenu" />
+          <EntitySet Name="tblProducts" EntityType="WebSiteModel.tblProduct" />
+          <EntitySet Name="tblTypes" EntityType="WebSiteModel.tblType" />
+          <EntitySet Name="tblCategories" EntityType="WebSiteModel.tblCategory" />
+          <EntitySet Name="tblUsers" EntityType="WebSiteModel.tblUser" />
+          <EntitySet Name="tblPromotions" EntityType="WebSiteModel.tblPromotion" />
+          <EntitySet Name="tblTypeUsers" EntityType="WebSiteModel.tblTypeUser" />
+        </EntityContainer>
+        <EntityType Name="tblProduct">
+          <Key>
+            <PropertyRef Name="IdProducts" />
+          </Key>
+          <Property Name="IdProducts" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameProducts" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="IdCategoryProducts" Type="Int32" />
+          <Property Name="PriceProducts" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ShortDesProducts" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionProducts" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StatusProducts" Type="Int32" />
+          <Property Name="CreateDateProducts" Type="DateTime" Precision="3" />
+          <Property Name="ModifiDateProducts" Type="DateTime" Precision="3" />
+          <Property Name="CreateUserProducts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ModifiUserProducts" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="NameProducts_en" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDesProducts_en" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="DescriptionProducts_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="IdTypeProducts" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblType">
+          <Key>
+            <PropertyRef Name="IdType" />
+          </Key>
+          <Property Name="IdType" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameType" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StatusType" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblCategory">
+          <Key>
+            <PropertyRef Name="IdCategory" />
+          </Key>
+          <Property Name="IdCategory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCategory" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="StatusCategory" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblUser">
+          <Key>
+            <PropertyRef Name="IdUser" />
+          </Key>
+          <Property Name="IdUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameUser" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PassUser" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="IdTypeUser" Type="Int32" />
+          <Property Name="TotalPointUser" Type="Double" />
+          <Property Name="PhoneUser" Type="Int32" />
+          <Property Name="EmailUser" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="FirtNameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="LastNameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AddressUser" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="SubscribeUser" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="tblPromotion">
+          <Key>
+            <PropertyRef Name="IdCode" />
+          </Key>
+          <Property Name="IdCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="StatusCode" Type="Int32" />
+          <Property Name="DateBegin" Type="DateTime" Precision="3" />
+          <Property Name="DateEnd" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="tblTypeUser">
+          <Key>
+            <PropertyRef Name="IdTypeUser" />
+          </Key>
+          <Property Name="IdTypeUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTypeUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="WebSiteModelStoreContainer" CdmEntityContainer="WebSiteEntities">
+          <EntitySetMapping Name="tblMenus">
+            <EntityTypeMapping TypeName="WebSiteModel.tblMenu">
+              <MappingFragment StoreEntitySet="tblMenu">
+                <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
+                <ScalarProperty Name="NameMenu" ColumnName="NameMenu" />
+                <ScalarProperty Name="NameMenu_en" ColumnName="NameMenu_en" />
+                <ScalarProperty Name="IdParentMenu" ColumnName="IdParentMenu" />
+                <ScalarProperty Name="StatusMenu" ColumnName="StatusMenu" />
+                <ScalarProperty Name="OrderMenu" ColumnName="OrderMenu" />
+                <ScalarProperty Name="IsParent" ColumnName="IsParent" />
+                <ScalarProperty Name="LinkMenu" ColumnName="LinkMenu" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblProducts">
+            <EntityTypeMapping TypeName="WebSiteModel.tblProduct">
+              <MappingFragment StoreEntitySet="tblProducts">
+                <ScalarProperty Name="IdTypeProducts" ColumnName="IdTypeProducts" />
+                <ScalarProperty Name="DescriptionProducts_en" ColumnName="DescriptionProducts_en" />
+                <ScalarProperty Name="ShortDesProducts_en" ColumnName="ShortDesProducts_en" />
+                <ScalarProperty Name="NameProducts_en" ColumnName="NameProducts_en" />
+                <ScalarProperty Name="ModifiUserProducts" ColumnName="ModifiUserProducts" />
+                <ScalarProperty Name="CreateUserProducts" ColumnName="CreateUserProducts" />
+                <ScalarProperty Name="ModifiDateProducts" ColumnName="ModifiDateProducts" />
+                <ScalarProperty Name="CreateDateProducts" ColumnName="CreateDateProducts" />
+                <ScalarProperty Name="StatusProducts" ColumnName="StatusProducts" />
+                <ScalarProperty Name="DescriptionProducts" ColumnName="DescriptionProducts" />
+                <ScalarProperty Name="ShortDesProducts" ColumnName="ShortDesProducts" />
+                <ScalarProperty Name="PriceProducts" ColumnName="PriceProducts" />
+                <ScalarProperty Name="IdCategoryProducts" ColumnName="IdCategoryProducts" />
+                <ScalarProperty Name="NameProducts" ColumnName="NameProducts" />
+                <ScalarProperty Name="IdProducts" ColumnName="IdProducts" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTypes">
+            <EntityTypeMapping TypeName="WebSiteModel.tblType">
+              <MappingFragment StoreEntitySet="tblType">
+                <ScalarProperty Name="StatusType" ColumnName="StatusType" />
+                <ScalarProperty Name="NameType" ColumnName="NameType" />
+                <ScalarProperty Name="IdType" ColumnName="IdType" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblCategories">
+            <EntityTypeMapping TypeName="WebSiteModel.tblCategory">
+              <MappingFragment StoreEntitySet="tblCategory">
+                <ScalarProperty Name="StatusCategory" ColumnName="StatusCategory" />
+                <ScalarProperty Name="NameCategory" ColumnName="NameCategory" />
+                <ScalarProperty Name="IdCategory" ColumnName="IdCategory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblUsers">
+            <EntityTypeMapping TypeName="WebSiteModel.tblUser">
+              <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="SubscribeUser" ColumnName="SubscribeUser" />
+                <ScalarProperty Name="AddressUser" ColumnName="AddressUser" />
+                <ScalarProperty Name="LastNameUser" ColumnName="LastNameUser" />
+                <ScalarProperty Name="FirtNameUser" ColumnName="FirtNameUser" />
+                <ScalarProperty Name="EmailUser" ColumnName="EmailUser" />
+                <ScalarProperty Name="PhoneUser" ColumnName="PhoneUser" />
+                <ScalarProperty Name="TotalPointUser" ColumnName="TotalPointUser" />
+                <ScalarProperty Name="IdTypeUser" ColumnName="IdTypeUser" />
+                <ScalarProperty Name="PassUser" ColumnName="PassUser" />
+                <ScalarProperty Name="NameUser" ColumnName="NameUser" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPromotions">
+            <EntityTypeMapping TypeName="WebSiteModel.tblPromotion">
+              <MappingFragment StoreEntitySet="tblPromotion">
+                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
+                <ScalarProperty Name="DateBegin" ColumnName="DateBegin" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="NameCode" ColumnName="NameCode" />
+                <ScalarProperty Name="IdCode" ColumnName="IdCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblTypeUsers">
+            <EntityTypeMapping TypeName="WebSiteModel.tblTypeUser">
+              <MappingFragment StoreEntitySet="tblTypeUser">
+                <ScalarProperty Name="NameTypeUser" ColumnName="NameTypeUser" />
+                <ScalarProperty Name="IdTypeUser" ColumnName="IdTypeUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="true" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

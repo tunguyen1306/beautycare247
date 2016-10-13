@@ -160,7 +160,7 @@ $(document).ready(function() {
 		}
 	});
 
-	// Ajax Add To Cart
+	// Ajax Thêm vào gi? hàng
 	
 	$('.ajax-overlay_close').on('click touchstart', function (e) {
 		e.preventDefault();
