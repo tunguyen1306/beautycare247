@@ -31,7 +31,9 @@ a {
     color: #75aedf; }
   a:hover, a:focus, a:active {
     color: #3b8dc5; }
-
+  .cusWellcome{
+       color: #75aedf;
+  }
 input[type="checkbox"] + label:hover {
   color: #75aedf; }
 

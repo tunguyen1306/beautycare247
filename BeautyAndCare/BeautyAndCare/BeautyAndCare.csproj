@@ -131,6 +131,8 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\Navbar.cs" />
+    <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\ShoppingCartModel.cs" />
     <Compile Include="Models\tblAll.cs" />
     <Compile Include="Models\tblCategory.cs">
       <DependentUpon>WebSite.tt</DependentUpon>
@@ -153,6 +155,7 @@
     <Compile Include="Models\tblUser.cs">
       <DependentUpon>WebSite.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblUserDto.cs" />
     <Compile Include="Models\WebSite.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1063,6 +1066,8 @@
     <Content Include="Views\WebSite\viewProducts.cshtml" />
     <Content Include="Views\WebSite\Detail.cshtml" />
     <Content Include="Views\WebSite\NewProducts.cshtml" />
+    <Content Include="Views\WebSite\CheckOut.cshtml" />
+    <Content Include="Views\WebSite\AddCart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

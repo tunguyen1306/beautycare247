@@ -5,10 +5,18 @@
             <nav id="top-links" class="nav toggle-wrap">
                 <a class="toggle fl-outicons-user189" href='#'></a>
                 <ul class="toggle_cont">
+                    @if (Session["IdUser"] != null)
+                    {
+                        <li ><span  class="cusWellcome"> Xin chào,</span>  <a href="@Url.Action("Login")">@Session["EmailUser"]</a></li>
+                    }
+                    else
+                    {
+                        <li><a href="@Url.Action("Login")">Đăng nhập</a></li>
+                        <li><a href="@Url.Action("Register")">Đăng ký</a></li>
+                        <li><a href="@Url.Action("Contact")">Liên hệ</a></li>
+                    }
 
-                    <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=account/login">Đăng nhập</a></li>
-                    <li><a href="@Url.Action("Register")">Đăng ký</a></li>
-                    <li><a href="@Url.Action("Contact")">Liên hệ</a></li>
+                 
                 </ul>
             </nav>
             <div class="box-currency">
@@ -76,7 +84,7 @@
     <div class="logo-block">
         <div class="container">
             <h1 id="logo" class="logo">
-                <a href="@Url.Action(" Index")"><img src="http://livedemo00.template-help.com/opencart_59086/image/catalog/logo.png" title="beautyandcare247" alt="beautyandcare247" class="img-responsive"></a>
+                <a href="@Url.Action("Index")"><img src="http://livedemo00.template-help.com/opencart_59086/image/catalog/logo.png" title="beautyandcare247" alt="beautyandcare247" class="img-responsive"></a>
             </h1>
             <div class="pull-left">
                 Liên hệ: <a href="callto:0918214088">0918214088</a>
@@ -86,17 +94,50 @@
                 <div id="cart" class="cart toggle-wrap">
                     <button type="button" data-loading-text="Loading..." class="toggle">
                         <i class="fl-outicons-shopping-cart13"></i>
-                        <strong>Shopping Cart</strong>
+                        <strong>Giỏ hàng</strong>
                         <span id="cart-total" class="cart-total">0 item(s) - $0.00</span>
                         <span id="cart-total2" class="cart-total2">0</span>
                     </button>
                     <ul class="pull-right toggle_cont">
                         <li>
-                            Shopping Cart
+                            Giỏ hàng
                             <button type="button" class="btn-close-cart btn-danger"><i class="material-icons-clear"></i></button>
                         </li>
+                        <li >
+                            <table class="table">
+                                <tbody class="LoadProducts"></tbody>
+                            </table>
+                        </li>  
                         <li>
-                            <p class="text-center">Your shopping cart is empty!</p>
+                            <table class="table total">
+                                <tbody>
+                                    <tr>
+                                        <td class="text-left">
+                                            <strong>Sub-Total</strong>
+                                        </td>
+                                        <td class="text-right">
+                                            $100.00
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                       
+                                        <td class="text-left">
+                                           
+                                            <strong>Total</strong>
+                                        </td>
+                                        <td class="text-right">
+                                            $100.00
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="text-right">
+                                <a class="btn-view" href="@Url.Action("CheckOut","WebSite")"><span> View Cart</span></a>
+                                @*onclick="ViewCart()"*@
+                                <input type="hidden" id="hdIdPro"/>
+                                <div class="clear"></div>
+                                <a class="btn-primary" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=checkout/checkout"><span>Go to Checkout</span></a>
+                            </div>
                         </li>
                     </ul>
                 </div>

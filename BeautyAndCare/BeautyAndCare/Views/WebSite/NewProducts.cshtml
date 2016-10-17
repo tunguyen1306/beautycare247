@@ -96,7 +96,7 @@
                                 <div class="price">
                                     $85.00
                                 </div>
-                                <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.add('50');"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
+                                <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.addPopup($(this),'50');"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
                                 @*<ul class="product-buttons">
                                     <li>
                                         <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('50');">
@@ -151,7 +151,7 @@
                         </div>
                     </div>
                     <div class="cart-button">
-                        <button class="btn-primary" type="button" onclick="ajaxAdd($(this),50);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
+                        <button class="btn-primary" type="button" onclick="addToCart(@item.tblProducts.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
                         <div class="clear"></div>
                         @*<button class="product-btn" type="button" onclick="wishlist.add('50');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
                         <button class="product-btn" type="button" onclick="compare.add('50');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>*@
