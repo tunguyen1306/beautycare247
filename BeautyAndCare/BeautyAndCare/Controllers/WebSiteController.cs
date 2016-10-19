@@ -110,34 +110,7 @@ namespace BeautyAndCare.Controllers
         }
         public ActionResult CheckOut()
         {
-            // var strPro = ProductId.Substring(0, ProductId.Length - 1);string ProductId
-            // var idPro = strPro.Split(',');
-            // var listID = new List<int> { };
-            // for (int i = 0; i < idPro.Length; i++)
-            // {
-            //     listID.Add(int.Parse(idPro[0]));
-            // }
-            // var dataPro = db.tblProducts.Single(s => listID.Contains(s.IdProducts));
-            //// var dataPro = db.tblProducts.Where(x => listID.Contains(x.IdProducts)).First();
-            // if (dataPro != null)
-            // {
-            //     ShoppingCart cart = (ShoppingCart)Session["cart"];
-            //     if (cart == null)
-            //     {
-            //         cart = new ShoppingCart();
-            //     }
-            //     ShoppingCartItem cartIem = new ShoppingCartItem()
-            //     {
-            //         ProductName = dataPro.NameProducts,
-            //         ProductID = dataPro.IdProducts,
-            //         Price = dataPro.PriceProducts,
-            //         Quanlity = 1,
-            //         Total = Convert.ToDouble(dataPro.PriceProducts.Trim().Replace(",", string.Empty).Replace(",", string.Empty))
-            //     };
-            //     cart.AddToCart(cartIem);
-            //     Session["cart"] = cart;
-
-            //}
+           
             ShoppingCartModel model = new ShoppingCartModel();
             model.Cart = (ShoppingCart)Session["Cart"];
             return View(model);
@@ -159,7 +132,7 @@ namespace BeautyAndCare.Controllers
                     ProductID = dataPro.IdProducts,
                     Price = dataPro.PriceProducts,
                     Quanlity = 1,
-                    Total = Convert.ToDouble(dataPro.PriceProducts.Trim().Replace(",", string.Empty).Replace(",", string.Empty))
+                    Total = Convert.ToDecimal(dataPro.PriceProducts)
                 };
                 cart.AddToCart(cartIem);
                 Session["cart"] = cart;
@@ -168,32 +141,28 @@ namespace BeautyAndCare.Controllers
             }
                 return Json(dataPro);
         }
-       
-        //public ActionResult AddCart(int id)
-        //{
-        //    var dataPro = db.tblProducts.Single(x => x.IdProducts == id);
-        //    if (dataPro != null)
-        //    {
-        //        ShoppingCart cart = (ShoppingCart)Session["cart"];
-        //        if (cart == null)
-        //        {
-        //            cart = new ShoppingCart();
-        //        }
-        //        ShoppingCartItem cartIem = new ShoppingCartItem()
-        //        {
-        //            ProductName = dataPro.NameProducts,
-        //            ProductID = dataPro.IdProducts,
-        //            Price = dataPro.PriceProducts,
-        //            Quanlity = 1,
-        //            Total = Convert.ToDouble(dataPro.PriceProducts.Trim().Replace(",", string.Empty).Replace(",", string.Empty))
-        //        };
-        //        cart.AddToCart(cartIem);
-        //        Session["cart"] = cart;
-                
-              
-        //    }
-        //    return Json(dataPro);
-        //}
+        public ActionResult UpdateToCart(int ProductId,int Quantity)
+        {
+          
+                ShoppingCart cart = (ShoppingCart)Session["cart"];
+            if (cart!=null)
+            {
+                cart.UpdateCart(ProductId, Quantity);
+                Session["cart"] = cart;
+            }
+            //ShoppingCartModel model = new ShoppingCartModel();
+            //model.Cart = (ShoppingCart)Session["Cart"];
+            return RedirectToAction("CheckOut");
+ 
+
+        }
+        public ActionResult CheckCoupon(string coupon)
+        {
+            var dataCoupon = from data in db.tblPromotions
+                             where data.NameCode== coupon
+                             select data;
+            return Json(dataCoupon.ToList());
+        }
 
     }
 }

@@ -53,8 +53,9 @@
           <Property Name="IdCode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameCode" Type="varchar" MaxLength="50" />
           <Property Name="StatusCode" Type="int" />
-          <Property Name="DateBegin" Type="datetime" />
-          <Property Name="DateEnd" Type="datetime" />
+          <Property Name="DateBeginCode" Type="datetime" />
+          <Property Name="DateEndCode" Type="datetime" />
+          <Property Name="PriceCode" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
         <EntityType Name="tblType">
           <Key>
@@ -119,8 +120,8 @@
           <EntitySet Name="tblTypes" EntityType="WebSiteModel.tblType" />
           <EntitySet Name="tblCategories" EntityType="WebSiteModel.tblCategory" />
           <EntitySet Name="tblUsers" EntityType="WebSiteModel.tblUser" />
-          <EntitySet Name="tblPromotions" EntityType="WebSiteModel.tblPromotion" />
           <EntitySet Name="tblTypeUsers" EntityType="WebSiteModel.tblTypeUser" />
+          <EntitySet Name="tblPromotions" EntityType="WebSiteModel.tblPromotion" />
         </EntityContainer>
         <EntityType Name="tblProduct">
           <Key>
@@ -174,6 +175,13 @@
           <Property Name="AddressUser" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
           <Property Name="SubscribeUser" Type="Boolean" />
         </EntityType>
+        <EntityType Name="tblTypeUser">
+          <Key>
+            <PropertyRef Name="IdTypeUser" />
+          </Key>
+          <Property Name="IdTypeUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameTypeUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="tblPromotion">
           <Key>
             <PropertyRef Name="IdCode" />
@@ -181,15 +189,9 @@
           <Property Name="IdCode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NameCode" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="StatusCode" Type="Int32" />
-          <Property Name="DateBegin" Type="DateTime" Precision="3" />
-          <Property Name="DateEnd" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="tblTypeUser">
-          <Key>
-            <PropertyRef Name="IdTypeUser" />
-          </Key>
-          <Property Name="IdTypeUser" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="NameTypeUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="DateBeginCode" Type="DateTime" Precision="3" />
+          <Property Name="DateEndCode" Type="DateTime" Precision="3" />
+          <Property Name="PriceCode" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -267,22 +269,23 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="tblPromotions">
-            <EntityTypeMapping TypeName="WebSiteModel.tblPromotion">
-              <MappingFragment StoreEntitySet="tblPromotion">
-                <ScalarProperty Name="DateEnd" ColumnName="DateEnd" />
-                <ScalarProperty Name="DateBegin" ColumnName="DateBegin" />
-                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
-                <ScalarProperty Name="NameCode" ColumnName="NameCode" />
-                <ScalarProperty Name="IdCode" ColumnName="IdCode" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="tblTypeUsers">
             <EntityTypeMapping TypeName="WebSiteModel.tblTypeUser">
               <MappingFragment StoreEntitySet="tblTypeUser">
                 <ScalarProperty Name="NameTypeUser" ColumnName="NameTypeUser" />
                 <ScalarProperty Name="IdTypeUser" ColumnName="IdTypeUser" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPromotions">
+            <EntityTypeMapping TypeName="WebSiteModel.tblPromotion">
+              <MappingFragment StoreEntitySet="tblPromotion">
+                <ScalarProperty Name="PriceCode" ColumnName="PriceCode" />
+                <ScalarProperty Name="DateEndCode" ColumnName="DateEndCode" />
+                <ScalarProperty Name="DateBeginCode" ColumnName="DateBeginCode" />
+                <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
+                <ScalarProperty Name="NameCode" ColumnName="NameCode" />
+                <ScalarProperty Name="IdCode" ColumnName="IdCode" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

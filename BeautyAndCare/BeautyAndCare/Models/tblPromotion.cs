@@ -17,7 +17,8 @@ namespace BeautyAndCare.Models
         public int IdCode { get; set; }
         public string NameCode { get; set; }
         public Nullable<int> StatusCode { get; set; }
-        public Nullable<System.DateTime> DateBegin { get; set; }
-        public Nullable<System.DateTime> DateEnd { get; set; }
+        public Nullable<System.DateTime> DateBeginCode { get; set; }
+        public Nullable<System.DateTime> DateEndCode { get; set; }
+        public Nullable<decimal> PriceCode { get; set; }
     }
 }

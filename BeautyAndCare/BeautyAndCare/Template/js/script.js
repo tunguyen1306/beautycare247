@@ -92,7 +92,6 @@ function setEqualHeight(columns) {
 	columns.each(
 		function() {
 			currentHeight = $(this).parent().parent().height()-8;
-			console.log(currentHeight);
 			if(currentHeight > tallestcolumn)
 				{ tallestcolumn = currentHeight; }
 		}

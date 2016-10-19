@@ -1,178 +1,4 @@
-﻿@*@using BeautyAndCare.Models;
-@using System.Linq;
-@model IEnumerable<BeautyAndCare.Models.tblProduct>
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/LayOutNew.cshtml";
-    WebSiteEntities db = new WebSiteEntities();
-    var queryMenu = from data in db.tblMenus
-                    where data.StatusMenu == 1
-                    select data;
-}
-<!--HEADER--->
-@Html.Partial("Header", queryMenu.ToList())
-<!--END HEADER--->
-<div class="container">
-    <ul class="breadcrumb">
-        <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home"><i class="fa fa-home"></i></a></li>
-        <li><span>Shopping Cart</span></li>
-    </ul>
-    <div class="row">
-        <div id="content" class="col-sm-12">
-            <h1>
-                Shopping Cart &nbsp;(16.00kg)
-            </h1>
-            <form action="http://livedemo00.template-help.com/opencart_59086/index.php?route=checkout/cart/edit" method="post" enctype="multipart/form-data">
-                <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead>
-                            <tr>
-                                <td>Image</td>
-                                <td class="text-left">Product Name</td>
-                                <td class="text-left">Quantity</td>
-                                <td class="text-right">Unit Price</td>
-                                <td class="text-right">Total</td>
-                                <td style="width: 0"></td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            @foreach (var item in Model)
-                            {
-                                <tr>
-                                    <td class="text-center vcenter">
-                                        <div class="image">
-                                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">
-                                                <img src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_58-150x150.png" alt="Youngman 15 Colors Professional Concealer" title="Youngman 15 Colors Professional Concealer" class="img-thumbnail">
-                                            </a>
-                                        </div>
-                                    </td>
-                                    <td class="text-left">
-                                        <a class="link" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">
-                                           @item.NameProducts
-                                        </a>
-                                        <br>
-                                        <small>
-                                            <strong>Model</strong> : Classic
-                                        </small>
-                                        <br>
-                                        <small>
-                                            <strong>Size</strong>: Small
-                                        </small>
-                                        <br>
-                                        <small>
-                                            <strong>Color</strong>: black
-                                        </small>
-                                    </td>
-                                    <td class="text-left">
-                                        <div class="btn-block clearfix" style="max-width: 200px;">
-                                            <a class="counter counter-minus material-design-horizontal39" href="#"></a>
-                                            <input type="text" name="quantity[297]" value="1" size="1" class="form-control cart-q" id="cart-q">
-                                            <a class="counter counter-plus material-design-add186" href="#"></a>
-                                            <p>
-                                                <button type="submit" class="link">Update</button>
-                                            </p>
-                                        </div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="price">$100.00</div>
-                                    </td>
-                                    <td class="text-right">
-                                        <div class="price price-total">$100.00</div>
-                                    </td>
-                                    <td class="text-center" style="width: 0">
-                                        <button type="button" data-toggle="tooltip" title="" class="btn-icon" onclick="cart.remove('297');" data-original-title="Remove">
-                                            <i class="fl-outicons-trash1"></i>
-                                        </button>
-                                    </td>
-                                </tr>
-                            }
-                           
-                        </tbody>
-                    </table>
-                </div>
-            </form>
-            <h2>What would you like to do next?</h2>
-            <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><a href="#collapse-coupon" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">Use Coupon Code <i class="fa fa-caret-down"></i></a></h4>
-                    </div>
-                    <div id="collapse-coupon" class="panel-collapse collapse " aria-expanded="true">
-                        <div class="panel-body">
-                            <label class="col-sm-2 control-label" for="input-coupon">Enter your coupon here</label>
-                            <div class="input-group">
-                                <input type="text" name="coupon" value="" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
-                                <span class="input-group-btn">
-                                    <input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary">
-                                </span>
-                            </div>
-                            <script type="text/javascript">
-<!--
-$('#button-coupon').on('click', function() {
-	$.ajax({
-		url: 'index.php?route=total/coupon/coupon',
-		type: 'post',
-		data: 'coupon=' + encodeURIComponent($('input[name=\'coupon\']').val()),
-		dataType: 'json',
-		beforeSend: function() {
-			$('#button-coupon').button('loading');
-		},
-		complete: function() {
-			$('#button-coupon').button('reset');
-		},
-		success: function(json) {
-			$('.alert').remove();
-
-			if (json['error']) {
-				$('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-				$('html, body').animate({ scrollTop: 0 }, 'slow');
-			}
-
-			if (json['redirect']) {
-				location = json['redirect'];
-			}
-		}
-	});
-});
-//--></script>
-                        </div>
-                    </div>
-                </div>
-                
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-6">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="text-right"><strong>Sub-Total:</strong></td>
-                                <td class="text-right tx-price">$100.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-right"><strong>Total:</strong></td>
-                                <td class="text-right tx-price">$100.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-            <div class="buttons">
-                <div class="pull-left"><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home" class="btn btn-default">Continue Shopping</a></div>
-                <div class="pull-right"><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=checkout/checkout" class="btn btn-primary checkout">Checkout</a></div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- FOOTER--->
-@Html.Partial("Footer")
-<!--END FOOTER--->*@
-
-
-
-@using BeautyAndCare.Models;
+﻿@using BeautyAndCare.Models;
 @using System.Linq;
 @model ShoppingCartModel
 @{
@@ -191,12 +17,14 @@ $('#button-coupon').on('click', function() {
         <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home"><i class="fa fa-home"></i></a></li>
         <li><span>Shopping Cart</span></li>
     </ul>
-    <div class="row">
-        <div id="content" class="col-sm-12">
-            <h1>
-                Shopping Cart &nbsp;(16.00kg)
-            </h1>
-            <form action="http://livedemo00.template-help.com/opencart_59086/index.php?route=checkout/cart/edit" method="post" enctype="multipart/form-data">
+    @using (Html.BeginForm("CheckOut", "WebSite"))
+    {
+        <div class="row">
+            <div id="content" class="col-sm-12">
+                <h1>
+                    Giỏ hàng
+                </h1>
+
                 <div class="table-responsive">
                     <table class="table table-bordered">
                         <thead>
@@ -240,18 +68,18 @@ $('#button-coupon').on('click', function() {
                                     <td class="text-left">
                                         <div class="btn-block clearfix" style="max-width: 200px;">
                                             <a class="counter counter-minus material-design-horizontal39" href="#"></a>
-                                            <input type="text" name="quantity[297]" value="1" size="1" class="form-control cart-q" id="cart-q">
+                                            <input type="text" name="quantity[297]" value="@item.Quanlity" size="1" class="form-control cart-q" id="txtQuantity_@item.ProductID">
                                             <a class="counter counter-plus material-design-add186" href="#"></a>
                                             <p>
-                                                <button type="submit" class="link">Update</button>
+                                                <button type="submit" onclick="UpdateToCart(@item.ProductID)" class="link">Update</button>
                                             </p>
                                         </div>
                                     </td>
                                     <td class="text-right">
-                                        <div class="price">$100.00</div>
+                                        <div class="price">@item.Price</div>
                                     </td>
                                     <td class="text-right">
-                                        <div class="price price-total">$100.00</div>
+                                        <div class="price price-total"><input type="hidden" id="hdtotal" name="hdtotal" value="@item.Total"  />  @item.Total</div>
                                     </td>
                                     <td class="text-center" style="width: 0">
                                         <button type="button" data-toggle="tooltip" title="" class="btn-icon" onclick="cart.remove('297');" data-original-title="Remove">
@@ -264,81 +92,53 @@ $('#button-coupon').on('click', function() {
                         </tbody>
                     </table>
                 </div>
-            </form>
-            <h2>What would you like to do next?</h2>
-            <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
-            <div class="panel-group" id="accordion">
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title"><a href="#collapse-coupon" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">Use Coupon Code <i class="fa fa-caret-down"></i></a></h4>
-                    </div>
-                    <div id="collapse-coupon" class="panel-collapse collapse " aria-expanded="true">
-                        <div class="panel-body">
-                            <label class="col-sm-2 control-label" for="input-coupon">Enter your coupon here</label>
-                            <div class="input-group">
-                                <input type="text" name="coupon" value="" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
-                                <span class="input-group-btn">
-                                    <input type="button" value="Apply Coupon" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary">
-                                </span>
+
+                <h2>What would you like to do next?</h2>
+                <p>Choose if you have a discount code or reward points you want to use or would like to estimate your delivery cost.</p>
+                <div class="panel-group" id="accordion">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title"><a href="#collapse-coupon" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" aria-expanded="true">Use Coupon Code <i class="fa fa-caret-down"></i></a></h4>
+                        </div>
+                        <div id="collapse-coupon" class="panel-collapse collapse " aria-expanded="true">
+                            <div class="panel-body">
+                                <label class="col-sm-2 control-label" for="input-coupon">Enter your coupon here</label>
+                                <div class="input-group">
+                                    <input type="text" name="coupon" value="" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
+                                    <span class="input-group-btn">
+                                        <input type="button" value="Apply Coupon" onclick="CheckCoupon()" id="button-coupon"  data-loading-text="Loading..." class="btn btn-primary">
+                                    </span>
+                                </div>
                             </div>
-                            <script type="text/javascript">
-<!--
-$('#button-coupon').on('click', function() {
-	$.ajax({
-		url: 'index.php?route=total/coupon/coupon',
-		type: 'post',
-		data: 'coupon=' + encodeURIComponent($('input[name=\'coupon\']').val()),
-		dataType: 'json',
-		beforeSend: function() {
-			$('#button-coupon').button('loading');
-		},
-		complete: function() {
-			$('#button-coupon').button('reset');
-		},
-		success: function(json) {
-			$('.alert').remove();
-
-			if (json['error']) {
-				$('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '<button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
-				$('html, body').animate({ scrollTop: 0 }, 'slow');
-			}
-
-			if (json['redirect']) {
-				location = json['redirect'];
-			}
-		}
-	});
-});
-//--></script>
                         </div>
                     </div>
-                </div>
 
-            </div>
-            <br>
-            <div class="row">
-                <div class="col-sm-6 col-sm-offset-6">
-                    <table class="table table-bordered">
-                        <tbody>
-                            <tr>
-                                <td class="text-right"><strong>Sub-Total:</strong></td>
-                                <td class="text-right tx-price">$100.00</td>
-                            </tr>
-                            <tr>
-                                <td class="text-right"><strong>Total:</strong></td>
-                                <td class="text-right tx-price">$100.00</td>
-                            </tr>
-                        </tbody>
-                    </table>
                 </div>
-            </div>
-            <div class="buttons">
-                <div class="pull-left"><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home" class="btn btn-default">Continue Shopping</a></div>
-                <div class="pull-right"><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=checkout/checkout" class="btn btn-primary checkout">Checkout</a></div>
+                <br>
+                <div class="row">
+                    <div class="col-sm-6 col-sm-offset-6">
+                        <table class="table table-bordered">
+                            <tbody>
+                                <tr>
+                                    <td class="text-right"><strong>Sub-Total:</strong></td>
+                                    <td class="text-right tx-price"></td>
+                                </tr>
+                                <tr>
+                                    <td class="text-right"><strong>Total:</strong></td>
+                                    <td class="text-right tx-price">$100.00</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="buttons">
+                    <div class="pull-left"><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home" class="btn btn-default">Continue Shopping</a></div>
+                    <div class="pull-right"><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=checkout/checkout" class="btn btn-primary checkout">Checkout</a></div>
+                </div>
             </div>
         </div>
-    </div>
+    }
+ 
 </div>
 <!-- FOOTER--->
 @Html.Partial("Footer")

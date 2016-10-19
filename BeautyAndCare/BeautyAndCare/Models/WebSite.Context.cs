@@ -30,7 +30,7 @@ namespace BeautyAndCare.Models
         public DbSet<tblType> tblTypes { get; set; }
         public DbSet<tblCategory> tblCategories { get; set; }
         public DbSet<tblUser> tblUsers { get; set; }
-        public DbSet<tblPromotion> tblPromotions { get; set; }
         public DbSet<tblTypeUser> tblTypeUsers { get; set; }
+        public DbSet<tblPromotion> tblPromotions { get; set; }
     }
 }

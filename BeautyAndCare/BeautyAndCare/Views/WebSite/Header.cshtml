@@ -7,7 +7,8 @@
                 <ul class="toggle_cont">
                     @if (Session["IdUser"] != null)
                     {
-                        <li ><span  class="cusWellcome"> Xin chào,</span>  <a href="@Url.Action("Login")">@Session["EmailUser"]</a></li>
+                        <li ><span  class="cusWellcome"> Xin chào,</span><input type="hidden" id="hdUserName" value="@Session["EmailUser"]"/>  <a href="@Url.Action("Login")">@Session["EmailUser"]</a></li>
+                        
                     }
                     else
                     {

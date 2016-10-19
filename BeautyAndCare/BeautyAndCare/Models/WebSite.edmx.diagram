@@ -10,8 +10,8 @@
         <EntityTypeShape EntityType="WebSiteModel.tblType" Width="1.5" PointX="6.625" PointY="1" />
         <EntityTypeShape EntityType="WebSiteModel.tblCategory" Width="1.5" PointX="8.5" PointY="1.125" />
         <EntityTypeShape EntityType="WebSiteModel.tblUser" Width="1.5" PointX="0.5" PointY="1.625" />
-        <EntityTypeShape EntityType="WebSiteModel.tblPromotion" Width="1.5" PointX="0.75" PointY="5.75" />
         <EntityTypeShape EntityType="WebSiteModel.tblTypeUser" Width="1.5" PointX="2.75" PointY="5.75" />
+        <EntityTypeShape EntityType="WebSiteModel.tblPromotion" Width="1.5" PointX="5.375" PointY="5.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
