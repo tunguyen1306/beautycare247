@@ -16,22 +16,19 @@ namespace BeautyAndCare.Controllers
         public ActionResult Index()
         {
             var tbl = new tblAll();
+            var tbllist = new ListAll();
             var queryListMenu = (from data in db.tblMenus
                                  where data.StatusMenu == 1 && data.ShowHomeMenu == 1
                                  select data).ToList();
             var dataNewProducts = from dataProducts in db.tblProducts
                                   join dataCategory in db.tblMenus on dataProducts.IdCategoryProducts equals dataCategory.IdMenu
-                                  where dataProducts.StatusProducts == 1 
+                                  where dataProducts.StatusProducts == 1
                                   orderby dataProducts.IdProducts descending
-                                  select dataProducts;
-            var list = new List<tblAll>();
+                                  select  dataProducts ;
+  
             tbl.ListMenu = queryListMenu;
-           
-            foreach (var item in queryListMenu)
-            {
-                tbl.tblPro = dataNewProducts.Where(x=>x.IdCategoryProducts== item.IdMenu).ToList();
-          
-            }
+            tbl.tblPro = dataNewProducts.ToList();
+
             return View(tbl);
         }
         public ActionResult Header()
@@ -127,7 +124,7 @@ namespace BeautyAndCare.Controllers
         }
         public ActionResult CheckOut()
         {
-           
+
             ShoppingCartModel model = new ShoppingCartModel();
             model.Cart = (ShoppingCart)Session["Cart"];
             return View(model);
@@ -147,7 +144,7 @@ namespace BeautyAndCare.Controllers
                 {
                     ProductName = dataPro.NameProducts,
                     ProductID = dataPro.IdProducts,
-                    Price = dataPro.PriceProducts,
+                    Price = dataPro.PriceNewProducts,
                     Quanlity = 1,
                     Total = Convert.ToDecimal(dataPro.PriceProducts),
                     SubTotal = Convert.ToDecimal(dataPro.PriceProducts)
@@ -157,13 +154,13 @@ namespace BeautyAndCare.Controllers
                 return Json(dataPro);
 
             }
-                return Json(dataPro);
+            return Json(dataPro);
         }
-        public ActionResult UpdateToCart(int ProductId,int Quantity)
+        public ActionResult UpdateToCart(int ProductId, int Quantity)
         {
-          
-                ShoppingCart cart = (ShoppingCart)Session["cart"];
-            if (cart!=null)
+
+            ShoppingCart cart = (ShoppingCart)Session["cart"];
+            if (cart != null)
             {
                 cart.UpdateCart(ProductId, Quantity);
                 Session["cart"] = cart;
@@ -171,19 +168,19 @@ namespace BeautyAndCare.Controllers
             //ShoppingCartModel model = new ShoppingCartModel();
             //model.Cart = (ShoppingCart)Session["Cart"];
             return RedirectToAction("CheckOut");
- 
+
 
         }
         public ActionResult CheckCoupon(string coupon)
         {
             var dataCoupon = from data in db.tblPromotions
-                             where data.NameCode== coupon
+                             where data.NameCode == coupon
                              select data;
             return Json(dataCoupon.ToList());
         }
         //public ActionResult UpdateToCartCoupon(int showSubTotal,int showSubTotalAll,int index)
         //{
-            
+
         //    return Json();
         //}
 

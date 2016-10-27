@@ -11,7 +11,7 @@
     </div>
     <div class="box-content">
         <div class="box-carousel">
-          @foreach (var item in Model.tblPro)
+          @foreach (var item in Model.tblPro.Where(x=>x.IdCategoryProducts == item1.IdMenu))
           {
                 <div class="product-thumb transition options">
 
