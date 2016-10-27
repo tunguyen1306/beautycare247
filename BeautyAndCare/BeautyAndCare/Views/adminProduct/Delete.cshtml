@@ -1,0 +1,137 @@
+﻿@model BeautyAndCare.Models.tblProduct
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblProduct</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdCategoryProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdCategoryProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDesProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDesProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDateProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDateProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiDateProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiDateProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateUserProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateUserProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModifiUserProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModifiUserProducts)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameProducts_en)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameProducts_en)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDesProducts_en)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDesProducts_en)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DescriptionProducts_en)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DescriptionProducts_en)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTypeProducts)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTypeProducts)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

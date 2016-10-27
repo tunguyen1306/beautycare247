@@ -1,0 +1,75 @@
+﻿@model BeautyAndCare.Models.tblMenu
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblMenu</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameMenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameMenu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameMenu_en)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameMenu_en)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdParentMenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdParentMenu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusMenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusMenu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.OrderMenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.OrderMenu)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsParent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsParent)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LinkMenu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LinkMenu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdMenu }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

@@ -1,0 +1,115 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model BeautyAndCare.Models.tblMenuDto
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Thêm Menu</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+@using (Html.BeginForm("Create", "adminMenu"))
+{
+
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Tên Menu Vi</label>
+                                <input class="form-control" name="tblMenu.NameMenu" id="txtNameMenu">
+                            </div>
+                            <div class="form-group">
+                                <label>Tên Menu En</label>
+                                <input class="form-control" name="tblMenu.NameMenu_en" id="txtNameMenu_en">
+                            </div>
+                            <div class="form-group">
+                                <label>Thứ tự</label>
+                            
+                                @Html.DropDownListFor(model => model.tblMenu.OrderMenu, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Không", Value = "9999999"},
+                                    new SelectListItem {Text = "1", Value = "1"},
+                                       new SelectListItem {Text = "2", Value = "2"},
+                                          new SelectListItem {Text = "3", Value = "3"},
+                                             new SelectListItem {Text = "4", Value = "4"},
+                                                new SelectListItem {Text = "5", Value = "5"},
+                                                   new SelectListItem {Text = "6", Value = "6"},
+                                                      new SelectListItem {Text = "7", Value = "7"},
+                                                         new SelectListItem {Text = "8", Value = "8"},
+                                                            new SelectListItem {Text = "9", Value = "9"},
+                                                               new SelectListItem {Text = "0", Value = "10"},
+
+                                }, new { @class = "form-control", @name = "tblProducts.OrderMenu" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Link Menu</label>
+                                <input class="form-control" name="tblMenu.LinkMenu" id="txtLinkMenu">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Loại</label>
+                                @Html.DropDownListFor(M => M.tblMenu.IdParentMenu, new SelectList(Model.ListMenu.ToList(), "IdMenu", "NameMenu"), htmlAttributes: new { @class = "form-control", @name = "tblProducts.IdCategoryProducts" })
+                            </div>
+
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+
+                                @Html.DropDownListFor(model => model.tblMenu.StatusMenu, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Không hoạt động", Value = "0"},
+                                    new SelectListItem {Text = "Hoạt động", Value = "1"},
+
+                                }, new { @class = "form-control", @name = "tblProducts.StatusMenu" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Quyên cha</label>
+
+                                @Html.DropDownListFor(model => model.tblMenu.IsParent, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Không", Value = "0"},
+                                    new SelectListItem {Text = "Có", Value = "1"},
+
+                                }, new { @class = "form-control", @name = "tblProducts.IsParent" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Hiển thị ở trang chủ</label>
+
+                                @Html.DropDownListFor(model => model.tblMenu.ShowHomeMenu, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Không", Value = "0"},
+                                    new SelectListItem {Text = "Có", Value = "1"},
+
+                                }, new { @class = "form-control", @name = "tblProducts.ShowHomeMenu" })
+
+                            </div>
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default">Thêm</button>
+                                <a href="#" class="btn btn-primary">Hủy</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+
+    <!-- /.row -->
+}

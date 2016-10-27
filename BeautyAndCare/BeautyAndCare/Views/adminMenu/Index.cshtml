@@ -1,0 +1,167 @@
+﻿@model IEnumerable<BeautyAndCare.Models.tblMenuDto>
+@using System.Configuration
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Danh sách Menu</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.ActionLink("Thêm Menu", "Create", "adminMenu", "", htmlAttributes: new { @class = "btn btn-primary" })
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Tên Menu Vi</th>
+                                <th>Tên Menu En</th>
+                                <th>Menu cha</th>
+                                <th>Trạng thái</th>
+                                <th>Vị Trí</th>
+                                <th>Quyền cha</th>
+                                <th>Hiển thị ở home</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+                                    <td>@item.tblMenu.IdMenu</td>
+                                    <td>@item.tblMenu.NameMenu</td>
+                                    <td>@item.tblMenu.NameMenu_en</td>
+                                    <td>
+                                        @item.NameMenuParent
+
+                                    </td>
+                                    <td>
+
+                                        @if (item.tblMenu.StatusMenu == 1)
+                                        {
+                                            @("Hoạt động")
+                                        }
+                                        @if (item.tblMenu.StatusMenu == 0)
+                                        {
+                                            @("Không hoạt động")
+                                        }
+                                    </td>
+                                    <td>
+                                        @item.tblMenu.OrderMenu
+
+                                    </td>
+                                    <td>
+                                        @if (item.tblMenu.IsParent == 1)
+                                        {
+                                            @("Có")
+                                        }
+                                        @if (item.tblMenu.IsParent == 0)
+                                        {
+                                            @("Không")
+                                        }
+                                    </td>
+                                    <td>
+                                        @if (item.tblMenu.ShowHomeMenu == 1)
+                                        {
+                                            @("Có")
+                                        }
+                                        @if (item.tblMenu.ShowHomeMenu == 0)
+                                        {
+                                            @("Không")
+                                        }
+
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "adminMenu", new { id = item.tblMenu.IdMenu})" class="btn btn-default btn-xs">Sửa</a>
+                                        <a href="@Url.Action("Delete", "adminMenu", new { id = item.tblMenu.IdMenu })" onclick="return confirm('Bạn có muốn xóa sản phẩm không?');" class="btn btn-default btn-xs">Xóa</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+@*<h2>Index</h2>
+
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.NameMenu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameMenu_en)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdParentMenu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.StatusMenu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.OrderMenu)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IsParent)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkMenu)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameMenu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NameMenu_en)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdParentMenu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.StatusMenu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OrderMenu)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IsParent)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkMenu)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.IdMenu }) |
+                @Html.ActionLink("Details", "Details", new { id=item.IdMenu }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.IdMenu })
+            </td>
+        </tr>
+    }
+
+    </table>*@
