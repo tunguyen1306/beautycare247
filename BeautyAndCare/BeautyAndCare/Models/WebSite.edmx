@@ -24,7 +24,29 @@
           <Property Name="StatusMenu" Type="int" />
           <Property Name="OrderMenu" Type="int" />
           <Property Name="IsParent" Type="int" />
-          <Property Name="LinkMenu" Type="varchar" MaxLength="500" />
+          <Property Name="LinkMenu" Type="nvarchar" MaxLength="500" />
+          <Property Name="IsCategoryMenu" Type="int" />
+          <Property Name="ShowHomeMenu" Type="int" />
+        </EntityType>
+        <EntityType Name="tblPicture">
+          <Key>
+            <PropertyRef Name="PictureId" />
+          </Key>
+          <Property Name="PictureId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductsId" Type="int" />
+          <Property Name="OriginalFilepath" Type="varchar" MaxLength="255" />
+          <Property Name="Position" Type="tinyint" />
+          <Property Name="Converted" Type="datetime" />
+          <Property Name="ConvertedFilename" Type="varchar" MaxLength="50" />
+          <Property Name="ToCheck" Type="bit" />
+          <Property Name="Isvalidated" Type="bit" />
+          <Property Name="ConvertedFilename90" Type="varchar" MaxLength="50" />
+          <Property Name="ConvertedFilename180" Type="varchar" MaxLength="50" />
+          <Property Name="ConvertedFilename270" Type="varchar" MaxLength="50" />
+          <Property Name="AngleType" Type="tinyint" />
+          <Property Name="Type_id" Type="tinyint" />
+          <Property Name="Title" Type="nvarchar(max)" />
+          <Property Name="Description" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="tblProducts">
           <Key>
@@ -32,6 +54,7 @@
           </Key>
           <Property Name="IdProducts" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameProducts" Type="nvarchar" MaxLength="250" />
+          <Property Name="CodeProducts" Type="varchar" MaxLength="50" />
           <Property Name="IdCategoryProducts" Type="int" />
           <Property Name="PriceProducts" Type="varchar" MaxLength="50" />
           <Property Name="ShortDesProducts" Type="nvarchar" MaxLength="500" />
@@ -41,10 +64,11 @@
           <Property Name="ModifiDateProducts" Type="datetime" />
           <Property Name="CreateUserProducts" Type="nvarchar" MaxLength="50" />
           <Property Name="ModifiUserProducts" Type="nvarchar" MaxLength="50" />
+          <Property Name="IdTypeProducts" Type="int" />
+          <Property Name="PriceNewProducts" Type="varchar" MaxLength="50" />
           <Property Name="NameProducts_en" Type="nvarchar" MaxLength="250" />
           <Property Name="ShortDesProducts_en" Type="nvarchar" MaxLength="500" />
           <Property Name="DescriptionProducts_en" Type="nvarchar(max)" />
-          <Property Name="IdTypeProducts" Type="int" />
         </EntityType>
         <EntityType Name="tblPromotion">
           <Key>
@@ -91,6 +115,7 @@
         <EntityContainer Name="WebSiteModelStoreContainer">
           <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblPicture" EntityType="Self.tblPicture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProducts" EntityType="Self.tblProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPromotion" EntityType="Self.tblPromotion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblType" EntityType="Self.tblType" Schema="dbo" store:Type="Tables" />
@@ -112,7 +137,9 @@
           <Property Name="StatusMenu" Type="Int32" />
           <Property Name="OrderMenu" Type="Int32" />
           <Property Name="IsParent" Type="Int32" />
-          <Property Name="LinkMenu" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="LinkMenu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="IsCategoryMenu" Type="Int32" />
+          <Property Name="ShowHomeMenu" Type="Int32" />
         </EntityType>
         <EntityContainer Name="WebSiteEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblMenus" EntityType="Self.tblMenu" />
@@ -122,6 +149,7 @@
           <EntitySet Name="tblUsers" EntityType="WebSiteModel.tblUser" />
           <EntitySet Name="tblTypeUsers" EntityType="WebSiteModel.tblTypeUser" />
           <EntitySet Name="tblPromotions" EntityType="WebSiteModel.tblPromotion" />
+          <EntitySet Name="tblPictures" EntityType="WebSiteModel.tblPicture" />
         </EntityContainer>
         <EntityType Name="tblProduct">
           <Key>
@@ -142,6 +170,8 @@
           <Property Name="ShortDesProducts_en" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="DescriptionProducts_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="IdTypeProducts" Type="Int32" />
+          <Property Name="CodeProducts" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="PriceNewProducts" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="tblType">
           <Key>
@@ -193,6 +223,26 @@
           <Property Name="DateEndCode" Type="DateTime" Precision="3" />
           <Property Name="PriceCode" Type="Decimal" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="tblPicture">
+          <Key>
+            <PropertyRef Name="PictureId" />
+          </Key>
+          <Property Name="PictureId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductsId" Type="Int32" />
+          <Property Name="OriginalFilepath" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="Byte" />
+          <Property Name="Converted" Type="DateTime" Precision="3" />
+          <Property Name="ConvertedFilename" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ToCheck" Type="Boolean" />
+          <Property Name="Isvalidated" Type="Boolean" />
+          <Property Name="ConvertedFilename90" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConvertedFilename180" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ConvertedFilename270" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="AngleType" Type="Byte" />
+          <Property Name="Type_id" Type="Byte" />
+          <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -202,6 +252,8 @@
           <EntitySetMapping Name="tblMenus">
             <EntityTypeMapping TypeName="WebSiteModel.tblMenu">
               <MappingFragment StoreEntitySet="tblMenu">
+                <ScalarProperty Name="ShowHomeMenu" ColumnName="ShowHomeMenu" />
+                <ScalarProperty Name="IsCategoryMenu" ColumnName="IsCategoryMenu" />
                 <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />
                 <ScalarProperty Name="NameMenu" ColumnName="NameMenu" />
                 <ScalarProperty Name="NameMenu_en" ColumnName="NameMenu_en" />
@@ -216,6 +268,8 @@
           <EntitySetMapping Name="tblProducts">
             <EntityTypeMapping TypeName="WebSiteModel.tblProduct">
               <MappingFragment StoreEntitySet="tblProducts">
+                <ScalarProperty Name="PriceNewProducts" ColumnName="PriceNewProducts" />
+                <ScalarProperty Name="CodeProducts" ColumnName="CodeProducts" />
                 <ScalarProperty Name="IdTypeProducts" ColumnName="IdTypeProducts" />
                 <ScalarProperty Name="DescriptionProducts_en" ColumnName="DescriptionProducts_en" />
                 <ScalarProperty Name="ShortDesProducts_en" ColumnName="ShortDesProducts_en" />
@@ -286,6 +340,27 @@
                 <ScalarProperty Name="StatusCode" ColumnName="StatusCode" />
                 <ScalarProperty Name="NameCode" ColumnName="NameCode" />
                 <ScalarProperty Name="IdCode" ColumnName="IdCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblPictures">
+            <EntityTypeMapping TypeName="WebSiteModel.tblPicture">
+              <MappingFragment StoreEntitySet="tblPicture">
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Type_id" ColumnName="Type_id" />
+                <ScalarProperty Name="AngleType" ColumnName="AngleType" />
+                <ScalarProperty Name="ConvertedFilename270" ColumnName="ConvertedFilename270" />
+                <ScalarProperty Name="ConvertedFilename180" ColumnName="ConvertedFilename180" />
+                <ScalarProperty Name="ConvertedFilename90" ColumnName="ConvertedFilename90" />
+                <ScalarProperty Name="Isvalidated" ColumnName="Isvalidated" />
+                <ScalarProperty Name="ToCheck" ColumnName="ToCheck" />
+                <ScalarProperty Name="ConvertedFilename" ColumnName="ConvertedFilename" />
+                <ScalarProperty Name="Converted" ColumnName="Converted" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="OriginalFilepath" ColumnName="OriginalFilepath" />
+                <ScalarProperty Name="ProductsId" ColumnName="ProductsId" />
+                <ScalarProperty Name="PictureId" ColumnName="PictureId" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

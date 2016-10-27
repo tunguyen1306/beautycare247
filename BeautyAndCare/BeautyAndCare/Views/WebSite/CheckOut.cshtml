@@ -106,6 +106,7 @@
                                 <div class="input-group">
                                     <input type="text" name="coupon" value="" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
                                     <span class="input-group-btn">
+                                        <input type="hidden" id="hdValueCoupon"/>
                                         <input type="button" value="Apply Coupon" onclick="CheckCoupon()" id="button-coupon"  data-loading-text="Loading..." class="btn btn-primary">
                                     </span>
                                 </div>
@@ -121,11 +122,11 @@
                             <tbody>
                                 <tr>
                                     <td class="text-right"><strong>Sub-Total:</strong></td>
-                                    <td class="text-right tx-price"></td>
+                                    <td class="text-right tx-price showSubTotal"></td>
                                 </tr>
                                 <tr>
                                     <td class="text-right"><strong>Total:</strong></td>
-                                    <td class="text-right tx-price">$100.00</td>
+                                    <td class="text-right tx-price showTotalAll">$100.00</td>
                                 </tr>
                             </tbody>
                         </table>

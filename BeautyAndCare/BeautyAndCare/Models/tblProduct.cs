@@ -29,5 +29,7 @@ namespace BeautyAndCare.Models
         public string ShortDesProducts_en { get; set; }
         public string DescriptionProducts_en { get; set; }
         public Nullable<int> IdTypeProducts { get; set; }
+        public string CodeProducts { get; set; }
+        public string PriceNewProducts { get; set; }
     }
 }

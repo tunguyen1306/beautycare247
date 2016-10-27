@@ -23,7 +23,7 @@ namespace BeautyAndCare.Models
             {
                 exitItem.Quanlity = Quantity;
                 exitItem.Total= exitItem.Quanlity * Convert.ToDecimal(exitItem.Price);
-                exitItem.SubTotal = exitItem.Quanlity * Convert.ToDecimal(exitItem.Price);
+              
             }
             return true;
         }
@@ -34,7 +34,7 @@ namespace BeautyAndCare.Models
                 var myItem = ListItem.Single(x => x.ProductName.Equals(item.ProductName));
                 myItem.Quanlity += item.Quanlity;
                 myItem.Total += item.Quanlity * Convert.ToDecimal(item.Price);
-                myItem.SubTotal += item.Quanlity * Convert.ToDecimal(item.Price);
+              
             }
             else
             {

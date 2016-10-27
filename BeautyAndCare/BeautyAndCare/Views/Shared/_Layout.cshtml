@@ -23,7 +23,9 @@
     <script src="@Url.Content("~/bower_components/jquery/dist/jquery.min.js")"></script>
     @Scripts.Render("~/bundles/bootstrap")
     <script src="@Url.Content("~/bower_components/metisMenu/dist/metisMenu.min.js")"></script>
-
+    <script src="~/ckeditor/ckeditor.js"></script>
+    <script src="~/ckeditor/adapters/jquery.js"></script>
+    <script src="~/Template/js/CusWeb.js"></script>
 </head>
 <body>
     <div id="wrapper">
@@ -54,6 +56,11 @@
                 responsive: true
             });
         });
+        $(function () {
+            $('.ckedit').ckeditor();
+
+        });
+
     </script>
     @RenderSection("scripts", required: false)
 </body>

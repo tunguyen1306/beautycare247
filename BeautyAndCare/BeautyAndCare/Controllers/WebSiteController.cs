@@ -15,7 +15,24 @@ namespace BeautyAndCare.Controllers
         // GET: WebSite
         public ActionResult Index()
         {
-            return View();
+            var tbl = new tblAll();
+            var queryListMenu = (from data in db.tblMenus
+                                 where data.StatusMenu == 1 && data.ShowHomeMenu == 1
+                                 select data).ToList();
+            var dataNewProducts = from dataProducts in db.tblProducts
+                                  join dataCategory in db.tblMenus on dataProducts.IdCategoryProducts equals dataCategory.IdMenu
+                                  where dataProducts.StatusProducts == 1 
+                                  orderby dataProducts.IdProducts descending
+                                  select dataProducts;
+            var list = new List<tblAll>();
+            tbl.ListMenu = queryListMenu;
+           
+            foreach (var item in queryListMenu)
+            {
+                tbl.tblPro = dataNewProducts.Where(x=>x.IdCategoryProducts== item.IdMenu).ToList();
+          
+            }
+            return View(tbl);
         }
         public ActionResult Header()
         {
@@ -132,7 +149,8 @@ namespace BeautyAndCare.Controllers
                     ProductID = dataPro.IdProducts,
                     Price = dataPro.PriceProducts,
                     Quanlity = 1,
-                    Total = Convert.ToDecimal(dataPro.PriceProducts)
+                    Total = Convert.ToDecimal(dataPro.PriceProducts),
+                    SubTotal = Convert.ToDecimal(dataPro.PriceProducts)
                 };
                 cart.AddToCart(cartIem);
                 Session["cart"] = cart;
@@ -163,6 +181,11 @@ namespace BeautyAndCare.Controllers
                              select data;
             return Json(dataCoupon.ToList());
         }
+        //public ActionResult UpdateToCartCoupon(int showSubTotal,int showSubTotalAll,int index)
+        //{
+            
+        //    return Json();
+        //}
 
     }
 }

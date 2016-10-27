@@ -22,5 +22,7 @@ namespace BeautyAndCare.Models
         public Nullable<int> OrderMenu { get; set; }
         public Nullable<int> IsParent { get; set; }
         public string LinkMenu { get; set; }
+        public Nullable<int> IsCategoryMenu { get; set; }
+        public Nullable<int> ShowHomeMenu { get; set; }
     }
 }

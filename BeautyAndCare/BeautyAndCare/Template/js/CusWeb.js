@@ -23,13 +23,10 @@
     var total=0;
     $.each($('.price-total'), function (i, o) {
         var t = $(o).find('input[type="hidden"][name="hdtotal"]').val();
-        console.log(parseInt(t));
         total += parseInt(t)
 
     });
     $('.tx-price').html(total);
-    console.log(total);
-   
 });
 ///////////////SubMit
 $('#button-coupon').click(function () {
@@ -37,6 +34,7 @@ $('#button-coupon').click(function () {
 });
 //////////////
 function addToCart(id) {
+    $('.alert-success').addClass('hidden');
     var url = "WebSite/AddToCart"
     $.post(url,
    {
@@ -63,7 +61,9 @@ function addToCart(id) {
            + " </td>"
            + " </tr>";
            $('.LoadProducts').append(stringHtml);
-       });
+           $('#content').parent().before('<div class="alert alert-success"><i class="material-design-verification24"></i> Bạn đã thêm sản phẩm ' + o.NameProducts + ' vào giỏ hàng thành công <button type="button" class="close material-design-close47"></button></div>');
+   });
+   
 }
 function ViewCart()
 {
@@ -105,8 +105,6 @@ function CheckCoupon() {
            coupon: valueCoupon
        },
        function (o, status) {
-           console.log(o[0]);
-
            if (o[0] == null) {
                $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Sai mã giảm giá .Vui lòng nhập lại ! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
@@ -115,7 +113,6 @@ function CheckCoupon() {
            if (o[0] != null) {
                var dateEnd = new Date(parseInt(o[0].DateEndCode.substr(6)));
                var dateNow = new Date($.now());
-               console.log(convert(dateEnd) + '/' + convert(dateNow));
                if (convert(dateEnd) < convert(dateNow)) {
 
                    $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Mã giảm giá hết hạn.Vui lòng nhập mã mới! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
@@ -123,7 +120,21 @@ function CheckCoupon() {
                    $('html, body').animate({ scrollTop: 0 }, 'slow');
                }
                if (convert(dateEnd) > convert(dateNow)) {
-                   alert('Mã Thành công');
+                   $('#hdValueCoupon').val(o[0].PriceCode);
+                   var showSubTotal = $('.showSubTotal').html();
+                 
+                   if (showSubTotal >= 300000) {
+                       var cal = showSubTotal - o[0].PriceCode;
+                       $('.showTotalAll').html(cal);
+                       $('#button-coupon').addClass('disabled')
+                   }else
+                   {
+                       $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Bạn không đủ điều xử dụng mã giảm giá! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+                       $('html, body').animate({ scrollTop: 0 }, 'slow');
+                   }
+                   
+
                }
            }
        });
@@ -142,3 +153,6 @@ function convert(str) {
         day = ("0" + date.getDate()).slice(-2);
     return [date.getFullYear(), mnth, day].join("-");
 }
+
+  
+

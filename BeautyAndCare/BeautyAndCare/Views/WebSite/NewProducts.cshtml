@@ -1,15 +1,18 @@
-﻿@model IEnumerable<BeautyAndCare.Models.tblAll>
+﻿@model BeautyAndCare.Models.tblAll
+
+@foreach (var item1 in Model.ListMenu)
+{
 <div class="box latest">
     <div class="clear"></div>
     <div class="box-heading">
         <h3>
-            Sản phẩm mới
+            @item1.NameMenu
         </h3>
     </div>
     <div class="box-content">
         <div class="box-carousel">
-            @foreach (var item in Model)
-            {
+          @foreach (var item in Model.tblPro)
+          {
                 <div class="product-thumb transition options">
 
                     <div class="product-option-wrap">
@@ -75,16 +78,16 @@
                         </div>
                     </div>
                     <div class="quick_info">
-                        <div id="quickview_latest_@item.tblProducts.IdProducts" class="quickview-style">
+                        <div id="quickview_latest_@item.IdProducts" class="quickview-style">
                             <div class="left col-sm-5">
                                 <div class="quickview_image image">
                                     <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">
-                                        <img width="310" height="310" alt="@item.tblProducts.NameProducts" title="@item.tblProducts.NameProducts" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_58-310x310.png" />
+                                        <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_58-310x310.png" />
                                     </a>
                                 </div>
                             </div>
                             <div class="right col-sm-7">
-                                <h2>@item.tblProducts.NameProducts</h2>
+                                <h2>@item.NameProducts</h2>
                                 <div class="inf">
                                     <p class="quickview_manufacture manufacture manufacture">
                                         Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=34">Borghese</a>
@@ -113,35 +116,35 @@
                             </div>
                         </div>
                     </div>
-                    @if (item.tblProducts.IdTypeProducts == 1)
+                    @if (item.IdTypeProducts == 1)
                     {
                         <div class="new-pr"><span>Hàng mới</span></div>
                     }
-                    @if (item.tblProducts.IdTypeProducts == 2)
+                    @if (item.IdTypeProducts == 2)
                     {
                         <div class="sale">
                             <span>Giảm giá</span>
                         </div>
                     }
-                    @if (item.tblProducts.IdTypeProducts == 3)
+                    @if (item.IdTypeProducts == 3)
                     {
                         <div class="discount"><span>Hết hàng</span></div>
                     }
-                    @if (item.tblProducts.IdTypeProducts == 4)
+                    @if (item.IdTypeProducts == 4)
                     {
                         <div class="discount"><span>Đang về</span></div>
                     }
                     <div class="image">
                         <a class="lazy" style="padding-bottom: 100%" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">
-                            <img width="310" height="310" alt="@item.tblProducts.NameProducts" title="@item.tblProducts.NameProducts" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_58-310x310.png" src="#" />
+                            <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_58-310x310.png" src="#" />
                         </a>
-                        <a class="quickview" data-rel="details" href="#quickview_latest_@item.tblProducts.IdProducts">
+                        <a class="quickview" data-rel="details" href="#quickview_latest_@item.IdProducts">
                             Xem nhanh
                         </a>
                     </div>
                     <div class="caption">
                         <div class="name">
-                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">@item.tblProducts.NameProducts</a>
+                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">@item.NameProducts</a>
                         </div>
                         <div class="category-name">
                             Face
@@ -151,16 +154,17 @@
                         </div>
                     </div>
                     <div class="cart-button">
-                        <button class="btn-primary" type="button" onclick="addToCart(@item.tblProducts.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
+                        <button class="btn-primary" type="button" onclick="addToCart(@item.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
                         <div class="clear"></div>
                         @*<button class="product-btn" type="button" onclick="wishlist.add('50');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
                         <button class="product-btn" type="button" onclick="compare.add('50');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>*@
                    
                      </div>
                 </div>
-            }
+          }
 
 
         </div>
     </div>
 </div>
+}

@@ -1,7 +1,7 @@
 ﻿@using BeautyAndCare.Models;
 @using System.Linq;
 
-@model BeautyAndCare.Models.tblAll
+@model  tblAll
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LayOutNew.cshtml";
@@ -9,31 +9,7 @@
     var queryMenu = from data in db.tblMenus
                     where data.StatusMenu == 1
                     select data;
-    var dataNewProducts = from dataProducts in db.tblProducts
-                          join dataCategory in db.tblCategories on dataProducts.IdCategoryProducts equals dataCategory.IdCategory
-                          where dataProducts.StatusProducts == 1
-                          orderby dataProducts.IdProducts descending
-                          select new tblAll { tblProducts= dataProducts,tblCategory= dataCategory };
-    var dataChamSocDa = from dataProducts in db.tblProducts
-                        join dataCategory in db.tblCategories on dataProducts.IdCategoryProducts equals dataCategory.IdCategory
-                        where dataProducts.StatusProducts == 1 && dataCategory.IdCategory==1
-                        orderby dataProducts.IdProducts descending
-                        select new tblAll { tblProducts = dataProducts, tblCategory = dataCategory };
-    var dataChamSocCoThe = from dataProducts in db.tblProducts
-                           join dataCategory in db.tblCategories on dataProducts.IdCategoryProducts equals dataCategory.IdCategory
-                           where dataProducts.StatusProducts == 1 && dataCategory.IdCategory == 2
-                           orderby dataProducts.IdProducts descending
-                           select new tblAll { tblProducts = dataProducts, tblCategory = dataCategory };
-    var dataTrangDiem = from dataProducts in db.tblProducts
-                        join dataCategory in db.tblCategories on dataProducts.IdCategoryProducts equals dataCategory.IdCategory
-                        where dataProducts.StatusProducts == 1 && dataCategory.IdCategory == 3
-                        orderby dataProducts.IdProducts descending
-                        select new tblAll { tblProducts = dataProducts, tblCategory = dataCategory };
-    var dataThucPhamChucNang = from dataProducts in db.tblProducts
-                               join dataCategory in db.tblCategories on dataProducts.IdCategoryProducts equals dataCategory.IdCategory
-                               where dataProducts.StatusProducts == 1 && dataCategory.IdCategory == 4
-                               orderby dataProducts.IdProducts descending
-                               select new tblAll { tblProducts = dataProducts, tblCategory = dataCategory };
+   
 }
 
     <!--HEADER--->
@@ -95,10 +71,10 @@
 
 
                 <!--NewProducts--->
-              @Html.Partial("NewProducts", dataNewProducts.ToList())
+              @Html.Partial("NewProducts",Model)
                
 
-                <!--Cham soc da id=1--->
+                @*<!--Cham soc da id=1--->
                 @Html.Partial("viewProducts", dataChamSocDa.ToList())
 
                 <!--Cham co the id=2--->
@@ -108,7 +84,7 @@
                 <!--Trang điểm id=3--->
                 @Html.Partial("viewProducts", dataTrangDiem.ToList())
                  <!--Trang điểm id=4--->
-                @Html.Partial("viewProducts", dataThucPhamChucNang.ToList())
+                @Html.Partial("viewProducts", dataThucPhamChucNang.ToList())*@
 
                 <div class="box blog_articles">
                     <div class="box-heading">
