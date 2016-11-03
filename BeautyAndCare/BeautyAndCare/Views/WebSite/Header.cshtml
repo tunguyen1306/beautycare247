@@ -1,4 +1,6 @@
-﻿@model IEnumerable<BeautyAndCare.Models.tblMenu>
+﻿@using BeautyAndCare.Models
+@model IEnumerable<BeautyAndCare.Models.tblMenu>
+
 <header>
     <div class="header-top">
         <div class="container">
@@ -7,8 +9,8 @@
                 <ul class="toggle_cont">
                     @if (Session["IdUser"] != null)
                     {
-                        <li ><span  class="cusWellcome"> Xin chào,</span><input type="hidden" id="hdUserName" value="@Session["EmailUser"]"/>  <a href="@Url.Action("Login")">@Session["EmailUser"]</a></li>
-                        
+                        <li><span class="cusWellcome"> Xin chào,</span><input type="hidden" id="hdUserName" value="@Session["EmailUser"]" />  <a href="@Url.Action("Login")">@Session["EmailUser"]</a></li>
+
                     }
                     else
                     {
@@ -17,7 +19,7 @@
                         <li><a href="@Url.Action("Contact")">Liên hệ</a></li>
                     }
 
-                 
+
                 </ul>
             </nav>
             <div class="box-currency">
@@ -104,11 +106,11 @@
                             Giỏ hàng
                             <button type="button" class="btn-close-cart btn-danger"><i class="material-icons-clear"></i></button>
                         </li>
-                        <li >
+                        <li>
                             <table class="table">
                                 <tbody class="LoadProducts"></tbody>
                             </table>
-                        </li>  
+                        </li>
                         <li>
                             <table class="table total">
                                 <tbody>
@@ -121,9 +123,9 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                       
+
                                         <td class="text-left">
-                                           
+
                                             <strong>Total</strong>
                                         </td>
                                         <td class="text-right">
@@ -135,7 +137,7 @@
                             <div class="text-right">
                                 <a class="btn-view" href="@Url.Action("CheckOut","WebSite")"><span> View Cart</span></a>
                                 @*onclick="ViewCart()"*@
-                                <input type="hidden" id="hdIdPro"/>
+                                <input type="hidden" id="hdIdPro" />
                                 <div class="clear"></div>
                                 <a class="btn-primary" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=checkout/checkout"><span>Go to Checkout</span></a>
                             </div>
@@ -156,16 +158,37 @@
                         {
                             if (item.IsParent == 0 && item.IdParentMenu == 0)
                             {
-                                <li class="sf-with-mega">
-                                    <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/category&amp;path=18">@item.NameMenu</a>
-                                </li>
+                                if (item.IsCategoryMenu == 1)
+                                {
+                                    <li class="sf-with-mega">
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
+                                    </li>
+                                }
+                                else
+                                {
+                                    <li class="sf-with-mega">
+                                        <a href="@item.LinkMenu">@item.NameMenu</a>
+                                    </li>
+                                }
+
                             }
                             else
                             {
                                 if (item.IsParent == 1)
                                 {
                                     <li class="sf-with-mega">
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/category&amp;path=18">@item.NameMenu</a>
+                                        @if (item.IsCategoryMenu == 1)
+                                        {
+                                        <li class="sf-with-mega">
+                                            <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
+                                        </li>
+                                        }
+                                        else
+                                        {
+                                            <li class="sf-with-mega">
+                                                <a href="@item.LinkMenu">@item.NameMenu</a>
+                                            </li>
+                                        }
                                         <ul class="sf-mega">
                                             @foreach (var child in Model.Where(p => p.IdParentMenu == item.IdMenu))
                                             {
@@ -173,60 +196,71 @@
                                                     <div class="sf-mega_section 1" style="width: 16.7%">
                                                         <ul>
                                                             <li>
-                                                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/category&amp;path=40">@child.NameMenu</a>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </li>
+                                                                @if (item.IsCategoryMenu == 1)
+                                                                {
+                                                                <li class="sf-with-mega">
+                                                                    <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
+                                                                </li>
+                                                                }
+                                                                else
+                                                                {
+                                                                    <li class="sf-with-mega">
+                                                                        <a href="@item.LinkMenu">@item.NameMenu</a>
+                                                                    </li>
+                                                                }
+                                                    </li>
+                                                </ul>
+                                        </div>
+                                        </li>
                                             }
-                                        </ul>
-                                    </li>
+                                            </ul>
+                                            </li>
                                 }
                             }
                         }
 
-                    </ul>
-                </div>
-                <script>
-                    (function ($) {
-                        $(window).load(function () {
-                            var o = $('.sf-menu');
-                            o.superfish();
-                            o.find('li a').each(function () {
-                                if ($(location).attr('href').indexOf($(this).attr('href')) >= 0) {
-                                    $(this).addClass('active');
-                                    return;
-                                }
-                            })
-                            if (o.parents('aside').length) {
-                                var width = $('.container').outerWidth() - $('aside').outerWidth();
-                                o.find('.sf-mega').each(function () {
-                                    $(this).width(width);
-                                })
-                            }
-                        });
-                    })(jQuery);
-                </script>
-                <div id="style_switcher">
-                    <div class="toggler"></div>
-                    <p>The customization tool allows you to make color changes in your theme</p>
-                    <ul id="color-box">
-                        <li><div class="color_scheme color_scheme_1" data-scheme="color_scheme_1">&nbsp;</div></li>
-                        <li><div class="color_scheme color_scheme_2" data-scheme="color_scheme_2">&nbsp;</div></li>
-                        <li><div class="color_scheme color_scheme_3" data-scheme="color_scheme_3">&nbsp;</div></li>
-                        <li><div class="color_scheme color_scheme_4" data-scheme="color_scheme_4">&nbsp;</div></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="search">
-                <a class="top-search"><i class="fl-outicons-magnifying-glass34"></i></a>
-                <div id="search">
-                    <div class="inner">
-                        <input type="text" name="search" value="" placeholder="Search..." /><button type="button" class="button-search"><i class="fl-outicons-magnifying-glass34"></i></button>
+                        </ul>
                     </div>
-                    <div class="clear"></div>
+                    <script>
+                        (function ($) {
+                            $(window).load(function () {
+                                var o = $('.sf-menu');
+                                o.superfish();
+                                o.find('li a').each(function () {
+                                    if ($(location).attr('href').indexOf($(this).attr('href')) >= 0) {
+                                        $(this).addClass('active');
+                                        return;
+                                    }
+                                })
+                                if (o.parents('aside').length) {
+                                    var width = $('.container').outerWidth() - $('aside').outerWidth();
+                                    o.find('.sf-mega').each(function () {
+                                        $(this).width(width);
+                                    })
+                                }
+                            });
+                        })(jQuery);
+                    </script>
+                    <div id="style_switcher">
+                        <div class="toggler"></div>
+                        <p>The customization tool allows you to make color changes in your theme</p>
+                        <ul id="color-box">
+                            <li><div class="color_scheme color_scheme_1" data-scheme="color_scheme_1">&nbsp;</div></li>
+                            <li><div class="color_scheme color_scheme_2" data-scheme="color_scheme_2">&nbsp;</div></li>
+                            <li><div class="color_scheme color_scheme_3" data-scheme="color_scheme_3">&nbsp;</div></li>
+                            <li><div class="color_scheme color_scheme_4" data-scheme="color_scheme_4">&nbsp;</div></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="search">
+                    <a class="top-search"><i class="fl-outicons-magnifying-glass34"></i></a>
+                    <div id="search">
+                        <div class="inner">
+                            <input type="text" name="search" value="" placeholder="Search..." /><button type="button" class="button-search"><i class="fl-outicons-magnifying-glass34"></i></button>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</header>
+            </div>
+        </header>

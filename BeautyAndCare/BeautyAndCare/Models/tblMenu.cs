@@ -24,5 +24,7 @@ namespace BeautyAndCare.Models
         public string LinkMenu { get; set; }
         public Nullable<int> IsCategoryMenu { get; set; }
         public Nullable<int> ShowHomeMenu { get; set; }
+        public string Description_en { get; set; }
+        public string Description_vi { get; set; }
     }
 }

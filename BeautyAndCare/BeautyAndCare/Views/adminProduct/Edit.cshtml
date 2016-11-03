@@ -112,13 +112,19 @@
 
                             </div>
                             <div class="form-group">
-                                <label>Giá sản phẩm</label>
+                                <label>Giá cũ</label>
+                                @Html.EditorFor(model => model.tblProducts.PriceProducts, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.tblProducts.PriceProducts, "", new { @class = "text-danger" })
+
+
+                            </div>
+                            <div class="form-group">
+                                <label>Giá mới</label>
                                 @Html.EditorFor(model => model.tblProducts.PriceNewProducts, new { htmlAttributes = new { @class = "form-control" } })
                                 @Html.ValidationMessageFor(model => model.tblProducts.PriceNewProducts, "", new { @class = "text-danger" })
 
 
                             </div>
-
                             <div class="form-group">
                                 <label>Loại</label>
                                 @Html.DropDownListFor(M => M.tblProducts.IdCategoryProducts, new SelectList(Model.ListMenu.ToList(), "IdMenu", "NameMenu"), htmlAttributes: new { @class = "form-control", @name = "tblProducts.IdCategoryProducts" })
@@ -173,7 +179,7 @@
 
 
                                     </div>
-                                    @foreach (var item in Model.classPicture)
+                                    @foreach (var item in Model.ListPicture)
                                     {
                                         <div class="dz-preview dz-processing dz-image-preview dz-success dz-complete">
                                             <div class="tools final">

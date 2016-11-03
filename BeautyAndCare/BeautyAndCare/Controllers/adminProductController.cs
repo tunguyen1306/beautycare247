@@ -197,7 +197,7 @@ namespace BeautyAndCare.Controllers
             }
             tblAll pic = new tblAll
             {
-                tblProducts = db.tblProducts.Find(id), classPicture = db.tblPictures.Where(t => t.ProductsId == id).ToList(),
+                tblProducts = db.tblProducts.Find(id), ListPicture = db.tblPictures.Where(t => t.ProductsId == id).ToList(),
                 ListCategory=db.tblCategories.ToList(),
                 ListType = db.tblTypes.ToList(),
                  ListMenu = db.tblMenus.Where(x=>x.IsCategoryMenu==1).ToList()

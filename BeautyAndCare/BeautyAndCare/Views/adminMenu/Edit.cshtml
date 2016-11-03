@@ -49,7 +49,7 @@
                                                             new SelectListItem {Text = "9", Value = "9"},
                                                                new SelectListItem {Text = "0", Value = "10"},
 
-                                }, new { @class = "form-control", @name = "tblProducts.OrderMenu" })
+                                }, new { @class = "form-control", @name = "tblMenu.OrderMenu" })
 
 
 
@@ -66,7 +66,14 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Loại</label>
-                                @Html.DropDownListFor(M => M.tblMenu.IdParentMenu, new SelectList(Model.ListMenu.ToList(), "IdMenu", "NameMenu"), htmlAttributes: new { @class = "form-control", @name = "tblProducts.IdCategoryProducts" })
+                               
+                                <select class="form-control" name="tblMenu.IdMenu">
+                                    <option value="0">Chọn danh sách</option>
+                                    @foreach (var item in Model.ListMenu)
+                                    {
+                                        <option @((item.IdMenu==Model.tblMenu.IdMenu)? "selected=\"selected\"" : "") value="@item.IdMenu">@item.NameMenu</option>
+                                    }
+                                </select>
                             </div>
 
                             <div class="form-group">
@@ -76,7 +83,7 @@
                                     new SelectListItem {Text = "Không hoạt động", Value = "0"},
                                     new SelectListItem {Text = "Hoạt động", Value = "1"},
 
-                                }, new { @class = "form-control", @name = "tblProducts.StatusMenu" })
+                                }, new { @class = "form-control", @name = "tblMenu.StatusMenu" })
                             </div>
                             <div class="form-group">
                                 <label>Quyyền cha</label>
@@ -85,7 +92,7 @@
                                     new SelectListItem {Text = "Không", Value = "0"},
                                     new SelectListItem {Text = "Có", Value = "1"},
 
-                                }, new { @class = "form-control", @name = "tblProducts.IsParent" })
+                                }, new { @class = "form-control", @name = "tblMenu.IsParent" })
 
 
                             </div>
@@ -97,7 +104,7 @@
                                     new SelectListItem {Text = "Không", Value = "0"},
                                     new SelectListItem {Text = "Có", Value = "1"},
 
-                                }, new { @class = "form-control", @name = "tblProducts.ShowHomeMenu" })
+                                }, new { @class = "form-control", @name = "tblMenu.ShowHomeMenu" })
 
                             </div>
                             <div class="form-group">

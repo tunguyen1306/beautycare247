@@ -111,7 +111,20 @@
                                     </p>
                                 </div>
                                 <div class="price">
-                                    $85.00
+                                    <span class="price-new price-new_@item.tblProducts.IdProducts">
+                                        <script>
+                                            $(function () {
+
+                                                $('.price-new_@item.tblProducts.IdProducts').text(tien(@item.tblProducts.PriceNewProducts));
+                                            }) </script>
+                                    </span>
+                                    <span class="price-old price-old_@item.tblProducts.IdProducts">
+                                        <script>
+                                            $(function () {
+
+                                                $('.price-old_@item.tblProducts.IdProducts').text(tien(@item.tblProducts.PriceProducts));
+                                            }) </script>
+                                    </span>
                                 </div>
                                 <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.add('50');"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
                                 @*<ul class="product-buttons">
@@ -154,7 +167,7 @@
                             <img width="310" height="310" alt="@item.tblProducts.NameProducts" title="@item.tblProducts.NameProducts" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_58-310x310.png" src="#" />
                         </a>
                         <a class="quickview" data-rel="details" href="#quickview_latest_30010">
-                            Quick View
+                            Xem nhanh
                         </a>
                     </div>
                     <div class="caption">
@@ -165,7 +178,20 @@
                             Face
                         </div>
                         <div class="price">
-                            $85.00
+                            <span class="price-new price-new_@item.tblProducts.IdProducts">
+                                <script>
+                                            $(function () {
+
+                                                $('.price-new_@item.tblProducts.IdProducts').text(tien(@item.tblProducts.PriceNewProducts));
+                                            }) </script>
+                            </span>
+                            <span class="price-old price-old_@item.tblProducts.IdProducts">
+                                <script>
+                                            $(function () {
+
+                                                $('.price-old_@item.tblProducts.IdProducts').text(tien(@item.tblProducts.PriceProducts));
+                                            }) </script>
+                            </span>
                         </div>
                     </div>
                     <div class="cart-button">

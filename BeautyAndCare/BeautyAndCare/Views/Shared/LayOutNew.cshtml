@@ -7,7 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
    
      <title>beautyandcare247</title>
-    @*<base href="http://livedemo00.template-help.com/opencart_59086/" />*@
+    <base href="http://localhost:29129/" />
     <meta name="description" content="beautyandcare247" />
 
     <link href='//fonts.googleapis.com/css?family=Arimo&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
@@ -48,11 +48,29 @@
         @RenderBody()
         <div class="ajax-overlay"></div>
     </div>
-
+    <script src="~/Template/js/jquery.elevatezoom.js" type="text/javascript"></script>
+    
         <script src="~/Template/js/device.min.js" type="text/javascript"></script>
         <script src="~/Template/js/livesearch.min.js" type="text/javascript"></script>
         <script src="~/Template/js/common.js" type="text/javascript"></script>
         <script src="~/Template/js/script.js" type="text/javascript"></script>
+    <script type="text/javascript">
+
+        function tien(val) {
+
+            if (val != null) {
+
+                while (/(\d+)(\d{3})/.test(val.toString())) {
+                    val = val.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+                }
+                return val+'đ';
+            }
+            else {
+                return '';
+            }
+
+        }
+    </script>
 
 </body>
 

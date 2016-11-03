@@ -1,11 +1,7 @@
 ﻿@using BeautyAndCare.Models;
 @using System.Linq;
-
-@{
-    ViewBag.Title = "Detail";
-    Layout = "~/Views/Shared/LayOutNew.cshtml";
-}
-
+@using System.Configuration
+@model tblAll
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LayOutNew.cshtml";
@@ -14,1330 +10,525 @@
                     where data.StatusMenu == 1
                     select data;
 }
-  <!--HEADER--->
+<!--HEADER--->
 @Html.Partial("Header", queryMenu.ToList())
 <!--END HEADER--->
 <div class="container">
-    <ul class="breadcrumb">
-        <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home"><i class="fa fa-home"></i></a></li>
-        <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=46">Eye Pencil Ultra Black</a></li>
-    </ul>
+    @Html.Partial("Breadcrumb")
     <div class="row">
         <div id="content" class="col-sm-12">
-            <div class="row">
-                <h3 class="product-title">Eye Pencil Ultra Black</h3>
-                <div class="col-sm-6 col-lg-7 product_page-left">
-                    <div class="product-gallery">
-                        <div class="row">
-                            <div class="col-lg-9 pull-right hidden-xs hidden-sm hidden-md text-center">
-                                <img alt="" width="800" height="800" id="productZoom" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-650x650.png" data-zoom-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-800x800.png" />
+            @foreach (var item in Model.tblPro)
+            {
+                <div class="row">
+                    <h3 class="product-title">@item.NameProducts</h3>
+                    <div class="col-sm-6 col-lg-7 product_page-left">
+                        <div class="product-gallery">
+                            <div class="row">
+
+                                <div class="col-lg-9 pull-right hidden-xs hidden-sm hidden-md text-center">
+                                    @foreach (var itemPic in Model.ListPicture.Where(x => x.Position == 1))
+                                    {
+                                        <img alt="@item.NameProducts" width="800" height="800" id="productZoom" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)" />
+                                    }
+
+                                </div>
+                                <div class="col-lg-2 hidden-xs hidden-sm hidden-md image-thumb">
+                                    <ul id="productGallery" class="image-additional" data-slide-width="126">
+                                        @foreach (var itemPic in Model.ListPicture)
+                                        {
+                                            <li>
+                                                <a href="#" data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
+                                                    <img width="126" height="126" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" alt="@item.NameProducts" />
+                                                </a>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </div>
+                                <div class="col-xs-12 hidden-lg image-thumb">
+                                    <ul id="productFullGallery" class="image-additional" data-slide-width="126">
+                                        @foreach (var itemPic in Model.ListPicture)
+                                        {
+                                            <li>
+                                                <a href="#" data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
+                                                    <img width="126" height="126" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" alt="@item.NameProducts" />
+                                                </a>
+                                            </li>
+                                        }
+
+                                    </ul>
+                                </div>
+
+
                             </div>
-                            <div class="col-lg-2 hidden-xs hidden-sm hidden-md image-thumb">
-                                <ul id="productGallery" class="image-additional" data-slide-width="126">
-                                    <li>
-                                        <a href="#" data-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-650x650.png" data-zoom-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-800x800.png">
-                                            <img width="126" height="126" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-126x126.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-650x650.png" data-zoom-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-800x800.png">
-                                            <img width="126" height="126" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-126x126.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_48-650x650.png" data-zoom-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_48-800x800.png">
-                                            <img width="126" height="126" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_48-126x126.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-650x650.png" data-zoom-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-800x800.png">
-                                            <img width="126" height="126" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-126x126.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" data-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-650x650.png" data-zoom-image="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-800x800.png">
-                                            <img width="126" height="126" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-126x126.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                </ul>
+                        </div>
+                    </div>
+                  
+                    <div class="col-sm-6 col-lg-4 col-lg-offset-1 product_page-right">
+                        @*<div class="general_info product-info">
+                            <ul class="list-unstyled product-section">
+                                <li>
+                                    <strong>Brand:</strong>
+                                    <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=31">Physicians Formula</a>
+                                </li>
+                                <li>
+                                    <strong>Product Code:</strong>
+                                    <span>Classic</span>
+                                </li>
+                                <li>
+                                    <strong>Availability:</strong>
+                                    <span>999</span>
+                                </li>
+                            </ul>
+
+                            <div class="rating-section product-rating-status">
+                                <div class="rating">
+                                    <span class="fa-stack">
+                                        <i class="fa fa-star active fa-stack-1x"></i>
+                                    </span>
+                                    <span class="fa-stack">
+                                        <i class="fa fa-star active fa-stack-1x"></i>
+                                    </span>
+                                    <span class="fa-stack">
+                                        <i class="fa fa-star active fa-stack-1x"></i>
+                                    </span>
+                                    <span class="fa-stack">
+                                        <i class="fa fa-star active fa-stack-1x"></i>
+                                    </span>
+                                    <span class="fa-stack">
+                                        <i class="fa fa-star fa-stack-1x"></i>
+                                    </span>
+                                    <span class="review-link review-link-show">
+                                        <a href="#">1 Review(s)&lrm;</a>
+                                    </span>
+                                    <span class="review-link review-link-write">
+                                        <a href="#">Write a review</a>
+                                    </span>
+                                </div>
                             </div>
-                            <div class="col-xs-12 hidden-lg image-thumb">
-                                <ul id="productFullGallery" class="image-additional" data-slide-width="126">
-                                    <li>
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-650x650.png">
-                                            <img width="650" height="650" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-650x650.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-650x650.png">
-                                            <img width="650" height="650" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-650x650.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_48-650x650.png">
-                                            <img width="650" height="650" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_48-650x650.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-650x650.png">
-                                            <img width="650" height="650" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_46-650x650.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-650x650.png">
-                                            <img width="650" height="650" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_47-650x650.png" alt="Eye Pencil Ultra Black" />
-                                        </a>
-                                    </li>
-                                </ul>
+                        </div>*@
+                        <div id="product">
+                            @*<div class="product-options clearfix">
+                                <h3>Available Options</h3>
+                                <div class="form-group required clearfix">
+                                    <label class="control-label" for="input-option32">Size</label>
+                                    <select name="option[32]" id="input-option32" class="form-control">
+                                        <option value="">--- Please Select ---</option>
+                                        <option value="72">
+                                            Small (+$20.00)&lrm;
+                                        </option>
+                                        <option value="73">
+                                            Medium (+$15.00)&lrm;
+                                        </option>
+                                        <option value="74">
+                                            Large (+$10.00)&lrm;
+                                        </option>
+                                    </select>
+                                </div>
+                            </div>*@
+
+
+                            <div class="form-group form-horizontal">
+                                <div class="form-group">
+                                    <div class="col-sm-12 quantity">
+                                        @*<div class="quantity_block">
+                                            <label class="control-label" for="input-quantity">Số lượng</label><br>
+                                            <a class="counter counter-minus material-design-horizontal39" href='#'></a>
+                                            <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
+                                            <input type="hidden" name="product_id" value="46" />
+                                            <a class="counter counter-plus material-design-add186" href='#'></a>
+                                        </div>*@
+                                        <div class="price-section">
+                                            <div class="price">
+                                                <span class="price-new price-new_@item.IdProducts">
+                                                    <script>
+                                            $(function () {
+
+                                                $('.price-new_@item.IdProducts').text(tien(@item.PriceNewProducts));
+                                            }) </script>
+                                                </span>
+                                                <span class="price-old price-old_@item.IdProducts">
+                                                    <script>
+                                            $(function () {
+
+                                                $('.price-old_@item.IdProducts').text(tien(@item.PriceProducts));
+                                            }) </script>
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <button type="button" id="button-cart" data-loading-text="Loading..." class="btn-primary"><i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
+                                    </div>
+                                </div>
+                                <div class="price-section">
+                                    <div class="reward-block">
+                                    </div>
+                                </div>
+                            </div>
+                            @*<ul class="product-buttons">
+                                <li>
+                                    <button class="product-btn" onclick="wishlist.add('46');"><i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
+                                </li>
+                                <li>
+                                    <button class="product-btn" onclick="compare.add('46');"><i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>
+                                </li>
+                            </ul>*@
+                            <div class="product-share">
+
+                                <div class="addthis_sharing_toolbox"></div>
+
+                                <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55e053ac02ebd38e" async="async"></script>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-6 col-lg-4 col-lg-offset-1 product_page-right">
-                    <div class="general_info product-info">
-                        <ul class="list-unstyled product-section">
-                            <li>
-                                <strong>Brand:</strong>
-                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=31">Physicians Formula</a>
-                            </li>
-                            <li>
-                                <strong>Product Code:</strong>
-                                <span>Classic</span>
-                            </li>
-                            <li>
-                                <strong>Availability:</strong>
-                                <span>999</span>
-                            </li>
-                        </ul>
-
-                        <div class="rating-section product-rating-status">
-                            <div class="rating">
-                                <span class="fa-stack">
-                                    <i class="fa fa-star active fa-stack-1x"></i>
-                                </span>
-                                <span class="fa-stack">
-                                    <i class="fa fa-star active fa-stack-1x"></i>
-                                </span>
-                                <span class="fa-stack">
-                                    <i class="fa fa-star active fa-stack-1x"></i>
-                                </span>
-                                <span class="fa-stack">
-                                    <i class="fa fa-star active fa-stack-1x"></i>
-                                </span>
-                                <span class="fa-stack">
-                                    <i class="fa fa-star fa-stack-1x"></i>
-                                </span>
-                                <span class="review-link review-link-show">
-                                    <a href="#">1 Review(s)&lrm;</a>
-                                </span>
-                                <span class="review-link review-link-write">
-                                    <a href="#">Write a review</a>
-                                </span>
-                            </div>
+                <div class="product_tabs">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#tab-description" data-toggle="tab">
+                                Mô tả
+                            </a>
+                        </li>
+                      
+                      
+                        @*<li>
+                            <a href="#tab-video" data-toggle="tab">
+                                Video
+                            </a>
+                        </li>*@
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-description">
+                            @Html.Raw(item.DescriptionProducts)
                         </div>
-                    </div>
-                    <div id="product">
-                        <div class="product-options clearfix">
-                            <h3>Available Options</h3>
-                            <div class="form-group required clearfix">
-                                <label class="control-label" for="input-option32">Size</label>
-                                <select name="option[32]" id="input-option32" class="form-control">
-                                    <option value="">--- Please Select ---</option>
-                                    <option value="72">
-                                        Small (+$20.00)&lrm;
-                                    </option>
-                                    <option value="73">
-                                        Medium (+$15.00)&lrm;
-                                    </option>
-                                    <option value="74">
-                                        Large (+$10.00)&lrm;
-                                    </option>
-                                </select>
-                            </div>
+                        @*<div class="tab-pane product-spec product-section" id="tab-specification">
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2"><strong>Product Details</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Paraben free</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Warranty</td>
+                                        <td>1 year</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Cruelty free</td>
+                                        <td>Yes</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th colspan="2"><strong>Delivery and Returns</strong></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Shipping</td>
+                                        <td>Free Shipping</td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-
-
-                        <div class="form-group form-horizontal">
-                            <div class="form-group">
-                                <div class="col-sm-12 quantity">
-                                    <div class="quantity_block">
-                                        <label class="control-label" for="input-quantity">Quantity</label><br>
-                                        <a class="counter counter-minus material-design-horizontal39" href='#'></a>
-                                        <input type="text" name="quantity" value="1" size="2" id="input-quantity" class="form-control" />
-                                        <input type="hidden" name="product_id" value="46" />
-                                        <a class="counter counter-plus material-design-add186" href='#'></a>
-                                    </div>
-                                    <div class="price-section">
-                                        <span class="price-new"></span>
-                                        <span class="price-new">$100.00</span>
-                                    </div>
-                                    <button type="button" id="button-cart" data-loading-text="Loading..." class="btn-primary"><i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
+                        <div class="tab-pane product-reviews" id="tab-review">
+                            <form class="form-horizontal" id="form-review">
+                                <div id="review"></div>
+                                <div class="review-form-title">
+                                    <h3 class="product-section_title">Write a review</h3>
                                 </div>
-                            </div>
-                            <div class="price-section">
-                                <div class="reward-block">
+                                <div class="product-review-form" id="reviews_form">
+                                    <div class="form-group required">
+                                        <div class="col-sm-12">
+                                            <label class="control-label" for="input-name">Your Name</label>
+                                            <input type="text" name="name" value="" id="input-name" class="form-control" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group required">
+                                        <div class="col-sm-12">
+                                            <label class="control-label" for="input-review">Your Review</label>
+                                            <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
+                                            <div class="help-block"><span class="text-danger">Note:</span> HTML is not translated!</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group required stars">
+                                        <div class="col-sm-12">
+                                            <label class="control-label">Rating</label>
+                                            <input type="radio" name="rating" value="5" /><span class="fa fa-star"></span>
+                                            <input type="radio" name="rating" value="4" /><span class="fa fa-star"></span>
+                                            <input type="radio" name="rating" value="3" /><span class="fa fa-star"></span>
+                                            <input type="radio" name="rating" value="2" /><span class="fa fa-star"></span>
+                                            <input type="radio" name="rating" value="1" /><span class="fa fa-star"></span>
+                                        </div>
+                                    </div>
+                                    <div class="buttons clearfix">
+                                        <button type="button" id="button-review" data-loading-text="Loading..." class="btn btn-primary">
+                                            Continue
+                                        </button>
+                                    </div>
                                 </div>
+                            </form>
+                        </div>*@
+                        @*<div id="tab-video" class="tab-pane product-video product-section">
+                            <div class="r_frame">
+                                <iframe src="//www.youtube.com/embed/-d8KTrhiMCY?Rel=0&amp;controls=0&amp;showinfo=0&amp;wmode=transparent" allowfullscreen="" height="315" width="560"></iframe>
                             </div>
-                        </div>
-                        <ul class="product-buttons">
-                            <li>
-                                <button class="product-btn" onclick="wishlist.add('46');"><i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                            </li>
-                            <li>
-                                <button class="product-btn" onclick="compare.add('46');"><i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>
-                            </li>
-                        </ul>
-                        <div class="product-share">
-
-                            <div class="addthis_sharing_toolbox"></div>
-
-                            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-55e053ac02ebd38e" async="async"></script>
-
-                        </div>
+                            <div class="clearfix"></div>
+                        </div>*@
                     </div>
                 </div>
-            </div>
-            <div class="product_tabs">
-                <ul class="nav nav-tabs">
-                    <li class="active">
-                        <a href="#tab-description" data-toggle="tab">
-                            Description
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab-specification" data-toggle="tab">
-                            Specification
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab-review" data-toggle="tab">
-                            Reviews (1)&lrm;
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#tab-video" data-toggle="tab">
-                            Video
-                        </a>
-                    </li>
-                </ul>
-                <div class="tab-content">
-                    <div class="tab-pane active" id="tab-description">
-                        <p>In the modern world, there are dozens of means that can help you achieve a desired look and establish a proper image. One of such means is cosmetics. They include a vast amount of tools designed to enhance your attractiveness. There are also some subcategories of cosmetics that offer specialized care for your skin or that can be used to highlight facial features (your eyes, brows, lips, cheeks etc.) As these products have been widely used since the very beginning of our civilization, today they are available in the greatest variety from lipsticks to face powders with different colors and shapes.</p>
-                        <p>Due to an increasing amount of makeup-related products, we decided to offer our expert help to a lot of people looking for high-quality cosmetics. At our store, you can easily find any type of makeup, hair dye, and deodorants or skincare products to satisfy the most exquisite tastes and needs, both men’s and women’s. As an industry leader in providing top-notch makeup and cosmetic products at affordable price, we can assure you won’t be disappointed by making a purchase at our website.</p>
-                        <p>We care about our customers and their buying experience. That’s why our team pays a lot of attention to your order’s delivery process and provides full support on the stage of choosing a product that would suit you and be an ideal addition to your style. Moreover, our store provides regular discounts to our loyal customers who want to be well informed about the latest trends in cosmetics or the way they can benefit from buying at our store. If you are looking for new makeup tools to fill up your bag or are just wondering what it takes to look beautiful, visit our website and we will be glad to help you!</p>
-                    </div>
-                    <div class="tab-pane product-spec product-section" id="tab-specification">
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th colspan="2"><strong>Product Details</strong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Paraben free</td>
-                                    <td>Yes</td>
-                                </tr>
-                                <tr>
-                                    <td>Warranty</td>
-                                    <td>1 year</td>
-                                </tr>
-                                <tr>
-                                    <td>Cruelty free</td>
-                                    <td>Yes</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                        <table class="table table-bordered">
-                            <thead>
-                                <tr>
-                                    <th colspan="2"><strong>Delivery and Returns</strong></th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Shipping</td>
-                                    <td>Free Shipping</td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                    <div class="tab-pane product-reviews" id="tab-review">
-                        <form class="form-horizontal" id="form-review">
-                            <div id="review"></div>
-                            <div class="review-form-title">
-                                <h3 class="product-section_title">Write a review</h3>
-                            </div>
-                            <div class="product-review-form" id="reviews_form">
-                                <div class="form-group required">
-                                    <div class="col-sm-12">
-                                        <label class="control-label" for="input-name">Your Name</label>
-                                        <input type="text" name="name" value="" id="input-name" class="form-control" />
-                                    </div>
-                                </div>
-                                <div class="form-group required">
-                                    <div class="col-sm-12">
-                                        <label class="control-label" for="input-review">Your Review</label>
-                                        <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                                        <div class="help-block"><span class="text-danger">Note:</span> HTML is not translated!</div>
-                                    </div>
-                                </div>
-                                <div class="form-group required stars">
-                                    <div class="col-sm-12">
-                                        <label class="control-label">Rating</label>
-                                        <input type="radio" name="rating" value="5" /><span class="fa fa-star"></span>
-                                        <input type="radio" name="rating" value="4" /><span class="fa fa-star"></span>
-                                        <input type="radio" name="rating" value="3" /><span class="fa fa-star"></span>
-                                        <input type="radio" name="rating" value="2" /><span class="fa fa-star"></span>
-                                        <input type="radio" name="rating" value="1" /><span class="fa fa-star"></span>
-                                    </div>
-                                </div>
-                                <div class="buttons clearfix">
-                                    <button type="button" id="button-review" data-loading-text="Loading..." class="btn btn-primary">
-                                        Continue
-                                    </button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                    <div id="tab-video" class="tab-pane product-video product-section">
-                        <div class="r_frame">
-                            <iframe src="//www.youtube.com/embed/-d8KTrhiMCY?Rel=0&amp;controls=0&amp;showinfo=0&amp;wmode=transparent" allowfullscreen="" height="315" width="560"></iframe>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
+            }
+
 
             <div class="box-heading related">
-                <h3 class="product-title">Related Products</h3>
+                <h3 class="product-title">Sản phẩm liên quan</h3>
             </div>
             <div class="box-content related">
                 <div class="box-carousel">
-                    <div class="product-thumb transition options">
+                    @foreach (var item in Model.tblProductRel)
+                    {
+                        <div class="product-thumb transition options">
 
-                        <div class="product-option-wrap">
-                            <div class="product-options form-horizontal">
-                                <div class="options">
-                                    <a class="ajax-overlay_close" href='#'></a>
-                                    <h3>Available Options</h3>
-                                    <div class="form-group hidden">
-                                        <div class="col-sm-8">
-                                            <input type="text" name="product_id" value="28" class="form-control" />
+                            <div class="product-option-wrap">
+                                <div class="product-options form-horizontal">
+                                    <div class="options">
+                                        <a class="ajax-overlay_close" href='#'></a>
+                                        <h3>Available Options</h3>
+                                        <div class="form-group hidden">
+                                            <div class="col-sm-8">
+                                                <input type="text" name="product_id" value="28" class="form-control" />
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12" for="input-option110001">
-                                            Size
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <select name="option[1]" id="input-option110001" class="form-control">
-                                                <option value="">--- Please Select ---</option>
-                                                <option value="1">
-                                                    Small (+$20.00)&lrm;
-                                                </option>
-                                                <option value="2">
-                                                    Medium (+$15.00)&lrm;
-                                                </option>
-                                                <option value="3">
-                                                    Large (+$10.00)&lrm;
-                                                </option>
-                                            </select>
+                                        <div class="form-group required">
+                                            <label class="control-label col-sm-12" for="input-option110001">
+                                                Size
+                                            </label>
+                                            <div class="col-sm-12">
+                                                <select name="option[1]" id="input-option110001" class="form-control">
+                                                    <option value="">--- Please Select ---</option>
+                                                    <option value="1">
+                                                        Small (+$20.00)&lrm;
+                                                    </option>
+                                                    <option value="2">
+                                                        Medium (+$15.00)&lrm;
+                                                    </option>
+                                                    <option value="3">
+                                                        Large (+$10.00)&lrm;
+                                                    </option>
+                                                </select>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12">
-                                            Color
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div id="input-option210001">
-                                                <div class="radio">
-                                                    <label for="option[2510001]">
-                                                        <input type="radio" hidden name="option[2]" id="option[2510001]" value="5" />
-                                                        black (+$20.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label for="option[2610001]">
-                                                        <input type="radio" hidden name="option[2]" id="option[2610001]" value="6" />
-                                                        white (+$15.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label for="option[2410001]">
-                                                        <input type="radio" hidden name="option[2]" id="option[2410001]" value="4" />
-                                                        red (+$10.00)&lrm;
-                                                    </label>
+                                        <div class="form-group required">
+                                            <label class="control-label col-sm-12">
+                                                Color
+                                            </label>
+                                            <div class="col-sm-12">
+                                                <div id="input-option210001">
+                                                    <div class="radio">
+                                                        <label for="option[2510001]">
+                                                            <input type="radio" hidden name="option[2]" id="option[2510001]" value="5" />
+                                                            black (+$20.00)&lrm;
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label for="option[2610001]">
+                                                            <input type="radio" hidden name="option[2]" id="option[2610001]" value="6" />
+                                                            white (+$15.00)&lrm;
+                                                        </label>
+                                                    </div>
+                                                    <div class="radio">
+                                                        <label for="option[2410001]">
+                                                            <input type="radio" hidden name="option[2]" id="option[2410001]" value="4" />
+                                                            red (+$10.00)&lrm;
+                                                        </label>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
+                                        <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'28');"> <span>Thêm vào giỏ hàng</span> </button>
                                     </div>
-                                    <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'28');"> <span>Thêm vào giỏ hàng</span> </button>
                                 </div>
                             </div>
-                        </div>
-                        <div class="quick_info">
-                            <div id="quickview_10001" class="quickview-style">
-                                <div class="left col-sm-4">
-                                    <div class="quickview_image image">
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=28">
-                                            <img width="310" height="310" alt="Australian Made Natural Deodorant" title="Australian Made Natural Deodorant" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_1-310x310.png" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="right col-sm-8">
-                                    <h3>Australian Made Natural Deodorant</h3>
-                                    <div class="inf">
-                                        <p class="quickview_manufacture manufacture manufacture">
-                                            Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=25">CeraVe</a>
-                                        </p>
-                                        <p class="product_model model">
-                                            Product Code: Classic
-                                        </p>
-                                        <div class="price">
-                                            <span class="price-new">$40.00</span>
+                            <div class="quick_info">
+                                <div id="quickview_10001" class="quickview-style">
+                                    <div class="left col-sm-4">
+                                        <div class="quickview_image image">
+                                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=28">
+                                                <img width="310" height="310" alt="Australian Made Natural Deodorant" title="Australian Made Natural Deodorant" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_1-310x310.png" />
+                                            </a>
                                         </div>
                                     </div>
-                                    <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.add('28');"> <span>Thêm vào giỏ hàng</span> </button>
-                                    <ul class="product-buttons">
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('28');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span> </button>
-                                        </li>
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('28');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span> </button>
-                                        </li>
-                                    </ul>
-                                    <div class="rating">
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sale">
-                            <span>Sale</span>
-                        </div>
-                        <div class="image">
-                            <a class="lazy" style="padding-bottom: 100%" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=28">
-                                <img width="310" height="310" alt="Australian Made Natural Deodorant" title="Australian Made Natural Deodorant" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_1-310x310.png" src="#" />
-                            </a>
-                            <a class="quickview" data-rel="details" href="#quickview_10001">
-                                Quick View
-                            </a>
-                            <div class="rating">
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                            </div>
-                        </div>
-                        <div class="caption">
-                            <div class="name">
-                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=28">Australian Made Natural Deodorant</a>
-                            </div>
-                            <div class="category-name">
-                                Face
-                            </div>
-                            <div class="price">
-                                <span class="price-new">$40.00</span>
-                                <span class="price-old">$50.00</span>
-                            </div>
-                        </div>
-                        <div class="cart-button">
-                            <button class="btn-primary" type="button" onclick="ajaxAdd($(this),28);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
-                            <div class="clear"></div>
-                            <button class="product-btn" type="button" onclick="wishlist.add('28');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                            <button class="product-btn" type="button" onclick="compare.add('28');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>
-                        </div>
-                    </div>
-                    <div class="product-thumb transition options">
+                                    <div class="right col-sm-8">
+                                        <h3>@item.NameProducts</h3>
+                                        <div class="inf">
+                                            @*<p class="quickview_manufacture manufacture manufacture">
+                                                Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=25">CeraVe</a>
+                                            </p>
+                                            <p class="product_model model">
+                                                Product Code: Classic
+                                            </p>*@
+                                            <div class="price">
+                                                <span class="price-new price-new_@item.IdProducts">
+                                                    <script>
+                                            $(function () {
 
-                        <div class="product-option-wrap">
-                            <div class="product-options form-horizontal">
-                                <div class="options">
-                                    <a class="ajax-overlay_close" href='#'></a>
-                                    <h3>Available Options</h3>
-                                    <div class="form-group hidden">
-                                        <div class="col-sm-8">
-                                            <input type="text" name="product_id" value="30" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12" for="input-option510002">
-                                            Size
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <select name="option[5]" id="input-option510002" class="form-control">
-                                                <option value="">--- Please Select ---</option>
-                                                <option value="11">
-                                                    Small (+$10.00)&lrm;
-                                                </option>
-                                                <option value="12">
-                                                    Medium (+$15.00)&lrm;
-                                                </option>
-                                                <option value="13">
-                                                    Large (+$20.00)&lrm;
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12">
-                                            Color
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div id="input-option610002">
-                                                <div class="radio">
-                                                    <label for="option[61510002]">
-                                                        <input type="radio" hidden name="option[6]" id="option[61510002]" value="15" />
-                                                        black (+$15.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label for="option[61610002]">
-                                                        <input type="radio" hidden name="option[6]" id="option[61610002]" value="16" />
-                                                        black (+$10.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label for="option[61410002]">
-                                                        <input type="radio" hidden name="option[6]" id="option[61410002]" value="14" />
-                                                        red (+$20.00)&lrm;
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'30');"> <span>Thêm vào giỏ hàng</span> </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quick_info">
-                            <div id="quickview_10002" class="quickview-style">
-                                <div class="left col-sm-4">
-                                    <div class="quickview_image image">
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=30">
-                                            <img width="310" height="310" alt="Immediato Spa Soothing Tonic" title="Immediato Spa Soothing Tonic" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_7-310x310.png" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="right col-sm-8">
-                                    <h3>Immediato Spa Soothing Tonic</h3>
-                                    <div class="inf">
-                                        <p class="quickview_manufacture manufacture manufacture">
-                                            Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=27">Nivea</a>
-                                        </p>
-                                        <p class="product_model model">
-                                            Product Code: Premium
-                                        </p>
-                                        <div class="price">
-                                            <span class="price-new">$60.00</span>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.add('30');"> <span>Thêm vào giỏ hàng</span> </button>
-                                    <ul class="product-buttons">
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('30');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span> </button>
-                                        </li>
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('30');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span> </button>
-                                        </li>
-                                    </ul>
-                                    <div class="rating">
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sale">
-                            <span>Sale</span>
-                        </div>
-                        <div class="image">
-                            <a class="lazy" style="padding-bottom: 100%" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=30">
-                                <img width="310" height="310" alt="Immediato Spa Soothing Tonic" title="Immediato Spa Soothing Tonic" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_7-310x310.png" src="#" />
-                            </a>
-                            <a class="quickview" data-rel="details" href="#quickview_10002">
-                                Quick View
-                            </a>
-                            <div class="rating">
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                            </div>
-                        </div>
-                        <div class="caption">
-                            <div class="name">
-                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=30">Immediato Spa Soothing Tonic</a>
-                            </div>
-                            <div class="category-name">
-                                Face
-                            </div>
-                            <div class="price">
-                                <span class="price-new">$60.00</span>
-                                <span class="price-old">$75.00</span>
-                            </div>
-                        </div>
-                        <div class="cart-button">
-                            <button class="btn-primary" type="button" onclick="ajaxAdd($(this),30);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
-                            <div class="clear"></div>
-                            <button class="product-btn" type="button" onclick="wishlist.add('30');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                            <button class="product-btn" type="button" onclick="compare.add('30');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>
-                        </div>
-                    </div>
-                    <div class="product-thumb transition options">
+                                                $('.price-new_@item.IdProducts').text(tien(@item.PriceNewProducts));
+                                            }) </script>
+                                                </span>
+                                                <span class="price-old price-old_@item.IdProducts">
+                                                    <script>
+                                            $(function () {
 
-                        <div class="product-option-wrap">
-                            <div class="product-options form-horizontal">
-                                <div class="options">
-                                    <a class="ajax-overlay_close" href='#'></a>
-                                    <h3>Available Options</h3>
-                                    <div class="form-group hidden">
-                                        <div class="col-sm-8">
-                                            <input type="text" name="product_id" value="33" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12">
-                                            Skin type
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div id="input-option1110003">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="option[11][]" value="25" />
-                                                        Oily (+$10.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="option[11][]" value="26" />
-                                                        Dry (+$15.00)&lrm;
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'33');"> <span>Thêm vào giỏ hàng</span> </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quick_info">
-                            <div id="quickview_10003" class="quickview-style">
-                                <div class="left col-sm-4">
-                                    <div class="quickview_image image">
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=33">
-                                            <img width="310" height="310" alt="Renewing System Eye Repair" title="Renewing System Eye Repair" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_16-310x310.png" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="right col-sm-8">
-                                    <h3>Renewing System Eye Repair</h3>
-                                    <div class="inf">
-                                        <p class="quickview_manufacture manufacture manufacture">
-                                            Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=30">Physicians Formula</a>
-                                        </p>
-                                        <p class="product_model model">
-                                            Product Code: Deluxe
-                                        </p>
-                                        <div class="price">
-                                            <span class="price-new">$32.00</span>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.add('33');"> <span>Thêm vào giỏ hàng</span> </button>
-                                    <ul class="product-buttons">
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('33');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span> </button>
-                                        </li>
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('33');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span> </button>
-                                        </li>
-                                    </ul>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sale">
-                            <span>Sale</span>
-                        </div>
-                        <div class="image">
-                            <a class="lazy" style="padding-bottom: 100%" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=33">
-                                <img width="310" height="310" alt="Renewing System Eye Repair" title="Renewing System Eye Repair" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_16-310x310.png" src="#" />
-                            </a>
-                            <a class="quickview" data-rel="details" href="#quickview_10003">
-                                Quick View
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <div class="name">
-                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=33">Renewing System Eye Repair</a>
-                            </div>
-                            <div class="category-name">
-                                Body
-                            </div>
-                            <div class="price">
-                                <span class="price-new">$32.00</span>
-                                <span class="price-old">$40.00</span>
-                            </div>
-                        </div>
-                        <div class="cart-button">
-                            <button class="btn-primary" type="button" onclick="ajaxAdd($(this),33);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
-                            <div class="clear"></div>
-                            <button class="product-btn" type="button" onclick="wishlist.add('33');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                            <button class="product-btn" type="button" onclick="compare.add('33');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>
-                        </div>
-                    </div>
-                    <div class="product-thumb transition options">
-
-                        <div class="product-option-wrap">
-                            <div class="product-options form-horizontal">
-                                <div class="options">
-                                    <a class="ajax-overlay_close" href='#'></a>
-                                    <h3>Available Options</h3>
-                                    <div class="form-group hidden">
-                                        <div class="col-sm-8">
-                                            <input type="text" name="product_id" value="35" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12">
-                                            Skin type
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div id="input-option1410004">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="option[14][]" value="31" />
-                                                        Oily (+$10.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="option[14][]" value="32" />
-                                                        Dry (+$15.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="option[14][]" value="33" />
-                                                        Sensitive (+$10.00)&lrm;
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12" for="input-option1510004">
-                                            Size
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <select name="option[15]" id="input-option1510004" class="form-control">
-                                                <option value="">--- Please Select ---</option>
-                                                <option value="34">
-                                                    Small (+$5.00)&lrm;
-                                                </option>
-                                                <option value="35">
-                                                    Medium (+$10.00)&lrm;
-                                                </option>
-                                                <option value="36">
-                                                    Large (+$15.00)&lrm;
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12">
-                                            Color
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div id="input-option1610004">
-                                                <div class="radio">
-                                                    <label for="option[163810004]">
-                                                        <input type="radio" hidden name="option[16]" id="option[163810004]" value="38" />
-                                                        black (+$15.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label for="option[163910004]">
-                                                        <input type="radio" hidden name="option[16]" id="option[163910004]" value="39" />
-                                                        black (+$20.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label for="option[163710004]">
-                                                        <input type="radio" hidden name="option[16]" id="option[163710004]" value="37" />
-                                                        red (+$10.00)&lrm;
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'35');"> <span>Thêm vào giỏ hàng</span> </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quick_info">
-                            <div id="quickview_10004" class="quickview-style">
-                                <div class="left col-sm-4">
-                                    <div class="quickview_image image">
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=35">
-                                            <img width="310" height="310" alt="RevitaLift Face and Neck Day Cream" title="RevitaLift Face and Neck Day Cream" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_22-310x310.png" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="right col-sm-8">
-                                    <h3>RevitaLift Face and Neck Day Cream</h3>
-                                    <div class="inf">
-                                        <p class="quickview_manufacture manufacture manufacture">
-                                            Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=32">Verattiva</a>
-                                        </p>
-                                        <p class="product_model model">
-                                            Product Code: Collectible
-                                        </p>
-                                        <div class="price">
-                                            $70.00
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.add('35');"> <span>Thêm vào giỏ hàng</span> </button>
-                                    <ul class="product-buttons">
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('35');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span> </button>
-                                        </li>
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('35');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span> </button>
-                                        </li>
-                                    </ul>
-                                    <div class="rating">
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="image">
-                            <a class="lazy" style="padding-bottom: 100%" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=35">
-                                <img width="310" height="310" alt="RevitaLift Face and Neck Day Cream" title="RevitaLift Face and Neck Day Cream" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_22-310x310.png" src="#" />
-                            </a>
-                            <a class="quickview" data-rel="details" href="#quickview_10004">
-                                Quick View
-                            </a>
-                            <div class="rating">
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                            </div>
-                        </div>
-                        <div class="caption">
-                            <div class="name">
-                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=35">RevitaLift Face and Neck Day Cream</a>
-                            </div>
-                            <div class="category-name">
-                                Face
-                            </div>
-                            <div class="price">
-                                $70.00
-                            </div>
-                        </div>
-                        <div class="cart-button">
-                            <button class="btn-primary" type="button" onclick="ajaxAdd($(this),35);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
-                            <div class="clear"></div>
-                            <button class="product-btn" type="button" onclick="wishlist.add('35');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                            <button class="product-btn" type="button" onclick="compare.add('35');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>
-                        </div>
-                    </div>
-                    <div class="product-thumb transition options">
-
-                        <div class="product-option-wrap">
-                            <div class="product-options form-horizontal">
-                                <div class="options">
-                                    <a class="ajax-overlay_close" href='#'></a>
-                                    <h3>Available Options</h3>
-                                    <div class="form-group hidden">
-                                        <div class="col-sm-8">
-                                            <input type="text" name="product_id" value="41" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12" for="input-option2110005">
-                                            Size
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <select name="option[21]" id="input-option2110005" class="form-control">
-                                                <option value="">--- Please Select ---</option>
-                                                <option value="52">
-                                                    Small (+$20.00)&lrm;
-                                                </option>
-                                                <option value="53">
-                                                    Medium (+$15.00)&lrm;
-                                                </option>
-                                                <option value="54">
-                                                    Large (+$10.00)&lrm;
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'41');"> <span>Thêm vào giỏ hàng</span> </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quick_info">
-                            <div id="quickview_10005" class="quickview-style">
-                                <div class="left col-sm-4">
-                                    <div class="quickview_image image">
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=41">
-                                            <img width="310" height="310" alt="All Day UV Moisture Cream SPF 15" title="All Day UV Moisture Cream SPF 15" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_31-310x310.png" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="right col-sm-8">
-                                    <h3>All Day UV Moisture Cream SPF 15</h3>
-                                    <div class="inf">
-                                        <p class="quickview_manufacture manufacture manufacture">
-                                            Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=25">CeraVe</a>
-                                        </p>
-                                        <p class="product_model model">
-                                            Product Code: Premium
-                                        </p>
-                                        <div class="price">
-                                            <span class="price-new">$44.00</span>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.add('41');"> <span>Thêm vào giỏ hàng</span> </button>
-                                    <ul class="product-buttons">
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('41');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span> </button>
-                                        </li>
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('41');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span> </button>
-                                        </li>
-                                    </ul>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sale">
-                            <span>Sale</span>
-                        </div>
-                        <div class="image">
-                            <a class="lazy" style="padding-bottom: 100%" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=41">
-                                <img width="310" height="310" alt="All Day UV Moisture Cream SPF 15" title="All Day UV Moisture Cream SPF 15" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_31-310x310.png" src="#" />
-                            </a>
-                            <a class="quickview" data-rel="details" href="#quickview_10005">
-                                Quick View
-                            </a>
-                        </div>
-                        <div class="caption">
-                            <div class="name">
-                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=41">All Day UV Moisture Cream SPF 15</a>
-                            </div>
-                            <div class="category-name">
-                                Face
-                            </div>
-                            <div class="price">
-                                <span class="price-new">$44.00</span>
-                                <span class="price-old">$55.00</span>
-                            </div>
-                        </div>
-                        <div class="cart-button">
-                            <button class="btn-primary" type="button" onclick="ajaxAdd($(this),41);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
-                            <div class="clear"></div>
-                            <button class="product-btn" type="button" onclick="wishlist.add('41');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                            <button class="product-btn" type="button" onclick="compare.add('41');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>
-                        </div>
-                    </div>
-                    <div class="product-thumb transition options">
-
-                        <div class="product-option-wrap">
-                            <div class="product-options form-horizontal">
-                                <div class="options">
-                                    <a class="ajax-overlay_close" href='#'></a>
-                                    <h3>Available Options</h3>
-                                    <div class="form-group hidden">
-                                        <div class="col-sm-8">
-                                            <input type="text" name="product_id" value="42" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12" for="input-option2210006">
-                                            Time
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div class="input-group time">
-                                                <input type="text" name="option[22]" value="" data-date-format="HH:mm" id="input-option2210006" class="form-control" />
-                                                <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-default">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </button>
+                                                $('.price-old_@item.IdProducts').text(tien(@item.PriceProducts));
+                                            }) </script>
                                                 </span>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12" for="input-option2310006">Date &amp; Time</label>
-                                        <div class="col-sm-12">
-                                            <div class="input-group datetime">
-                                                <input type="text" name="option[23]" value="2014-12-18 12:25" data-date-format="YYYY-MM-DD HH:mm" id="input-option2310006" class="form-control" />
-                                                <span class="input-group-btn">
-                                                    <button type="button" class="btn btn-default">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12" for="input-option2410006">
-                                            Size
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <select name="option[24]" id="input-option2410006" class="form-control">
-                                                <option value="">--- Please Select ---</option>
-                                                <option value="55">
-                                                    Small (+$20.00)&lrm;
-                                                </option>
-                                                <option value="56">
-                                                    Medium (+$15.00)&lrm;
-                                                </option>
-                                                <option value="57">
-                                                    Large (+$10.00)&lrm;
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12" for="input-option2510006">
-                                            Delivery Date
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div class="input-group date">
-                                                <input type="text" name="option[25]" value="2014-12-18" data-date-format="YYYY-MM-DD" id="input-option2510006" class="form-control" />
-                                                <span class="input-group-btn">
-                                                    <button class="btn btn-default" type="button">
-                                                        <i class="fa fa-calendar"></i>
-                                                    </button>
-                                                </span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12">
-                                            Color
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div id="input-option2610006">
-                                                <div class="radio">
-                                                    <label for="option[265910006]">
-                                                        <input type="radio" hidden name="option[26]" id="option[265910006]" value="59" />
-                                                        black (+$20.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label for="option[266010006]">
-                                                        <input type="radio" hidden name="option[26]" id="option[266010006]" value="60" />
-                                                        white (+$15.00)&lrm;
-                                                    </label>
-                                                </div>
-                                                <div class="radio">
-                                                    <label for="option[265810006]">
-                                                        <input type="radio" hidden name="option[26]" id="option[265810006]" value="58" />
-                                                        red (+$10.00)&lrm;
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'42');"> <span>Thêm vào giỏ hàng</span> </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="quick_info">
-                            <div id="quickview_10006" class="quickview-style">
-                                <div class="left col-sm-4">
-                                    <div class="quickview_image image">
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=42">
-                                            <img width="310" height="310" alt="Moisturizer With Sunscreen SPF30" title="Moisturizer With Sunscreen SPF30" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_34-310x310.png" />
-                                        </a>
+                                        <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="addToCart(@item.IdProducts);"> <span>Thêm vào giỏ hàng</span> </button>
+                                        @*<ul class="product-buttons">
+                                            <li>
+                                                <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('28');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span> </button>
+                                            </li>
+                                            <li>
+                                                <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('28');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span> </button>
+                                            </li>
+                                        </ul>*@
+                                        @*<div class="rating">
+                                            <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
+                                            <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
+                                            <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
+                                            <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
+                                            <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
+                                        </div>*@
+                                        <div class="clear"></div>
                                     </div>
                                 </div>
-                                <div class="right col-sm-8">
-                                    <h3>Moisturizer With Sunscreen SPF30</h3>
-                                    <div class="inf">
-                                        <p class="quickview_manufacture manufacture manufacture">
-                                            Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=26">Loreal</a>
-                                        </p>
-                                        <p class="product_model model">
-                                            Product Code: Collectible
-                                        </p>
-                                        <div class="price">
-                                            <span class="price-new">$72.00</span>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.add('42');"> <span>Thêm vào giỏ hàng</span> </button>
-                                    <ul class="product-buttons">
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('42');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span> </button>
-                                        </li>
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('42');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span> </button>
-                                        </li>
-                                    </ul>
-                                    <div class="rating">
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                                    </div>
-                                    <div class="clear"></div>
+                            </div>
+                            <div class="sale">
+                                <span>Sale</span>
+                            </div>
+                            <div class="image">
+                                <a style="padding-bottom: 100%" href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">
+                                    @foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.IdProducts && x.Position == 1))
+                                    {
+                                        <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" />
+                                    }
+                                </a>
+                                <a class="quickview" data-rel="details" href="#quickview_10001">
+                                    Xem nhanh
+                                </a>
+                                <div class="rating">
+                                    <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
+                                    <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
+                                    <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
+                                    <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
+                                    <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
                                 </div>
                             </div>
-                        </div>
-                        <div class="sale">
-                            <span>Sale</span>
-                        </div>
-                        <div class="image">
-                            <a class="lazy" style="padding-bottom: 100%" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=42">
-                                <img width="310" height="310" alt="Moisturizer With Sunscreen SPF30" title="Moisturizer With Sunscreen SPF30" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_34-310x310.png" src="#" />
-                            </a>
-                            <a class="quickview" data-rel="details" href="#quickview_10006">
-                                Quick View
-                            </a>
-                            <div class="rating">
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                            </div>
-                        </div>
-                        <div class="caption">
-                            <div class="name">
-                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=42">Moisturizer With Sunscreen SPF30</a>
-                            </div>
-                            <div class="category-name">
-                                Body
-                            </div>
-                            <div class="price">
-                                <span class="price-new">$72.00</span>
-                                <span class="price-old">$90.00</span>
-                            </div>
-                        </div>
-                        <div class="cart-button">
-                            <button class="btn-primary" type="button" onclick="cart.add('42');"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
-                            <div class="clear"></div>
-                            <button class="product-btn" type="button" onclick="wishlist.add('42');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                            <button class="product-btn" type="button" onclick="compare.add('42');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>
-                        </div>
-                    </div>
-                    <div class="product-thumb transition options">
+                            <div class="caption">
+                                <div class="name">
+                                    <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts</a>
+                                </div>
+                                <div class="category-name">
+                                    Face
+                                </div>
+                                <div class="price">
+                                    <span class="price-new price-new_@item.IdProducts">
+                                        <script>
+                                            $(function () {
 
-                        <div class="product-option-wrap">
-                            <div class="product-options form-horizontal">
-                                <div class="options">
-                                    <a class="ajax-overlay_close" href='#'></a>
-                                    <h3>Available Options</h3>
-                                    <div class="form-group hidden">
-                                        <div class="col-sm-8">
-                                            <input type="text" name="product_id" value="47" class="form-control" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12" for="input-option3310007">
-                                            Size
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <select name="option[33]" id="input-option3310007" class="form-control">
-                                                <option value="">--- Please Select ---</option>
-                                                <option value="75">
-                                                    Small (+$20.00)&lrm;
-                                                </option>
-                                                <option value="76">
-                                                    Medium (+$15.00)&lrm;
-                                                </option>
-                                                <option value="77">
-                                                    Large (+$10.00)&lrm;
-                                                </option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                    <div class="form-group required">
-                                        <label class="control-label col-sm-12">
-                                            Color
-                                        </label>
-                                        <div class="col-sm-12">
-                                            <div id="input-option3410007">
-                                                <div class="radio">
-                                                    <label for="option[347810007]">
-                                                        <input type="radio" hidden name="option[34]" id="option[347810007]" value="78" />
-                                                        red (+$10.00)&lrm;
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'47');"> <span>Thêm vào giỏ hàng</span> </button>
+                                                $('.price-new_@item.IdProducts').text(tien(@item.PriceNewProducts));
+                                            }) </script>
+                                    </span>
+                                    <span class="price-old price-old_@item.IdProducts">
+                                        <script>
+                                            $(function () {
+
+                                                $('.price-old_@item.IdProducts').text(tien(@item.PriceProducts));
+                                            }) </script>
+                                    </span>
                                 </div>
+                                
+                            </div>
+                            <div class="cart-button">
+                                <button class="btn-primary" type="button" onclick="addToCart(@item.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
+                                <div class="clear"></div>
+                                @*<button class="product-btn" type="button" onclick="wishlist.add('28');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
+                                <button class="product-btn" type="button" onclick="compare.add('28');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>*@
                             </div>
                         </div>
-                        <div class="quick_info">
-                            <div id="quickview_10007" class="quickview-style">
-                                <div class="left col-sm-4">
-                                    <div class="quickview_image image">
-                                        <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=47">
-                                            <img width="310" height="310" alt="Physicians Formula Youthful Wear Cosmeceutical" title="Physicians Formula Youthful Wear Cosmeceutical" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_49-310x310.png" />
-                                        </a>
-                                    </div>
-                                </div>
-                                <div class="right col-sm-8">
-                                    <h3>Physicians Formula Youthful Wear Cosmeceutical</h3>
-                                    <div class="inf">
-                                        <p class="quickview_manufacture manufacture manufacture">
-                                            Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=31">Shany</a>
-                                        </p>
-                                        <p class="product_model model">
-                                            Product Code: Premium
-                                        </p>
-                                        <div class="price">
-                                            <span class="price-new">$48.00</span>
-                                        </div>
-                                    </div>
-                                    <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.add('47');"> <span>Thêm vào giỏ hàng</span> </button>
-                                    <ul class="product-buttons">
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('47');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span> </button>
-                                        </li>
-                                        <li>
-                                            <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('47');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span> </button>
-                                        </li>
-                                    </ul>
-                                    <div class="rating">
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                        <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                    </div>
-                                    <div class="clear"></div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="sale">
-                            <span>Sale</span>
-                        </div>
-                        <div class="image">
-                            <a class="lazy" style="padding-bottom: 100%" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=47">
-                                <img width="310" height="310" alt="Physicians Formula Youthful Wear Cosmeceutical" title="Physicians Formula Youthful Wear Cosmeceutical" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_49-310x310.png" src="#" />
-                            </a>
-                            <a class="quickview" data-rel="details" href="#quickview_10007">
-                                Quick View
-                            </a>
-                            <div class="rating">
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                            </div>
-                        </div>
-                        <div class="caption">
-                            <div class="name">
-                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=47">Physicians Formula Youthful Wear Cosmeceutical</a>
-                            </div>
-                            <div class="category-name">
-                                Face
-                            </div>
-                            <div class="price">
-                                <span class="price-new">$48.00</span>
-                                <span class="price-old">$60.00</span>
-                            </div>
-                        </div>
-                        <div class="cart-button">
-                            <button class="btn-primary" type="button" onclick="ajaxAdd($(this),47);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
-                            <div class="clear"></div>
-                            <button class="product-btn" type="button" onclick="wishlist.add('47');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                            <button class="product-btn" type="button" onclick="compare.add('47');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>
-                        </div>
-                    </div>
+                    }
+                  
+                   
                 </div>
             </div>
         </div>
     </div>
 </div>
 <script>
-	(function ($) {
-		$(document).ready(function () {
-			$('.review-link a').click(function (e) {
-				e.preventDefault();
-				$('.product_tabs a[href="#tab-review"').tab('show');
+	//(function ($) {
+	//	$(document).ready(function () {
+	//		$('.review-link a').click(function (e) {
+	//			e.preventDefault();
+	//			$('.product_tabs a[href="#tab-review"').tab('show');
 
-			})
-			$('.review-link-show').click(function () {
-				$('html, body').animate({
-					'scrollTop': $('.product_tabs').offset().top - ($('#stuck').outerHeight() + 50)
-				}, 1000);
-			})
-			$('.product_tabs li:first-child a').tab('show');
-		});
-	})(jQuery);
+	//		})
+	//		$('.review-link-show').click(function () {
+	//			$('html, body').animate({
+	//				'scrollTop': $('.product_tabs').offset().top - ($('#stuck').outerHeight() + 50)
+	//			}, 1000);
+	//		})
+	//		$('.product_tabs li:first-child a').tab('show');
+	//	});
+	//})(jQuery);
 
-	document.getElementById('input-quantity').onkeypress = function (e) {
+	//document.getElementById('input-quantity').onkeypress = function (e) {
 
-		e = e || event;
+	//	e = e || event;
 
-		if (e.ctrlKey || e.altKey || e.metaKey) return;
+	//	if (e.ctrlKey || e.altKey || e.metaKey) return;
 
-		var chr = getChar(e);
+	//	var chr = getChar(e);
 
-		if (chr == null) return;
+	//	if (chr == null) return;
 
-		if (chr < '0' || chr > '9') {
-			return false;
-		}
+	//	if (chr < '0' || chr > '9') {
+	//		return false;
+	//	}
 
-	}
+	//}
 
-	function getChar(event) {
-		if (event.which == null) {
-			if (event.keyCode < 32) return null;
-			return String.fromCharCode(event.keyCode)
-		}
+	//function getChar(event) {
+	//	if (event.which == null) {
+	//		if (event.keyCode < 32) return null;
+	//		return String.fromCharCode(event.keyCode)
+	//	}
 
-		if (event.which != 0 && event.charCode != 0) {
-			if (event.which < 32) return null;
-			return String.fromCharCode(event.which)
-		}
+	//	if (event.which != 0 && event.charCode != 0) {
+	//		if (event.which < 32) return null;
+	//		return String.fromCharCode(event.which)
+	//	}
 
-		return null;
-	}
-	jQuery('#reviews_form_title').addClass('close-tab');
-	jQuery('#reviews_form_title').on("click", function () {
-		if (jQuery(this).hasClass('close-tab')) {
-			jQuery(this).removeClass('close').parents('#tab-review').find('#reviews_form').slideToggle();
-		}
-		else {
-			jQuery(this).addClass('close-tab').parents('#tab-review').find('#reviews_form').slideToggle();
-		}
-	})
+	//	return null;
+	//}
+	//jQuery('#reviews_form_title').addClass('close-tab');
+	//jQuery('#reviews_form_title').on("click", function () {
+	//	if (jQuery(this).hasClass('close-tab')) {
+	//		jQuery(this).removeClass('close').parents('#tab-review').find('#reviews_form').slideToggle();
+	//	}
+	//	else {
+	//		jQuery(this).addClass('close-tab').parents('#tab-review').find('#reviews_form').slideToggle();
+	//	}
+	//})
 </script>
 <script type="text/javascript">
-	$('select[name=\'recurring_id\'], input[name="quantity"]').change(function () {
+	@*$('select[name=\'recurring_id\'], input[name="quantity"]').change(function () {
 		$.ajax({
 			url: 'index.php?route=product/product/getRecurringDescription',
 			type: 'post',
@@ -1354,9 +545,9 @@
 				}
 			}
 		});
-	});
+	});*@
 </script>
-<script type="text/javascript">
+@*<script type="text/javascript">
 	$('#button-cart').on('click', function () {
 		$.ajax({
 			url: 'index.php?route=checkout/cart/add',
@@ -1424,7 +615,7 @@
 		$('#review').fadeIn('slow');
 	});
 
-	$('#review').load('index.php?route=product/product/review&product_id=46');
+	//$('#review').load('index.php?route=product/product/review&product_id=46');
 
 	$('#button-review').on('click', function () {
 		$.ajax({
@@ -1466,7 +657,7 @@
 		s.src = '//' + disqus_shortname + '.disqus.com/count.js';
 		(document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
 	}());
-</script>
- <!-- FOOTER--->
+</script>*@
+<!-- FOOTER--->
 @Html.Partial("Footer")
 <!--END FOOTER--->

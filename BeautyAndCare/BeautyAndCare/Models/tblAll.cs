@@ -16,12 +16,13 @@ namespace BeautyAndCare.Models
         public tblPromotion tblPromotion { get; set; }
         public tblUser tblUser { get; set; }
 
-        public List<tblCategory>  ListCategory { get; set; }
+        public List<tblCategory> ListCategory { get; set; }
         public List<tblType> ListType { get; set; }
-         public List<tblPicture> classPicture { get; set; }
+        public List<tblPicture> ListPicture { get; set; }
         public tblPicture clPicture { get; set; }
-       
+
         public List<tblProduct> tblPro { get; set; }
+        public List<tblProduct> tblProductRel { get; set; }
         public List<tblMenu> ListMenu { get; set; }
         public tblAll()
         {
@@ -36,14 +37,23 @@ namespace BeautyAndCare.Models
             ListType = new List<tblType>();
             ListMenu = new List<tblMenu>();
         }
-       
+
         public int idProducts { get; set; }
         public string cfile { get; set; }
         public string nameImg { get; set; }
         public byte isactive { get; set; }
         public int idpicture { get; set; }
         public int index { get; set; }
+        public string smallImage()
+        {
+            return String.Format(clPicture.ConvertedFilename, 2);
+        }
+        public string LargeImage()
+        {
+            return String.Format(clPicture.ConvertedFilename,1);
+           
 
+        }
         public string GetFilePathPhysical(PictureSize size)
         {
             // check if we have converted files

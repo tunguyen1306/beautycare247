@@ -6,7 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-
+using PagedList;
 namespace BeautyAndCare.Controllers
 {
     public class WebSiteController : Controller
@@ -25,8 +25,12 @@ namespace BeautyAndCare.Controllers
                                   where dataProducts.StatusProducts == 1
                                   orderby dataProducts.IdProducts descending
                                   select  dataProducts ;
-  
+            var queryListPicture = (from data in db.tblPictures
+                                // where data.Position==1
+                                 select data).ToList();
+
             tbl.ListMenu = queryListMenu;
+            tbl.ListPicture = queryListPicture;
             tbl.tblPro = dataNewProducts.ToList();
 
             return View(tbl);
@@ -118,9 +122,17 @@ namespace BeautyAndCare.Controllers
         {
             return View();
         }
-        public ActionResult Detail()
+        public ActionResult Detail(string id)
         {
-            return View();
+            var id_ = int.Parse(id.Split('-').Last());
+            //var dataNewProducts = from dataProducts in db.tblProducts
+            //                      join dataCategory in db.tblMenus on dataProducts.IdCategoryProducts equals dataCategory.IdMenu
+            //                      join datapic in db.tblPictures on dataProducts.IdProducts equals datapic.ProductsId
+            //                      where dataProducts.StatusProducts == 1 && dataProducts.IdProducts== id_
+            //                      orderby dataProducts.IdProducts descending
+            //                      select new tblAll{ tblProducts=dataProducts,clPicture= datapic };
+            tblAll pic = new tblAll { tblProductRel= db.tblProducts.ToList(), tblPro = db.tblProducts.Where(t => t.IdProducts == id_).ToList(), ListPicture = db.tblPictures.Where(t => t.ProductsId == id_).ToList() };
+            return View(pic);
         }
         public ActionResult CheckOut()
         {
@@ -183,6 +195,47 @@ namespace BeautyAndCare.Controllers
 
         //    return Json();
         //}
+        public ActionResult ListProducts( string id, int? page)
+        {
+            var pagenum = page ?? 1;
+            var pageSize = 1;
+            var id_ = int.Parse(id.Split('-').Last());
+            ViewBag.TypeID = id_;
+            var dataMe = (from datame in db.tblMenus
+                          where datame.IdMenu==id_
+                           select datame).ToList();
+            var data = from dataPro in db.tblProducts
+                       join dataPic in db.tblPictures on dataPro.IdProducts equals dataPic.ProductsId
+                       join dataMenu in db.tblMenus on dataPro.IdCategoryProducts equals dataMenu.IdMenu
+                       where dataPic.Position==1 && dataPro.IdCategoryProducts==id_
+                       select new tblAll { tblProducts=dataPro,clPicture=dataPic,tblMenu=dataMenu };
+           
+            return View(data.ToList().ToPagedList(pagenum,pageSize));
+    
+        }
+        public ActionResult ListProducts1(string id, int? page)
+        {
+            var pagenum = page ?? 1;
+            var pageSize = 1;
+            var id_ = int.Parse(id.Split('-').Last());
+            ViewBag.TypeID = id_;
+            var dataMe = (from datame in db.tblMenus
+                          where datame.IdMenu == id_
+                          select datame).ToList();
+            var data = from dataPro in db.tblProducts
+                       join dataPic in db.tblPictures on dataPro.IdProducts equals dataPic.ProductsId
+                       join dataMenu in db.tblMenus on dataPro.IdCategoryProducts equals dataMenu.IdMenu
+                       where dataPic.Position == 1 && dataPro.IdCategoryProducts == id_
+                       select new tblAll { tblProducts = dataPro, clPicture = dataPic, tblMenu = dataMenu };
 
+            return PartialView("ListProducts", data.ToList().ToPagedList(pagenum, pageSize));
+
+        }
+        public ActionResult ListProductsById()
+        {
+           
+            return View();
+    
+        }
     }
 }

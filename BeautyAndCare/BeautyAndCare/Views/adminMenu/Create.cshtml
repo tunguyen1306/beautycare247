@@ -35,7 +35,7 @@
                             
                                 @Html.DropDownListFor(model => model.tblMenu.OrderMenu, new List<SelectListItem>
                                 {
-                                    new SelectListItem {Text = "Không", Value = "9999999"},
+                                    new SelectListItem {Text = "thứ tự", Value = "9999999"},
                                     new SelectListItem {Text = "1", Value = "1"},
                                        new SelectListItem {Text = "2", Value = "2"},
                                           new SelectListItem {Text = "3", Value = "3"},
@@ -47,7 +47,7 @@
                                                             new SelectListItem {Text = "9", Value = "9"},
                                                                new SelectListItem {Text = "0", Value = "10"},
 
-                                }, new { @class = "form-control", @name = "tblProducts.OrderMenu" })
+                                }, new { @class = "form-control", @name = "tblMenu.OrderMenu" })
 
                             </div>
                             <div class="form-group">
@@ -58,7 +58,15 @@
                         <div class="col-lg-6">
                             <div class="form-group">
                                 <label>Loại</label>
-                                @Html.DropDownListFor(M => M.tblMenu.IdParentMenu, new SelectList(Model.ListMenu.ToList(), "IdMenu", "NameMenu"), htmlAttributes: new { @class = "form-control", @name = "tblProducts.IdCategoryProducts" })
+                                @*@Html.DropDownListFor(M => M.tblMenu.IdParentMenu,  new SelectList(Model.ListMenu.ToList(), "IdMenu", "NameMenu"), htmlAttributes: new { @class = "form-control", @name = "tblProducts.IdCategoryProducts" })*@
+                                <select class="form-control" name="tblMenu.IdParentMenu">
+                                    <option value="0">Chọn danh sách</option>
+                                    @foreach (var item in Model.ListMenu)
+                                    {
+                                        <option value="@item.IdMenu">@item.NameMenu</option>
+                                    }
+                                </select>
+
                             </div>
 
                             <div class="form-group">
@@ -69,7 +77,7 @@
                                     new SelectListItem {Text = "Không hoạt động", Value = "0"},
                                     new SelectListItem {Text = "Hoạt động", Value = "1"},
 
-                                }, new { @class = "form-control", @name = "tblProducts.StatusMenu" })
+                                }, new { @class = "form-control", @name = "tblMenu.StatusMenu" })
 
                             </div>
                             <div class="form-group">
@@ -80,7 +88,7 @@
                                     new SelectListItem {Text = "Không", Value = "0"},
                                     new SelectListItem {Text = "Có", Value = "1"},
 
-                                }, new { @class = "form-control", @name = "tblProducts.IsParent" })
+                                }, new { @class = "form-control", @name = "tblMenu.IsParent" })
 
                             </div>
                             <div class="form-group">
@@ -91,7 +99,7 @@
                                     new SelectListItem {Text = "Không", Value = "0"},
                                     new SelectListItem {Text = "Có", Value = "1"},
 
-                                }, new { @class = "form-control", @name = "tblProducts.ShowHomeMenu" })
+                                }, new { @class = "form-control", @name = "tblMenu.ShowHomeMenu" })
 
                             </div>
                             <div class="form-group">

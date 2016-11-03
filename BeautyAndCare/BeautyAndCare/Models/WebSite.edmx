@@ -27,6 +27,8 @@
           <Property Name="LinkMenu" Type="nvarchar" MaxLength="500" />
           <Property Name="IsCategoryMenu" Type="int" />
           <Property Name="ShowHomeMenu" Type="int" />
+          <Property Name="Description_en" Type="nvarchar" MaxLength="2000" />
+          <Property Name="Description_vi" Type="nvarchar" MaxLength="2000" />
         </EntityType>
         <EntityType Name="tblPicture">
           <Key>
@@ -140,6 +142,8 @@
           <Property Name="LinkMenu" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="IsCategoryMenu" Type="Int32" />
           <Property Name="ShowHomeMenu" Type="Int32" />
+          <Property Name="Description_en" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
+          <Property Name="Description_vi" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityContainer Name="WebSiteEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="tblMenus" EntityType="Self.tblMenu" />
@@ -252,6 +256,8 @@
           <EntitySetMapping Name="tblMenus">
             <EntityTypeMapping TypeName="WebSiteModel.tblMenu">
               <MappingFragment StoreEntitySet="tblMenu">
+                <ScalarProperty Name="Description_vi" ColumnName="Description_vi" />
+                <ScalarProperty Name="Description_en" ColumnName="Description_en" />
                 <ScalarProperty Name="ShowHomeMenu" ColumnName="ShowHomeMenu" />
                 <ScalarProperty Name="IsCategoryMenu" ColumnName="IsCategoryMenu" />
                 <ScalarProperty Name="IdMenu" ColumnName="IdMenu" />

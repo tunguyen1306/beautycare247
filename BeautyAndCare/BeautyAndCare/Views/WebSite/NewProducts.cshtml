@@ -1,170 +1,205 @@
-﻿@model BeautyAndCare.Models.tblAll
-
+﻿@using BeautyAndCare.Models
+@model tblAll
+@using System.Configuration
 @foreach (var item1 in Model.ListMenu)
 {
-<div class="box latest">
-    <div class="clear"></div>
-    <div class="box-heading">
-        <h3>
-            @item1.NameMenu
-        </h3>
-    </div>
-    <div class="box-content">
-        <div class="box-carousel">
-          @foreach (var item in Model.tblPro.Where(x=>x.IdCategoryProducts == item1.IdMenu))
-          {
-                <div class="product-thumb transition options">
+    <div class="box latest">
+        <div class="clear"></div>
+        <div class="box-heading">
+            <h3>
+                @item1.NameMenu
+            </h3>
+        </div>
+        <div class="box-content">
+            <div class="box-carousel">
+                @foreach (var item in Model.tblPro.Where(x => x.IdCategoryProducts == item1.IdMenu))
+                {
+                    <div class="product-thumb transition options">
 
-                    <div class="product-option-wrap">
-                        <div class="product-options form-horizontal">
-                            <div class="options">
-                                <a class="ajax-overlay_close" href='#'></a>
-                                <h3>Available Options</h3>
-                                <div class="form-group hidden">
-                                    <div class="col-sm-8">
-                                        <input type="text" name="product_id" value="50" class="form-control" />
+                        <div class="product-option-wrap">
+                            <div class="product-options form-horizontal">
+                                <div class="options">
+                                    <a class="ajax-overlay_close" href='#'></a>
+                                    <h3>Available Options</h3>
+                                    <div class="form-group hidden">
+                                        <div class="col-sm-8">
+                                            <input type="text" name="product_id" value="50" class="form-control" />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group required">
-                                    <label class="control-label col-sm-12" for="input-option3903001">
-                                        Size
-                                    </label>
-                                    <div class="col-sm-12">
-                                        <select name="option[39]" id="input-option3903001" class="form-control">
-                                            <option value="">--- Please Select ---</option>
-                                            <option value="87">
-                                                Small (+$15.00)&lrm;
-                                            </option>
-                                            <option value="88">
-                                                Medium (+$10.00)&lrm;
-                                            </option>
-                                            <option value="89">
-                                                Large (+$5.00)&lrm;
-                                            </option>
-                                        </select>
+                                    <div class="form-group required">
+                                        <label class="control-label col-sm-12" for="input-option3903001">
+                                            Size
+                                        </label>
+                                        <div class="col-sm-12">
+                                            <select name="option[39]" id="input-option3903001" class="form-control">
+                                                <option value="">--- Please Select ---</option>
+                                                <option value="87">
+                                                    Small (+$15.00)&lrm;
+                                                </option>
+                                                <option value="88">
+                                                    Medium (+$10.00)&lrm;
+                                                </option>
+                                                <option value="89">
+                                                    Large (+$5.00)&lrm;
+                                                </option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-group required">
-                                    <label class="control-label col-sm-12">
-                                        Color
-                                    </label>
-                                    <div class="col-sm-12">
-                                        <div id="input-option4003001">
-                                            <div class="radio">
-                                                <label for="option[409003001]">
-                                                    <input type="radio" hidden name="option[40]" id="option[409003001]" value="90" />
-                                                    black
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label for="option[409203001]">
-                                                    <input type="radio" hidden name="option[40]" id="option[409203001]" value="92" />
-                                                    white
-                                                </label>
-                                            </div>
-                                            <div class="radio">
-                                                <label for="option[409103001]">
-                                                    <input type="radio" hidden name="option[40]" id="option[409103001]" value="91" />
-                                                    red
-                                                </label>
+                                    <div class="form-group required">
+                                        <label class="control-label col-sm-12">
+                                            Color
+                                        </label>
+                                        <div class="col-sm-12">
+                                            <div id="input-option4003001">
+                                                <div class="radio">
+                                                    <label for="option[409003001]">
+                                                        <input type="radio" hidden name="option[40]" id="option[409003001]" value="90" />
+                                                        black
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label for="option[409203001]">
+                                                        <input type="radio" hidden name="option[40]" id="option[409203001]" value="92" />
+                                                        white
+                                                    </label>
+                                                </div>
+                                                <div class="radio">
+                                                    <label for="option[409103001]">
+                                                        <input type="radio" hidden name="option[40]" id="option[409103001]" value="91" />
+                                                        red
+                                                    </label>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                                <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'50');">
-                                    <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="quick_info">
-                        <div id="quickview_latest_@item.IdProducts" class="quickview-style">
-                            <div class="left col-sm-5">
-                                <div class="quickview_image image">
-                                    <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">
-                                        <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_58-310x310.png" />
-                                    </a>
+                                    <button class="btn-primary" type="button" onclick="addToCart(@item.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
                                 </div>
                             </div>
-                            <div class="right col-sm-7">
-                                <h2>@item.NameProducts</h2>
-                                <div class="inf">
-                                    <p class="quickview_manufacture manufacture manufacture">
-                                        Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=34">Borghese</a>
-                                    </p>
-                                    <p class="product_model model">
-                                        Model: Classic
-                                    </p>
+                        </div>
+                        <div class="quick_info">
+                            <div id="quickview_latest_@item.IdProducts" class="quickview-style">
+                                <div class="left col-sm-5">
+                                    <div class="quickview_image image">
+                                        <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">
+                                            @foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.IdProducts && x.Position == 1))
+                                            {
+                                                <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" />
+                                            }
+                                        </a>
+                                    </div>
                                 </div>
-                                <div class="price">
-                                    $85.00
+                                <div class="right col-sm-7">
+                                    <h2>@item.NameProducts</h2>
+                                    @*<div class="inf">
+                                        <p class="quickview_manufacture manufacture manufacture">
+                                            Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=34">Borghese</a>
+                                        </p>
+                                        <p class="product_model model">
+                                            Model: Classic
+                                        </p>
+                                    </div>*@
+                                    <div class="price">
+                                        <span class="price-new price-new_@item.IdProducts">
+                                            <script>
+                                            $(function () {
+
+                                                $('.price-new_@item.IdProducts').text(tien(@item.PriceNewProducts));
+                                            }) </script>
+                                        </span>
+                                        <span class="price-old price-old_@item.IdProducts">
+                                            <script>
+                                            $(function () {
+
+                                                $('.price-old_@item.IdProducts').text(tien(@item.PriceProducts));
+                                            }) </script>
+                                        </span>
+                                    </div>
+                                    <button class="btn-primary" type="button" onclick="addToCart(@item.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
+                                    @*<ul class="product-buttons">
+                                            <li>
+                                                <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('50');">
+                                                    <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span>
+                                                </button>
+                                            </li>
+                                            <li>
+                                                <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('50');">
+                                                    <i class="material-icons-shuffle"></i> <span>Add to Compare</span>
+                                                </button>
+                                            </li>
+                                        </ul>*@
+                                    <div class="clear"></div>
                                 </div>
-                                <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="cart.addPopup($(this),'50');"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
-                                @*<ul class="product-buttons">
-                                    <li>
-                                        <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('50');">
-                                            <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span>
-                                        </button>
-                                    </li>
-                                    <li>
-                                        <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('50');">
-                                            <i class="material-icons-shuffle"></i> <span>Add to Compare</span>
-                                        </button>
-                                    </li>
-                                </ul>*@
-                                <div class="clear"></div>
                             </div>
                         </div>
+                        @if (item.IdTypeProducts == 1)
+                    {
+                            <div class="new-pr"><span>Hàng mới</span></div>
+                        }
+                        @if (item.IdTypeProducts == 2)
+                    {
+                            <div class="sale">
+                                <span>Giảm giá</span>
+                            </div>
+                        }
+                        @if (item.IdTypeProducts == 3)
+                    {
+                            <div class="discount"><span>Hết hàng</span></div>
+                        }
+                        @if (item.IdTypeProducts == 4)
+                    {
+                            <div class="discount"><span>Đang về</span></div>
+                        }
+                        <div class="image">
+                            <a class="lazy" style="padding-bottom: 100%" href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">
+                                @foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.IdProducts && x.Position == 1))
+                                {
+                                    <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" />
+                                  
+                                }
+                              </a>
+                            <a class="quickview" data-rel="details" href="#quickview_latest_@item.IdProducts">
+                                Xem nhanh
+                            </a>
+                        </div>
+                        <div class="caption">
+                            <div class="name">
+                                <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts</a>
+                            </div>
+                            <div class="category-name">
+                             @foreach (var itemMenu in Model.ListMenu.Where(x=>x.IdMenu==item.IdCategoryProducts))
+                             {
+                                 @itemMenu.NameMenu
+                             }
+                            </div>
+                            <div class="price">
+                                <span class="price-new price-new_@item.IdProducts">
+                                    <script>
+                                            $(function () {
+
+                                                $('.price-new_@item.IdProducts').text(tien(@item.PriceNewProducts));
+                                            }) </script>
+                                </span>
+                                <span class="price-old price-old_@item.IdProducts">
+                                    <script>
+                                            $(function () {
+
+                                                $('.price-old_@item.IdProducts').text(tien(@item.PriceProducts));
+                                            }) </script>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="cart-button">
+                            <button class="btn-primary" type="button" onclick="addToCart(@item.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
+                            <div class="clear"></div>
+                            @*<button class="product-btn" type="button" onclick="wishlist.add('50');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
+                                <button class="product-btn" type="button" onclick="compare.add('50');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>*@
+
+                        </div>
                     </div>
-                    @if (item.IdTypeProducts == 1)
-                    {
-                        <div class="new-pr"><span>Hàng mới</span></div>
-                    }
-                    @if (item.IdTypeProducts == 2)
-                    {
-                        <div class="sale">
-                            <span>Giảm giá</span>
-                        </div>
-                    }
-                    @if (item.IdTypeProducts == 3)
-                    {
-                        <div class="discount"><span>Hết hàng</span></div>
-                    }
-                    @if (item.IdTypeProducts == 4)
-                    {
-                        <div class="discount"><span>Đang về</span></div>
-                    }
-                    <div class="image">
-                        <a class="lazy" style="padding-bottom: 100%" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">
-                            <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" data-src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_58-310x310.png" src="#" />
-                        </a>
-                        <a class="quickview" data-rel="details" href="#quickview_latest_@item.IdProducts">
-                            Xem nhanh
-                        </a>
-                    </div>
-                    <div class="caption">
-                        <div class="name">
-                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">@item.NameProducts</a>
-                        </div>
-                        <div class="category-name">
-                            Face
-                        </div>
-                        <div class="price">
-                            $85.00
-                        </div>
-                    </div>
-                    <div class="cart-button">
-                        <button class="btn-primary" type="button" onclick="addToCart(@item.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
-                        <div class="clear"></div>
-                        @*<button class="product-btn" type="button" onclick="wishlist.add('50');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                        <button class="product-btn" type="button" onclick="compare.add('50');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>*@
-                   
-                     </div>
-                </div>
-          }
+                }
 
 
+            </div>
         </div>
     </div>
-</div>
 }

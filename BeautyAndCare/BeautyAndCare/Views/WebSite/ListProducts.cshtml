@@ -1,0 +1,22 @@
+﻿@using BeautyAndCare.Models;
+@using System.Linq;
+@using System.Configuration
+@model PagedList.IPagedList<tblAll>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayOutNew.cshtml";
+    WebSiteEntities db = new WebSiteEntities();
+    var queryMenu = from data in db.tblMenus
+                    where data.StatusMenu == 1
+                    select data;
+}
+<!--HEADER--->
+@Html.Partial("Header", queryMenu.ToList())
+<!--END HEADER--->
+
+@Html.Partial("ListProductsById", Model)
+
+<!-- FOOTER--->
+@Html.Partial("Footer")
+<!--END FOOTER--->
