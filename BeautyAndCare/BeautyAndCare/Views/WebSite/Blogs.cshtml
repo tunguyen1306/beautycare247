@@ -1,0 +1,46 @@
+﻿@using BeautyAndCare.Models
+@model tblAll
+@using System.Configuration
+<div class="box blog_articles">
+    <div class="box-heading">
+        <h3>Blogs</h3>
+        @*<h5>News and useful tips</h5>*@
+    </div>
+    <div class="box-content">
+        <div class="row">
+            @foreach (var item in Model.ListBlogNo)
+            {
+                <div class="col-sm-4">
+                    <figure class="article-image">
+                        <img width="225" height="225" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_vi" />
+                    </figure>
+                    <h3 class="article-title">
+                        <a href="@Url.Action("DetailBlog","adminBlogs",new { id = item.NameBlog_vi.UrlFrendly() + "-" + item.IdBlog })">@item.NameBlog_vi</a>
+                    </h3>
+                    <div>
+                        <div class="article-description">
+                            @item.ShortDes_vi
+                        </div>
+                    </div>
+                </div>
+            }
+            @foreach (var item in Model.ListBlogIs)
+            {
+                <div class="col-sm-4">
+                    <div class="r_frame article-video"> <iframe src="//www.youtube.com/embed/@item.LinkVideo?rel=0&amp;controls=0&amp;showinfo=0&amp;wmode=transparent" allowfullscreen="" height="433" width="770" frameborder="0"></iframe> </div>
+                    <figure class="article-image">
+                        <img width="225" height="225" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_vi" />
+                    </figure>
+                    <h3 class="article-title">
+                        <a href="@Url.Action("DetailBlog","adminBlogs",new { id = item.NameBlog_vi.UrlFrendly() + "-" + item.IdBlog })">@item.NameBlog_vi</a>
+                    </h3>
+                    <div>
+                        <div class="article-description">
+                            @item.ShortDes_vi
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>

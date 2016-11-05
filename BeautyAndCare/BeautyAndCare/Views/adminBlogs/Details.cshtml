@@ -1,0 +1,91 @@
+﻿@model BeautyAndCare.Models.tblBlog
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblBlog</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameBlog_vi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameBlog_vi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameBlog_en)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameBlog_en)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDes_vi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDes_vi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDes_en)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDes_en)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Des_vi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Des_vi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Des_en)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Des_en)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusBlog)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusBlog)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDateBlog)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDateBlog)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImgBlog)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImgBlog)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdBlog }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

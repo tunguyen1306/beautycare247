@@ -1,0 +1,246 @@
+﻿@model BeautyAndCare.Models.tblBlog
+@using System.Configuration
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/ckeditor/ckeditor.js"></script>
+<script src="~/ckeditor/adapters/jquery.js"></script>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Sửa tin Blog </h1>
+    </div>
+
+</div>
+
+
+@using (Html.BeginForm("Edit", "adminBlogs"))
+{ @Html.HiddenFor(model => model.IdBlog)
+    @Html.AntiForgeryToken()
+    <input type="hidden" id="hdImgName" value="@Model.ImgBlog" name="ImgBlog" />
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Tiêu đề vi</label>
+
+                                @Html.TextBoxFor(x => x.NameBlog_vi, htmlAttributes: new { @id = "txtNameBlog_vi", @name = "NameBlog_vi", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.NameBlog_vi, "", htmlAttributes: new { @style = "color: blue;" })
+                            </div>
+                            <div class="form-group">
+                                <label>Tiêu đề en</label>
+
+                                @Html.TextBoxFor(x => x.NameBlog_en, htmlAttributes: new { @id = "txtNameBlog_en", @name = "NameBlog_en", @class = "form-control" })
+                                @Html.ValidationMessageFor(model => model.NameBlog_en, "", htmlAttributes: new { @style = "color: blue;" })
+                            </div>
+                            <div class="form-group">
+                                <label>Hình đại diện </label>
+                                <div class="row">
+                                    <form id="dataimg" method="post" enctype="multipart/form-data">
+                                        <div class="col-lg-10">
+                                            <input class="form-control" id="getImg" type="file">
+                                        </div>
+                                    </form>
+
+                                    <div class="col-lg-2">
+                                        <input type="button" onclick="getLink()" value="Up ảnh" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        @if (Model.ImgBlog != null)
+                                        {
+                                            <img src="@ConfigurationManager.AppSettings["domain"]@Model.ImgBlog.Split('_')[0]/@Model.ImgBlog" id="idImg" width="200" />
+                                        }
+                                        else
+                                        {
+                                            <img src="~/Content/no-image-available.jpg" id="idImg" width="200" />
+                                        }
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                          
+                            <div class="form-group">
+                                <label>Tin video</label>
+
+
+                                @Html.DropDownListFor(model => model.IsVideo, new List<SelectListItem>
+                                {
+                                    
+                                    new SelectListItem {Text = "Không", Value = "0"},
+                                    new SelectListItem {Text = "Có", Value = "1"}
+                                }, new { @class = "form-control", @id = "dropIsVideo", @name = "IsVideo" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Link video</label>
+                               
+                                @Html.TextBoxFor(x => x.LinkVideo, htmlAttributes: new { @id = "txtLinkVideo", @name = "LinkVideo", @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+
+
+                                @Html.DropDownListFor(model => model.StatusBlog, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Hoạt động", Value = "1"},
+                                    new SelectListItem {Text = "Tạm dừng", Value = "0"}
+                                }, new { @class = "form-control", @id = "dropStatus", @name = "StatusBlog" })
+
+                            </div>
+                            <div class="form-group">
+
+                                <label>Lấy link hình </label>
+                                <div class="row">
+                                    <form id="data" method="post" enctype="multipart/form-data">
+                                        <div class="col-lg-12">
+                                            <input class="form-control" id="getLinkFile" type="file">
+                                            <label class="link"></label>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Mô tả tóm tắt</label>
+                                @Html.TextAreaFor(x => x.ShortDes_vi, htmlAttributes: new { @id = "txtShortDes_vi", @name = "ShortDes_vi", @class = "form-control" })
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Mô tả tóm tắt</label>
+                                @Html.TextAreaFor(x => x.ShortDes_en, htmlAttributes: new { @id = "txtShortDes_en", @name = "ShortDes_en", @class = "form-control" })
+
+
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Mô tả vi</label>
+
+                                @Html.TextAreaFor(x => x.Des_vi, htmlAttributes: new { @id = "txtDes_vi", @name = "Des_vi", @class = "form-control fckedit" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Mô tả en</label>
+                                @Html.TextAreaFor(x => x.Des_en, htmlAttributes: new { @id = "txtDes_en", @name = "Des_en", @class = "form-control fckedit" })
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                        </div>
+                        <div class="col-lg-6">
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" class="btn btn-default">Sửa</button>
+                                    <a href="@Url.Action("Index","adminBlogs")" class="btn btn-primary">Hủy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+
+    <!-- /.row -->
+}
+
+
+<script>
+    $(function () {
+        $('.fckedit').ckeditor();
+
+    });
+
+    function getLink() {
+        var dataimg = new FormData();
+        var files = $("#getImg").get(0).files;
+        if (files.length > 0) {
+            dataimg.append("HelpSectionImages", files[0]);
+        }
+        $.ajax({
+            url: '@Url.Action("GetLink", "adminBlogs")',
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: dataimg,
+            success: function (response) {
+
+                console.log(response);
+                $('#idImg').attr("src", response.shorurl);
+                $('#hdImgName').val(response.imgName);
+
+            },
+            error: function (er) {
+                alert(er);
+            }
+
+        });
+    }
+    $("#getLinkFile").change(function () {
+        var data = new FormData();
+        var files = $("#getLinkFile").get(0).files;
+        if (files.length > 0) {
+            data.append("HelpSectionImages", files[0]);
+        }
+        $.ajax({
+            url: '@Url.Action("GetLink", "adminBlogs")',
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                //code after success
+                console.log(response);
+                $('.link').text(response.fullurl);
+            },
+            error: function (er) {
+
+            }
+
+        });
+    });
+
+</script>

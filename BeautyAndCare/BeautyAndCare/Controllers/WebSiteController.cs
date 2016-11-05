@@ -28,11 +28,23 @@ namespace BeautyAndCare.Controllers
             var queryListPicture = (from data in db.tblPictures
                                 // where data.Position==1
                                  select data).ToList();
-
+            var querySlider = (from dataSlider in db.tblSliders
+                               where dataSlider.StatusSlider == 1
+                               select dataSlider).ToList();
+            var queryBlogNo = (from dataBlog in db.tblBlogs
+                             where dataBlog.StatusBlog == 1 && dataBlog.IsVideo==0
+                               orderby dataBlog.IdBlog descending
+                             select dataBlog).Take(2).ToList();
+            var queryBlogIs = (from dataBlog in db.tblBlogs
+                               where dataBlog.StatusBlog == 1 && dataBlog.IsVideo == 1
+                               orderby dataBlog.IdBlog descending
+                               select dataBlog).Take(1).ToList();
             tbl.ListMenu = queryListMenu;
             tbl.ListPicture = queryListPicture;
             tbl.tblPro = dataNewProducts.ToList();
-
+            tbl.ListSlider = querySlider;
+            tbl.ListBlogNo = queryBlogNo;
+            tbl.ListBlogIs = queryBlogIs;
             return View(tbl);
         }
         public ActionResult Header()
@@ -158,8 +170,8 @@ namespace BeautyAndCare.Controllers
                     ProductID = dataPro.IdProducts,
                     Price = dataPro.PriceNewProducts,
                     Quanlity = 1,
-                    Total = Convert.ToDecimal(dataPro.PriceProducts),
-                    SubTotal = Convert.ToDecimal(dataPro.PriceProducts)
+                    Total = Convert.ToDecimal(dataPro.PriceNewProducts),
+                    SubTotal = Convert.ToDecimal(dataPro.PriceNewProducts)
                 };
                 cart.AddToCart(cartIem);
                 Session["cart"] = cart;
@@ -236,6 +248,43 @@ namespace BeautyAndCare.Controllers
            
             return View();
     
+        }
+        public ActionResult PayOut()
+        {
+
+            return View();
+
+        }
+        public ActionResult Slider()
+        {
+            var querySlider = (from dataSlider in db.tblSliders
+                              where dataSlider.StatusSlider==1
+                              select dataSlider).ToList();
+            return View(querySlider);
+
+        }
+        public ActionResult Blogs()
+        {
+            var queryBlog = (from dataBlog in db.tblBlogs
+                              where dataBlog.StatusBlog==1
+                              select dataBlog).ToList();
+            return View(queryBlog);
+
+        }
+        public ActionResult DetailBlog(string id)
+        {
+            var id_ = int.Parse(id.Split('-').Last());
+            var queryBlog = (from dataBlog in db.tblBlogs
+                             where dataBlog.IdBlog==id_
+                             select dataBlog).ToList();
+            return View(queryBlog);
+
+        }
+        public ActionResult Language()
+        {
+            string n =  Request.Form["vn"];
+
+            return RedirectToAction("Index", "WebSite");
         }
     }
 }

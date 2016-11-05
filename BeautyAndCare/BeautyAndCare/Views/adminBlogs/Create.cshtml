@@ -1,0 +1,229 @@
+﻿@model BeautyAndCare.Models.tblBlog
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script src="~/ckeditor/ckeditor.js"></script>
+<script src="~/ckeditor/adapters/jquery.js"></script>
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Đăng tin Blog trafashion</h1>
+    </div>
+
+</div>
+
+
+@using (Html.BeginForm("Create", "adminBlogs"))
+{
+    <input type="hidden" id="hdImgName" name="ImgBlog" />
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Tiêu đề vi</label>
+                                <input class="form-control" name="NameBlog_vi" id="txtNameBlog_vi">
+                                @Html.ValidationMessageFor(model => model.NameBlog_vi, "", htmlAttributes: new { @style = "color: blue;" })
+                            </div>
+                            <div class="form-group">
+                                <label>Tiêu đề en</label>
+                                <input class="form-control" name="NameBlog_en" id="txtNameBlog_en">
+                                @Html.ValidationMessageFor(model => model.NameBlog_en, "", htmlAttributes: new { @style = "color: blue;" })
+                            </div>
+                            <div class="form-group">
+                                <label>Hình đại diện </label>
+                                <div class="row">
+                                    <form id="dataimg" method="post" enctype="multipart/form-data">
+                                        <div class="col-lg-10">
+                                            <input class="form-control" id="getImg" type="file">
+                                        </div>
+                                    </form>
+
+                                    <div class="col-lg-2">
+                                        <input type="button" onclick="getLink()" value="Up ảnh" />
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <img src="~/Content/no-image-available.jpg" id="idImg" width="200" />
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="col-lg-6">
+                           
+                            <div class="form-group">
+                                <label>Tin video</label>
+
+                                <select class="form-control" name="IsVideo">
+                                    <option value="0">Không</option>
+                                    <option value="1">Có</option>
+                                   
+
+                                </select>
+
+                            </div>
+                            <div class="form-group">
+                                <label>Link video</label>
+                                <input class="form-control" name="LinkVideo" id="txtLinkVideo">
+                            </div>
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+
+                                <select class="form-control" name="StatusBlog">
+                                    <option value="1">Hoạt động</option>
+                                    <option value="0">Không hoạt động</option>
+
+                                </select>
+
+                            </div>
+                            <div class="form-group">
+
+                                <label>Lấy link hình </label>
+                                <div class="row">
+                                    <form id="data" method="post" enctype="multipart/form-data">
+                                        <div class="col-lg-12">
+                                            <input class="form-control" id="getLinkFile" type="file">
+                                            <label class="link"></label>
+                                        </div>
+
+
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Mô tả tóm tắt vi</label>
+                                <textarea class="form-control" name="ShortDes_vi" id="txtShortDes_vi"></textarea>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Mô tả tóm tắt en</label>
+                                <textarea class="form-control" name="ShortDes_en" id="txtShortDes_en"></textarea>
+
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Mô tả vi</label>
+                              
+                                @Html.TextAreaFor(x => x.Des_vi, htmlAttributes: new { @id = "txtDes_vi", @name = "Des_vi", @class = "form-control fckedit" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="form-group">
+                                <label>Mô tả en</label>
+
+                                @Html.TextAreaFor(x => x.Des_en, htmlAttributes: new { @id = "txtDes_en", @name = "Des_en", @class = "form-control fckedit" })
+
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+
+                        </div>
+                        <div class="col-lg-6">
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <button type="submit" class="btn btn-default">Thêm</button>
+                                    <a href="@Url.Action("Index","adminBlogs")" class="btn btn-primary">Hủy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+
+    <!-- /.row -->
+}
+
+
+<script>
+    $(function () {
+        $('.fckedit').ckeditor();
+
+    });
+
+    function getLink() {
+        var dataimg = new FormData();
+        var files = $("#getImg").get(0).files;
+        if (files.length > 0) {
+            dataimg.append("HelpSectionImages", files[0]);
+        }
+        $.ajax({
+            url: '@Url.Action("GetLink", "adminBlogs")',
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: dataimg,
+            success: function (response) {
+
+                console.log(response);
+                $('#idImg').attr("src", response.shorurl);
+                $('#hdImgName').val(response.imgName);
+
+            },
+            error: function (er) {
+                alert(er);
+            }
+
+        });
+    }
+    $("#getLinkFile").change(function () {
+        var data = new FormData();
+        var files = $("#getLinkFile").get(0).files;
+        if (files.length > 0) {
+            data.append("HelpSectionImages", files[0]);
+        }
+        $.ajax({
+            url: '@Url.Action("GetLink", "adminBlogs")',
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                //code after success
+                console.log(response);
+                $('.link').text(response.fullurl);
+            },
+            error: function (er) {
+
+            }
+
+        });
+    });
+
+</script>

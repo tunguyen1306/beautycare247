@@ -1,0 +1,81 @@
+﻿@model IEnumerable<BeautyAndCare.Models.tblSlider>
+@using System.Configuration
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Danh sách Slider</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.ActionLink("Thêm Silder", "Create", "adminSliders", "", htmlAttributes: new { @class = "btn btn-primary" })
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Hình</th>
+                                <th>Tên Slider Vi</th>
+                                <th>Tên Slider En</th>
+                                <th>Trạng thái</th>
+                              
+                              
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+                                
+                                    <td>@item.IdSlider</td>
+                                    <td><img width="50" src="@ConfigurationManager.AppSettings["domain"]@item.ImgSlider.ToString().Split('_')[0]/@item.ImgSlider" /> </td>
+                                    <td>@item.NameSlider_vi</td>
+                                    <td>@item.NameSlider_en</td>
+                                 
+                                    <td>
+
+                                        @if (item.StatusSlider == 1)
+                                        {
+                                            @("Hoạt động")
+                                        }
+                                        @if (item.StatusSlider == 0)
+                                        {
+                                            @("Không hoạt động")
+                                        }
+                                    </td>
+                                  
+                                   
+                                 
+                                    <td>
+                                        <a href="@Url.Action("Edit", "adminSliders", new { id = item.IdSlider})" class="btn btn-default btn-xs">Sửa</a>
+                                        <a href="@Url.Action("Delete", "adminSliders", new { id = item.IdSlider })" onclick="return confirm('Bạn có muốn xóa không?');" class="btn btn-default btn-xs">Xóa</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>

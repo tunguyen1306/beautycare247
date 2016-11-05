@@ -9,143 +9,29 @@
     var queryMenu = from data in db.tblMenus
                     where data.StatusMenu == 1
                     select data;
-   
+
 }
 
-    <!--HEADER--->
-   @Html.Partial("Header", queryMenu.ToList())
-    <!--END HEADER--->
-
-    <!--CONTAINER--->
-    <div class="container">
-        <div class="row">
-            <div id="content" class="col-sm-12">
-                <div id="banner0" class="banners">
-                    <div class="col-sm-12 banner-1">
-                        <div class="banner-box">
-                            <a class="clearfix" href="index.php?route=product/product&amp;product_id=50">
-                                <img src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/banner-1-1065x660.jpg" alt="banner-1" class="img-responsive" />
-                                <div class="over"></div>
-                                <div class="s-desc">
-                                    <h2>
-                                        <span>Lipsticks</span><br>
-                                        Improve your look with new MaxFactor Colour Elixir Lipstick
-                                    </h2>
-                                    <p>Add some charm to your image with new series of MaxFactor Lipstick available to order at our store.</p>
-                                    <span class="banner_price">$25.99</span>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <div id="banner1" class="banners">
-                    <div class="col-sm-12 banner-2">
-                        <div class="banner-box">
-                            <a class="clearfix" href="index.php?route=product/product&amp;product_id=49">
-                                <img src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/banner-2-525x322.jpg" alt="banner-2" class="img-responsive" />
-                                <div class="over"></div>
-                                <div class="s-desc">
-                                    <h3>
-                                        <span>Powders</span><br>
-                                        Get your favorite powder at a half price
-                                    </h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-sm-12 banner-3">
-                        <div class="banner-box">
-                            <a class="clearfix" href="index.php?route=product/product&amp;product_id=48">
-                                <img src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/banner-3-525x322.jpg" alt="banner-3" class="img-responsive" />
-                                <div class="over"></div>
-                                <div class="s-desc">
-                                    <h3>
-                                        <span>Perfumes</span><br>
-                                        New Calvin Klein Eau de Parfum for her
-                                    </h3>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
+<!--HEADER--->
+@Html.Partial("Header", queryMenu.ToList())
+<!--END HEADER--->
+<!--CONTAINER--->
+<div class="container">
+    <div class="row">
+        <div id="content" class="col-sm-12">
 
 
-                <!--NewProducts--->
-              @Html.Partial("NewProducts",Model)
-               
+            @Html.Partial("Slider")
+         
+            <!--NewProducts--->
+            @Html.Partial("NewProducts", Model)
+            <!--NewProducts--->
+            @Html.Partial("Blogs", Model)
 
-                @*<!--Cham soc da id=1--->
-                @Html.Partial("viewProducts", dataChamSocDa.ToList())
-
-                <!--Cham co the id=2--->
-                @Html.Partial("viewProducts", dataChamSocCoThe.ToList())
-               
-
-                <!--Trang điểm id=3--->
-                @Html.Partial("viewProducts", dataTrangDiem.ToList())
-                 <!--Trang điểm id=4--->
-                @Html.Partial("viewProducts", dataThucPhamChucNang.ToList())*@
-
-                <div class="box blog_articles">
-                    <div class="box-heading">
-                        <h3>Latest from our blog</h3>
-                        <h5>News and useful tips</h5>
-                    </div>
-                    <div class="box-content">
-                        <div class="row">
-                            <div class="col-sm-4">
-                                <figure class="article-image">
-                                    <img width="225" height="225" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/blog/post-10-225x225.jpg" alt="Going Green Is So Much Simpler Than Most People Think" />
-                                </figure>
-                                <h3 class="article-title">
-                                    <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/article/view&amp;simple_blog_article_id=10">Going Green Is So Much Simpler Than Most People Think</a>
-                                </h3>
-                                <div>
-                                    <div class="article-description">
-                                        An increasing number of people now want to do their part to save the planet due to the worsening problems caused by
-                                        global warming. Unfortunately, numerous people ass...
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <figure class="article-image">
-                                    <img width="225" height="225" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/blog/post-9-225x225.jpg" alt="Feeling Stressed? Try the One Joke per Day Therapy" />
-                                </figure>
-                                <h3 class="article-title">
-                                    <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/article/view&amp;simple_blog_article_id=9">Feeling Stressed? Try the One Joke per Day Therapy</a>
-                                </h3>
-                                <div>
-                                    <div class="article-description">
-                                        There are so many elements today in our lives that make things more and more hectic by the day, and there hardly
-                                        seems to be any respite from the constantly mount...
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-4">
-                                <div class="r_frame article-video"> <iframe src="//www.youtube.com/embed/92BSaJhVoWg?rel=0&amp;controls=0&amp;showinfo=0&amp;wmode=transparent" allowfullscreen="" height="433" width="770" frameborder="0"></iframe> </div>
-                                <figure class="article-image">
-                                    <img width="225" height="225" src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/blog/post-8-225x225.jpg" alt="5 Most Common Mistakes New Managers Make" />
-                                </figure>
-                                <h3 class="article-title">
-                                    <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/article/view&amp;simple_blog_article_id=8">5 Most Common Mistakes New Managers Make</a>
-                                </h3>
-                                <div>
-                                    <div class="article-description">
-                                        Learn which five most common mistakes a new manager is likely to make, and how to avoid them.
-                                        Mistake No.1 - Who's the Boss?
-                                        Some of your subordinates w...
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </div>
     </div>
-    <!--END CONTAINER--->
-  
-    <!-- FOOTER--->
-    @Html.Partial("Footer")
-    <!--END FOOTER--->
-
+</div>
+<!--END CONTAINER--->
+<!-- FOOTER--->
+@Html.Partial("Footer")
+<!--END FOOTER--->

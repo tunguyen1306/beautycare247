@@ -3,7 +3,7 @@
     <div class="container">
         <div class="row">
             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                <h4>Information</h4>
+                <h4 class="fotterThongtin">Thông tin</h4>
                 <ul class="list-unstyled">
                     <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=information/information&amp;information_id=4">About</a></li>
                     <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=information/information&amp;information_id=6">Delivery Information</a></li>
@@ -24,7 +24,7 @@
                 </ul>
             </div>
             <div class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
-                <h4>My Account</h4>
+                <h4 class="fotterTaiKhoan">Tài khoản của tôi</h4>
                 <ul class="list-unstyled">
                     <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=account/account">My Account</a></li>
                     <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=account/order">Order History</a></li>
@@ -34,19 +34,20 @@
             </div>
             <div class="col-xs-6 col-sm-12 col-md-3 col-lg-3">
                 <div class="footer_modules">
-                    <h4>Social News</h4>
-                    <p>The latest news delivered across all social networks!</p>
+                    <div class="fb-page" data-href="https://www.facebook.com/thucphamNhat/" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="false"><blockquote cite="https://www.facebook.com/thucphamNhat/" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/thucphamNhat/">Cửa hàng chuyên đồ Nhật</a></blockquote></div>
                     <ul class="social-list list-unstyled">
-                        <li><a class="fa fa-facebook" href="#" data-toggle="tooltip" title="Facebook"></a></li>
+                        @*<li><a class="fa fa-facebook" href="#" data-toggle="tooltip" title="Facebook"></a></li>
                         <li><a class="fa fa-twitter" href="#" data-toggle="tooltip" title="Twitter"></a></li>
                         <li><a class="fa fa-google-plus" href="#" data-toggle="tooltip" title="Google+"></a></li>
                         <li><a class="fa fa-pinterest-p" href="#" data-toggle="tooltip" title="Pinterest"></a></li>
-                        <li><a class="fa fa-instagram" href="#" data-toggle="tooltip" title="Instagram"></a></li>
-                    </ul><div id="tm-newsletter" class="box newsletter">
+                        <li><a class="fa fa-instagram" href="#" data-toggle="tooltip" title="Instagram"></a></li>*@
+                    </ul>
+                  
+                    <div id="tm-newsletter" class="box newsletter">
                         <div class="box-content clearfix">
                             <div>
-                                <h4>Get the latest news delivered daily!</h4>
-                                <p class="newsletter-description">Give us your email and you will be daily updated with the latest events, in detail!</p>
+                                <h4 class="footerNhanMail">Nhận thông tin mới nhất từ cửa hàng!</h4>
+                               
                             </div>
                             <form method="post" enctype="multipart/form-data" id="tm-newsletter-form">
                                 <div class="tm-login-form">
@@ -66,7 +67,16 @@
     </div>
     <div class="copyright">
         <div class="container">
-            Powered By <a href="http://www.opencart.com">OpenCart</a><br /> beautyandcare247 &copy; 2016
+            Powered By <a href="http://www.opencart.com">beautyandcare247</a><br /> tunguyen.it.dev@gmail.com &copy; 2016
         </div>
     </div>
 </footer>
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=1542874159340791";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>

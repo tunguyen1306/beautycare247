@@ -1,0 +1,164 @@
+﻿@model BeautyAndCare.Models.tblSlider
+@using System.Configuration
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Thêm Slider</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+@using (Html.BeginForm("Edit", "adminSliders"))
+{
+    @Html.HiddenFor(m => m.IdSlider)
+    <input type="hidden" id="hdId" value="@Model.IdSlider" name="IdSlider" />
+    <input type="hidden" id="hdImgName" value="@Model.ImgSlider" name="ImgSlider" />
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Tên Slider Vi</label>
+
+                                @Html.EditorFor(model => model.NameSlider_vi, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NameSlider_vi, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Tên Slider En</label>
+                                @Html.EditorFor(model => model.NameSlider_en, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NameSlider_en, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Tóm tắt vi</label>
+                                @Html.TextAreaFor(x => x.ShortDes_vi, htmlAttributes: new { @id = "txtShortDes_vi", @name = "ShortDes_vi", @class = "form-control" })
+                            </div>
+                            <div class="form-group">
+                                <label>Tóm tắt en</label>
+                                @Html.TextAreaFor(x => x.ShortDes_end, htmlAttributes: new { @id = "txtShortDes_end", @name = "ShortDes_end", @class = "form-control" })
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                           
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                @Html.DropDownListFor(model => model.StatusSlider, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Không hoạt động", Value = "0"},
+                                    new SelectListItem {Text = "Hoạt động", Value = "1"},
+
+                                }, new { @class = "form-control", @name = "StatusSlider" })
+                            </div>
+                            <div class="form-group">
+                                <label>Hình đại diện </label>
+                                <div class="row">
+                                    <form id="dataimg" method="post" enctype="multipart/form-data">
+                                        <div class="col-lg-10">
+                                            <input class="form-control" id="getImg" type="file">
+                                        </div>
+                                    </form>
+
+                                    <div class="col-lg-2">
+                                        <input type="button" onclick="getLink()" value="Up ảnh" />
+                                    </div>
+                                </div>
+                                @*<div class="row">
+                                    <div class="col-lg-12">
+                                        <img src="~/Content/no-image-available.jpg" id="idImg" width="200" />
+                                    </div>
+
+                                </div>*@
+                            </div>
+                            <div class="form-group">
+                              
+                                    @if (Model.ImgSlider != null)
+                                    {
+                                        <img src="@ConfigurationManager.AppSettings["domain"]@Model.ImgSlider.Split('_')[0]/@Model.ImgSlider" id="idImg" width="200" />
+                                    }
+                                    else
+                                    {
+                                        <img src="~/Content/no-image-available.jpg" id="idImg" width="200" />
+                                    }
+
+                              
+
+                            </div>
+
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default">Sửa</button>
+                                <a href="@Url.Action("Index","adminSliders")" class="btn btn-primary">Hủy</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+
+    <!-- /.row -->
+}
+
+<script>
+ 
+
+    function getLink() {
+        var dataimg = new FormData();
+        var files = $("#getImg").get(0).files;
+        if (files.length > 0) {
+            dataimg.append("HelpSectionImages", files[0]);
+        }
+        $.ajax({
+            url: '@Url.Action("GetLink", "adminSliders")',
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: dataimg,
+            success: function (response) {
+
+                console.log(response);
+                $('#idImg').attr("src", response.shorurl);
+                $('#hdImgName').val(response.imgName);
+
+            },
+            error: function (er) {
+                alert(er);
+            }
+
+        });
+    }
+    $("#getLinkFile").change(function () {
+        var data = new FormData();
+        var files = $("#getLinkFile").get(0).files;
+        if (files.length > 0) {
+            data.append("HelpSectionImages", files[0]);
+        }
+        $.ajax({
+            url: '@Url.Action("GetLink", "adminSliders")',
+            type: "POST",
+            processData: false,
+            contentType: false,
+            data: data,
+            success: function (response) {
+                //code after success
+                console.log(response);
+                $('.link').text(response.fullurl);
+            },
+            error: function (er) {
+
+            }
+
+        });
+    });
+
+</script>

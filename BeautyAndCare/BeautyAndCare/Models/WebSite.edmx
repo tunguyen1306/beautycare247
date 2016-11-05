@@ -5,6 +5,23 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="WebSiteModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="tblBlog">
+          <Key>
+            <PropertyRef Name="IdBlog" />
+          </Key>
+          <Property Name="IdBlog" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameBlog_vi" Type="nvarchar" MaxLength="250" />
+          <Property Name="NameBlog_en" Type="nvarchar" MaxLength="250" />
+          <Property Name="ShortDes_vi" Type="nvarchar" MaxLength="500" />
+          <Property Name="ShortDes_en" Type="nvarchar" MaxLength="500" />
+          <Property Name="Des_vi" Type="nvarchar(max)" />
+          <Property Name="Des_en" Type="nvarchar(max)" />
+          <Property Name="StatusBlog" Type="int" />
+          <Property Name="CreateDateBlog" Type="datetime" />
+          <Property Name="ImgBlog" Type="varchar" MaxLength="50" />
+          <Property Name="IsVideo" Type="int" />
+          <Property Name="LinkVideo" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="tblCategory">
           <Key>
             <PropertyRef Name="IdCategory" />
@@ -12,6 +29,17 @@
           <Property Name="IdCategory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="NameCategory" Type="nvarchar" MaxLength="250" />
           <Property Name="StatusCategory" Type="int" />
+        </EntityType>
+        <EntityType Name="tblHistory">
+          <Key>
+            <PropertyRef Name="IdHistory" />
+          </Key>
+          <Property Name="IdHistory" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="IdProducts" Type="int" />
+          <Property Name="TotalScore" Type="varchar" MaxLength="50" />
+          <Property Name="DateBuy" Type="datetime" />
+          <Property Name="TotalPrice" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblMenu">
           <Key>
@@ -29,6 +57,15 @@
           <Property Name="ShowHomeMenu" Type="int" />
           <Property Name="Description_en" Type="nvarchar" MaxLength="2000" />
           <Property Name="Description_vi" Type="nvarchar" MaxLength="2000" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="int" Nullable="false" />
+          <Property Name="IdProduct" Type="int" />
+          <Property Name="IdUser" Type="int" />
+          <Property Name="PriceTotal" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="tblPicture">
           <Key>
@@ -83,6 +120,18 @@
           <Property Name="DateEndCode" Type="datetime" />
           <Property Name="PriceCode" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="tblSlider">
+          <Key>
+            <PropertyRef Name="IdSlider" />
+          </Key>
+          <Property Name="IdSlider" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameSlider_vi" Type="nvarchar" MaxLength="250" />
+          <Property Name="NameSlider_en" Type="nvarchar" MaxLength="250" />
+          <Property Name="ShortDes_vi" Type="nvarchar" MaxLength="500" />
+          <Property Name="ShortDes_end" Type="nvarchar" MaxLength="500" />
+          <Property Name="StatusSlider" Type="int" />
+          <Property Name="ImgSlider" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="tblType">
           <Key>
             <PropertyRef Name="IdType" />
@@ -115,11 +164,15 @@
           <Property Name="SubscribeUser" Type="bit" />
         </EntityType>
         <EntityContainer Name="WebSiteModelStoreContainer">
+          <EntitySet Name="tblBlog" EntityType="Self.tblBlog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblHistory" EntityType="Self.tblHistory" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblMenu" EntityType="Self.tblMenu" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblOrder" EntityType="Self.tblOrder" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPicture" EntityType="Self.tblPicture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProducts" EntityType="Self.tblProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPromotion" EntityType="Self.tblPromotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSlider" EntityType="Self.tblSlider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblType" EntityType="Self.tblType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTypeUser" EntityType="Self.tblTypeUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
@@ -154,6 +207,10 @@
           <EntitySet Name="tblTypeUsers" EntityType="WebSiteModel.tblTypeUser" />
           <EntitySet Name="tblPromotions" EntityType="WebSiteModel.tblPromotion" />
           <EntitySet Name="tblPictures" EntityType="WebSiteModel.tblPicture" />
+          <EntitySet Name="tblHistories" EntityType="WebSiteModel.tblHistory" />
+          <EntitySet Name="tblOrders" EntityType="WebSiteModel.tblOrder" />
+          <EntitySet Name="tblSliders" EntityType="WebSiteModel.tblSlider" />
+          <EntitySet Name="tblBlogs" EntityType="WebSiteModel.tblBlog" />
         </EntityContainer>
         <EntityType Name="tblProduct">
           <Key>
@@ -246,6 +303,55 @@
           <Property Name="Type_id" Type="Byte" />
           <Property Name="Title" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="tblHistory">
+          <Key>
+            <PropertyRef Name="IdHistory" />
+          </Key>
+          <Property Name="IdHistory" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="IdProducts" Type="Int32" />
+          <Property Name="TotalScore" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="DateBuy" Type="DateTime" Precision="3" />
+          <Property Name="TotalPrice" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblOrder">
+          <Key>
+            <PropertyRef Name="IdOrder" />
+          </Key>
+          <Property Name="IdOrder" Type="Int32" Nullable="false" />
+          <Property Name="IdProduct" Type="Int32" />
+          <Property Name="IdUser" Type="Int32" />
+          <Property Name="PriceTotal" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblSlider">
+          <Key>
+            <PropertyRef Name="IdSlider" />
+          </Key>
+          <Property Name="IdSlider" Type="Int32" Nullable="false" />
+          <Property Name="NameSlider_vi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NameSlider_en" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDes_vi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDes_end" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="StatusSlider" Type="Int32" />
+          <Property Name="ImgSlider" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblBlog">
+          <Key>
+            <PropertyRef Name="IdBlog" />
+          </Key>
+          <Property Name="IdBlog" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameBlog_vi" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="NameBlog_en" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDes_vi" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="ShortDes_en" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="Des_vi" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Des_en" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StatusBlog" Type="Int32" />
+          <Property Name="CreateDateBlog" Type="DateTime" Precision="3" />
+          <Property Name="ImgBlog" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IsVideo" Type="Int32" />
+          <Property Name="LinkVideo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -367,6 +473,59 @@
                 <ScalarProperty Name="OriginalFilepath" ColumnName="OriginalFilepath" />
                 <ScalarProperty Name="ProductsId" ColumnName="ProductsId" />
                 <ScalarProperty Name="PictureId" ColumnName="PictureId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblHistories">
+            <EntityTypeMapping TypeName="WebSiteModel.tblHistory">
+              <MappingFragment StoreEntitySet="tblHistory">
+                <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+                <ScalarProperty Name="DateBuy" ColumnName="DateBuy" />
+                <ScalarProperty Name="TotalScore" ColumnName="TotalScore" />
+                <ScalarProperty Name="IdProducts" ColumnName="IdProducts" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdHistory" ColumnName="IdHistory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblOrders">
+            <EntityTypeMapping TypeName="WebSiteModel.tblOrder">
+              <MappingFragment StoreEntitySet="tblOrder">
+                <ScalarProperty Name="PriceTotal" ColumnName="PriceTotal" />
+                <ScalarProperty Name="IdUser" ColumnName="IdUser" />
+                <ScalarProperty Name="IdProduct" ColumnName="IdProduct" />
+                <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSliders">
+            <EntityTypeMapping TypeName="WebSiteModel.tblSlider">
+              <MappingFragment StoreEntitySet="tblSlider">
+                <ScalarProperty Name="ImgSlider" ColumnName="ImgSlider" />
+                <ScalarProperty Name="StatusSlider" ColumnName="StatusSlider" />
+                <ScalarProperty Name="ShortDes_end" ColumnName="ShortDes_end" />
+                <ScalarProperty Name="ShortDes_vi" ColumnName="ShortDes_vi" />
+                <ScalarProperty Name="NameSlider_en" ColumnName="NameSlider_en" />
+                <ScalarProperty Name="NameSlider_vi" ColumnName="NameSlider_vi" />
+                <ScalarProperty Name="IdSlider" ColumnName="IdSlider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblBlogs">
+            <EntityTypeMapping TypeName="WebSiteModel.tblBlog">
+              <MappingFragment StoreEntitySet="tblBlog">
+                <ScalarProperty Name="LinkVideo" ColumnName="LinkVideo" />
+                <ScalarProperty Name="IsVideo" ColumnName="IsVideo" />
+                <ScalarProperty Name="ImgBlog" ColumnName="ImgBlog" />
+                <ScalarProperty Name="CreateDateBlog" ColumnName="CreateDateBlog" />
+                <ScalarProperty Name="StatusBlog" ColumnName="StatusBlog" />
+                <ScalarProperty Name="Des_en" ColumnName="Des_en" />
+                <ScalarProperty Name="Des_vi" ColumnName="Des_vi" />
+                <ScalarProperty Name="ShortDes_en" ColumnName="ShortDes_en" />
+                <ScalarProperty Name="ShortDes_vi" ColumnName="ShortDes_vi" />
+                <ScalarProperty Name="NameBlog_en" ColumnName="NameBlog_en" />
+                <ScalarProperty Name="NameBlog_vi" ColumnName="NameBlog_vi" />
+                <ScalarProperty Name="IdBlog" ColumnName="IdBlog" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

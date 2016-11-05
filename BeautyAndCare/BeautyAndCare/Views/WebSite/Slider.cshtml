@@ -1,0 +1,82 @@
+﻿@model BeautyAndCare.Models.tblAll
+@using System.Configuration
+<link href="~/Template/css/camera.css" rel="stylesheet" />
+<script src="~/Template/js/camera.js"></script>
+<script>
+                jQuery(function () {
+                    jQuery('#camera_wrap_0').camera({
+                        navigation: true,
+                        playPause: false,
+                        thumbnails: false,
+                        navigationHover: false,
+                        barPosition: 'top',
+                        loader: false,
+                        time: 3000,
+                        transPeriod: 800,
+                        alignment: 'center',
+                        autoAdvance: true,
+                        mobileAutoAdvance: true,
+                        barDirection: 'leftToRight',
+                        barPosition: 'bottom',
+                        easing: 'easeInOutExpo',
+                        fx: 'simpleFade',
+                        height: '40.3125%',
+                        minHeight: '300px',
+                        hover: true,
+                        pagination: false,
+                        loaderColor: '#1f1f1f',
+                        loaderBgColor: 'transparent',
+                        loaderOpacity: 1,
+                        loaderPadding: 0,
+                        loaderStroke: 3,
+                    });
+                });
+</script>
+<div class="fluid_container" style="margin-bottom:20px;">
+    <div class="camera_container">
+        <div id="camera_wrap_0">
+            @foreach (var item in Model.ListSlider)
+            {
+                if (item.ImgSlider == null || item.StatusSlider == 0)
+                {
+
+                    <div title="slide-1" data-thumb="~/img/erroe.jpg" data-src="~/img/erroe.jpg">
+                        <div class="camera_caption fadeIn">
+                            <div class="container">
+                                <h1 class="mod1">
+                                    @item.NameSlider_vi
+                                </h1>
+                                <div class="separator"></div>
+                                <p>
+                                    @item.ShortDes_vi
+                                </p>
+                                @*<a class="button" href="index.php?route=product/product&product_id=33">Shop now!</a>*@
+                            </div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div title="slide-1" data-thumb="@ConfigurationManager.AppSettings["domain"]@item.ImgSlider.ToString().Split('_')[0]/@item.ImgSlider" data-src="@ConfigurationManager.AppSettings["domain"]@item.ImgSlider.ToString().Split('_')[0]/@item.ImgSlider">
+                        <div class="camera_caption fadeIn">
+                            <div class="container">
+                                <h1 class="mod1">
+                                    @item.NameSlider_vi
+                                </h1>
+                                <div class="separator"></div>
+                                <p>
+                                    @item.ShortDes_vi
+                                </p>
+                                @*<a class="button" href="index.php?route=product/product&product_id=33">Shop now!</a>*@
+                            </div>
+                        </div>
+                    </div>
+                }
+            }
+            
+         
+        </div>
+    </div>
+    <div class="clear"></div>
+</div>
+

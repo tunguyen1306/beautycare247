@@ -1,0 +1,59 @@
+﻿@model BeautyAndCare.Models.tblSlider
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/LayOutNew.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblSlider</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameSlider_vi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameSlider_vi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameSlider_en)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameSlider_en)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDes_vi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDes_vi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDes_end)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDes_end)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.StatusSlider)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.StatusSlider)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdSlider }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

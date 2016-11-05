@@ -24,6 +24,9 @@ namespace BeautyAndCare.Models
         public List<tblProduct> tblPro { get; set; }
         public List<tblProduct> tblProductRel { get; set; }
         public List<tblMenu> ListMenu { get; set; }
+        public List<tblSlider> ListSlider { get; set; }
+        public List<tblBlog> ListBlogNo { get; set; }
+        public List<tblBlog> ListBlogIs { get; set; }
         public tblAll()
         {
             tblMenu = new tblMenu();
@@ -36,6 +39,9 @@ namespace BeautyAndCare.Models
             ListCategory = new List<tblCategory>();
             ListType = new List<tblType>();
             ListMenu = new List<tblMenu>();
+            ListSlider = new List<tblSlider>();
+            ListBlogNo = new List<tblBlog>();
+            ListBlogIs = new List<tblBlog>();
         }
 
         public int idProducts { get; set; }

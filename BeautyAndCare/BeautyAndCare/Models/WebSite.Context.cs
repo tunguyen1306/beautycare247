@@ -33,5 +33,9 @@ namespace BeautyAndCare.Models
         public DbSet<tblTypeUser> tblTypeUsers { get; set; }
         public DbSet<tblPromotion> tblPromotions { get; set; }
         public DbSet<tblPicture> tblPictures { get; set; }
+        public DbSet<tblHistory> tblHistories { get; set; }
+        public DbSet<tblOrder> tblOrders { get; set; }
+        public DbSet<tblSlider> tblSliders { get; set; }
+        public DbSet<tblBlog> tblBlogs { get; set; }
     }
 }

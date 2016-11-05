@@ -53,7 +53,7 @@
                 </form>
             </div>
             <div class="box-language">
-                <form id="form-language">
+                <form action="@Url.Action("Language","WebSite")" method="post" enctype="multipart/form-data" id="form-language">
                     <div class="btn-group toggle-wrap">
                         <span class="toggle">
                             <span>Việt Nam</span>
@@ -61,22 +61,23 @@
                         </span>
                         <ul class="toggle_cont pull-right">
                             <li>
-                                <button class="language-select selected" type="button" name="vi-VN">
+                                <button class="language-select selected" type="button" value="1" name="vn">
                                     Việt Nam
                                 </button>
                             </li>
                             <li>
-                                <button class="language-select" type="button" name="en-gb">
+                                <button class="language-select" type="button" value="2" name="en">
                                     English
                                 </button>
                             </li>
                             <li>
-                                <button class="language-select" type="button" name="jp-JP">
+                                <button class="language-select" type="button" value="3" name="jp">
                                     Janpan
                                 </button>
                             </li>
 
                         </ul>
+
                     </div>
                     <input type="hidden" name="code" value="" />
                     <input type="hidden" name="redirect" value="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home" />
@@ -153,7 +154,6 @@
                 <div class="megamenu">
                     <h3>Categories</h3>
                     <ul class="sf-menu">
-
                         @foreach (var item in Model)
                         {
                             if (item.IsParent == 0 && item.IdParentMenu == 0)
@@ -174,93 +174,73 @@
                             }
                             else
                             {
-                                if (item.IsParent == 1)
-                                {
-                                    <li class="sf-with-mega">
-                                        @if (item.IsCategoryMenu == 1)
-                                        {
-                                        <li class="sf-with-mega">
-                                            <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
-                                        </li>
-                                        }
-                                        else
-                                        {
-                                            <li class="sf-with-mega">
-                                                <a href="@item.LinkMenu">@item.NameMenu</a>
-                                            </li>
-                                        }
-                                        <ul class="sf-mega">
+                                <li class="sf-with-mega">
+                                    @if (item.IsCategoryMenu == 1)
+                                    {
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
+                                    }
+                                    else
+                                    {
+
+                                        <a href="@item.LinkMenu">@item.NameMenu</a>
+
+                                    }
+                                    <ul class="sf-mega">
+                                        <li class="sf-mega_row">
                                             @foreach (var child in Model.Where(p => p.IdParentMenu == item.IdMenu))
                                             {
-                                                <li class="sf-mega_row">
-                                                    <div class="sf-mega_section 1" style="width: 16.7%">
-                                                        <ul>
-                                                            <li>
-                                                                @if (item.IsCategoryMenu == 1)
-                                                                {
-                                                                <li class="sf-with-mega">
-                                                                    <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
-                                                                </li>
-                                                                }
-                                                                else
-                                                                {
-                                                                    <li class="sf-with-mega">
-                                                                        <a href="@item.LinkMenu">@item.NameMenu</a>
-                                                                    </li>
-                                                                }
+                                            }
+                                            <div class="sf-mega_section 1" style="width: 16.7%">
+                                              
+                                                <ul>
+                                                    <li>
+                                                        @if (item.IsCategoryMenu == 1)
+                                                        {
+
+                                                            <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
+
+                                                        }
+                                                        else
+                                                        {
+
+                                                            <a href="@item.LinkMenu">@item.NameMenu</a>
+
+                                                        }
                                                     </li>
                                                 </ul>
-                                        </div>
+                                            </div>
                                         </li>
-                                            }
-                                            </ul>
-                                            </li>
-                                }
+
+                                    </ul>
+                                </li>
+
+
+
                             }
                         }
-
-                        </ul>
-                    </div>
-                    <script>
-                        (function ($) {
-                            $(window).load(function () {
-                                var o = $('.sf-menu');
-                                o.superfish();
-                                o.find('li a').each(function () {
-                                    if ($(location).attr('href').indexOf($(this).attr('href')) >= 0) {
-                                        $(this).addClass('active');
-                                        return;
-                                    }
-                                })
-                                if (o.parents('aside').length) {
-                                    var width = $('.container').outerWidth() - $('aside').outerWidth();
-                                    o.find('.sf-mega').each(function () {
-                                        $(this).width(width);
-                                    })
-                                }
-                            });
-                        })(jQuery);
-                    </script>
-                    <div id="style_switcher">
-                        <div class="toggler"></div>
-                        <p>The customization tool allows you to make color changes in your theme</p>
-                        <ul id="color-box">
-                            <li><div class="color_scheme color_scheme_1" data-scheme="color_scheme_1">&nbsp;</div></li>
-                            <li><div class="color_scheme color_scheme_2" data-scheme="color_scheme_2">&nbsp;</div></li>
-                            <li><div class="color_scheme color_scheme_3" data-scheme="color_scheme_3">&nbsp;</div></li>
-                            <li><div class="color_scheme color_scheme_4" data-scheme="color_scheme_4">&nbsp;</div></li>
-                        </ul>
-                    </div>
+                    </ul>
                 </div>
-                <div class="search">
-                    <a class="top-search"><i class="fl-outicons-magnifying-glass34"></i></a>
-                    <div id="search">
-                        <div class="inner">
-                            <input type="text" name="search" value="" placeholder="Search..." /><button type="button" class="button-search"><i class="fl-outicons-magnifying-glass34"></i></button>
-                        </div>
-                        <div class="clear"></div>
-                    </div>
+               
+                <div id="style_switcher">
+                    <div class="toggler"></div>
+                    <p>The customization tool allows you to make color changes in your theme</p>
+                    <ul id="color-box">
+                        <li><div class="color_scheme color_scheme_1" data-scheme="color_scheme_1">&nbsp;</div></li>
+                        <li><div class="color_scheme color_scheme_2" data-scheme="color_scheme_2">&nbsp;</div></li>
+                        <li><div class="color_scheme color_scheme_3" data-scheme="color_scheme_3">&nbsp;</div></li>
+                        <li><div class="color_scheme color_scheme_4" data-scheme="color_scheme_4">&nbsp;</div></li>
+                    </ul>
                 </div>
             </div>
+            <div class="search">
+                <a class="top-search"><i class="fl-outicons-magnifying-glass34"></i></a>
+                <div id="search">
+                    <div class="inner">
+                        <input type="text" name="search" value="" placeholder="Search..." /><button type="button" class="button-search"><i class="fl-outicons-magnifying-glass34"></i></button>
+                    </div>
+                    <div class="clear"></div>
+                </div>
             </div>
-        </header>
+        </div>
+    </div>
+</header>
