@@ -1,0 +1,69 @@
+﻿@model BeautyAndCare.Models.tblVocabulary
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Thêm Menu</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+
+@using (Html.BeginForm("Edit", "adminVocabularies"))
+{
+    @Html.HiddenFor(m => m.IdVocabulary)
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-default">
+
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="form-group">
+                                <label>Key</label>
+
+                                @Html.EditorFor(model => model.KeyVocabulary, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.KeyVocabulary, "", new { @class = "text-danger" })
+                            </div>
+                            <div class="form-group">
+                                <label>Từ ngữ</label>
+                                @Html.EditorFor(model => model.NameVocabulary, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.NameVocabulary, "", new { @class = "text-danger" })
+                            </div>
+                          
+                        </div>
+                        <div class="col-lg-6">
+                          
+                            <div class="form-group">
+                                <label>Trạng thái</label>
+                                @Html.DropDownListFor(model => model.IdLangVocabulary, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Việt Nam", Value = "1"},
+                                    new SelectListItem {Text = "English", Value = "2"},
+
+                                }, new { @class = "form-control", @name = "IdLangVocabulary" })
+                            </div>
+                           
+                           
+                            <div class="form-group">
+                                <button type="submit" class="btn btn-default">Sửa</button>
+                                <a href="@Url.Action("Index","adminVocabaularies")" class="btn btn-primary">Hủy</a>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+
+    <!-- /.row -->
+}

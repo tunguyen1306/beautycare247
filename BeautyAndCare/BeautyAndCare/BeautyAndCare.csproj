@@ -137,6 +137,7 @@
     <Compile Include="Controllers\adminMenuController.cs" />
     <Compile Include="Controllers\adminProductController.cs" />
     <Compile Include="Controllers\adminSlidersController.cs" />
+    <Compile Include="Controllers\adminVocabulariesController.cs" />
     <Compile Include="Controllers\DefaultController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\NavbarController.cs" />
@@ -189,6 +190,9 @@
       <DependentUpon>WebSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblUserDto.cs" />
+    <Compile Include="Models\tblVocabulary.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UrlFriendly.cs" />
     <Compile Include="Models\WebSite.Context.cs">
       <AutoGen>True</AutoGen>
@@ -1070,6 +1074,7 @@
     <Content Include="Template\js\jquery.selectbox-0.2.min.js" />
     <Content Include="Template\js\jquery.ui.totop.min.js" />
     <Content Include="Template\js\jquery.unveil.min.js" />
+    <Content Include="Template\js\js.cookie-2.1.3.min.js" />
     <Content Include="Template\js\livesearch.min.js" />
     <Content Include="Template\js\owl.carousel.min.js" />
     <Content Include="Template\js\owl.carousel\owl.carousel.min.js" />
@@ -1172,6 +1177,11 @@
     <Content Include="Views\adminBlogs\Index.cshtml" />
     <Content Include="Views\WebSite\Blogs.cshtml" />
     <Content Include="Views\WebSite\DetailBlog.cshtml" />
+    <Content Include="Views\adminVocabularies\Create.cshtml" />
+    <Content Include="Views\adminVocabularies\Delete.cshtml" />
+    <Content Include="Views\adminVocabularies\Details.cshtml" />
+    <Content Include="Views\adminVocabularies\Edit.cshtml" />
+    <Content Include="Views\adminVocabularies\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

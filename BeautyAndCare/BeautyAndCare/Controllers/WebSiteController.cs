@@ -280,11 +280,15 @@ namespace BeautyAndCare.Controllers
             return View(queryBlog);
 
         }
-        public ActionResult Language()
+        [HttpPost]
+        public ActionResult GetRowLan(int lan)
         {
-            string n =  Request.Form["vn"];
+            var dataVo = from data in db.tblVocabularies
+                         where data.IdLangVocabulary == lan
+                         select data;
 
-            return RedirectToAction("Index", "WebSite");
+
+            return Json(dataVo.ToList());
         }
     }
 }

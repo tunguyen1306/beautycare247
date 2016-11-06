@@ -1,0 +1,43 @@
+﻿@model BeautyAndCare.Models.tblVocabulary
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblVocabulary</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameVocabulary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameVocabulary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.KeyVocabulary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.KeyVocabulary)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdLangVocabulary)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdLangVocabulary)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdVocabulary }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

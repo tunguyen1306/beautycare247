@@ -163,6 +163,15 @@
           <Property Name="AddressUser" Type="nvarchar" MaxLength="250" />
           <Property Name="SubscribeUser" Type="bit" />
         </EntityType>
+        <EntityType Name="tblVocabulary">
+          <Key>
+            <PropertyRef Name="IdVocabulary" />
+          </Key>
+          <Property Name="IdVocabulary" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NameVocabulary" Type="nvarchar" MaxLength="500" />
+          <Property Name="KeyVocabulary" Type="varchar" MaxLength="500" />
+          <Property Name="IdLangVocabulary" Type="int" />
+        </EntityType>
         <EntityContainer Name="WebSiteModelStoreContainer">
           <EntitySet Name="tblBlog" EntityType="Self.tblBlog" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblCategory" EntityType="Self.tblCategory" Schema="dbo" store:Type="Tables" />
@@ -176,6 +185,7 @@
           <EntitySet Name="tblType" EntityType="Self.tblType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblTypeUser" EntityType="Self.tblTypeUser" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblVocabulary" EntityType="Self.tblVocabulary" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
@@ -211,6 +221,7 @@
           <EntitySet Name="tblOrders" EntityType="WebSiteModel.tblOrder" />
           <EntitySet Name="tblSliders" EntityType="WebSiteModel.tblSlider" />
           <EntitySet Name="tblBlogs" EntityType="WebSiteModel.tblBlog" />
+          <EntitySet Name="tblVocabularies" EntityType="WebSiteModel.tblVocabulary" />
         </EntityContainer>
         <EntityType Name="tblProduct">
           <Key>
@@ -352,6 +363,15 @@
           <Property Name="ImgBlog" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="IsVideo" Type="Int32" />
           <Property Name="LinkVideo" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="tblVocabulary">
+          <Key>
+            <PropertyRef Name="IdVocabulary" />
+          </Key>
+          <Property Name="IdVocabulary" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NameVocabulary" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+          <Property Name="KeyVocabulary" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="IdLangVocabulary" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -526,6 +546,16 @@
                 <ScalarProperty Name="NameBlog_en" ColumnName="NameBlog_en" />
                 <ScalarProperty Name="NameBlog_vi" ColumnName="NameBlog_vi" />
                 <ScalarProperty Name="IdBlog" ColumnName="IdBlog" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblVocabularies">
+            <EntityTypeMapping TypeName="WebSiteModel.tblVocabulary">
+              <MappingFragment StoreEntitySet="tblVocabulary">
+                <ScalarProperty Name="IdLangVocabulary" ColumnName="IdLangVocabulary" />
+                <ScalarProperty Name="KeyVocabulary" ColumnName="KeyVocabulary" />
+                <ScalarProperty Name="NameVocabulary" ColumnName="NameVocabulary" />
+                <ScalarProperty Name="IdVocabulary" ColumnName="IdVocabulary" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

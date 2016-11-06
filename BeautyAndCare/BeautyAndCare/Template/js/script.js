@@ -1,7 +1,7 @@
 var gl_path = jQuery('#gl_path').html();
 function include(scriptUrl) {
     document.write('<script src="/Template/' + scriptUrl + '"><\/script>');
-   console.log(scriptUrl)
+ 
 }
 
 

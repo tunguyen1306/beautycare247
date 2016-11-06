@@ -2,6 +2,7 @@
 @model IEnumerable<BeautyAndCare.Models.tblMenu>
 
 <header>
+
     <div class="header-top">
         <div class="container">
             <nav id="top-links" class="nav toggle-wrap">
@@ -14,9 +15,9 @@
                     }
                     else
                     {
-                        <li><a href="@Url.Action("Login")">Đăng nhập</a></li>
-                        <li><a href="@Url.Action("Register")">Đăng ký</a></li>
-                        <li><a href="@Url.Action("Contact")">Liên hệ</a></li>
+                        <li><a href="@Url.Action("Login")" class="cllogin">Đăng nhập</a></li>
+                        <li><a href="@Url.Action("Register")" class="clregister">Đăng ký</a></li>
+                        <li><a href="@Url.Action("Contact")" class="clheadercontact">Liên hệ</a></li>
                     }
 
 
@@ -48,40 +49,35 @@
                             </li>
                         </ul>
                     </div>
-                    <input type="hidden" name="code" value="" />
-                    <input type="hidden" name="redirect" value="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home" />
+
                 </form>
             </div>
             <div class="box-language">
-                <form action="@Url.Action("Language","WebSite")" method="post" enctype="multipart/form-data" id="form-language">
-                    <div class="btn-group toggle-wrap">
-                        <span class="toggle">
-                            <span>Việt Nam</span>
-                            <span class="hidden-xs">Ngôn ngữ</span>
-                        </span>
-                        <ul class="toggle_cont pull-right">
-                            <li>
-                                <button class="language-select selected" type="button" value="1" name="vn">
-                                    Việt Nam
-                                </button>
-                            </li>
-                            <li>
-                                <button class="language-select" type="button" value="2" name="en">
-                                    English
-                                </button>
-                            </li>
-                            <li>
-                                <button class="language-select" type="button" value="3" name="jp">
-                                    Janpan
-                                </button>
-                            </li>
+                @*<form id="form-language">*@
+                <div class="btn-group toggle-wrap">
+                    <span class="toggle">
+                        <span>Việt Nam</span>
+                        <span class="hidden-xs cllanguage">Ngôn ngữ</span>
 
-                        </ul>
+                    </span>
+                    <ul class="toggle_cont pull-right">
 
-                    </div>
-                    <input type="hidden" name="code" value="" />
-                    <input type="hidden" name="redirect" value="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home" />
-                </form>
+                        <li>
+                            <a href="/" class="language-select " id="btnVn" rel="1">Việt Nam</a>
+                        </li>
+                        <li>
+
+                            <a href="/" class="language-select" id="btnEn" rel="2">English</a>
+                        </li>
+                        <li>
+                            <a href="/" class="language-select" id="btnJp" rel="3">Japan</a>
+
+                        </li>
+
+                    </ul>
+
+                </div>
+                @*</form>*@
             </div>
         </div>
     </div>
@@ -91,8 +87,8 @@
                 <a href="@Url.Action("Index")"><img src="http://livedemo00.template-help.com/opencart_59086/image/catalog/logo.png" title="beautyandcare247" alt="beautyandcare247" class="img-responsive"></a>
             </h1>
             <div class="pull-left">
-                Liên hệ: <a href="callto:0918214088">0918214088</a>
-                <p>Tất cả các ngày trong tuần từ 9:00 am to 10:00 pm</p>
+                <span class="clheadercontact">Liên hệ:</span>   <a href="callto:0918214088">0918214088</a>
+                <p class="clgiolamviec"></p>
             </div>
             <div class="box-cart">
                 <div id="cart" class="cart toggle-wrap">
@@ -136,7 +132,7 @@
                                 </tbody>
                             </table>
                             <div class="text-right">
-                                <a class="btn-view" href="@Url.Action("CheckOut","WebSite")"><span> View Cart</span></a>
+                                <a class="btn-view" href="@Url.Action("CheckOut","WebSite")"><span class="clxemgiohang"> Xem giỏ hàng</span></a>
                                 @*onclick="ViewCart()"*@
                                 <input type="hidden" id="hdIdPro" />
                                 <div class="clear"></div>
@@ -154,73 +150,81 @@
                 <div class="megamenu">
                     <h3>Categories</h3>
                     <ul class="sf-menu">
+
                         @foreach (var item in Model)
                         {
                             if (item.IsParent == 0 && item.IdParentMenu == 0)
                             {
-                                if (item.IsCategoryMenu == 1)
-                                {
-                                    <li class="sf-with-mega">
-                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
-                                    </li>
-                                }
-                                else
-                                {
-                                    <li class="sf-with-mega">
-                                        <a href="@item.LinkMenu">@item.NameMenu</a>
-                                    </li>
-                                }
-
-                            }
-                            else
-                            {
                                 <li class="sf-with-mega">
                                     @if (item.IsCategoryMenu == 1)
                                     {
-                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
+
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })" class="clvi">@item.NameMenu</a>
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu_en.UrlFrendly() + "-" + item.IdMenu })" class="clen hidden">@item.NameMenu_en</a>
+
                                     }
                                     else
                                     {
 
-                                        <a href="@item.LinkMenu">@item.NameMenu</a>
+                                        <a href="@item.LinkMenu" class="clvi">@item.NameMenu</a>
+                                    <a href="@item.LinkMenu" class="clen hidden">@item.NameMenu_en</a>
 
                                     }
-                                    <ul class="sf-mega">
-                                        <li class="sf-mega_row">
+                                    
+                                </li>
+                            }
+                            else
+                            {
+                                if (item.IsParent == 1)
+                                {
+                                    <li class="sf-with-mega">
+                                        @if (item.IsCategoryMenu == 1)
+                                        {
+
+                                            <a class="clvi hidden" href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
+                                            <a  class="clen hidden" href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu_en.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu_en</a>
+                                        }
+                                        else
+                                        {
+
+                                            <a href="@item.LinkMenu" class="clvi hidden">@item.NameMenu</a>                                   
+                                                     <a href="@item.LinkMenu" class="clen hidden">@item.NameMenu_en</a>
+
+                                        }
+                                         <ul class="sf-mega">
                                             @foreach (var child in Model.Where(p => p.IdParentMenu == item.IdMenu))
                                             {
+                                                <li class="sf-mega_row">
+                                                    <div class="sf-mega_section 1" style="width: 16.7%">
+                                                        <ul>
+                                                            <li>
+                                                               
+                                                                @if (item.IsCategoryMenu == 1)
+                                                                {
+
+                                                                    <a href="@Url.Action("ListProducts", "WebSite",new { id=child.NameMenu.UrlFrendly() + "-" + child.IdMenu })" class="clvi hidden">@child.NameMenu</a>
+                                                                    <a href="@Url.Action("ListProducts", "WebSite",new { id=child.NameMenu_en.UrlFrendly() + "-" + child.IdMenu })" class="clen hidden">@child.NameMenu_en</a>
+                                                                }
+                                                                else
+                                                                {
+
+                                                                    <a href="@child.LinkMenu" class="clvi hidden">@child.NameMenu</a>
+                                                                    <a href="@child.LinkMenu" class="clen hidden">@child.NameMenu_en</a>
+                                                                }
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </li>
                                             }
-                                            <div class="sf-mega_section 1" style="width: 16.7%">
-                                              
-                                                <ul>
-                                                    <li>
-                                                        @if (item.IsCategoryMenu == 1)
-                                                        {
-
-                                                            <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
-
-                                                        }
-                                                        else
-                                                        {
-
-                                                            <a href="@item.LinkMenu">@item.NameMenu</a>
-
-                                                        }
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
-
-                                    </ul>
-                                </li>
-
-
-
+                                        </ul>
+                                    </li>
+                                }
                             }
                         }
+
                     </ul>
                 </div>
-               
+                
                 <div id="style_switcher">
                     <div class="toggler"></div>
                     <p>The customization tool allows you to make color changes in your theme</p>

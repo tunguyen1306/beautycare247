@@ -15,6 +15,7 @@ namespace BeautyAndCare.Domain
             menu.Add(new Navbar { Id = 2, nameOption = "Quản lý Menu", controller = "adminMenu", action = "Index", imageClass = "fa fa-dashboard fa-fw", status = true, isParent = false, parentId = 0 });
             menu.Add(new Navbar { Id = 3, nameOption = "Quản lý Slider", controller = "adminSliders", action = "Index", imageClass = "fa fa-dashboard fa-fw", status = true, isParent = false, parentId = 0 });
             menu.Add(new Navbar { Id = 4, nameOption = "Quản lý Blog", controller = "adminBlogs", action = "Index", imageClass = "fa fa-dashboard fa-fw", status = true, isParent = false, parentId = 0 });
+            menu.Add(new Navbar { Id = 5, nameOption = "Quản lý Từ ngữ", controller = "adminVocabularies", action = "Index", imageClass = "fa fa-dashboard fa-fw", status = true, isParent = false, parentId = 0 });
             //menu.Add(new Navbar { Id = 2, nameOption = "Charts", imageClass = "fa fa-bar-chart-o fa-fw", status = true, isParent = true, parentId = 0 });
             //menu.Add(new Navbar { Id = 3, nameOption = "Flot Charts", controller = "Home", action = "FlotCharts", status = true, isParent = false, parentId = 2 });
             //menu.Add(new Navbar { Id = 4, nameOption = "Morris.js Charts", controller = "Home", action = "MorrisCharts", status = true, isParent = false, parentId = 2 });

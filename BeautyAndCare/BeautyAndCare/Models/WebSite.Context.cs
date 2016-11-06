@@ -37,5 +37,6 @@ namespace BeautyAndCare.Models
         public DbSet<tblOrder> tblOrders { get; set; }
         public DbSet<tblSlider> tblSliders { get; set; }
         public DbSet<tblBlog> tblBlogs { get; set; }
+        public DbSet<tblVocabulary> tblVocabularies { get; set; }
     }
 }
