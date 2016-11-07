@@ -1,0 +1,99 @@
+﻿@model BeautyAndCare.Models.tblUser
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>tblUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTypeUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTypeUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPointUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPointUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirtNameUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirtNameUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastNameUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastNameUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubscribeUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubscribeUser)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.IdUser }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

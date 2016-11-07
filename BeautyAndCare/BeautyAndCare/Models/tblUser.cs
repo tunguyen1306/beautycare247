@@ -25,5 +25,6 @@ namespace BeautyAndCare.Models
         public string LastNameUser { get; set; }
         public string AddressUser { get; set; }
         public Nullable<bool> SubscribeUser { get; set; }
+        public Nullable<int> StatusUser { get; set; }
     }
 }

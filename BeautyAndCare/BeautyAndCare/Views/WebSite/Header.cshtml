@@ -24,7 +24,7 @@
                 </ul>
             </nav>
             <div class="box-currency">
-                <form action="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/currency/currency" method="post" enctype="multipart/form-data" id="form-currency">
+                <form  method="post" enctype="multipart/form-data" id="form-currency">
                     <div class="btn-group toggle-wrap">
                         <span class="toggle">
                             <span>VNĐ</span>
@@ -94,13 +94,14 @@
                 <div id="cart" class="cart toggle-wrap">
                     <button type="button" data-loading-text="Loading..." class="toggle">
                         <i class="fl-outicons-shopping-cart13"></i>
-                        <strong>Giỏ hàng</strong>
+                        <strong class="clcart">Giỏ hàng</strong>
                         <span id="cart-total" class="cart-total">0 item(s) - $0.00</span>
                         <span id="cart-total2" class="cart-total2">0</span>
                     </button>
                     <ul class="pull-right toggle_cont">
                         <li>
-                            Giỏ hàng
+                            <span class="clcart">Giỏ hàng</span>
+                            
                             <button type="button" class="btn-close-cart btn-danger"><i class="material-icons-clear"></i></button>
                         </li>
                         <li>
@@ -136,12 +137,13 @@
                                 @*onclick="ViewCart()"*@
                                 <input type="hidden" id="hdIdPro" />
                                 <div class="clear"></div>
-                                <a class="btn-primary" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=checkout/checkout"><span>Go to Checkout</span></a>
+                                <a class="btn-primary" href="@Url.Action("CheckOut","WebSite")"><span class="clcheckout">Thanh toán</span></a>
                             </div>
                         </li>
                     </ul>
                 </div>
-            </div> <a class="button-wishlist" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=account/wishlist" id="wishlist-total" title=""> <i class="fl-outicons-heart373"></i> Wishlist <span>0</span> </a>
+            </div> 
+            @*<a class="button-wishlist" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=account/wishlist" id="wishlist-total" title=""> <i class="fl-outicons-heart373"></i> Wishlist <span>0</span> </a>*@
         </div>
     </div>
     <div class="container">

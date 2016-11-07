@@ -1,0 +1,105 @@
+﻿@model BeautyAndCare.Models.tblUser
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>tblUser</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.NameUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PassUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PassUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IdTypeUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IdTypeUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TotalPointUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TotalPointUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirtNameUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirtNameUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastNameUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastNameUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AddressUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AddressUser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SubscribeUser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SubscribeUser)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

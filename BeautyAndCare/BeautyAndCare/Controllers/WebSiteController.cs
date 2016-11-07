@@ -290,5 +290,6 @@ namespace BeautyAndCare.Controllers
 
             return Json(dataVo.ToList());
         }
+        
     }
 }

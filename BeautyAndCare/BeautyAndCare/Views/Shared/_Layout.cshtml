@@ -17,7 +17,7 @@
 
     <link href="@Url.Content("~/bower_components/morrisjs/morris.css")" rel="stylesheet" type="text/css" />
     <link href="@Url.Content("~/bower_components/font-awesome/css/font-awesome.min.css")" rel="stylesheet" type="text/css" />
-
+    <link href="~/Content/bootstrap-datepicker-1.6.4-dist/css/bootstrap-datepicker.css" rel="stylesheet" />
     <!-- jQuery -->
     @Scripts.Render("~/bundles/jquery")
     <script src="@Url.Content("~/bower_components/jquery/dist/jquery.min.js")"></script>
@@ -25,6 +25,9 @@
     <script src="@Url.Content("~/bower_components/metisMenu/dist/metisMenu.min.js")"></script>
     <script src="~/ckeditor/ckeditor.js"></script>
     <script src="~/ckeditor/adapters/jquery.js"></script>
+    <script src="~/Content/moment-with-locales.js"></script>
+    <link href="~/Content/bootstrap-datetimepicker.css" rel="stylesheet" />
+    <script src="~/Content/bootstrap-datetimepicker.js"></script>
     @*<script src="~/Template/js/CusWeb.js"></script>*@
 </head>
 <body>
@@ -58,11 +61,14 @@
         });
         $(function () {
             $('.ckedit').ckeditor();
-
+            
+                $('.date').datetimepicker();
+     
         });
 
     </script>
-    @RenderSection("scripts", required: false)
+        @RenderSection("scripts", required: false)
+       
 </body>
 </html>
 

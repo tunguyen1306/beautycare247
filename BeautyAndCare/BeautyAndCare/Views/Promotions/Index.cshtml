@@ -1,0 +1,74 @@
+﻿@model IEnumerable<BeautyAndCare.Models.tblPromotion>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-lg-12">
+        <h1 class="page-header">Danh sách Code khuyến mãi</h1>
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+<!-- /.row -->
+<div class="row">
+    <div class="col-lg-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                @Html.ActionLink("Thêm khuyến mãi", "Create", "Promotions", "", htmlAttributes: new { @class = "btn btn-primary" })
+            </div>
+            <!-- /.panel-heading -->
+            <div class="panel-body">
+                <div class="dataTable_wrapper">
+                    <table class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+
+                                <th>Tên</th>
+                                <th>Giá</th>
+                                <th>Ngày bất đầu</th>
+                                <th>Ngày kết thúc</th>
+                                <th>Trạng thái</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr class="odd gradeX">
+                                    <td>@item.NameCode</td>
+                                    <td>@item.PriceCode</td>
+                                    <td>@item.DateBeginCode</td>
+                                    <td>@item.DateEndCode</td>
+                                    <td>
+                                        @if (item.StatusCode == 1)
+                                        {
+                                            @("Hoạt động")
+                                        }
+                                        @if (item.StatusCode == 0)
+                                        {
+                                            @("Không hoạt động")
+                                        }
+
+                                    </td>
+                                    <td>
+                                        <a href="@Url.Action("Edit", "Promotions", new { id = item.IdCode})" class="btn btn-default btn-xs">Sửa</a>
+                                        <a href="@Url.Action("Delete", "Promotions", new { id = item.IdCode })" onclick="return confirm('Bạn có muốn xóa sản phẩm không?');" class="btn btn-default btn-xs">Xóa</a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <!-- /.table-responsive -->
+
+            </div>
+            <!-- /.panel-body -->
+        </div>
+        <!-- /.panel -->
+    </div>
+    <!-- /.col-lg-12 -->
+</div>
+

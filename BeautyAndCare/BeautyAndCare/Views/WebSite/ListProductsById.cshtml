@@ -13,10 +13,14 @@
             {
                 foreach (var itemMenu in item.ListMenu)
                 {
-                    <h3>@itemMenu.NameMenu</h3>
+                    <h3 class="clvi">@itemMenu.NameMenu</h3>
+                    <h3 class="clen">@itemMenu.NameMenu_en</h3>
                         <div class="row">
-                            <div class="col-sm-12">
+                            <div class="col-sm-12 clvi">
                                 @itemMenu.Description_vi
+                            </div>
+                            <div class="col-sm-12 clen">
+                                @itemMenu.Description_en
                             </div>
                         </div>
                 }
@@ -86,7 +90,8 @@
                                             </div>
                                         </div>
                                         <div class="right col-sm-7">
-                                            <h2>@item.tblProducts.NameProducts</h2>
+                                            <h2 class="clvi">@item.tblProducts.NameProducts</h2>
+                                            <h2 class="clen">@item.tblProducts.NameProducts_en</h2>
                                             @*<div class="inf">
                                                     <p class="quickview_manufacture manufacture manufacture">
                                                         Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=25">CeraVe</a>
@@ -136,13 +141,18 @@
                                     </a>
                                 </div>
                                 <div class="caption">
-                                    <div class="name">
+                                    <div class="name clvi">
                                         <a href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts.UrlFrendly() + "-" + item.tblProducts.IdProducts })">@item.tblProducts.NameProducts</a>
                                     </div>
-                                    <div class="category-name">
+                                    <div class="name clen">
+                                        <a href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts_en.UrlFrendly() + "-" + item.tblProducts.IdProducts })">@item.tblProducts.NameProducts_en</a>
+                                    </div>
+                                    <div class="category-name clvi">
                                         @item.tblMenu.NameMenu
                                     </div>
-
+                                    <div class="category-name clen">
+                                        @item.tblMenu.NameMenu_en
+                                    </div>
                                     <div class="price price-product">
                                         <span class="price-new price-new_@item.tblProducts.IdProducts">
                                             <script>

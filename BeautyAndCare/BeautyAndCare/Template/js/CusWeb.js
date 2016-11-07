@@ -1,4 +1,38 @@
 ﻿$(function () {
+
+    var url = window.location.href;
+   
+    if (url.indexOf('/WebSite/Index')>=0) {
+
+        $('body').addClass('common-home');
+        $('body').removeClass('account-login');
+        $('body').removeClass('account-register');
+        $('body').removeClass('information-contact');
+    }
+    if (url.indexOf('/WebSite/Login') >= 0) {
+
+        $('body').addClass('account-login');
+        $('body').removeClass('common-home');
+        $('body').removeClass('account-register');
+        $('body').removeClass('information-contact');
+
+    }
+    if (url.indexOf('/WebSite/Register') >= 0) {
+
+        $('body').addClass('account-register');
+        $('body').removeClass('common-home');
+        $('body').removeClass('account-login');
+        $('body').removeClass('information-contact');
+
+    }
+    if (url.indexOf('/WebSite/Contact') >= 0) {
+
+        $('body').addClass('information-contact');
+        $('body').removeClass('common-home');
+        $('body').removeClass('account-register');
+        $('body').removeClass('account-login');
+
+    }
     var vi = getCookie("vi");
     if (vi != null) {
         if (vi == 1) {
@@ -97,26 +131,6 @@ function getCookie(cname) {
 })(jQuery);
 $(document).ready(function () {
 
-    var url = window.location.href;
-    if (url.indexOf('/WebSite/Contact')) {
-
-        $('body').removeClass('common-home');
-
-    }
-    if (url.indexOf('/WebSite/Index')) {
-
-        $('body').addClass('common-home');
-
-    }
-    if (url.indexOf('/WebSite/Login')) {
-
-        $('body').addClass('account-login');
-
-    } if (url.indexOf('/WebSite/Register')) {
-
-        $('body').addClass('account-register');
-
-    }
     var total = 0;
     $.each($('.price-total'), function (i, o) {
         var t = $(o).find('input[type="hidden"][name="hdtotal"]').val();
