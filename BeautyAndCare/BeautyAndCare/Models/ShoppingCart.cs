@@ -54,5 +54,8 @@ namespace BeautyAndCare.Models
         public string PriceCoupon { get; set; }
         public Decimal SubTotal { get; set; }
         public Decimal TotalAll { get; set; }
+        public string NameImg { get; set; }
+        public string UrlImg { get; set; }
+        public string FullUrlImg2 { get; set; }
     }
 }

@@ -45,8 +45,8 @@ namespace BeautyAndCare.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IdUser,NameUser,PassUser,IdTypeUser,TotalPointUser,PhoneUser,EmailUser,FirtNameUser,LastNameUser,AddressUser,SubscribeUser")] tblUser tblUser)
+       
+        public ActionResult Create( tblUser tblUser)
         {
             if (ModelState.IsValid)
             {
@@ -77,8 +77,8 @@ namespace BeautyAndCare.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdUser,NameUser,PassUser,IdTypeUser,TotalPointUser,PhoneUser,EmailUser,FirtNameUser,LastNameUser,AddressUser,SubscribeUser")] tblUser tblUser)
+       
+        public ActionResult Edit(tblUser tblUser)
         {
             if (ModelState.IsValid)
             {

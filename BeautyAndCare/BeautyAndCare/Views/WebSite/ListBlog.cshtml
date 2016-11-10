@@ -1,0 +1,143 @@
+﻿@using BeautyAndCare.Models;
+@using System.Linq;
+@using System.Configuration
+@model PagedList.IPagedList<tblBlog>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayOutNew.cshtml";
+    WebSiteEntities db = new WebSiteEntities();
+    var queryMenu = from data in db.tblMenus
+                    where data.StatusMenu == 1
+                    select data;
+}
+<!--HEADER--->
+@Html.Partial("Header", queryMenu.ToList())
+<!--END HEADER--->
+<div class="container">
+    @Html.Partial("Breadcrumb")
+    <div class="row">
+        <aside id="column-left" class="col-sm-3">
+            <div class="box blog-categories">
+                <div class="box-heading"><h3>Blog Category</h3></div>
+                <div class="box-content">
+                    <ul class="list-unstyled menu">
+                        <li>
+                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/category&amp;simple_blog_category_id=1">Branding</a>
+                        </li>
+                        <li>
+                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/category&amp;simple_blog_category_id=3">Consulting</a>
+                        </li>
+                        <li>
+                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/category&amp;simple_blog_category_id=2">Customer Service</a>
+                        </li>
+                        <li>
+                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/category&amp;simple_blog_category_id=4">Management</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="box blog-search">
+                <div class="box-heading"><h3>Search Article</h3></div>
+                <div class="box-content">
+                    <div id="blog-search">
+                        <div>
+                            <input type="text" name="article_search" value="" placeholder="Search Article" class="form-control" style="margin-bottom: 5px;">
+                            <a id="button-search" href="#"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script type="text/javascript">
+	jQuery('#blog-search input[name=\'article_search\']').keydown(function (e) {
+		if (e.keyCode == 13) {
+			jQuery('#button-search').trigger('click');
+		}
+	});
+	jQuery('#button-search').bind('click', function (e) {
+		e.preventDefault();
+		url = 'index.php?route=simple_blog/search';
+
+		var article_search = jQuery('#blog-search input[name=\'article_search\']').val();
+
+		if (article_search) {
+			url += '&blog_search=' + encodeURIComponent(article_search);
+		}
+
+		location = url;
+	});
+	jQuery(document).ready(function(){
+		jQuery('.blog-categories .menu').find('li>ul').before('<i class="material-design-drop25"></i>');
+		jQuery('.blog-categories .menu li i').on("click", function () {
+			if (jQuery(this).hasClass('material-design-drop27')) {
+				jQuery(this).removeClass('material-design-drop27').parent('li').find('> ul').slideToggle();
+			}
+			else {
+				jQuery(this).addClass('material-design-drop27').parent('li').find('> ul').slideToggle();
+			}
+		});
+	})
+	;
+            </script> <div class="box blog_articles">
+                <div class="box-heading">
+                    <h3>Latest from our blog</h3>
+                    <h5>News and useful tips</h5>
+                </div>
+                <div class="box-content">
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <h3 class="article-title">
+                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/article/view&amp;simple_blog_article_id=10">Going Green Is So Much Simpler Than Most People Think</a>
+                            </h3>
+                            <div>
+                                <div class="article-description">An increasing number of people now want to do their part to save the planet due to the worsening pro...</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <h3 class="article-title">
+                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/article/view&amp;simple_blog_article_id=9">Feeling Stressed? Try the One Joke per Day Therapy</a>
+                            </h3>
+                            <div>
+                                <div class="article-description">There are so many elements today in our lives that make things more and more hectic by the day, and ...</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="r_frame article-video"> <iframe src="//www.youtube.com/embed/92BSaJhVoWg?rel=0&amp;controls=0&amp;showinfo=0&amp;wmode=transparent" allowfullscreen="" height="433" width="770" frameborder="0"></iframe> </div>
+                            <h3 class="article-title">
+                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/article/view&amp;simple_blog_article_id=8">5 Most Common Mistakes New Managers Make</a>
+                            </h3>
+                            <div>
+                                <div class="article-description">
+                                    Learn which five most common mistakes a new manager is likely to make, and how to avoid them.
+                                    ...
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <h3 class="article-title">
+                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/article/view&amp;simple_blog_article_id=7">Proper color solutions for the office</a>
+                            </h3>
+                            <div>
+                                <div class="article-description">When it comes to remodeling an office, one of the most important aspects is painting. Any shade of p...</div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <h3 class="article-title">
+                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=simple_blog/article/view&amp;simple_blog_article_id=6">Four Types of Verbal Communication</a>
+                            </h3>
+                            <div>
+                                <div class="article-description">Verbal communication include sounds, words, language, and speech. Speaking is an effective way of co...</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+        @Html.Partial("ListBlogBy", Model)
+       
+    </div>
+</div>
+<!-- FOOTER--->
+@Html.Partial("Footer")
+<!--END FOOTER--->
+

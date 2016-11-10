@@ -4,34 +4,41 @@
    
     if (url.indexOf('/WebSite/Index')>=0) {
 
-        $('body').addClass('common-home');
-        $('body').removeClass('account-login');
-        $('body').removeClass('account-register');
-        $('body').removeClass('information-contact');
+       
+        $('body').removeAttr("class");
+        $('body').attr("class", 'common-home');
     }
     if (url.indexOf('/WebSite/Login') >= 0) {
 
-        $('body').addClass('account-login');
-        $('body').removeClass('common-home');
-        $('body').removeClass('account-register');
-        $('body').removeClass('information-contact');
-
+    
+        $('body').removeAttr("class");
+        $('body').attr("class", 'account-login');
     }
     if (url.indexOf('/WebSite/Register') >= 0) {
 
-        $('body').addClass('account-register');
-        $('body').removeClass('common-home');
-        $('body').removeClass('account-login');
-        $('body').removeClass('information-contact');
-
+  
+        $('body').removeAttr("class");
+        $('body').attr("class", 'account-register');
     }
     if (url.indexOf('/WebSite/Contact') >= 0) {
+        $('body').removeAttr("class");
+        $('body').attr("class", 'information-contact');
+       
 
-        $('body').addClass('information-contact');
-        $('body').removeClass('common-home');
-        $('body').removeClass('account-register');
-        $('body').removeClass('account-login');
-
+    }
+    if (url.indexOf('/WebSite/About') >= 0) {
+        $('body').removeAttr("class");
+        $('body').attr("class",'information-information-4');
+     
+    }
+    if (url.indexOf('/WebSite/ListBlog') >= 0) {
+        $('body').removeAttr("class");
+        $('body').attr("class", 'simple_blog-article');
+     
+    } if (url.indexOf('/WebSite/DetailBlog') >= 0) {
+        $('body').removeAttr("class");
+        $('body').attr("class", 'simple_blog-article-view');
+     
     }
     var vi = getCookie("vi");
     if (vi != null) {
@@ -137,7 +144,8 @@ $(document).ready(function () {
         total += parseInt(t)
 
     });
-    $('.tx-price').html(total);
+    $('.tx-price').html(tien(total));
+    $('.priceHd').html(total);
 });
 ///////////////SubMit
 $('#button-coupon').click(function () {
@@ -152,27 +160,31 @@ function addToCart(id) {
        ProductId: id
    },
    function (o, status) {
+       $('#cart-total2').html(o.count);
+       console.log(o);
+       console.log(o.dataPro.NameProducts);
        var stringHtml;
        stringHtml += "<tr class=\"cusTr\">"
        + "<td class=\"text-center\">"
        + " <div class=\"image\">"
-         + " <input type=\"hidden\" name=\"idPro\" id=\"hdProductsId_" + o.IdProducts + "\" value=\"" + o.IdProducts + "\" />"
+         + " <input type=\"hidden\" name=\"idPro\" id=\"hdProductsId_" + o.dataPro.IdProducts + "\" value=\"" + o.dataPro.IdProducts + "\" />"
        + " <a href=\"#\">"
-       + "   <img src=\"http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_55-150x150.png\" alt=\"" + o.NameProducts + "\" title=\"" + o.NameProducts + "\" class=\"img-thumbnail\">"
+       + "   <img src=\"" + o.nameImg + "\" alt=\"" + o.dataPro.NameProducts + "\" title=\"" + o.dataPro.NameProducts + "\" class=\"img-thumbnail\">"
        + "  </a>"
        + " </div>"
        + "  </td>"
        + " <td class=\"text-left\">"
        + " <div class=\"name\">"
-       + " <a href=\"#\">" + o.NameProducts + "</a>"
+       + " <a href=\"#\">" + o.dataPro.NameProducts + "</a>"
        + " </div>"
        + " </td>"
        + "<td class=\"text-right\">"
-       + " <span class=\"price-cart\">" + o.PriceProducts + "</span>"
+       + " <span class=\"price-cart PriceCart_" + o.dataPro.IdProducts + "\">" + o.dataPro.PriceProducts + "</span>"
        + " </td>"
        + " </tr>";
        $('.LoadProducts').append(stringHtml);
-       $('#content').parent().before('<div class="alert alert-success"><i class="material-design-verification24"></i> Bạn đã thêm sản phẩm ' + o.NameProducts + ' vào giỏ hàng thành công <button type="button" class="close material-design-close47"></button></div>');
+       $('#content').parent().before('<div class="alert alert-success"><i class="material-design-verification24"></i> Bạn đã thêm sản phẩm ' + o.dataPro.NameProducts + ' vào giỏ hàng thành công <button type="button" class="close material-design-close47"></button></div>');
+       $('.PriceCart_' + o.dataPro.IdProducts).text(tien(o.dataPro.PriceProducts));
    });
 
 }
@@ -187,7 +199,7 @@ function ViewCart() {
     window.location.href = url;
 }
 function UpdateToCart(id) {
-    var url = "UpdateToCart"
+    var url = "WebSite/UpdateToCart"
     var valueQuantity = $('#txtQuantity_' + id).val();
     $.post(url,
    {
@@ -203,7 +215,7 @@ function CheckCoupon() {
     var hdUser = $('#hdUserName').val();
     console.log(hdUser);
     if (hdUser != null) {
-        var url = "CheckCoupon"
+        var url = "WebSite/CheckCoupon"
         var valueCoupon = $('#input-coupon').val();
         if (valueCoupon == "") {
             $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Vui lòng nhập mã giảm giá ! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
@@ -231,13 +243,17 @@ function CheckCoupon() {
                }
                if (convert(dateEnd) > convert(dateNow)) {
                    $('#hdValueCoupon').val(o[0].PriceCode);
-                   var showSubTotal = $('.showSubTotal').html();
+                   var showSubTotal = $('.priceHd').html();
 
                    if (showSubTotal >= 300000) {
                        var cal = showSubTotal - o[0].PriceCode;
-                       $('.showTotalAll').html(cal);
+                       $('.showTotalAll').html(tien(cal));
                        $('#button-coupon').addClass('disabled')
-                   } else {
+                      
+                       $('.breadcrumb').after('<div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> Bạn đã nhập mã giảm giá thành công! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+                   $('html, body').animate({ scrollTop: 0 }, 'slow');
+               } else {
                        $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Bạn không đủ điều xử dụng mã giảm giá! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
                        $('html, body').animate({ scrollTop: 0 }, 'slow');

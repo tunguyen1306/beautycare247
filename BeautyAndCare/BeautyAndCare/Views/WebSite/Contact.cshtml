@@ -12,17 +12,19 @@
 @Html.Partial("Header", queryMenu.ToList())
 <!--END HEADER--->
 <div class="container">
-    <ul class="breadcrumb">
-        <li><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home"><i class="fa fa-home"></i></a></li>
-        <li><span>Contact Us</span></li>
-    </ul>
+    @Html.Partial("Breadcrumb")
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC2CphD0_grWYSRAmABGn2zFa2ydgzD-2o&callback=initMap">
+    </script>
     <div class="row">
         <div id="content" class="col-sm-12 contact_page">
-            <h1 class="no-line">Contact Us</h1>
-            
+            <h1 class="no-line clheadercontact">Liên hệ</h1>
+            <div class="map" id="googleMap" style="width:100%;height:500px;">
+
+            </div>
           
             <div class="clear"></div>
-            <h3>Our Location</h3>
+            <h3 class="cllocation">Vị trí</h3>
             <div class="panel panel-default">
                 <div class="panel-body">
                     <div class="row">
@@ -33,56 +35,54 @@
                         </div>
                         <div class="col-sm-4">
                             <div class="icon material-design-phone370">
-                                <strong>Telephone</strong><br>
-                                <a href="callto:+3(800)2345-6789">+3(800)2345-6789</a>
+                                <strong class="clcontact_phone">Điện thoại </strong><br>
+                                <a href="callto:0918214088">0918214088</a>
                             </div>
                         </div>
                         <div class="col-sm-4">
                             <div class="icon fa-key">
-                                <strong>Opening Hours</strong><br>
-                                7 Days a week from 9:00 am to 7:00 pm
+                                <strong class="clcontact_giolamviec"> Giờ làm việc</strong><br>
+                               <span class="clgiolamviec">7 Days a week from 9:00 am to 7:00 pm</span> 
                             </div>
                         </div>
                         <div class="col-sm-4">
-                            <strong>Address</strong><br>
-                            <address>
-                                <a href="//maps.google.com/maps?q=40.6700%2C+-73.9400&amp;hl=en-gb&amp;t=m&amp;z=15" target="_blank">
+                            <strong class="claddress">Địa chỉ</strong><br>
+                            <address class="claddressdetail">
+                                
                                     4578 Marmora road, glasgow d04 89 gr
-                                </a>
+                               
                             </address>
                         </div>
                         <div class="col-sm-4">
-                            <div class="icon fa-fax">
-                                <strong>Fax</strong><br>
-                                <a href="callto:800-4569-9876">800-4569-9876</a>
-                            </div>
+                            
                         </div>
                         <div class="col-sm-4">
-                            <div class="icon fa-comments-o">
+                            @*<div class="icon fa-comments-o">
                                 <strong>Comments</strong><br>
                                 We are glad to hear from you
-                            </div>
+                            </div>*@
                         </div>
                     </div>
                 </div>
             </div>
-            <form action="http://livedemo00.template-help.com/opencart_59086/index.php?route=information/contact" method="post" enctype="multipart/form-data" class="form-horizontal">
+            @using (Html.BeginForm("sendContact", "WebSite",FormMethod.Post,htmlAttributes:new { @class= "form-horizontal" }))
+            {
                 <fieldset>
-                    <legend>Contact Form</legend>
+                    <legend class="clheadercontact">Contact Form</legend>
                     <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-name">Your Name</label>
+                        <label class="col-sm-2 control-label clyourname" for="input-name">Họ và tên</label>
                         <div class="col-sm-10">
                             <input type="text" name="name" value="" id="input-name" class="form-control">
                         </div>
                     </div>
                     <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-email">E-Mail Address</label>
+                        <label class="col-sm-2 control-label" for="input-email">Email</label>
                         <div class="col-sm-10">
                             <input type="text" name="email" value="" id="input-email" class="form-control">
                         </div>
                     </div>
                     <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-enquiry">Enquiry</label>
+                        <label class="col-sm-2 control-label clcontent" for="input-enquiry">Nội dung</label>
                         <div class="col-sm-10">
                             <textarea name="enquiry" rows="10" id="input-enquiry" class=""></textarea>
                         </div>
@@ -93,10 +93,33 @@
                         <input class="btn btn-primary" type="submit" value="Submit">
                     </div>
                 </div>
-            </form>
+            }
+           
         </div>
     </div>
 </div>
 <!-- FOOTER--->
 @Html.Partial("Footer")
 <!--END FOOTER--->
+<script>
+              
+    function initialize() {
+        var mapOptions = {
+            zoom: 17,
+            center: new google.maps.LatLng(10.843411, 106.741565)
+        }
+        var map = new google.maps.Map(document.getElementById('googleMap'),
+                                      mapOptions);
+
+        var image = '/Template/img/cdiAE.png';
+        var myLatLng = new google.maps.LatLng(10.843411, 106.741565);
+        var beachMarker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+          
+            icon: image
+        });
+    }
+
+    google.maps.event.addDomListener(window, 'load', initialize);
+</script>

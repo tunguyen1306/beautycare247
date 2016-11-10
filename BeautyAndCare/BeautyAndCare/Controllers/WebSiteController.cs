@@ -7,6 +7,10 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
 using PagedList;
+using System.Net.Mail;
+using System.Net;
+using System.Configuration;
+
 namespace BeautyAndCare.Controllers
 {
     public class WebSiteController : Controller
@@ -109,7 +113,8 @@ namespace BeautyAndCare.Controllers
             //var tblUser = new tblUser();
             tbluser.IdTypeUser = 3;
             tbluser.TotalPointUser = 0;
-            tbluser.SubscribeUser = true;
+            tbluser.SubscribeUser = 1;
+            tbluser.IdRoleUser = 1;
             //tblUser.AddressUser = tbluser.AddressUser;
             //tblUser.EmailUser = tbluser.EmailUser;
             //tblUser.FirtNameUser = tbluser.FirtNameUser;
@@ -164,6 +169,7 @@ namespace BeautyAndCare.Controllers
                 {
                     cart = new ShoppingCart();
                 }
+                var Urlimg = ConfigurationManager.AppSettings["domain"];
                 ShoppingCartItem cartIem = new ShoppingCartItem()
                 {
                     ProductName = dataPro.NameProducts,
@@ -171,11 +177,20 @@ namespace BeautyAndCare.Controllers
                     Price = dataPro.PriceNewProducts,
                     Quanlity = 1,
                     Total = Convert.ToDecimal(dataPro.PriceNewProducts),
-                    SubTotal = Convert.ToDecimal(dataPro.PriceNewProducts)
+                    SubTotal = Convert.ToDecimal(dataPro.PriceNewProducts),
+                    NameImg=db.tblPictures.Where(x=>x.ProductsId==dataPro.IdProducts && x.Position==1).FirstOrDefault().ConvertedFilename,
+                    UrlImg= Urlimg,
+                    FullUrlImg2= Urlimg + String.Format(db.tblPictures.Where(x => x.ProductsId == dataPro.IdProducts && x.Position == 1).FirstOrDefault().ConvertedFilename, 2).ToString().Split('_')[0] + "/" + String.Format(db.tblPictures.Where(x => x.ProductsId == dataPro.IdProducts && x.Position == 1).FirstOrDefault().ConvertedFilename, 2)
+
                 };
                 cart.AddToCart(cartIem);
                 Session["cart"] = cart;
-                return Json(dataPro);
+               
+                var dataProCount = cart.ListItem.Count();
+                var nameImg = cart.ListItem.Select(x => x.NameImg).FirstOrDefault();
+                var fullUrlImg2 = Urlimg + String.Format(nameImg, 2).ToString().Split('_')[0] + "/" + String.Format(nameImg, 2);
+                return Json(new { dataPro=dataPro,count=dataProCount, Urlimg= Urlimg,nameImg= fullUrlImg2 });
+                //return Json(dataPro);
 
             }
             return Json(dataPro);
@@ -210,7 +225,7 @@ namespace BeautyAndCare.Controllers
         public ActionResult ListProducts( string id, int? page)
         {
             var pagenum = page ?? 1;
-            var pageSize = 1;
+            var pageSize = 10;
             var id_ = int.Parse(id.Split('-').Last());
             ViewBag.TypeID = id_;
             var dataMe = (from datame in db.tblMenus
@@ -228,7 +243,7 @@ namespace BeautyAndCare.Controllers
         public ActionResult ListProducts1(string id, int? page)
         {
             var pagenum = page ?? 1;
-            var pageSize = 1;
+            var pageSize = 10;
             var id_ = int.Parse(id.Split('-').Last());
             ViewBag.TypeID = id_;
             var dataMe = (from datame in db.tblMenus
@@ -290,6 +305,55 @@ namespace BeautyAndCare.Controllers
 
             return Json(dataVo.ToList());
         }
-        
+        public ActionResult About()
+        {
+
+            return View();
+
+        }
+        [HttpPost]
+        public ActionResult sendContact(string name,string email,string enquiry)
+        {
+            var t = email;
+            var mail = new MailMessage();
+            mail.To.Add("tien131091@gmail.com");
+            mail.From = new MailAddress("tien131091@gmail.com");
+            mail.Subject = "Email khách hàng đăng ký nhận tin";
+            mail.Body = "Email của khách là:" + email;
+            mail.IsBodyHtml = true;
+            var smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential
+                ("mailorderthung@gmail.com", "a1234@1234");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+           
+            return View("Index");
+
+        }
+        public ActionResult ListBlog( int? page)
+        {
+            var pagenum = page ?? 1;
+            var pageSize = 10;
+            var queryList = (from data in db.tblBlogs
+                            where data.StatusBlog==1
+                            select data).ToList();
+
+            return View(queryList.ToPagedList(pagenum, pageSize));
+
+        }
+        public ActionResult ListBlogBy( int? page)
+        {
+            var pagenum = page ?? 1;
+            var pageSize = 10;
+            var queryList = (from data in db.tblBlogs
+                             where data.StatusBlog == 1
+                             select data).ToList();
+
+            return PartialView("ListBlog", queryList.ToList().ToPagedList(pagenum, pageSize));
+
+        }
     }
 }

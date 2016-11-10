@@ -67,11 +67,11 @@
                             <div class="form-group">
                                 <label>Loại</label>
                                
-                                <select class="form-control" name="tblMenu.IdMenu">
+                                <select class="form-control" name="tblMenu.IdParentMenu">
                                     <option value="0">Chọn danh sách</option>
                                     @foreach (var item in Model.ListMenu)
                                     {
-                                        <option @((item.IdMenu==Model.tblMenu.IdMenu)? "selected=\"selected\"" : "") value="@item.IdMenu">@item.NameMenu</option>
+                                        <option @((item.IdMenu==Model.tblMenu.IdParentMenu) ? "selected=\"selected\"" : "") value="@item.IdMenu">@item.NameMenu</option>
                                     }
                                 </select>
                             </div>
@@ -94,6 +94,17 @@
 
                                 }, new { @class = "form-control", @name = "tblMenu.IsParent" })
 
+
+                            </div>
+                            <div class="form-group">
+                                <label>Menu sản phẩm</label>
+
+                                @Html.DropDownListFor(model => model.tblMenu.IsCategoryMenu, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Menu sản phẩm", Value = "0"},
+                                    new SelectListItem {Text = "Menu trang web", Value = "1"},
+
+                                }, new { @class = "form-control", @name = "tblMenu.IsCategoryMenu" })
 
                             </div>
                             <div class="form-group">

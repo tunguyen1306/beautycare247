@@ -150,7 +150,7 @@
                             <div class="discount"><span>Đang về</span></div>
                         }
                         <div class="image">
-                            <a class="lazy" style="padding-bottom: 100%" href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">
+                            <a rel="" href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">
                                 @foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.IdProducts && x.Position == 1))
                                 {
                                     <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" />

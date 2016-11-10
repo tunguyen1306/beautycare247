@@ -52,6 +52,14 @@
       <HintPath>..\packages\ImageResizer.4.0.5\lib\net45\ImageResizer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="MvcSiteMapProvider, Version=4.6.22.0, Culture=neutral, PublicKeyToken=1923abe4657913cc, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.Core.4.6.22\lib\net45\MvcSiteMapProvider.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MvcSiteMapProvider.WebActivator, Version=4.6.22.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvcSiteMapProvider.MVC5.4.6.22\lib\net45\MvcSiteMapProvider.WebActivator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
       <Private>True</Private>
@@ -114,6 +122,10 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.2\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivatorEx.2.0.1\lib\net40\WebActivatorEx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -653,6 +665,22 @@
     <Content Include="Content\PagedList.css" />
     <Content Include="Content\sb-admin-2.css" />
     <Content Include="Content\timeline.css" />
+    <Content Include="Content\UploadNew\cropper.css" />
+    <Content Include="Content\UploadNew\cropper.min.css" />
+    <Content Include="Content\UploadNew\cropper.min.js" />
+    <Content Include="Content\UploadNew\cussupload.css" />
+    <Content Include="Content\UploadNew\dropzone.css" />
+    <Content Include="Content\UploadNew\icon\ic-check.svg" />
+    <Content Include="Content\UploadNew\icon\ic-delete.svg" />
+    <Content Include="Content\UploadNew\icon\ic-move.svg" />
+    <Content Include="Content\UploadNew\icon\ic-radio-checked.svg" />
+    <Content Include="Content\UploadNew\icon\ic-radio.svg" />
+    <Content Include="Content\UploadNew\icon\ic-rotate.svg" />
+    <Content Include="Content\UploadNew\icon\ic-zoomin.svg" />
+    <Content Include="Content\UploadNew\icon\ic-zoomout.svg" />
+    <Content Include="Content\UploadNew\jquery-1.10.2.js" />
+    <Content Include="Content\UploadNew\main.css" />
+    <Content Include="Content\UploadNew\pg.png" />
     <Content Include="Detail.html" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -1016,6 +1044,13 @@
     <Content Include="Models\WebSite.edmx.diagram">
       <DependentUpon>WebSite.edmx</DependentUpon>
     </Content>
+    <Content Include="Mvc.sitemap">
+      <SubType>Designer</SubType>
+    </Content>
+    <None Include="MvcSiteMapSchema.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Properties\PublishProfiles\Publish.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\flot-data.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -1032,6 +1067,7 @@
     <Content Include="Scripts\sb-admin-2.js" />
     <Content Include="Scripts\_references.js" />
     <Content Include="teamplate_home.html" />
+    <Content Include="Template\image\warning_bar_0000_us.jpg" />
     <Content Include="Template\img\background2.jpg" />
     <Content Include="Template\img\backgroundemail.jpg" />
     <Content Include="Template\img\banner-1-780x390.jpg" />
@@ -1047,6 +1083,7 @@
     <Content Include="Template\img\HuongDanMuaHang.jpg" />
     <Content Include="Template\img\HuongDanMuaHang2.jpg" />
     <Content Include="Template\img\HuongDanMuaHang2.png" />
+    <Content Include="Template\image\lazy-loader.gif" />
     <Content Include="Template\img\logo-footer.png" />
     <Content Include="Template\img\Logo.png" />
     <Content Include="Template\img\logoFooter.png" />
@@ -1198,11 +1235,21 @@
     <Content Include="Views\adminUser\Details.cshtml" />
     <Content Include="Views\adminUser\Edit.cshtml" />
     <Content Include="Views\adminUser\Index.cshtml" />
+    <Content Include="Views\WebSite\About.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapTitleHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapPathHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModelList.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapNodeModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\SiteMapHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MetaRobotsHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\MenuHelperModel.cshtml" />
+    <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
+    <Content Include="Views\WebSite\ListBlog.cshtml" />
+    <Content Include="Views\WebSite\ListBlogBy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="ckeditor\" />
-    <Folder Include="Content\UploadNew\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

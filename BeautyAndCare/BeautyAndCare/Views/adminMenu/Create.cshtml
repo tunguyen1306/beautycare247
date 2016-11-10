@@ -66,6 +66,7 @@
                                         <option value="@item.IdMenu">@item.NameMenu</option>
                                     }
                                 </select>
+                              
 
                             </div>
 
@@ -89,6 +90,17 @@
                                     new SelectListItem {Text = "Có", Value = "1"},
 
                                 }, new { @class = "form-control", @name = "tblMenu.IsParent" })
+
+                            </div>
+                            <div class="form-group">
+                                <label>Menu sản phẩm</label>
+
+                                @Html.DropDownListFor(model => model.tblMenu.IsCategoryMenu, new List<SelectListItem>
+                                {
+                                    new SelectListItem {Text = "Menu sản phẩm", Value = "0"},
+                                    new SelectListItem {Text = "Menu trang web", Value = "1"},
+
+                                }, new { @class = "form-control", @name = "tblMenu.IsCategoryMenu" })
 
                             </div>
                             <div class="form-group">

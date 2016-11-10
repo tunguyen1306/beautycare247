@@ -161,8 +161,9 @@
           <Property Name="FirtNameUser" Type="nvarchar" MaxLength="50" />
           <Property Name="LastNameUser" Type="nvarchar" MaxLength="50" />
           <Property Name="AddressUser" Type="nvarchar" MaxLength="250" />
-          <Property Name="SubscribeUser" Type="bit" />
+          <Property Name="SubscribeUser" Type="int" />
           <Property Name="StatusUser" Type="int" />
+          <Property Name="IdRoleUser" Type="int" />
         </EntityType>
         <EntityType Name="tblVocabulary">
           <Key>
@@ -276,8 +277,9 @@
           <Property Name="FirtNameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="LastNameUser" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
           <Property Name="AddressUser" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
-          <Property Name="SubscribeUser" Type="Boolean" />
+          <Property Name="SubscribeUser" Type="Int32" />
           <Property Name="StatusUser" Type="Int32" />
+          <Property Name="IdRoleUser" Type="Int32" />
         </EntityType>
         <EntityType Name="tblTypeUser">
           <Key>
@@ -443,6 +445,7 @@
           <EntitySetMapping Name="tblUsers">
             <EntityTypeMapping TypeName="WebSiteModel.tblUser">
               <MappingFragment StoreEntitySet="tblUser">
+                <ScalarProperty Name="IdRoleUser" ColumnName="IdRoleUser" />
                 <ScalarProperty Name="StatusUser" ColumnName="StatusUser" />
                 <ScalarProperty Name="SubscribeUser" ColumnName="SubscribeUser" />
                 <ScalarProperty Name="AddressUser" ColumnName="AddressUser" />

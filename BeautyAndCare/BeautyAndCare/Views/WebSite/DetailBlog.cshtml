@@ -1,8 +1,162 @@
-﻿
+﻿@using BeautyAndCare.Models;
+@using System.Linq;
+@using System.Configuration
+@model IEnumerable<tblBlog>
 @{
-    ViewBag.Title = "DetailBlog";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LayOutNew.cshtml";
+    WebSiteEntities db = new WebSiteEntities();
+    var queryMenu = from data in db.tblMenus
+                    where data.StatusMenu == 1
+                    select data;
+
 }
 
-<h2>DetailBlog</h2>
+<!--HEADER--->
+@Html.Partial("Header", queryMenu.ToList())
+<!--END HEADER--->
 
+<div class="container">
+    @Html.Partial("Breadcrumb")
+    @foreach (var item in Model)
+    {
+        <div class="form-group">
+            <div id="content" class="col-sm-12">
+                <div class="form-group">
+                    <article class="article-info">
+                        <div class="article-title">
+                            <h1 class="clvi">@item.NameBlog_vi</h1>
+                            <h1 class="clen">@item.NameBlog_en</h1>
+                        </div>
+                        <div class="article-sub-title">
+                            <span class="article-date material-design-clock100">@item.CreateDateBlog</span>
+                            <span class="article-comments material-design-add183">3 Comments</span>
+                            <span class="article-author material-design-user157">
+                                Đăng bởi <a>admin</a>
+                            </span>
+                        </div>
+                        <div class="article-image">
+                            <img class="clvi" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_vi">
+                            <img class="clen" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_en">
+                        </div>
+                        <div class="article-description clvi">
+                            @Html.Raw(item.ShortDes_vi)
+
+                        </div>
+                        <div class="article-description clen">
+                            @Html.Raw(item.ShortDes_en)
+
+                        </div>
+                        <div class="product_tabs">
+                            <ul class="nav nav-tabs">
+
+                                <li class="active">
+                                    <a href="#tab-comments" data-toggle="tab" class="clcomment">Bình Luận</a>
+                                </li>
+                            </ul>
+                            <div class="tab-content">
+
+                                <div id="tab-comments" class="tab-pane active">
+                                    <h2>Bình Luận</h2>
+                                    <div class="form-group">
+                                        <div id="comments" class="blog-comment-info">
+                                            <div id="comment-list">
+                                                <div class="article-comment">
+                                                    <div class="fb-comments" data-href="https://www.facebook.com/thucphamNhat/@item.IdBlog" data-numposts="8"></div>
+                                                </div>
+                                             
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    }
+
+</div>
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v2.8&appId=1542874159340791";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+<script type="text/javascript">
+    function setArticleId(article_id) {
+        $("#blog-reply-id").val(article_id);
+        $("#reply-remove").css('display', 'inline');
+        $('html, body').animate({
+            'scrollTop': $('#review-title').offset().top - ($('#stuck').outerHeight() + 50)
+        }, 500);
+    }
+</script>
+<script type="text/javascript">
+    function removeCommentId() {
+        $("#blog-reply-id").val(0);
+        $("#reply-remove").css('display', 'none');
+    }
+</script>
+<script type="text/javascript">
+    $('#comment-list').delegate('.pagination a', 'click', function (e) {
+        e.preventDefault();
+
+        $('#comment-list').fadeOut('slow');
+
+        $('#comment-list').load(this.href);
+
+        $('#comment-list').fadeIn('slow');
+    });
+
+    $('#comment-list').load('index.php?route=simple_blog/article/comment&simple_blog_article_id=8');
+
+    $('.product_tabs li:first-child a').tab('show');
+
+</script>
+<script type="text/javascript">
+    $('#button-comment').bind('click', function () {
+        $.ajax({
+            type: 'POST',
+            url: 'index.php?route=simple_blog/article/writeComment&simple_blog_article_id=8',
+            dataType: 'json',
+            data: 'name=' + encodeURIComponent($('input[name=\'name\']').val()) + '&text=' + encodeURIComponent($('textarea[name=\'text\']').val()) + '&captcha=' + encodeURIComponent($('input[name=\'captcha\']').val()) + '&reply_id=' + encodeURIComponent($('input[name=\'blog_article_reply_id\']').val()),
+            beforeSend: function () {
+                $('.success, .warning').remove();
+                $('#button-comment').attr('disabled', true);
+            },
+            complete: function () {
+                $('#button-comment').attr('disabled', false);
+                $('.attention').remove();
+            },
+            success: function (data) {
+
+                $('.alert').remove();
+
+                if (data['error']) {
+                    $('#review-title').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i> ' + data['error'] + '</div>');
+                }
+
+                if (data['success']) {
+                    $('#review-title').after('<div class="alert alert-success"><i class="fa fa-check-circle"></i> ' + data['success'] + '</div>');
+
+                    $('input[name=\'name\']').val('');
+                    $('textarea[name=\'text\']').val('');
+                    $('input[name=\'captcha\']').val('');
+                    $("#blog-reply-id").val(0);
+                    $("#reply-remove").css('display', 'none');
+
+                    $('#comment-list').load('index.php?route=simple_blog/article/comment&simple_blog_article_id=8');
+                }
+            }
+        });
+    });
+</script>
+<!-- FOOTER--->
+@Html.Partial("Footer")
+<!--END FOOTER--->

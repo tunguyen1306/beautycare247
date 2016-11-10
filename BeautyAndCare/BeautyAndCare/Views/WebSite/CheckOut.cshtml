@@ -43,16 +43,16 @@
                                 <tr>
                                     <td class="text-center vcenter">
                                         <div class="image">
-                                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">
-                                                <img src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/products/product_58-150x150.png" alt="Youngman 15 Colors Professional Concealer" title="Youngman 15 Colors Professional Concealer" class="img-thumbnail">
+                                            <a href="@Url.Action("Detail", "WebSite",new { id=item.ProductName.UrlFrendly() + "-" + item.ProductID })">
+                                                <img src="@item.FullUrlImg2" alt="Youngman 15 Colors Professional Concealer" title="Youngman 15 Colors Professional Concealer" class="img-thumbnail">
                                             </a>
                                         </div>
                                     </td>
                                     <td class="text-left">
-                                        <a class="link" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/product&amp;product_id=50">
+                                        <a class="link" href="@Url.Action("Detail", "WebSite",new { id=item.ProductName.UrlFrendly() + "-" + item.ProductID })">
                                             @item.ProductName
                                         </a>
-                                        <br>
+                                        @*<br>
                                         <small>
                                             <strong>Model</strong> : Classic
                                         </small>
@@ -63,7 +63,7 @@
                                         <br>
                                         <small>
                                             <strong>Color</strong>: black
-                                        </small>
+                                        </small>*@
                                     </td>
                                     <td class="text-left">
                                         <div class="btn-block clearfix" style="max-width: 200px;">
@@ -76,10 +76,23 @@
                                         </div>
                                     </td>
                                     <td class="text-right">
-                                        <div class="price">@item.Price</div>
+                                        <div class="price  priceCart_@item.ProductID">
+                                           
+                                        <script>
+                                            $(function () {
+
+
+                                                    $('.priceCart_@item.ProductID').text(tien(@item.Price));
+                                            }) </script>
+                                    </div>
                                     </td>
                                     <td class="text-right">
-                                        <div class="price price-total"><input type="hidden" id="hdtotal" name="hdtotal" value="@item.Total"  />  @item.Total</div>
+                                        <div class="price price-total priceTotal_@item.ProductID">
+                                        <input type="hidden" id="hdtotal" name="hdtotal" value="@item.Total"  /> <script>
+                                            $(function () {
+
+                                                $('.priceTotal_@item.ProductID').text(tien(@item.Total));
+                                            }) </script> </div>
                                     </td>
                                     <td class="text-center" style="width: 0">
                                         <button type="button" data-toggle="tooltip" title="" class="btn-icon" onclick="cart.remove('297');" data-original-title="Remove">
@@ -123,6 +136,7 @@
                                 <tr>
                                     <td class="text-right"><strong>Sub-Total:</strong></td>
                                     <td class="text-right tx-price showSubTotal"></td>
+                                    <td class="text-right priceHd hidden"></td>
                                 </tr>
                                 <tr>
                                     <td class="text-right"><strong>Total:</strong></td>
@@ -133,8 +147,8 @@
                     </div>
                 </div>
                 <div class="buttons">
-                    <div class="pull-left"><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=common/home" class="btn btn-default">Tiếp tục mua hàng</a></div>
-                    <div class="pull-right"><a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=checkout/checkout" class="btn btn-primary checkout">Thanh toán</a></div>
+                    <div class="pull-left"><a href="@Url.Action("Index","WebSite")" class="btn btn-default">Tiếp tục mua hàng</a></div>
+                    <div class="pull-right"><a href="@Url.Action("PayOut","WebSite")" class="btn btn-primary checkout">Thanh toán</a></div>
                 </div>
             </div>
         </div>

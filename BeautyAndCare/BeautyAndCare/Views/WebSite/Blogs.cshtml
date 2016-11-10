@@ -15,7 +15,7 @@
                         <img width="225" height="225" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_vi" />
                     </figure>
                     <h3 class="article-title">
-                        <a href="@Url.Action("DetailBlog","adminBlogs",new { id = item.NameBlog_vi.UrlFrendly() + "-" + item.IdBlog })">@item.NameBlog_vi</a>
+                        <a href="@Url.Action("DetailBlog","WebSite",new { id = item.NameBlog_vi.UrlFrendly() + "-" + item.IdBlog })">@item.NameBlog_vi</a>
                     </h3>
                     <div>
                         <div class="article-description">
