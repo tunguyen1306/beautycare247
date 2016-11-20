@@ -12,12 +12,14 @@ namespace BeautyAndCare.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblOrder
+    public partial class phuong
     {
-        public int IdOrder { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public string PriceTotal { get; set; }
-        public Nullable<double> PointTotal { get; set; }
-        public Nullable<System.DateTime> DateCreate { get; set; }
+        public Nullable<double> ID { get; set; }
+        public string WardName { get; set; }
+        public Nullable<double> SuburbID { get; set; }
+        public string Longitude { get; set; }
+        public string Latitude { get; set; }
+        public string polygon { get; set; }
+        public System.Guid rowguid { get; set; }
     }
 }

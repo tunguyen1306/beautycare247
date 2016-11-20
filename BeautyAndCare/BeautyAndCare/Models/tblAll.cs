@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 
 namespace BeautyAndCare.Models
@@ -227,6 +229,25 @@ namespace BeautyAndCare.Models
             Image,
             [Description("text")]
             Text
+        }
+        public static bool SendMail(string name, string email, string enquiry)
+        {
+            var t = email;
+            var mail = new MailMessage();
+            mail.To.Add("tien131091@gmail.com");
+            mail.From = new MailAddress("tien131091@gmail.com");
+            mail.Subject = "Email khách hàng đăng ký nhận tin";
+            mail.Body = "Email của khách là:" + email;
+            mail.IsBodyHtml = true;
+            var smtp = new SmtpClient();
+            smtp.Host = "smtp.gmail.com";
+            smtp.Port = 587;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new NetworkCredential
+                ("mailorderthung@gmail.com", "a1234@1234");
+            smtp.EnableSsl = true;
+            smtp.Send(mail);
+            return true;
         }
     }
 }

@@ -10,7 +10,7 @@
                 <ul class="toggle_cont">
                     @if (Session["IdUser"] != null)
                     {
-                        <li><span class="cusWellcome"> Xin chào,</span><input type="hidden" id="hdUserName" value="@Session["EmailUser"]" />  <a href="@Url.Action("Login")">@Session["EmailUser"]</a></li>
+                        <li><span class="cusWellcome"> Xin chào,</span><input type="hidden" id="hdUserName" value="@Session["EmailUser"]" />  <a href="@Url.Action("LogOut","WebSite")">@Session["EmailUser"]</a></li>
 
                     }
                     else
@@ -24,7 +24,7 @@
                 </ul>
             </nav>
             <div class="box-currency">
-                <form  method="post" enctype="multipart/form-data" id="form-currency">
+                <form method="post" enctype="multipart/form-data" id="form-currency">
                     <div class="btn-group toggle-wrap">
                         <span class="toggle">
                             <span>VNĐ</span>
@@ -101,7 +101,7 @@
                     <ul class="pull-right toggle_cont">
                         <li>
                             <span class="clcart">Giỏ hàng</span>
-                            
+
                             <button type="button" class="btn-close-cart btn-danger"><i class="material-icons-clear"></i></button>
                         </li>
                         <li>
@@ -113,36 +113,38 @@
                             <table class="table total">
                                 <tbody>
                                     @*<tr>
-                                        <td class="text-left">
-                                            <strong>Sub-Total</strong>
-                                        </td>
-                                        <td class="text-right">
-                                            $100.00
-                                        </td>
-                                    </tr>
-                                    <tr>
+                                            <td class="text-left">
+                                                <strong>Sub-Total</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                $100.00
+                                            </td>
+                                        </tr>
+                                        <tr>
 
-                                        <td class="text-left">
+                                            <td class="text-left">
 
-                                            <strong>Total</strong>
-                                        </td>
-                                        <td class="text-right">
-                                            $100.00
-                                        </td>
-                                    </tr>*@
+                                                <strong>Total</strong>
+                                            </td>
+                                            <td class="text-right">
+                                                $100.00
+                                            </td>
+                                        </tr>*@
                                 </tbody>
                             </table>
-                            <div class="text-right">
-                                <a class="btn-view" href="@Url.Action("CheckOut","WebSite")"><span class="clxemgiohang"> Xem giỏ hàng</span></a>
-                                @*onclick="ViewCart()"*@
-                                <input type="hidden" id="hdIdPro" />
-                                <div class="clear"></div>
-                                <a class="btn-primary" href="@Url.Action("CheckOut","WebSite")"><span class="clcheckout">Thanh toán</span></a>
-                            </div>
+                         
+                                <div class="text-right">
+                                    <a class="btn-view" href="@Url.Action("CheckOut","WebSite")"><span class="clxemgiohang"> Xem giỏ hàng</span></a>
+                                    <input type="hidden" id="hdIdPro" />
+                                    <div class="clear"></div>
+                                    <a class="btn-primary" href="@Url.Action("CheckOut","WebSite")"><span class="clcheckout">Thanh toán</span></a>
+                                </div>
+                            
+
                         </li>
                     </ul>
                 </div>
-            </div> 
+            </div>
             @*<a class="button-wishlist" href="http://livedemo00.template-help.com/opencart_59086/index.php?route=account/wishlist" id="wishlist-total" title=""> <i class="fl-outicons-heart373"></i> Wishlist <span>0</span> </a>*@
         </div>
     </div>
@@ -169,10 +171,10 @@
                                     {
 
                                         <a href="@item.LinkMenu" class="clvi">@item.NameMenu</a>
-                                    <a href="@item.LinkMenu" class="clen hidden">@item.NameMenu_en</a>
+                                        <a href="@item.LinkMenu" class="clen hidden">@item.NameMenu_en</a>
 
                                     }
-                                    
+
                                 </li>
                             }
                             else
@@ -184,23 +186,23 @@
                                         {
 
                                             <a class="clvi hidden" href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
-                                            <a  class="clen hidden" href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu_en.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu_en</a>
+                                            <a class="clen hidden" href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu_en.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu_en</a>
                                         }
                                         else
                                         {
 
-                                            <a href="@item.LinkMenu" class="clvi hidden">@item.NameMenu</a>                                   
-                                                     <a href="@item.LinkMenu" class="clen hidden">@item.NameMenu_en</a>
+                                            <a href="@item.LinkMenu" class="clvi hidden">@item.NameMenu</a>
+                                            <a href="@item.LinkMenu" class="clen hidden">@item.NameMenu_en</a>
 
                                         }
-                                         <ul class="sf-mega">
+                                        <ul class="sf-mega">
                                             @foreach (var child in Model.Where(p => p.IdParentMenu == item.IdMenu))
                                             {
                                                 <li class="sf-mega_row">
                                                     <div class="sf-mega_section 1" style="width: 16.7%">
                                                         <ul>
                                                             <li>
-                                                               
+
                                                                 @if (item.IsCategoryMenu == 1)
                                                                 {
 
@@ -226,7 +228,7 @@
 
                     </ul>
                 </div>
-                
+
                 <div id="style_switcher">
                     <div class="toggler"></div>
                     <p>The customization tool allows you to make color changes in your theme</p>

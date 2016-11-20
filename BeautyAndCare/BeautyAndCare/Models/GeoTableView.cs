@@ -12,12 +12,15 @@ namespace BeautyAndCare.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblOrder
+    public partial class GeoTableView
     {
-        public int IdOrder { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public string PriceTotal { get; set; }
-        public Nullable<double> PointTotal { get; set; }
-        public Nullable<System.DateTime> DateCreate { get; set; }
+        public int Id { get; set; }
+        public int WardId { get; set; }
+        public string Ward { get; set; }
+        public int DistrictId { get; set; }
+        public string District { get; set; }
+        public int CityId { get; set; }
+        public string City { get; set; }
+        public System.Guid rowguid { get; set; }
     }
 }

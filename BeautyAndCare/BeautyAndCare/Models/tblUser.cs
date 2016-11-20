@@ -27,5 +27,13 @@ namespace BeautyAndCare.Models
         public Nullable<int> SubscribeUser { get; set; }
         public Nullable<int> StatusUser { get; set; }
         public Nullable<int> IdRoleUser { get; set; }
+        public string FullNameShip { get; set; }
+        public string AddressShip { get; set; }
+        public string PhoneShip { get; set; }
+        public Nullable<int> IdWard { get; set; }
+        public Nullable<int> IdDistrict { get; set; }
+        public Nullable<int> IdCity { get; set; }
+        public Nullable<int> TypeRegister { get; set; }
+        public string IdRegisterFB { get; set; }
     }
 }

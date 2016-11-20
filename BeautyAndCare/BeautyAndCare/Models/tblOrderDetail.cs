@@ -12,12 +12,11 @@ namespace BeautyAndCare.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class tblOrder
+    public partial class tblOrderDetail
     {
-        public int IdOrder { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public string PriceTotal { get; set; }
-        public Nullable<double> PointTotal { get; set; }
+        public int IdOrderDetail { get; set; }
+        public Nullable<int> IdProducts { get; set; }
+        public Nullable<int> IdOrder { get; set; }
         public Nullable<System.DateTime> DateCreate { get; set; }
     }
 }

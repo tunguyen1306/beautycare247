@@ -655,7 +655,7 @@ h4 {
 h5 {
   font-size: 16px;
   color: #5a5a5a;
-  font-family: "Arimo", sans-serif; }
+  font-family: 'Roboto', sans-serif; }
 
 h6 {
   font-size: 14px;
@@ -1526,7 +1526,7 @@ header {
     width: 29px;
     height: 29px;
     font-weight: bold;
-    font-family: "Arimo", sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #fff;
     text-align: center;
     -webkit-border-radius: 50%;
@@ -2936,7 +2936,7 @@ table .btn-primary {
 /*========================================================
                       Form Styles
 =========================================================*/
-select,
+
 textarea,
 input[type="text"],
 input[type="password"],
@@ -3095,8 +3095,8 @@ input[name="captcha"] + img {
 textarea:not([class*="habla"]) {
   min-height: 90px; }
 
-select {
-  display: none; }
+/*select {
+  display: none; }*/
 
 #modal-shipping input[type="radio"] {
   display: inline;
@@ -5114,19 +5114,20 @@ body.mobile_mode.mobile #style_switcher {
     border-radius: 25px; }
     .newsletter .tm-login-form input[type="text"]::-webkit-input-placeholder {
       color: #5a5a5a;
-      font-family: "Arimo", sans-serif;
+      font-family: 'Roboto', sans-serif;
+
       opacity: 1; }
     .newsletter .tm-login-form input[type="text"]:-moz-placeholder {
       color: #5a5a5a;
-      font-family: "Arimo", sans-serif;
+      font-family: 'Roboto', sans-serif;
       opacity: 1; }
     .newsletter .tm-login-form input[type="text"]::-moz-placeholder {
       color: #5a5a5a;
-      font-family: "Arimo", sans-serif;
+      font-family: 'Roboto', sans-serif;
       opacity: 1; }
     .newsletter .tm-login-form input[type="text"]:-ms-input-placeholder {
       color: #5a5a5a;
-      font-family: "Arimo", sans-serif;
+      font-family: 'Roboto', sans-serif;
       opacity: 1; }
 .newsletter .newsletter-button {
   width: 40px;

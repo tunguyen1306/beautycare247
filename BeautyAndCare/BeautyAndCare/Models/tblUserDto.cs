@@ -20,5 +20,14 @@ namespace BeautyAndCare.Models
         public string LastNameUser { get; set; }
         public string AddressUser { get; set; }
         public Nullable<bool> SubscribeUser { get; set; }
+        public List<tblHistory> ListHistory { get; set; }
+        public tblHistory tblHistory { get; set; }
+        public tblUser tblUser { get; set; }
+        public tblProduct tblProduct { get; set; }
+        public tblOrder tblOrder { get; set; }
+        public List<tblOrder> listOrder { get; set; }
+        public tblOrderDetail tblOrderDetail { get; set; }
+        public List<tblOrderDetail> listOrderDetail { get; set; }
+
     }
 }

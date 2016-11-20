@@ -152,11 +152,12 @@
                                                         $(function () {
 
                                                             $('.price-old_@item.IdProducts').text(tien(@item.PriceProducts));
-                                                        }) </script>
+                                                        }); 
+                                                    </script>
                                                 </span>
                                             </div>
                                         </div>
-                                        <button type="button" id="button-cart" data-loading-text="Loading..." class="btn-primary"><i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
+                                        <button type="button" id="button-cart" data-loading-text="Loading..." onclick="addToCart(@item.IdProducts);" class="btn-primary"><i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
                                     </div>
                                 </div>
                                 <div class="price-section">

@@ -1,5 +1,7 @@
 ﻿$(function () {
-
+    showToCart();
+        GetCity();
+   
     var url = window.location.href;
    
     if (url.indexOf('/WebSite/Index')>=0) {
@@ -81,7 +83,7 @@
        dataType: "json",
        contentType: "application/json;charset=utf-8",
        success: function (data) {
-           console.log(data);
+          
            $.each(data, function (i, o) {
                if (o.KeyVocabulary.lastIndexOf("ip_") != -1)
                    $('.' + o.KeyVocabulary).val(o.NameVocabulary);
@@ -95,9 +97,156 @@
 
        }
    });
-
-
+    
+   
 });
+$('.btnLogOut').click(function () {
+    alert();
+    Logout();
+});
+function Logout() {
+    var url = "/WebSite/LogOut";
+    $.ajax
+   ({
+       type: "POST",
+       url: url,
+       data: '',
+       dataType: "json",
+       contentType: "application/json;charset=utf-8",
+       success: function (data) {
+       }
+   });
+}
+
+function GetCity() {
+    //Get City
+    var url = "/WebSite/GetCity";
+    var stringCity = "<option value=\"0\">Chọn thành phố</option>";
+    
+    $.ajax
+   ({
+       type: "POST",
+       url: url,
+       data: '',
+       dataType: "json",
+       contentType: "application/json;charset=utf-8",
+       success: function (data) {
+           
+           $.each(data, function (i, o) {
+               stringCity += "<option value=" + o.CityId + ">" + o.CityName + "</option>";
+
+           });
+          
+           $('#dropCity').removeAttr('style');
+           $('#dropCity').removeAttr('sb');
+           $('#dropCity').attr('class', 'form-control');
+           $('#dropCity').html(stringCity);
+           $('.sbHolder').remove();
+           $('#dropCity').change(function () {
+               var idCity = $("#dropCity option:selected").val();
+               $('.cldistrictcheckout').removeClass('hidden');
+               GetDistrict(idCity);
+               GetPriceShip(idCity);
+           });
+       }
+   });
+}
+function GetPriceShip(_id) {
+   
+    //Get City
+    var url = "/WebSite/GetPriceShip";
+    
+    var obj = {};
+    obj.id = _id;
+    $.ajax
+   ({
+       type: "POST",
+       url: url,
+       data: JSON.stringify(obj),
+       dataType: "json",
+       contentType: "application/json;charset=utf-8",
+       success: function (data) {
+           var TotalPriceShip = 0;
+           var totalPriceNo = $('#hdPriceNo').val();
+           $('.showPrice').html(tien(totalPriceNo));
+           if (data.length ==0 ) {
+               TotalPriceShip = parseInt(totalPriceNo);
+               $('.showShip').html('0đ');
+           } else {
+               TotalPriceShip = parseInt(totalPriceNo) + parseInt(data[0].PriceShip);
+               $('.showShip').html(tien(data[0].PriceShip));
+           }
+           $('.showPricePay').html(tien(TotalPriceShip));
+           $('.clTotalPrcie').html(tien(TotalPriceShip));
+           $('#hdPriceNoPayout').val(TotalPriceShip);
+
+       }
+   });
+}
+function GetDistrict(_id) {
+    //Get City
+    var url = "/WebSite/GetDistrict";
+    var stringCity = "<option value=\"0\">Chọn quận huyện</option>";
+    $('#dropDistrict').removeAttr('style');
+    $('#dropDistrict').removeAttr('sb');
+    $('#dropDistrict').attr('class', 'form-control');
+   
+    $('.sbHolder').remove();
+    var obj={};
+    obj.id = _id;
+    $('#dropDistrict').html('');
+    $.ajax
+   ({
+       type: "POST",
+       url: url,
+       data: JSON.stringify(obj),
+       dataType: "json",
+       contentType: "application/json;charset=utf-8",
+       success: function (data) {
+         
+           $.each(data, function (i, o) {
+             
+               stringCity += "<option value=" + o.DistId + ">" + o.DistName + "</option>";
+
+           });
+
+           $('#dropDistrict').html(stringCity);
+           $('#dropDistrict').change(function () {
+               $('.clwardcheckout').removeClass('hidden');
+               var idDistric = $("#dropDistrict option:selected").val();
+               GetWard(idDistric);
+           });
+       }
+   });
+}
+function GetWard(_id) {
+    //Get City
+    var url = "/WebSite/GetWard";
+    var stringCity = "<option value=\"0\">Chọn phường xã</option>";
+    $('#dropWard').removeAttr('style');
+    $('#dropWard').removeAttr('sb');
+    $('#dropWard').attr('class', 'form-control');
+    $('.sbHolder').remove();
+    var obj={};
+    obj.id = _id;
+    $('#dropWard').html('');
+    $.ajax
+   ({
+       type: "POST",
+       url: url,
+       data: JSON.stringify(obj),
+       dataType: "json",
+       contentType: "application/json;charset=utf-8",
+       success: function (data) {
+         
+           $.each(data, function (i, o) {
+               stringCity += "<option value=" + o.WardId + ">" + o.WardName + "</option>";
+           });
+
+           $('#dropWard').html(stringCity);
+       }
+   });
+}
 function setCookie(cname, cvalue, exdays) {
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
@@ -119,6 +268,8 @@ function getCookie(cname) {
     return "";
 }
 (function ($) {
+
+
     $(window).load(function () {
         var o = $('.sf-menu');
         o.superfish();
@@ -146,6 +297,7 @@ $(document).ready(function () {
     });
     $('.tx-price').html(tien(total));
     $('.priceHd').html(total);
+    $('#hdPriceNo').val(total);
 });
 ///////////////SubMit
 $('#button-coupon').click(function () {
@@ -160,34 +312,72 @@ function addToCart(id) {
        ProductId: id
    },
    function (o, status) {
-       $('#cart-total2').html(o.count);
-       console.log(o);
-       console.log(o.dataPro.NameProducts);
-       var stringHtml;
-       stringHtml += "<tr class=\"cusTr\">"
-       + "<td class=\"text-center\">"
-       + " <div class=\"image\">"
-         + " <input type=\"hidden\" name=\"idPro\" id=\"hdProductsId_" + o.dataPro.IdProducts + "\" value=\"" + o.dataPro.IdProducts + "\" />"
-       + " <a href=\"#\">"
-       + "   <img src=\"" + o.nameImg + "\" alt=\"" + o.dataPro.NameProducts + "\" title=\"" + o.dataPro.NameProducts + "\" class=\"img-thumbnail\">"
-       + "  </a>"
-       + " </div>"
-       + "  </td>"
-       + " <td class=\"text-left\">"
-       + " <div class=\"name\">"
-       + " <a href=\"#\">" + o.dataPro.NameProducts + "</a>"
-       + " </div>"
-       + " </td>"
-       + "<td class=\"text-right\">"
-       + " <span class=\"price-cart PriceCart_" + o.dataPro.IdProducts + "\">" + o.dataPro.PriceProducts + "</span>"
-       + " </td>"
-       + " </tr>";
-       $('.LoadProducts').append(stringHtml);
+       //$('#cart-total2').html(o.count);
+       //var stringHtml;
+       //stringHtml += "<tr class=\"cusTr\">"
+       //+ "<td class=\"text-center\">"
+       //+ " <div class=\"image\">"
+       //  + " <input type=\"hidden\" name=\"idPro\" id=\"hdProductsId_" + o.dataPro.IdProducts + "\" value=\"" + o.dataPro.IdProducts + "\" />"
+       //+ " <a href=\"#\">"
+       //+ "   <img src=\"" + o.nameImg + "\" alt=\"" + o.dataPro.NameProducts + "\" title=\"" + o.dataPro.NameProducts + "\" class=\"img-thumbnail\">"
+       //+ "  </a>"
+       //+ " </div>"
+       //+ "  </td>"
+       //+ " <td class=\"text-left\">"
+       //+ " <div class=\"name\">"
+       //+ " <a href=\"#\">" + o.dataPro.NameProducts + "</a>"
+       //+ " </div>"
+       //+ " </td>"
+       //+ "<td class=\"text-right\">"
+       //+ " <span class=\"price-cart PriceCart_" + o.dataPro.IdProducts + "\">" + o.dataPro.PriceNewProducts + "</span>"
+       //+ " </td>"
+       //+ " </tr>";
+       //$('.LoadProducts').append(stringHtml);
+
+       showToCart();
        $('#content').parent().before('<div class="alert alert-success"><i class="material-design-verification24"></i> Bạn đã thêm sản phẩm ' + o.dataPro.NameProducts + ' vào giỏ hàng thành công <button type="button" class="close material-design-close47"></button></div>');
        $('.PriceCart_' + o.dataPro.IdProducts).text(tien(o.dataPro.PriceProducts));
    });
 
 }
+function showToCart() {
+    var url = "WebSite/ShowToCart"
+    $('.LoadProducts').html('');
+    $.post(url,
+   function (o, status) {
+       $('#cart-total2').html(o.count);
+       console.log(o);
+       var stringHtml;
+     
+       $.each(o.dataPro, function (i, t) {
+           console.log(t);
+           stringHtml += "<tr class=\"cusTr\">"
+             + "<td class=\"text-center\">"
+       + " <div class=\"image\">"
+         + " <input type=\"hidden\" name=\"idPro\" id=\"hdProductsId_" + t.IdProducts + "\" value=\"" + t.IdProducts + "\" />"
+       + " <a href=\"#\">"
+       + "   <img src=\"" + t.FullUrlImg2 + "\" alt=\"" + t.ProductName + "\" title=\"" + t.ProductName + "\" class=\"img-thumbnail\">"
+       + "  </a>"
+       + " </div>"
+       + "  </td>"
+       + " <td class=\"text-left\">"
+       + " <div class=\"name\">"
+       + " <a href=\"#\">" + t.ProductName + "</a>"
+       + " </div>"
+       + " </td>"
+       + "<td class=\"text-right\">"
+       + " <span class=\"price-cart PriceCart_" + t.IdProducts + "\">" + tien(t.Price) + "</span>"
+       + " </td>"
+            + " </tr>";
+       });
+     
+
+
+      
+       $('.LoadProducts').append(stringHtml);
+   });
+}
+
 function ViewCart() {
     var index = '';
     $.each($('.cusTr'), function (i, o) {
@@ -213,7 +403,6 @@ function UpdateToCart(id) {
 function CheckCoupon() {
     $('.alert-danger').addClass('hidden');
     var hdUser = $('#hdUserName').val();
-    console.log(hdUser);
     if (hdUser != null) {
         var url = "WebSite/CheckCoupon"
         var valueCoupon = $('#input-coupon').val();
@@ -247,7 +436,10 @@ function CheckCoupon() {
 
                    if (showSubTotal >= 300000) {
                        var cal = showSubTotal - o[0].PriceCode;
+                      
                        $('.showTotalAll').html(tien(cal));
+                       $('#hdPriceNo').val(cal);
+                      
                        $('#button-coupon').addClass('disabled')
                       
                        $('.breadcrumb').after('<div class="alert alert-success"><i class="fa fa-exclamation-circle"></i> Bạn đã nhập mã giảm giá thành công! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
@@ -278,6 +470,4 @@ function convert(str) {
         day = ("0" + date.getDate()).slice(-2);
     return [date.getFullYear(), mnth, day].join("-");
 }
-
-
 

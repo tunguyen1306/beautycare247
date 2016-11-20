@@ -1,8 +1,47 @@
-﻿
+﻿@using BeautyAndCare.Models;
+@using System.Linq;
+@using System.Configuration
 @{
-    ViewBag.Title = "PayOut";
+    ViewBag.Title = "Index";
     Layout = "~/Views/Shared/LayOutNew.cshtml";
+    WebSiteEntities db = new WebSiteEntities();
+    var queryMenu = from data in db.tblMenus
+                    where data.StatusMenu == 1
+                    select data;
 }
+<!--HEADER--->
+@Html.Partial("Header", queryMenu.ToList())
+<!--END HEADER--->
+<div class="container">
+    @Html.Partial("Breadcrumb")
+    <div class="row">
+        <div class="col-lg-4">
 
-<h2>PayOut</h2>
 
+        </div>
+        <div class="col-lg-4">
+            <span class="clNotifiorder">
+                Your order has been submitted. Once we confirm the order you will receive an email notification and you can make payment online. Thank you!
+                <br /><a href="" style="font-weight:bold;">View order history</a>
+            </span>
+          
+
+        </div>
+        <div class="col-lg-4">
+
+
+        </div>
+    </div>
+</div>
+<style>
+    .clNotifiorder {
+        display: block;
+        text-align: center !important;
+        font-size: 19px;
+        color: #212121;
+        margin-bottom:50px;
+    }
+</style>
+<!-- FOOTER--->
+@Html.Partial("Footer")
+<!--END FOOTER--->

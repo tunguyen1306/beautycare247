@@ -1,0 +1,275 @@
+﻿@using BeautyAndCare.Models;
+@using System.Linq;
+@using System.Configuration
+@model IEnumerable<tblUserDto>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayOutNew.cshtml";
+    WebSiteEntities db = new WebSiteEntities();
+    var queryMenu = from data in db.tblMenus
+                    where data.StatusMenu == 1
+                    select data;
+}
+<!-- DataTables CSS -->
+<link href="@Url.Content("~/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.css")" rel="stylesheet" type="text/css" />
+<!-- DataTables Responsive CSS -->
+<link href="@Url.Content("~/bower_components/datatables-responsive/css/dataTables.responsive.css")" rel="stylesheet" type="text/css" />
+<!-- DataTables JavaScript -->
+<script src="@Url.Content("~/bower_components/datatables/media/js/jquery.dataTables.min.js")"></script>
+<script src="@Url.Content("~/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js")"></script>
+<!--HEADER--->
+@Html.Partial("Header", queryMenu.ToList())
+<!--END HEADER--->
+<div class="container">
+    @Html.Partial("Breadcrumb")
+    <div class="row">
+        <aside id="column-left" class="col-sm-3">
+            <div class="box blog-categories">
+                <div class="box-heading"><h3 class="clfotterTaiKhoan">Tài khoản của tôi</h3></div>
+                <div class="box-content">
+                    <ul class="list-unstyled menu">
+                        <li>
+                            <a href="javascript:void(0)" class="claccountinfo btnUserInfo">Thông tin tài khoản</a>
+                        </li>
+                        <li>
+                            <a href="javascript:void(0)" class="clhistory btnMyHistory">Lịch sử mua hàng</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </aside>
+
+
+
+        @foreach (var item in Model.Take(1))
+        {
+        foreach (var itemUser in db.tblUsers.Where(x => x.IdUser == item.IdUser).ToList().Take(1))
+        {
+        <input id="hdId" type="hidden" value="@itemUser.IdUser" />
+        <article class="blog_article tabUserInfo">
+            <div class="row">
+
+                <div class="col-sm-12 col-md-8">
+
+                    <div class="well">
+                        <h2 class="claccountinfo">Thông tin tài khoản</h2>
+                        <div class="form-group">
+                            <label class="control-label" for="input-email">Tổng diểm</label>
+
+                            <h3>@itemUser.TotalPointUser</h3>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="input-email">Loại User</label>
+
+                            <h3>
+                                @if (itemUser.IdTypeUser == 1)
+                                {
+                                @("Vip")
+                                }
+                                @if (itemUser.IdTypeUser == 2)
+                                {
+                                @("Premium")
+                                }
+                                @if (itemUser.IdTypeUser == 3)
+                                {
+                                @("Basic")
+                                }
+
+                            </h3>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="input-email">E-Mail Address</label>
+
+                            <input type="text" name="EmailUser" value="@itemUser.EmailUser" placeholder="E-Mail Address" id="input-email" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="input-firstname">Tên</label>
+
+                            <input type="text" name="FirtNameUser" value="@itemUser.FirtNameUser" placeholder="FirtNameUser" id="input-firstName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="input-lastname">Họ</label>
+
+                            <input type="text" name="LastNameUser" value="@itemUser.LastNameUser" placeholder="LastNameUser" id="input-lastName" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label" for="input-lastname">Số điện thoại</label>
+
+                            <input type="text" name="PhoneUser" value="@itemUser.PhoneUser" placeholder="PhoneUser" id="input-PhoneUser" class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" class="ckchange" value=""> Đổi mật khẩu
+                                </label>
+                            </div>
+
+                        </div>
+                        <a class="btn btn-primary btnUpdate">Update </a>
+
+                    </div>
+
+                </div>
+            </div>
+        </article>
+        }
+        <article class="blog_article tabMyHistory">
+            <div class="row">
+
+                <div class="col-sm-12 col-md-8">
+
+                    <div class="well">
+                        <h2 class="clhistoryby">Lịch sử mua hàng</h2>
+                        <div class="table-responsive">
+                            <table class="table table-bordered dataTable">
+                                <thead>
+                                    <tr>
+                                        <td></td>
+                                        <td class="text-left">Giá tiền</td>
+                                        <td class="text-left">Điểm</td>
+                                        <td class="text-left">Ngày mua</td>
+
+
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item2 in Model.Take(1))
+                                    {
+                                        foreach (var itemorder in db.tblOrders.Where(x => x.IdUser == item2.IdUser).OrderByDescending(t => t.IdOrder))
+                                        {
+                                            <tr>
+                                                <td>
+
+                                                    <!-- Trigger the modal with a button -->
+                                                    <button type="button" class="btn btn-outline-info" data-toggle="modal" data-target="#myModal_@itemorder.IdOrder">Chi tiết</button>
+                                                    <!-- Modal -->
+                                                    <div id="myModal_@itemorder.IdOrder" class="modal fade" role="dialog">
+                                                        <div class="modal-dialog">
+
+                                                            <!-- Modal content-->
+                                                            <div class="modal-content">
+                                                                <div class="modal-header">
+                                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                                    <h4 class="modal-title">sản phẩm</h4>
+                                                                </div>
+                                                                <div class="modal-body">
+                                                                    <div class="table-responsive">
+                                                                        <table class="table table-bordered">
+                                                                            <thead>
+                                                                                <tr>
+                                                                                    <td class="text-left">Tên sản phẩm</td>
+                                                                                    <td class="text-left">Giá</td>
+                                                                                    <td class="text-left">Ngày mua</td>
+
+
+                                                                                </tr>
+                                                                            </thead>
+                                                                            <tbody>
+
+                                                                                @foreach (var itemorderdetail in db.tblOrderDetails.Where(x => x.IdOrder == itemorder.IdOrder))
+                                                                                {
+                                                                                    <tr>
+                                                                                        @foreach (var itempro in db.tblProducts.Where(x => x.IdProducts == itemorderdetail.IdProducts))
+                                                                                        {
+                                                                                            <td class="text-left">@itempro.NameProducts</td>
+                                                                                            <td class="text-left">@itempro.PriceNewProducts</td>
+                                                                                        }
+                                                                                        <td class="text-left">@itemorderdetail.DateCreate</td>
+                                                                                    </tr>
+                                                                                }
+
+
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="modal-footer">
+                                                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+
+
+
+                                                </td>
+                                                <td class="text-left">@itemorder.PriceTotal</td>
+                                                <td class="text-left">@itemorder.PointTotal</td>
+                                                <td class="text-left">@itemorder.DateCreate</td>
+                                            </tr>
+                                        }
+                                    }
+                                    <tr class="odd"><td valign="top" colspan="4" class="dataTables_empty"></td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                      
+
+                     
+                    </div>
+
+                </div>
+            </div>
+        </article>
+        }
+        <script>
+            $('.btnUserInfo').click(function () {
+                $('.tabUserInfo').removeClass('hidden');
+                $('.tabMyOrder').addClass('hidden');
+                $('.tabMyHistory').addClass('hidden');
+            });
+            $('.btnMyOrder').click(function () {
+                $('.tabMyOrder').removeClass('hidden');
+                $('.tabMyHistory').addClass('hidden');
+                $('.tabUserInfo').addClass('hidden');
+            });
+            $('.btnMyHistory').click(function () {
+
+                $('.tabMyHistory').removeClass('hidden');
+                $('.tabUserInfo').addClass('hidden');
+                $('.tabMyOrder').addClass('hidden');
+            });
+            $('.btnUpdate').click(function () {
+                var url = "WebSite/UpdateAccount";
+                var fname = $('#input-firstName').val();
+                var lname = $('#input-lastName').val();
+                var email = $('#input-email').val();
+                var phone = $('#input-PhoneUser').val(); var hdId = $('#hdId').val();
+                $.ajax
+               ({
+                   type: "POST",
+                   url: url, //LyricsloadMore
+                   data: JSON.stringify({ userid: hdId, email: email, fname: fname, lname: lname, phone: phone }),
+                   dataType: "json",
+                   contentType: "application/json;charset=utf-8",
+                   success: function (data) {
+                       console.log(data);
+                   }
+               });
+
+            });
+            $(function () {
+                $('.dataTable').DataTable({
+                    responsive: true
+                });
+
+                $('.tabUserInfo').removeClass('hidden');
+                $('.tabMyOrder').addClass('hidden');
+                $('.tabMyHistory').addClass('hidden');
+                if ($('.ckchange').attr('checked')) {
+                    alert()
+                }
+
+            });
+
+        </script>
+
+    </div>
+</div>
+
+<!-- FOOTER--->
+@Html.Partial("Footer")
+<!--END FOOTER--->

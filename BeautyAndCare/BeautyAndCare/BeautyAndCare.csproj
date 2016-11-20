@@ -148,6 +148,7 @@
     <Compile Include="Controllers\adminBlogsController.cs" />
     <Compile Include="Controllers\adminMenuController.cs" />
     <Compile Include="Controllers\adminProductController.cs" />
+    <Compile Include="Controllers\adminShipController.cs" />
     <Compile Include="Controllers\adminSlidersController.cs" />
     <Compile Include="Controllers\adminUserController.cs" />
     <Compile Include="Controllers\adminVocabulariesController.cs" />
@@ -160,11 +161,57 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Country.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\CountryText.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\District.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DistrictText.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GeoDto.cs" />
+    <Compile Include="Models\GeoIP2CityText.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\GeoTableView.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ip2City.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Ip2City2.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ListAll.cs" />
+    <Compile Include="Models\Location.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\LocationText.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Navbar.cs" />
+    <Compile Include="Models\phuong.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ProductsPictureDto.cs" />
+    <Compile Include="Models\Quarter.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\QuarterText.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\ShoppingCartModel.cs" />
+    <Compile Include="Models\State.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\StateText.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblAll.cs" />
     <Compile Include="Models\tblBlog.cs">
       <DependentUpon>WebSite.tt</DependentUpon>
@@ -182,6 +229,9 @@
     <Compile Include="Models\tblOrder.cs">
       <DependentUpon>WebSite.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\tblOrderDetail.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\tblPicture.cs">
       <DependentUpon>WebSite.tt</DependentUpon>
     </Compile>
@@ -189,6 +239,9 @@
       <DependentUpon>WebSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPromotion.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblShip.cs">
       <DependentUpon>WebSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblSlider.cs">
@@ -208,6 +261,9 @@
       <DependentUpon>WebSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\UrlFriendly.cs" />
+    <Compile Include="Models\VNELocation.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\WebSite.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1104,6 +1160,7 @@
     <Content Include="Template\js\bootstrap-tabcollapse.js" />
     <Content Include="Template\js\bootstrap.min.js" />
     <Content Include="Template\js\camera.js" />
+    <Content Include="Template\js\code.photoswipe-3.0.5.min.js" />
     <Content Include="Template\js\common.js" />
     <Content Include="Template\js\CusWeb.js" />
     <Content Include="Template\js\device.min.js" />
@@ -1118,6 +1175,7 @@
     <Content Include="Template\js\jquery.ui.totop.min.js" />
     <Content Include="Template\js\jquery.unveil.min.js" />
     <Content Include="Template\js\js.cookie-2.1.3.min.js" />
+    <Content Include="Template\js\klass.min.js" />
     <Content Include="Template\js\livesearch.min.js" />
     <Content Include="Template\js\owl.carousel.min.js" />
     <Content Include="Template\js\owl.carousel\owl.carousel.min.js" />
@@ -1246,6 +1304,10 @@
     <Content Include="Views\Shared\DisplayTemplates\CanonicalHelperModel.cshtml" />
     <Content Include="Views\WebSite\ListBlog.cshtml" />
     <Content Include="Views\WebSite\ListBlogBy.cshtml" />
+    <Content Include="Views\WebSite\MyAccount.cshtml" />
+    <Content Include="Views\adminShip\Index.cshtml" />
+    <Content Include="Views\adminShip\Create.cshtml" />
+    <Content Include="Views\adminShip\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

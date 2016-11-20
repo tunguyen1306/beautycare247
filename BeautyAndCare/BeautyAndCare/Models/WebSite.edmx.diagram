@@ -14,10 +14,28 @@
         <EntityTypeShape EntityType="WebSiteModel.tblPromotion" Width="1.5" PointX="5.375" PointY="5.75" />
         <EntityTypeShape EntityType="WebSiteModel.tblPicture" Width="1.5" PointX="7.375" PointY="3.75" />
         <EntityTypeShape EntityType="WebSiteModel.tblHistory" Width="1.5" PointX="0.75" PointY="8.75" />
-        <EntityTypeShape EntityType="WebSiteModel.tblOrder" Width="1.5" PointX="2.75" PointY="8.75" />
         <EntityTypeShape EntityType="WebSiteModel.tblSlider" Width="1.5" PointX="4.75" PointY="8.75" />
         <EntityTypeShape EntityType="WebSiteModel.tblBlog" Width="1.5" PointX="7.375" PointY="8.75" />
         <EntityTypeShape EntityType="WebSiteModel.tblVocabulary" Width="1.5" PointX="9.375" PointY="3.75" />
+        <EntityTypeShape EntityType="WebSiteModel.Country" Width="1.5" PointX="9.75" PointY="6.75" />
+        <EntityTypeShape EntityType="WebSiteModel.CountryText" Width="1.5" PointX="9.75" PointY="9.75" />
+        <EntityTypeShape EntityType="WebSiteModel.District" Width="1.5" PointX="11.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WebSiteModel.DistrictText" Width="1.5" PointX="11.75" PointY="4.75" />
+        <EntityTypeShape EntityType="WebSiteModel.GeoTableView" Width="1.5" PointX="11.75" PointY="7.75" />
+        <EntityTypeShape EntityType="WebSiteModel.Location" Width="1.5" PointX="11.75" PointY="11.75" />
+        <EntityTypeShape EntityType="WebSiteModel.LocationText" Width="1.5" PointX="0.75" PointY="12.75" />
+        <EntityTypeShape EntityType="WebSiteModel.Quarter" Width="1.5" PointX="2.75" PointY="12.75" />
+        <EntityTypeShape EntityType="WebSiteModel.QuarterText" Width="1.5" PointX="4.75" PointY="12.75" />
+        <EntityTypeShape EntityType="WebSiteModel.State" Width="1.5" PointX="13.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WebSiteModel.StateText" Width="1.5" PointX="13.75" PointY="4.75" />
+        <EntityTypeShape EntityType="WebSiteModel.GeoIP2CityText" Width="1.5" PointX="6.75" PointY="13.75" />
+        <EntityTypeShape EntityType="WebSiteModel.Ip2City" Width="1.5" PointX="13.75" PointY="7.75" />
+        <EntityTypeShape EntityType="WebSiteModel.Ip2City2" Width="1.5" PointX="8.75" PointY="13.75" />
+        <EntityTypeShape EntityType="WebSiteModel.phuong" Width="1.5" PointX="13.75" PointY="12.75" />
+        <EntityTypeShape EntityType="WebSiteModel.VNELocation" Width="1.5" PointX="15.75" PointY="0.75" />
+        <EntityTypeShape EntityType="WebSiteModel.tblShip" Width="1.5" PointX="0.75" PointY="16.75" />
+        <EntityTypeShape EntityType="WebSiteModel.tblOrderDetail" Width="1.5" PointX="16.375" PointY="4.75" />
+        <EntityTypeShape EntityType="WebSiteModel.tblOrder" Width="1.5" PointX="3.375" PointY="16.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

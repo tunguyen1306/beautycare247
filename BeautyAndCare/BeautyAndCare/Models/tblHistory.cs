@@ -20,5 +20,6 @@ namespace BeautyAndCare.Models
         public string TotalScore { get; set; }
         public Nullable<System.DateTime> DateBuy { get; set; }
         public string TotalPrice { get; set; }
+        public Nullable<int> Quantity { get; set; }
     }
 }

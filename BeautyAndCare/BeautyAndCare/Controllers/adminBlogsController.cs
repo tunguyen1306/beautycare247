@@ -19,6 +19,7 @@ namespace BeautyAndCare.Controllers
         // GET: adminBlogs
         public ActionResult Index()
         {
+           
             return View(db.tblBlogs.ToList());
         }
 
