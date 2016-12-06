@@ -12,7 +12,15 @@
             {
                 <div class="col-sm-4">
                     <figure class="article-image">
-                        <img width="225" height="225" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_vi" />
+                        @if (item.ImgBlog == null)
+                        {
+                                <img width="225" height="225" src = "/img/images.jpg" />
+                        }
+                        else
+                        {
+                            <img width="225" height="225" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_vi" />
+                        }
+                        
                     </figure>
                     <h3 class="article-title">
                         <a href="@Url.Action("DetailBlog","WebSite",new { id = item.NameBlog_vi.UrlFrendly() + "-" + item.IdBlog })">@item.NameBlog_vi</a>

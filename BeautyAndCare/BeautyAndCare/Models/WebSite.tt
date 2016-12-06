@@ -240,7 +240,7 @@ public void BeginNamespace(CodeGenerationTools code)
 namespace <#=code.EscapeNamespace(codeNamespace)#>
 {
 <#+
-        PushIndent("    ");
+        PushIndent("   ");
     }
 }
 
@@ -312,7 +312,7 @@ public class CodeStringGenerator
             Accessibility.ForType(entity),
             _code.SpaceAfter(_code.AbstractOption(entity)),
             _code.Escape(entity),
-            _code.StringBefore(" : ", _typeMapper.GetTypeName(entity.BaseType)));
+            _code.StringBefore(": ", _typeMapper.GetTypeName(entity.BaseType)));
     }
     
     public string EnumOpening(SimpleType enumType)
@@ -332,7 +332,7 @@ public class CodeStringGenerator
         {
             var isNotNull = parameter.IsNullableOfT ? parameter.FunctionParameterName + ".HasValue" : parameter.FunctionParameterName + " != null";
             var notNullInit = "new ObjectParameter(\"" + parameter.EsqlParameterName + "\", " + parameter.FunctionParameterName + ")";
-            var nullInit = "new ObjectParameter(\"" + parameter.EsqlParameterName + "\", typeof(" + parameter.RawClrTypeName + "))";
+            var nullInit = "new ObjectParameter(\"" + parameter.EsqlParameterName + "\", typeof("+ parameter.RawClrTypeName + "))";
             writeParameter(parameter.LocalVariableName, isNotNull, notNullInit, nullInit);
         }
     }

@@ -975,7 +975,7 @@ header {
 =========================================================*/
 @media (min-width: 1200px) {
   header .logo {
-    margin-right: 0; }
+    margin-right: 200px; }
 
   .logo-block .pull-left {
     margin-right: 74px; } }

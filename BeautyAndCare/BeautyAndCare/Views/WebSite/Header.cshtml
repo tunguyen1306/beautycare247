@@ -10,8 +10,12 @@
                 <ul class="toggle_cont">
                     @if (Session["IdUser"] != null)
                     {
-                        <li><span class="cusWellcome"> Xin chào,</span><input type="hidden" id="hdUserName" value="@Session["EmailUser"]" />  <a href="@Url.Action("LogOut","WebSite")">@Session["EmailUser"]</a></li>
+                        <li><span class="cusWellcome"> Xin chào,</span><input type="hidden" id="hdUserName" value="@Session["EmailUser"]" />  <a href="javascript:void(0)" class="btnLogout1">@Session["EmailUser"]</a><script>$('.btnLogout1').click(function () {
+  
+    Logout();
 
+});</script></li>
+                      
                     }
                     else
                     {
@@ -84,7 +88,7 @@
     <div class="logo-block">
         <div class="container">
             <h1 id="logo" class="logo">
-                <a href="@Url.Action("Index")"><img src="http://livedemo00.template-help.com/opencart_59086/image/catalog/logo.png" title="beautyandcare247" alt="beautyandcare247" class="img-responsive"></a>
+                <a href="@Url.Action("Index")"><img src="~/Template/image/logo.png" title="beautyandcare247" alt="beautyandcare247" class="img-responsive"></a>
             </h1>
             <div class="pull-left">
                 <span class="clheadercontact">Liên hệ:</span>   <a href="callto:0918214088">0918214088</a>
@@ -240,15 +244,21 @@
                     </ul>
                 </div>
             </div>
-            <div class="search">
-                <a class="top-search"><i class="fl-outicons-magnifying-glass34"></i></a>
-                <div id="search">
-                    <div class="inner">
-                        <input type="text" name="search" value="" placeholder="Search..." /><button type="button" class="button-search"><i class="fl-outicons-magnifying-glass34"></i></button>
+            @using (Html.BeginForm("Search","WebSite",FormMethod.Post))
+            {
+                <div class="search">
+                    <a class="top-search"><i class="fl-outicons-magnifying-glass34"></i></a>
+                    <div id="search">
+                        <div class="inner">
+                            <input type="hidden" name="lang" id="hdlang" />
+                            <input type="text" name="search" value="" placeholder="Search..." /><button type="submit" class="button-search"><i class="fl-outicons-magnifying-glass34"></i></button>
+                        </div>
+                        <div class="clear"></div>
                     </div>
-                    <div class="clear"></div>
                 </div>
-            </div>
+
+            }
+           
         </div>
     </div>
 </header>

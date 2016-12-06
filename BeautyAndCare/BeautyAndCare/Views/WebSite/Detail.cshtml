@@ -26,7 +26,7 @@
                             <div class="row">
 
                                 <div class="col-lg-9 pull-right hidden-xs hidden-sm hidden-md text-center">
-                                    @foreach (var itemPic in Model.ListPicture.Where(x => x.Position == 1))
+                                    @foreach (var itemPic in Model.ListPicture.Where(x => x.Position == 1 && x.ProductsId == item.IdProducts))
                                     {
                                         <img alt="@item.NameProducts" width="800" height="800" id="productZoom" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)" />
                                     }
@@ -34,7 +34,7 @@
                                 </div>
                                 <div class="col-lg-2 hidden-xs hidden-sm hidden-md image-thumb">
                                     <ul id="productGallery" class="image-additional" data-slide-width="126">
-                                        @foreach (var itemPic in Model.ListPicture)
+                                        @foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.IdProducts))
                                         {
                                             <li>
                                                 <a href="#" data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
@@ -47,7 +47,7 @@
                                 </div>
                                 <div class="col-xs-12 hidden-lg image-thumb">
                                     <ul id="productFullGallery" class="image-additional" data-slide-width="126">
-                                        @foreach (var itemPic in Model.ListPicture)
+                                        @foreach (var itemPic in Model.ListPicture.Where(x=>x.ProductsId== item.IdProducts))
                                         {
                                             <li>
                                                 <a href="#" data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
@@ -284,7 +284,24 @@
                             </div>*@
                     </div>
                 </div>
-            }
+                @section share_fb{
+
+                    <meta property="og:title" content="@item.NameProducts" />
+
+                    <meta property="og:url" content='http://beautyandcare247.com/WebSite/Detail/@item.NameProducts.UrlFrendly()-@item.IdProducts' />
+                    <meta name="description" content="@item.DescriptionProducts">
+                    <meta property="og:description" content="@item.DescriptionProducts" />
+                    <meta name="keywords" content="thực phẩm nhật,thuc pham nhat" />
+                 
+                    <meta property="og:image:width" content="600" />
+                    <meta property="og:image:height" content="315" />
+                    @foreach (var item1 in Model.ListPicture.Where(x => x.Position == 1))
+                    {
+                        <meta property="og:image" content="@ConfigurationManager.AppSettings["domain"]@item1.OriginalFilepath.Split('_')[0]/@item1.OriginalFilepath" />
+                    }
+
+                }
+}
 
 
             <div class="box-heading related">
@@ -296,66 +313,6 @@
                     {
                         <div class="product-thumb transition options">
 
-                            <div class="product-option-wrap">
-                                <div class="product-options form-horizontal">
-                                    <div class="options">
-                                        <a class="ajax-overlay_close" href='#'></a>
-                                        <h3>Available Options</h3>
-                                        <div class="form-group hidden">
-                                            <div class="col-sm-8">
-                                                <input type="text" name="product_id" value="28" class="form-control" />
-                                            </div>
-                                        </div>
-                                        <div class="form-group required">
-                                            <label class="control-label col-sm-12" for="input-option110001">
-                                                Size
-                                            </label>
-                                            <div class="col-sm-12">
-                                                <select name="option[1]" id="input-option110001" class="form-control">
-                                                    <option value="">--- Please Select ---</option>
-                                                    <option value="1">
-                                                        Small (+$20.00)&lrm;
-                                                    </option>
-                                                    <option value="2">
-                                                        Medium (+$15.00)&lrm;
-                                                    </option>
-                                                    <option value="3">
-                                                        Large (+$10.00)&lrm;
-                                                    </option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="form-group required">
-                                            <label class="control-label col-sm-12">
-                                                Color
-                                            </label>
-                                            <div class="col-sm-12">
-                                                <div id="input-option210001">
-                                                    <div class="radio">
-                                                        <label for="option[2510001]">
-                                                            <input type="radio" hidden name="option[2]" id="option[2510001]" value="5" />
-                                                            black (+$20.00)&lrm;
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <label for="option[2610001]">
-                                                            <input type="radio" hidden name="option[2]" id="option[2610001]" value="6" />
-                                                            white (+$15.00)&lrm;
-                                                        </label>
-                                                    </div>
-                                                    <div class="radio">
-                                                        <label for="option[2410001]">
-                                                            <input type="radio" hidden name="option[2]" id="option[2410001]" value="4" />
-                                                            red (+$10.00)&lrm;
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <button class="btn-primary" type="button" onclick="cart.addPopup($(this),'28');"> <span>Thêm vào giỏ hàng</span> </button>
-                                    </div>
-                                </div>
-                            </div>
                             <div class="quick_info">
                                 <div id="quickview_@item.IdProducts" class="quickview-style">
                                     <div class="left col-sm-4">
@@ -419,7 +376,7 @@
                             </div>
                             <div class="image">
                                 <a rel="" href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">
-                                    @foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.IdProducts && x.Position == 1))
+                                    @foreach (var itemPic in Model.ListPicture.Where(x =>x.Position == 1 && x.ProductsId==item.IdProducts))
                                     {
                                         <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" />
                                     }
@@ -436,7 +393,7 @@
                                 </div>
                             </div>
                             <div class="caption">
-                                <div class="name clvi">
+                                <div class="name">
                                     <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts</a>
                                 </div>
                                 <div class="name clen">

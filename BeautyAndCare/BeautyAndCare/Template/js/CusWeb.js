@@ -1,7 +1,7 @@
 ﻿$(function () {
     showToCart();
         GetCity();
-   
+        
     var url = window.location.href;
    
     if (url.indexOf('/WebSite/Index')>=0) {
@@ -37,12 +37,14 @@
         $('body').removeAttr("class");
         $('body').attr("class", 'simple_blog-article');
      
-    } if (url.indexOf('/WebSite/DetailBlog') >= 0) {
+    }
+    if (url.indexOf('/WebSite/DetailBlog') >= 0) {
         $('body').removeAttr("class");
         $('body').attr("class", 'simple_blog-article-view');
      
     }
     var vi = getCookie("vi");
+    $('#hdlang').val(vi);
     if (vi != null) {
         if (vi == 1) {
             $('.clvi').removeClass('hidden');
@@ -73,8 +75,14 @@
         var t = $('#btnJp').attr('rel')
         setCookie("vi", t, 365);
     });
+    $('.btnLogOut').click(function () {
+       
+        Logout();
+    });
+
+
     //load lan
-    var url = "WebSite/GetRowLan";
+    var url = "/WebSite/GetRowLan";
     $.ajax
    ({
        type: "POST",
@@ -100,11 +108,9 @@
     
    
 });
-$('.btnLogOut').click(function () {
-    alert();
-    Logout();
-});
+
 function Logout() {
+    
     var url = "/WebSite/LogOut";
     $.ajax
    ({
@@ -114,6 +120,10 @@ function Logout() {
        dataType: "json",
        contentType: "application/json;charset=utf-8",
        success: function (data) {
+           FB.logout(function (response) {
+               console.log(response);
+           });
+           window.location.href = "/WebSite/Index";
        }
    });
 }
@@ -303,10 +313,11 @@ $(document).ready(function () {
 $('#button-coupon').click(function () {
     AddCoupon();
 });
+
 //////////////
 function addToCart(id) {
     $('.alert-success').addClass('hidden');
-    var url = "WebSite/AddToCart"
+    var url = "/WebSite/AddToCart"
     $.post(url,
    {
        ProductId: id
@@ -341,16 +352,16 @@ function addToCart(id) {
 
 }
 function showToCart() {
-    var url = "WebSite/ShowToCart"
+    var url = "/WebSite/ShowToCart"
     $('.LoadProducts').html('');
     $.post(url,
    function (o, status) {
        $('#cart-total2').html(o.count);
-       console.log(o);
+      
        var stringHtml;
      
        $.each(o.dataPro, function (i, t) {
-           console.log(t);
+        
            stringHtml += "<tr class=\"cusTr\">"
              + "<td class=\"text-center\">"
        + " <div class=\"image\">"
@@ -389,7 +400,7 @@ function ViewCart() {
     window.location.href = url;
 }
 function UpdateToCart(id) {
-    var url = "WebSite/UpdateToCart"
+    var url = "/WebSite/UpdateToCart"
     var valueQuantity = $('#txtQuantity_' + id).val();
     $.post(url,
    {
@@ -397,14 +408,14 @@ function UpdateToCart(id) {
        Quantity: valueQuantity
    },
    function (o, status) {
-       console.log(o);
+     
    });
 }
 function CheckCoupon() {
     $('.alert-danger').addClass('hidden');
     var hdUser = $('#hdUserName').val();
     if (hdUser != null) {
-        var url = "WebSite/CheckCoupon"
+        var url = "/WebSite/CheckCoupon"
         var valueCoupon = $('#input-coupon').val();
         if (valueCoupon == "") {
             $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Vui lòng nhập mã giảm giá ! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
@@ -469,5 +480,82 @@ function convert(str) {
         mnth = ("0" + (date.getMonth() + 1)).slice(-2),
         day = ("0" + date.getDate()).slice(-2);
     return [date.getFullYear(), mnth, day].join("-");
+}
+
+
+function statusChangeCallback(response) {
+    console.log(response);
+    if (response.authResponse == null) {
+        Logout();
+    }
+
+    if (response.status === 'connected') {
+        LoginFBAPI();
+       
+    } else if (response.status === 'not_authorized') {
+
+       
+    } else {
+
+      
+    }
+}
+function checkLoginState() {
+    FB.getLoginStatus(function (response) {
+        statusChangeCallback(response);
+    });
+}
+window.fbAsyncInit = function () {
+    FB.init({
+        appId: '1849195448659779',
+        cookie: true,  // enable cookies to allow the server to access
+        // the session
+        xfbml: true,  // parse social plugins on this page
+        version: 'v2.8' // use graph api version 2.8
+    });
+
+    //FB.getLoginStatus(function (response) {
+    //    statusChangeCallback(response);
+    //});
+
+};
+
+
+(function (d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+
+
+function LoginFBAPI() {
+    FB.api('/me', function (response) {
+      
+        LoginFB(response.id, response.name);
+    });
+}
+function LoginFB(id, name) {
+    //Get City
+    var url = "/WebSite/RegisterByFace";
+    var obj = {};
+    obj.UserId = id;
+    obj.name = name;
+    $.ajax
+   ({
+       type: "POST",
+       url: url,
+       data: JSON.stringify(obj),
+       dataType: "json",
+       contentType: "application/json;charset=utf-8",
+       success: function (data) {
+           console.log(data);
+           if (data==0) {
+               window.location.href = "/WebSite/Index";
+           }
+       }
+   });
 }
 

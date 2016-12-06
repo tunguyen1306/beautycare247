@@ -1,17 +1,12 @@
-﻿
+﻿@using System.Configuration
 <!DOCTYPE html>
 <html dir="ltr" lang="en" class="">
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-   
+    @RenderSection("share_fb", false)
      <title>beautyandcare247</title>
-    <base href="http://localhost:29129/" />
-    <meta name="description" content="beautyandcare247" />
-
-    @*<link href='//fonts.googleapis.com/css?family=Arimo&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
-    <link href='//fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>*@
     <link href="~/Template/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
 
@@ -49,7 +44,7 @@
     <script src="@Url.Content("~/bower_components/datatables-plugins/integration/bootstrap/3/dataTables.bootstrap.min.js")"></script>
 </head>
 <body class="common-home">
-    
+    <input type="hidden" id="hdUrl" value="@ConfigurationManager.AppSettings["siteUrl"]" />
     <div id="page">
         <div class="ie-warning">
             <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">

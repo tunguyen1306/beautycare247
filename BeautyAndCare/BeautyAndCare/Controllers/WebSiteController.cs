@@ -72,7 +72,7 @@ namespace BeautyAndCare.Controllers
         {
             if (email == "admin@gmail.com" & pass == "admin123trang")
             {
-                Session["EmailUser"] ="admin123";
+               
                 return RedirectToAction("Index", "Home");
             }
             else
@@ -154,7 +154,11 @@ namespace BeautyAndCare.Controllers
         {
             var id_ = int.Parse(id.Split('-').Last());
 
-            tblAll pic = new tblAll { tblProductRel = db.tblProducts.ToList(), tblPro = db.tblProducts.Where(t => t.IdProducts == id_).ToList(), ListPicture = db.tblPictures.Where(t => t.ProductsId == id_).ToList() };
+            tblAll pic = new tblAll {
+                tblProductRel = db.tblProducts.ToList(),
+                tblPro = db.tblProducts.Where(t => t.IdProducts == id_).ToList(),
+                ListPicture = db.tblPictures.ToList()
+            };
             return View(pic);
         }
         public ActionResult CheckOut()
@@ -464,8 +468,7 @@ namespace BeautyAndCare.Controllers
                 smtp.EnableSsl = true;
                 smtp.Send(mail);
                 t = 0;
-                Session.Remove("Cart");
-                Session["Cart"] = null;
+                
             }
             catch (Exception)
             {
@@ -496,6 +499,8 @@ namespace BeautyAndCare.Controllers
             tblorderdetail.DateCreate = DateTime.Now;
             db.tblOrderDetails.Add(tblorderdetail);
             db.SaveChanges();
+            Session.Remove("Cart");
+            Session["Cart"] = null;
             return Json(tblorderdetail);
         }
         [HttpPost]
@@ -508,9 +513,10 @@ namespace BeautyAndCare.Controllers
             tblorder.PointTotal = priceTotal / 10000;
             db.tblOrders.Add(tblorder);
             db.SaveChanges();
+            
             return Json(tblorder);
         }
-
+        [HttpPost]
         public ActionResult LogOut()
         {
             Session["IdUser"] = null;
@@ -523,7 +529,8 @@ namespace BeautyAndCare.Controllers
             Session.Remove("IdTypeUser");
             Session.Remove("FullName");
             Session["Cart"] = null;
-            return RedirectToAction("Index");
+            var t = 0;
+            return Json(t);
         }
         [HttpPost]
         public ActionResult ShowToCart()
@@ -539,13 +546,78 @@ namespace BeautyAndCare.Controllers
                 var fullUrlImg2 = Urlimg + String.Format(nameImg, 2).ToString().Split('_')[0] + "/" + String.Format(nameImg, 2);
                 return Json(new { dataPro = model.Cart.ListItem, count = dataProCount, Urlimg = Urlimg, nameImg = fullUrlImg2 });
             }
+            var t = 0;
+            return Json(t);
+        }
+        [HttpPost]
+        public ActionResult Search(string search,int lang,int? page)
+        {
+            var pagenum = page ?? 1;
+            var pageSize = 10;
+            var Getname = db.tblProducts.Select(x => x.NameProducts).ToList();
+            var queryName = from dataPro in db.tblProducts
+                                       join dataPic in db.tblPictures on dataPro.IdProducts equals dataPic.ProductsId
+                                       join dataMenu in db.tblMenus on dataPro.IdCategoryProducts equals dataMenu.IdMenu
+                                       where dataPic.Position == 1 
+                                       select new tblAll { tblProducts = dataPro, clPicture = dataPic, tblMenu = dataMenu };
+            if (lang==1)
+            {
+                if (!String.IsNullOrEmpty(search))
+                {
+                    queryName = queryName.Where(s => s.tblProducts.NameProducts.Contains(search));
+                }
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(search))
+                {
+                    queryName = queryName.Where(s => s.tblProducts.NameProducts_en.Contains(search));
+                }
+            }
+
+          
+          
+            return View(queryName.ToList().ToPagedList(pagenum, pageSize));
+        }
+        public ActionResult Search1(string search, int lang, int? page)
+        {
+            var pagenum = page ?? 1;
+            var pageSize = 10;
+            var Getname = db.tblProducts.Select(x => x.NameProducts).ToList();
+            var queryName = from dataPro in db.tblProducts
+                            join dataPic in db.tblPictures on dataPro.IdProducts equals dataPic.ProductsId
+                            join dataMenu in db.tblMenus on dataPro.IdCategoryProducts equals dataMenu.IdMenu
+                            where dataPic.Position == 1
+                            select new tblAll { tblProducts = dataPro, clPicture = dataPic, tblMenu = dataMenu };
+            if (lang == 1)
+            {
+                if (!String.IsNullOrEmpty(search))
+                {
+                    queryName = queryName.Where(s => s.tblProducts.NameProducts.Contains(search));
+                }
+            }
+            else
+            {
+                if (!String.IsNullOrEmpty(search))
+                {
+                    queryName = queryName.Where(s => s.tblProducts.NameProducts_en.Contains(search));
+                }
+            }
+
+            return PartialView("Search", queryName.ToList().ToPagedList(pagenum, pageSize));
+
+        }
+        public ActionResult Search()
+        {
+           
             return View();
         }
         [HttpPost]
         public ActionResult RegisterByFace(string UserId, string name)
         {
             var checkUserId = db.tblUsers.Where(x => x.IdRegisterFB == UserId).Count();
-            if (checkUserId==0)
+            var t = 0;
+            if (checkUserId == 0)
             {
                 var tblUser = new tblUser();
                 tblUser.TypeRegister = 2;
@@ -556,10 +628,11 @@ namespace BeautyAndCare.Controllers
                 Session["IdUser"] = tblUser.IdUser;
                 Session["EmailUser"] = name;
                 Session["FullName"] = name;
+                return Json(t);
             }
             else
             {
-                var GetId = db.tblUsers.Where(x => x.IdRegisterFB == UserId).Select(x=>x.IdUser).FirstOrDefault();
+                var GetId = db.tblUsers.Where(x => x.IdRegisterFB == UserId).Select(x => x.IdUser).FirstOrDefault();
 
 
                 var tblUser = db.tblUsers.Find(GetId);
@@ -571,8 +644,10 @@ namespace BeautyAndCare.Controllers
                 Session["IdUser"] = GetId;
                 Session["EmailUser"] = name;
                 Session["FullName"] = name;
+
+                return Json(t);
             }
-           
+
             return RedirectToAction("Index");
         }
     }

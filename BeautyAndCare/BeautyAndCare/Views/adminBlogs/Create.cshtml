@@ -191,7 +191,7 @@
             data: dataimg,
             success: function (response) {
 
-                console.log(response);
+              
                 $('#idImg').attr("src", response.shorurl);
                 $('#hdImgName').val(response.imgName);
 
@@ -216,7 +216,7 @@
             data: data,
             success: function (response) {
                 //code after success
-                console.log(response);
+            
                 $('.link').text(response.fullurl);
             },
             error: function (er) {

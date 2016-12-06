@@ -13,157 +13,48 @@
 <!--END HEADER--->
 <div class="container">
     @Html.Partial("Breadcrumb")
-  @using (Html.BeginForm("Login", "WebSite", "", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }))
-  {
-    <div class="row">
-        <div id="content" class="col-sm-12">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="well">
-                        <h2>New Customer</h2>
-                        <p><strong>Register Account</strong></p>
-                        <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
-                        <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=account/register" class="btn btn-primary">Continue</a>
+    @using (Html.BeginForm("Login", "WebSite", FormMethod.Post, htmlAttributes: new { @class = "form-horizontal" }))
+    {
+        <div class="row">
+            <div id="content" class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h2>New Customer</h2>
+                            <p><strong>Register Account</strong></p>
+                            <p>By creating an account you will be able to shop faster, be up to date on an order's status, and keep track of the orders you have previously made.</p>
+                            <a href="@Url.Action("Register","WebSite")" class="btn btn-primary">Continue</a>
+                        </div>
                     </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="well">
-                        <h2>Returning Customer</h2>
-                        <p><strong>I am a returning customer</strong></p>
+                    <div class="col-sm-6">
+                        <div class="well">
+                            <h2>Returning Customer</h2>
+                            <p><strong>I am a returning customer</strong></p>
 
-                        <div class="form-group">
-                            <label class="control-label" for="input-email">E-Mail Address</label>
-                            <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label" for="input-password">Password</label>
-                            <input type="password" name="pass" value="" placeholder="Password" id="input-password" class="form-control">
-                            <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=account/forgotten">Forgotten Password</a>
-                        </div>
-                        <input type="submit" value="Login" class="btn btn-primary">
-
-                        <fb:login-button scope="public_profile,email" autologoutlink = 'true' class="btn btn-primary" onlogin="checkLoginState();">
-                        </fb:login-button>
-                     
-                        <div id="status">
+                            <div class="form-group">
+                                <label class="control-label" for="input-email">E-Mail Address</label>
+                                <input type="text" name="email" value="" placeholder="E-Mail Address" id="input-email" class="form-control">
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label" for="input-password">Password</label>
+                                <input type="password" name="pass" value="" placeholder="Password" id="input-password" class="form-control">
+                                <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=account/forgotten">Forgotten Password</a>
+                            </div>
+                          
+                            <div class="form-group">
+                                <input type="submit" value="Login" class="btn btn-primary">
+                                <a href="javascript:void(0)" style="margin-top:0!important;color: #fff!important; background-color: #337ab7!important;border-color: #2e6da4!important;" onclick="checkLoginState();" class="btn btn-primary">Facebook Login</a>
+                            </div>
+                        
+                          
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-  }
-   <script>
-  // This is called with the results from from FB.getLoginStatus().
-  function statusChangeCallback(response) {
-    console.log('statusChangeCallback');
-    console.log(response);
-    if (response.authResponse == null) {
-        Logout();
-    } else {
-
     }
-    // The response object is returned with a status field that lets the
-    // app know the current login status of the person.
-    // Full docs on the response object can be found in the documentation
-    // for FB.getLoginStatus().
-    if (response.status === 'connected') {
-      // Logged into your app and Facebook.
-      testAPI();
-    } else if (response.status === 'not_authorized') {
-      // The person is logged into Facebook, but not your app.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into this app.';
-    } else {
-      // The person is not logged into Facebook, so we're not sure if
-      // they are logged into this app or not.
-      document.getElementById('status').innerHTML = 'Please log ' +
-        'into Facebook.';
-    }
-  }
-
-  // This function is called when someone finishes with the Login
-  // Button.  See the onlogin handler attached to it in the sample
-  // code below.
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
-
-  window.fbAsyncInit = function() {
-  FB.init({
-      appId: '1849195448659779',
-    cookie     : true,  // enable cookies to allow the server to access
-                        // the session
-    xfbml      : true,  // parse social plugins on this page
-    version    : 'v2.8' // use graph api version 2.8
-  });
-
-  // Now that we've initialized the JavaScript SDK, we call
-  // FB.getLoginStatus().  This function gets the state of the
-  // person visiting this page and can return one of three states to
-  // the callback you provide.  They can be:
-  //
-  // 1. Logged into your app ('connected')
-  // 2. Logged into Facebook, but not your app ('not_authorized')
-  // 3. Not logged into Facebook and can't tell if they are logged into
-  //    your app or not.
-  //
-  // These three cases are handled in the callback function.
-
-  FB.getLoginStatus(function(response) {
-    statusChangeCallback(response);
-  });
-
-  };
-
-  // Load the SDK asynchronously
-  (function(d, s, id) {
-    var js, fjs = d.getElementsByTagName(s)[0];
-    if (d.getElementById(id)) return;
-    js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
-    fjs.parentNode.insertBefore(js, fjs);
-  }(document, 'script', 'facebook-jssdk'));
-
-  // Here we run a very simple test of the Graph API after login is
-  // successful.  See statusChangeCallback() for when this call is made.
-  function testAPI() {
-    console.log('Welcome!  Fetching your information.... ');
-    FB.api('/me', function(response) {
-      console.log('Successful login for: ' + response.name);
-      document.getElementById('status').innerHTML =
-        'Thanks for logging in, ' + response.name + '!';
-      console.log(response.id);
-      console.log(response.name);
-      LoginFB(response.id, response.name);
-    });
-  }
-  function LoginFB(id,name)
-  {
-      //Get City
-      var url = "/WebSite/RegisterByFace";
-      var obj = {};
-      obj.UserId = id;
-      obj.name = name;
-      $.ajax
-     ({
-         type: "POST",
-         url: url,
-         data: JSON.stringify(obj),
-         dataType: "json",
-         contentType: "application/json;charset=utf-8",
-         success: function (data) {
-
-          
-         }
-     });
-  }
-    </script>
+   
 </div>
 <!-- FOOTER--->
 @Html.Partial("Footer")
 <!--END FOOTER--->
-
-
