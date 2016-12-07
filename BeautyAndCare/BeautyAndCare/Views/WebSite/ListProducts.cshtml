@@ -9,6 +9,7 @@
     WebSiteEntities db = new WebSiteEntities();
     var queryMenu = from data in db.tblMenus
                     where data.StatusMenu == 1
+                    orderby data.OrderMenu ascending
                     select data;
 }
 <!--HEADER--->

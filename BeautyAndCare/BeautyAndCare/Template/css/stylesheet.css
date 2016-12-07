@@ -3376,7 +3376,7 @@ header .megamenu {
   header .megamenu > ul {
     vertical-align: top; }
   header .megamenu > ul {
-    width: 73%;
+    width: 90%;
     /*== < menu align ==*/
     text-align: justify;
     line-height: 0;

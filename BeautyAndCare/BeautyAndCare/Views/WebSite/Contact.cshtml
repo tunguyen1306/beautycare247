@@ -6,6 +6,7 @@
     WebSiteEntities db = new WebSiteEntities();
     var queryMenu = from data in db.tblMenus
                     where data.StatusMenu == 1
+                    orderby data.OrderMenu ascending
                     select data;
 }
 <!--HEADER--->
@@ -30,7 +31,7 @@
                     <div class="row">
                         <div class="col-sm-4">
                             <a href="./">
-                                <img src="http://livedemo00.template-help.com/opencart_59086/image/cache/catalog/logo-360x53.png" alt="Cosmetorix" title="Cosmetorix" class="img-thumbnail">
+                                <img src="/Template/image/logo.png" alt="Cosmetorix" title="Cosmetorix" class="img-thumbnail">
                             </a>
                         </div>
                         <div class="col-sm-4">
@@ -49,7 +50,7 @@
                             <strong class="claddress">Địa chỉ</strong><br>
                             <address class="claddressdetail">
                                 
-                                    4578 Marmora road, glasgow d04 89 gr
+                                10/21 Hoàng Hoa Thám, Q. Bình Thạnh
                                
                             </address>
                         </div>
@@ -106,13 +107,13 @@
     function initialize() {
         var mapOptions = {
             zoom: 17,
-            center: new google.maps.LatLng(10.843411, 106.741565)
+            center: new google.maps.LatLng(10.8052249, 106.6900085)
         }
         var map = new google.maps.Map(document.getElementById('googleMap'),
                                       mapOptions);
 
         var image = '/Template/img/cdiAE.png';
-        var myLatLng = new google.maps.LatLng(10.843411, 106.741565);
+        var myLatLng = new google.maps.LatLng(10.8052249, 106.6900085);
         var beachMarker = new google.maps.Marker({
             position: myLatLng,
             map: map,

@@ -91,8 +91,8 @@
                 <a href="@Url.Action("Index")"><img src="~/Template/image/logo.png" title="beautyandcare247" alt="beautyandcare247" class="img-responsive"></a>
             </h1>
             <div class="pull-left">
-                <span class="clheadercontact">Liên hệ:</span>   <a href="callto:0918214088">0918214088</a>
-                <p class="clgiolamviec"></p>
+                <span class="clheadercontact" style="font-size:20px;font-weight:bold;">Liên hệ:</span>   <a href="callto:0918214088" style="font-size:20px;font-weight:bold;">0918214088</a>
+                @*<p class="clgiolamviec"></p>*@
             </div>
             <div class="box-cart">
                 <div id="cart" class="cart toggle-wrap">
@@ -164,13 +164,14 @@
                             if (item.IsParent == 0 && item.IdParentMenu == 0)
                             {
                                 <li class="sf-with-mega">
-                                    @if (item.IsCategoryMenu == 1)
+                                    @if (item.IsCategoryMenu == 0)
                                     {
 
                                         <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })" class="clvi">@item.NameMenu</a>
                                         <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu_en.UrlFrendly() + "-" + item.IdMenu })" class="clen hidden">@item.NameMenu_en</a>
 
                                     }
+
                                     else
                                     {
 
@@ -186,7 +187,7 @@
                                 if (item.IsParent == 1)
                                 {
                                     <li class="sf-with-mega">
-                                        @if (item.IsCategoryMenu == 1)
+                                        @if (item.IsCategoryMenu == 0)
                                         {
 
                                             <a class="clvi hidden" href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
@@ -207,7 +208,7 @@
                                                         <ul>
                                                             <li>
 
-                                                                @if (item.IsCategoryMenu == 1)
+                                                                @if (item.IsCategoryMenu == 0)
                                                                 {
 
                                                                     <a href="@Url.Action("ListProducts", "WebSite",new { id=child.NameMenu.UrlFrendly() + "-" + child.IdMenu })" class="clvi hidden">@child.NameMenu</a>

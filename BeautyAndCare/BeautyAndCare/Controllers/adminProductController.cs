@@ -55,7 +55,7 @@ namespace BeautyAndCare.Controllers
 
             }
             var dataMenu = (from data in db.tblMenus
-                            where data.IsCategoryMenu==1
+                            where data.IsCategoryMenu==0
                                select  data).ToList();
             var dataType = (from data in db.tblTypes
                                 select data).ToList();
@@ -200,7 +200,7 @@ namespace BeautyAndCare.Controllers
                 tblProducts = db.tblProducts.Find(id), ListPicture = db.tblPictures.Where(t => t.ProductsId == id).ToList(),
                 ListCategory=db.tblCategories.ToList(),
                 ListType = db.tblTypes.ToList(),
-                 ListMenu = db.tblMenus.Where(x=>x.IsCategoryMenu==1).ToList()
+                 ListMenu = db.tblMenus.Where(x=>x.IsCategoryMenu==0).ToList()
             };
             return View(pic);
         }

@@ -8,6 +8,7 @@
     WebSiteEntities db = new WebSiteEntities();
     var queryMenu = from data in db.tblMenus
                     where data.StatusMenu == 1
+                    orderby data.OrderMenu ascending
                     select data;
 }
 <!--HEADER--->
@@ -309,7 +310,7 @@
             </div>
             <div class="box-content related">
                 <div class="box-carousel">
-                    @foreach (var item in Model.tblProductRel)
+                    @foreach (var item in Model.tblProductRel.Where(x=>x.StatusProducts==1))
                     {
                         <div class="product-thumb transition options">
 
