@@ -6,13 +6,16 @@
     <div class="box latest">
         <div class="clear"></div>
         <div class="box-heading">
-            <h3>
+            <h3 class="clvi">
                 @item1.NameMenu
+            </h3>
+            <h3 class="clen hidden">
+                @item1.NameMenu_en
             </h3>
         </div>
         <div class="box-content">
             <div class="box-carousel">
-                @foreach (var item in Model.tblPro.Where(x => x.IdCategoryProducts == item1.IdMenu))
+                @foreach (var item in Model.tblPro.Where(x => x.IdCategoryProducts == item1.IdMenu).Take(5))
                 {
                     <div class="product-thumb transition options">
 
@@ -89,15 +92,8 @@
                                     </div>
                                 </div>
                                 <div class="right col-sm-7">
-                                    <h2>@item.NameProducts</h2>
-                                    @*<div class="inf">
-                                        <p class="quickview_manufacture manufacture manufacture">
-                                            Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=34">Borghese</a>
-                                        </p>
-                                        <p class="product_model model">
-                                            Model: Classic
-                                        </p>
-                                    </div>*@
+                                    <h2 class="clvi">@item.NameProducts</h2>
+                                    <h2 class="clen">@item.NameProducts_en</h2>
                                     <div class="price">
                                         <span class="price-new price-new_@item.IdProducts">
                                             <script>
@@ -115,31 +111,22 @@
                                         </span>
                                     </div>
                                     <button class="btn-primary" type="button" onclick="addToCart(@item.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span> </button>
-                                    @*<ul class="product-buttons">
-                                            <li>
-                                                <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('50');">
-                                                    <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span>
-                                                </button>
-                                            </li>
-                                            <li>
-                                                <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('50');">
-                                                    <i class="material-icons-shuffle"></i> <span>Add to Compare</span>
-                                                </button>
-                                            </li>
-                                        </ul>*@
+                                   
                                     <div class="clear"></div>
                                 </div>
                             </div>
                         </div>
                         @if (item.IdTypeProducts == 1)
                     {
-                            <div class="new-pr"><span>Hàng mới</span></div>
+                            <div class="new-pr clvi"><span>Hàng mới</span></div>
+                            <div class="new-pr clen"><span>New</span></div>
                         }
                         @if (item.IdTypeProducts == 2)
                     {
-                            <div class="sale">
+                            <div class="sale clvi">
                                 <span>Giảm giá</span>
                             </div>
+                            <div class="sale clen"><span>Discount</span></div>
                         }
                         @if (item.IdTypeProducts == 3)
                     {
@@ -162,15 +149,20 @@
                             </a>
                         </div>
                         <div class="caption">
-                            <div class="name">
+                            <div class="name clvi">
                                 <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts</a>
                             </div>
+                            <div class="name clen">
+                                <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts_en.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts_en</a>
+                            </div>
                             <div class="category-name">
-                             @foreach (var itemMenu in Model.ListMenu.Where(x=>x.IdMenu==item.IdCategoryProducts))
+                             @foreach (var itemMenu in Model.ListMenu.Where(x => x.IdMenu == item.IdCategoryProducts))
                              {
-                                 @itemMenu.NameMenu
+                                <a href="@Url.Action("ListProducts", "WebSite",new { id=itemMenu.NameMenu.UrlFrendly() + "-" + itemMenu.IdMenu })" class="clvi">@itemMenu.NameMenu</a>
+                                <a href="@Url.Action("ListProducts", "WebSite",new { id=itemMenu.NameMenu_en.UrlFrendly() + "-" + itemMenu.IdMenu })" class="clen hidden">@itemMenu.NameMenu_en</a>
                              }
                             </div>
+                           
                             <div class="price">
                                 <span class="price-new price-new_@item.IdProducts">
                                     <script>

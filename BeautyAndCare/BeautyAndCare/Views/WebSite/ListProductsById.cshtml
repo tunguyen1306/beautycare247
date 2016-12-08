@@ -3,28 +3,32 @@
 @using System.Configuration
 @model PagedList.IPagedList<tblAll>
 @using PagedList.Mvc
-
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/LayOutNew.cshtml";
+    WebSiteEntities db = new WebSiteEntities();
+   
+}
 <div class="container">
     @Html.Partial("Breadcrumb")
     <div class="row">
         <div id="content" class="col-sm-12 tx-center">
 
-            @foreach (var item in Model)
-            {
-                foreach (var itemMenu in item.ListMenu)
-                {
-                    <h3 class="clvi">@itemMenu.NameMenu</h3>
-                    <h3 class="clen">@itemMenu.NameMenu_en</h3>
-                        <div class="row">
-                            <div class="col-sm-12 clvi">
-                                @itemMenu.Description_vi
-                            </div>
-                            <div class="col-sm-12 clen">
-                                @itemMenu.Description_en
-                            </div>
-                        </div>
-                }
+            @foreach (var item in Model.Select(x=>x.tblProducts).Take(1))
+            { 
+                <h3 class="clvi">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu</h3>
+               <h3 class="clen">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en</h3>
 
+
+            <div class="row">
+                <div class="col-sm-12 clvi">
+                    @db.tblMenus.Find(item.IdCategoryProducts).Description_vi
+                </div>
+                <div class="col-sm-12 clen">
+                    @db.tblMenus.Find(item.IdCategoryProducts).Description_en
+                </div>
+            </div>
+               
             }
 
             <div class="product-filter clearfix">
@@ -129,9 +133,26 @@
                                         </div>
                                     </div>
                                 </div>
-                                <div class="sale">
-                                    <span>Sale</span>
-                                </div>
+                                @if (item.tblProducts.IdTypeProducts == 1)
+                                {
+                                    <div class="new-pr clvi"><span>Hàng mới</span></div>
+                                    <div class="new-pr clen"><span>New</span></div>
+                                }
+                                @if (item.tblProducts.IdTypeProducts == 2)
+                                {
+                                    <div class="sale clvi">
+                                        <span>Giảm giá</span>
+                                    </div>
+                                    <div class="sale clen"><span>Discount</span></div>
+                                }
+                                @if (item.tblProducts.IdTypeProducts == 3)
+                                {
+                                    <div class="discount"><span>Hết hàng</span></div>
+                                }
+                                @if (item.tblProducts.IdTypeProducts == 4)
+                                {
+                                    <div class="discount"><span>Đang về</span></div>
+                                }
                                 <div class="image">
                                     <a class="lazy" style="padding-bottom: 100%" href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts.UrlFrendly() + "-" + item.tblProducts.IdProducts })">
                                         <img width="310" height="310" alt="@item.tblProducts.NameProducts" title="@item.tblProducts.NameProducts" class="img-responsive" data-src="@ConfigurationManager.AppSettings["domain"]@String.Format(item.clPicture.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(item.clPicture.ConvertedFilename, 2)" src="#" />
@@ -147,11 +168,10 @@
                                     <div class="name clen">
                                         <a href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts_en.UrlFrendly() + "-" + item.tblProducts.IdProducts })">@item.tblProducts.NameProducts_en</a>
                                     </div>
-                                    <div class="category-name clvi">
-                                        @item.tblMenu.NameMenu
-                                    </div>
-                                    <div class="category-name clen">
-                                        @item.tblMenu.NameMenu_en
+                                    <div class="category-name">
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.tblMenu.NameMenu.UrlFrendly() + "-" + item.tblMenu.IdMenu })" class="clvi">@item.tblMenu.NameMenu</a>
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.tblMenu.NameMenu_en.UrlFrendly() + "-" + item.tblMenu.IdMenu })" class="clen hidden">@item.tblMenu.NameMenu_en</a>
+
                                     </div>
                                     <div class="price price-product">
                                         <span class="price-new price-new_@item.tblProducts.IdProducts">

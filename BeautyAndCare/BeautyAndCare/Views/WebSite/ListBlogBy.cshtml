@@ -4,54 +4,62 @@
 @model PagedList.IPagedList<tblBlog>
 @using PagedList.Mvc
 
-<div id="loader" class="col-sm-9" >
+<div id="loader" class="col-sm-9">
     <h1>Blog</h1>
-@foreach (var item in Model)
-{
-    <article class="blog_article">
-        <div class="row">
-            <div class="col-sm-12 col-md-6">
-                <figure class="article-image">
-                    @if (item.ImgBlog == null)
-                    {
-                        <img width="225" height="225" src="/img/images.jpg" />
-                    }
-                    else
-                    {
-                        <img src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_vi">
-                    }
-                   
-                </figure>
-            </div>
-            <div class="col-sm-12 col-md-6">
-                <h3 class="article-title">
-                    <a class="clvi" href="@Url.Action("DetailBlog","WebSite",new { id = item.NameBlog_vi.UrlFrendly() + "-" + item.IdBlog })">@item.NameBlog_vi</a>
-                    <a class="clen" href="@Url.Action("DetailBlog","WebSite",new  { id = item.NameBlog_en.UrlFrendly() + "-" + item.IdBlog })">@item.NameBlog_en</a>
-                </h3>
-              
-                <div class="article-sub-title">
-                    <span class="article-date material-design-clock100">@item.CreateDateBlog</span>
-                    <span class="article-comments material-design-add183"><a >3 Bình luận</a></span>
-                    <span class="article-author material-design-user157"><a>Admin</a></span>
-                </div>
-                <div class="article-description clvi hidden ">
-                  @item.ShortDes_vi
-                </div>
-                <div class="article-description clen hidden">
-                    @item.ShortDes_en 
-                </div>
-               
-            </div>
-        </div>
-    </article>
+    @foreach (var item in Model)
+    {
+        <article class="blog_article">
+            <div class="row">
+                <div class="col-sm-12 col-md-6">
+                    <figure class="article-image">
+                        @if (item.IsVideo == 0)
+                        {
+                            if (item.ImgBlog == null)
+                            {
+                                <img width="225" height="225" src="/img/images.jpg" />
+                            }
+                            else
+                            {
+                                <img src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_vi">
+                            }
+                        }
+                        else
+                        {
+                            <iframe src="//www.youtube.com/embed/@item.LinkVideo?rel=0&amp;controls=0&amp;showinfo=0&amp;wmode=transparent" allowfullscreen="" height="280" width="420" frameborder="0"></iframe>
+                        }
 
-}
-   
+
+                    </figure>
+                </div>
+                <div class="col-sm-12 col-md-6">
+                    <h3 class="article-title">
+                        <a class="clvi" href="@Url.Action("DetailBlog","WebSite",new { id = item.NameBlog_vi.UrlFrendly() + "-" + item.IdBlog })">@item.NameBlog_vi</a>
+                        <a class="clen" href="@Url.Action("DetailBlog","WebSite",new  { id = item.NameBlog_en.UrlFrendly() + "-" + item.IdBlog })">@item.NameBlog_en</a>
+                    </h3>
+
+                    <div class="article-sub-title">
+                        <span class="article-date material-design-clock100">@item.CreateDateBlog</span>
+                        <span class="article-comments material-design-add183"><a>3 Bình luận</a></span>
+                        <span class="article-author material-design-user157"><a>Admin</a></span>
+                    </div>
+                    <div class="article-description clvi hidden ">
+                        @item.ShortDes_vi
+                    </div>
+                    <div class="article-description clen hidden">
+                        @item.ShortDes_en
+                    </div>
+
+                </div>
+            </div>
+        </article>
+
+    }
+
     <div class="row">
         <div class="col-sm-12 col-xs-12 text-left pagination-block">
-        <ul class="pagination">
-            @Html.PagedListPager(Model, page => Url.Action("ListBlogBy", "WebSite", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { UpdateTargetId = "loader" }))
-        </ul>
+            <ul class="pagination">
+                @Html.PagedListPager(Model, page => Url.Action("ListBlogBy", "WebSite", new { page }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { UpdateTargetId = "loader" }))
+            </ul>
         </div>
     </div>
 </div>

@@ -12,6 +12,22 @@
                     select data;
 
 }
+@section share_fb{
+
+    <meta property="og:title" content="Beautyandcare247 hàng Nhật cho người Việt" />
+
+    <meta property="og:url" content='http://beautyandcare247.com/' />
+    <meta name="description" content="Beautyandcare247 chuyên cung cấp những thực phẩm,mỹ phẩm có xuất xứ từ Nhật Bản chất lương sản phẩm tuyệt vời">
+    <meta property="og:description" content="Beautyandcare247 chuyên cung cấp những thực phẩm,mỹ phẩm có xuất xứ từ Nhật Bản chất lương sản phẩm tuyệt vời" />
+    <meta name="keywords" content="thực phẩm nhật,thuc pham nhat" />
+
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="315" />
+    <meta property="og:image" content="http://beautyandcare247.com/Template/image/logo.png" />
+}
+
+
+
 
 <!--HEADER--->
 @Html.Partial("Header", queryMenu.ToList())
@@ -23,7 +39,7 @@
 
 
             @Html.Partial("Slider")
-         
+
             <!--NewProducts--->
             @Html.Partial("NewProducts", Model)
             <!--NewProducts--->

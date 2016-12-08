@@ -402,12 +402,13 @@
                                 </div>
                                 @if (item.IdCategoryProducts!=null)
                                 {
-                                    <div class="category-name clvi">
-                                        @(db.tblMenus.Find(item.IdCategoryProducts).NameMenu)
+                                    <div class="category-name">
+                                    
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=db.tblMenus.Find(item.IdCategoryProducts).NameMenu.UrlFrendly() + "-" + db.tblMenus.Find(item.IdCategoryProducts).IdMenu })" class="clvi">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu</a>
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en.UrlFrendly() + "-" + db.tblMenus.Find(item.IdCategoryProducts).IdMenu })" class="clen hidden">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en</a>
+
                                     </div>
-                                    <div class="category-name clen hidden">
-                                        @(db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en)
-                                    </div>
+                                  
                                 }
                                
                                 <div class="price">

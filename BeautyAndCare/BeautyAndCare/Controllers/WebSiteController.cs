@@ -157,7 +157,7 @@ namespace BeautyAndCare.Controllers
             tblAll pic = new tblAll {
                 tblProductRel = db.tblProducts.ToList(),
                 tblPro = db.tblProducts.Where(t => t.IdProducts == id_).ToList(),
-                ListPicture = db.tblPictures.ToList()
+                ListPicture = db.tblPictures.Where(x=>x.ProductsId== id_).ToList()
             };
             return View(pic);
         }

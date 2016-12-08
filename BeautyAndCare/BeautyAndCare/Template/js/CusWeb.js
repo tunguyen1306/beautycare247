@@ -1,6 +1,6 @@
 ﻿$(function () {
     showToCart();
-        GetCity();
+       
         
     var url = window.location.href;
    
@@ -41,6 +41,9 @@
     if (url.indexOf('/WebSite/DetailBlog') >= 0) {
         $('body').removeAttr("class");
         $('body').attr("class", 'simple_blog-article-view');
+     
+    } if (url.indexOf('/WebSite/CheckOut') >= 0) {
+        GetCity();
      
     }
     var vi = getCookie("vi");
