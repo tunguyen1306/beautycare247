@@ -9,22 +9,22 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblBlog
-    {
-        public int IdBlog { get; set; }
-        public string NameBlog_vi { get; set; }
-        public string NameBlog_en { get; set; }
-        public string ShortDes_vi { get; set; }
-        public string ShortDes_en { get; set; }
-        public string Des_vi { get; set; }
-        public string Des_en { get; set; }
-        public Nullable<int> StatusBlog { get; set; }
-        public Nullable<System.DateTime> CreateDateBlog { get; set; }
-        public string ImgBlog { get; set; }
-        public Nullable<int> IsVideo { get; set; }
-        public string LinkVideo { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblBlog
+   {
+       public int IdBlog { get; set; }
+       public string NameBlog_vi { get; set; }
+       public string NameBlog_en { get; set; }
+       public string ShortDes_vi { get; set; }
+       public string ShortDes_en { get; set; }
+       public string Des_vi { get; set; }
+       public string Des_en { get; set; }
+       public Nullable<int> StatusBlog { get; set; }
+       public Nullable<System.DateTime> CreateDateBlog { get; set; }
+       public string ImgBlog { get; set; }
+       public Nullable<int> IsVideo { get; set; }
+       public string LinkVideo { get; set; }
+   }
 }

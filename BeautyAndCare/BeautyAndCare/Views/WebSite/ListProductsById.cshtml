@@ -17,14 +17,14 @@
             @foreach (var item in Model.Select(x=>x.tblProducts).Take(1))
             { 
                 <h3 class="clvi">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu</h3>
-               <h3 class="clen">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en</h3>
+               <h3 class="clen hidden">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en</h3>
 
 
             <div class="row">
                 <div class="col-sm-12 clvi">
                     @db.tblMenus.Find(item.IdCategoryProducts).Description_vi
                 </div>
-                <div class="col-sm-12 clen">
+                <div class="col-sm-12 clen hidden">
                     @db.tblMenus.Find(item.IdCategoryProducts).Description_en
                 </div>
             </div>
@@ -95,7 +95,7 @@
                                         </div>
                                         <div class="right col-sm-7">
                                             <h2 class="clvi">@item.tblProducts.NameProducts</h2>
-                                            <h2 class="clen">@item.tblProducts.NameProducts_en</h2>
+                                            <h2 class="clen hidden">@item.tblProducts.NameProducts_en</h2>
                                             @*<div class="inf">
                                                     <p class="quickview_manufacture manufacture manufacture">
                                                         Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=25">CeraVe</a>
@@ -136,14 +136,14 @@
                                 @if (item.tblProducts.IdTypeProducts == 1)
                                 {
                                     <div class="new-pr clvi"><span>Hàng mới</span></div>
-                                    <div class="new-pr clen"><span>New</span></div>
+                                    <div class="new-pr clen hidden"><span>New</span></div>
                                 }
                                 @if (item.tblProducts.IdTypeProducts == 2)
                                 {
                                     <div class="sale clvi">
                                         <span>Giảm giá</span>
                                     </div>
-                                    <div class="sale clen"><span>Discount</span></div>
+                                    <div class="sale clen hidden"><span>Discount</span></div>
                                 }
                                 @if (item.tblProducts.IdTypeProducts == 3)
                                 {
@@ -165,12 +165,12 @@
                                     <div class="name clvi">
                                         <a href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts.UrlFrendly() + "-" + item.tblProducts.IdProducts })">@item.tblProducts.NameProducts</a>
                                     </div>
-                                    <div class="name clen">
+                                    <div class="name clen hidden">
                                         <a href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts_en.UrlFrendly() + "-" + item.tblProducts.IdProducts })">@item.tblProducts.NameProducts_en</a>
                                     </div>
                                     <div class="category-name">
                                         <a href="@Url.Action("ListProducts", "WebSite",new { id=item.tblMenu.NameMenu.UrlFrendly() + "-" + item.tblMenu.IdMenu })" class="clvi">@item.tblMenu.NameMenu</a>
-                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.tblMenu.NameMenu_en.UrlFrendly() + "-" + item.tblMenu.IdMenu })" class="clen hidden">@item.tblMenu.NameMenu_en</a>
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.tblMenu.NameMenu_en.UrlFrendly() + "-" + item.tblMenu.IdMenu })" class="clen hidden hidden">@item.tblMenu.NameMenu_en</a>
 
                                     </div>
                                     <div class="price price-product">

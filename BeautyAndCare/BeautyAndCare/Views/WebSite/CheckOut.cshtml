@@ -62,27 +62,16 @@
                                             <tr>
                                                 <td class="text-center vcenter">
                                                     <div class="image">
-                                                        <a href="@Url.Action(" Detail", "WebSite" ,new { id=item.ProductName.UrlFrendly() + "-" + item.ProductID })">
+                                                        <a href="@Url.Action("Detail", "WebSite" ,new { id=item.ProductName.UrlFrendly() + "-" + item.ProductID })">
                                                             <img width="50" src="@item.FullUrlImg2" alt="Youngman 15 Colors Professional Concealer" title="Youngman 15 Colors Professional Concealer" class="img-thumbnail">
                                                         </a>
                                                     </div>
                                                 </td>
                                                 <td class="text-left">
-                                                    <a class="link" href="@Url.Action(" Detail", "WebSite" ,new { id=item.ProductName.UrlFrendly() + "-" + item.ProductID })">
+                                                    <a class="link" href="@Url.Action("Detail", "WebSite" ,new { id=item.ProductName.UrlFrendly() + "-" + item.ProductID })">
                                                         @item.ProductName
                                                     </a>
-                                                    @*<br>
-                                                        <small>
-                                                            <strong>Model</strong> : Classic
-                                                        </small>
-                                                        <br>
-                                                        <small>
-                                                            <strong>Size</strong>: Small
-                                                        </small>
-                                                        <br>
-                                                        <small>
-                                                            <strong>Color</strong>: black
-                                                        </small>*@
+
                                                 </td>
                                                 <td class="text-left">
                                                     <div class="btn-block clearfix" style="max-width: 200px;">
@@ -168,13 +157,13 @@
                                 </div>
                             </div>
                             <div class="buttons">
-                                <div class="pull-left"><a href="@Url.Action(" Index","WebSite")" class="btn btn-default">Tiếp tục mua hàng</a></div>
+                                <div class="pull-left"><a href="@Url.Action("Index","WebSite")" class="btn btn-default">Tiếp tục mua hàng</a></div>
                                 <div class="pull-right"><a class="btn btn-primary checkout btnContinue">Tiếp tục</a></div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="tab-pane product-spec product-section account-register" id="tab-deliver">
+                <div class="tab-pane product-spec product-section" id="tab-deliver">
                     <div class="row">
                         <div id="content" class="col-sm-12">
                             <h1 class="cldelive">
@@ -187,146 +176,135 @@
                                             <div class="well">
                                                 <div class="row">
                                                     <div id="content" class="col-sm-12">
-                                                        <h1 class="clregister">Đăng ký địa chỉ giao hàng</h1>
+                                                        <h1>Đăng ký địa chỉ giao hàng</h1>
                                                         Vui lòng điền CHÍNH XÁC "tầng, số nhà, đường" để tránh trường hợp đơn hàng bị hủy ngoài ý muốn
 
                                                         <div class="row">
                                                             <div class="col-lg-12">
-
-                                                                <div class="panel panel-default">
-
-                                                                    <div class="panel-body">
-                                                                        <div class="row">
-                                                                            <div class="col-lg-6">
-                                                                                <div class="form-group">
-                                                                                    <label>Họ và tên</label>
-                                                                                    <input class="form-control" name="shipFullName" id="txtshipFullName">
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label>Địa chỉ nhà</label>
-                                                                                    <textarea class="form-control" name="shipAddress" id="txtshipAddress"></textarea>
-                                                                                </div>
-
-                                                                                <div class="form-group">
-                                                                                    <label>Số điện thoại</label>
-                                                                                    <input class="form-control" name="shipphone" id="txtPhone">
-                                                                                </div>
-                                                                                <div class="form-group cldropCity">
-                                                                                    <label class="clcitycheckout">Thành phố / Tỉnh thành</label>
-                                                                                    <select id="dropCity" class="form-control"></select>
-
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label class="cldistrictcheckout hidden">Quận/Huyện</label>
-                                                                                    <select id="dropDistrict" class="form-control"></select>
-
-                                                                                </div>
-                                                                                <div class="form-group">
-                                                                                    <label class="clwardcheckout hidden">Phường/Xã</label>
-                                                                                    <select id="dropWard" class="form-control"></select>
-
-                                                                                </div>
-                                                                            </div>
-                                                                            <div class="col-lg-6">
-                                                                                <div class="table-responsive">
-                                                                                    <table class="table table-bordered">
-                                                                                        <thead>
-                                                                                            <tr>
-
-                                                                                                <td class="text-left">Tên</td>
-                                                                                                <td class="text-left">Số lượng</td>
-                                                                                                <td class="text-right">Giá</td>
-                                                                                                <td class="text-right">Tổng giá</td>
-
-                                                                                            </tr>
-                                                                                        </thead>
-                                                                                        <tbody>
-                                                                                            @foreach (var item in Model.Cart.ListItem)
-                                                                                            {
-                                                                                                <tr>
-
-                                                                                                    <td class="text-left">
-                                                                                                        <a class="link" href="@Url.Action(" Detail", "WebSite" ,new { id=item.ProductName.UrlFrendly() + "-" + item.ProductID })">
-                                                                                                            @item.ProductName
-                                                                                                        </a>
-
-                                                                                                    </td>
-                                                                                                    <td class="text-left">
-                                                                                                        @item.Quanlity
-                                                                                                    </td>
-                                                                                                    <td class="text-right">
-                                                                                                        <div class="price priceCart_@item.ProductID">
-                                                                                                            <script>
-                                                                                                                $(function () {
-                                                                                                                    $('.priceCart_@item.ProductID').text(tien(@item.Price));
-                                                                                                                }) </script>
-                                                                                                        </div>
-                                                                                                    </td>
-                                                                                                    <td class="text-right">
-                                                                                                        <div class="price  priceTotal_@item.ProductID">
-                                                                                                            <input type="hidden" id="hdtotal1" name="hdtotal" value="@item.Total" />
-                                                                                                            <script>
-                                                                                                                $(function () {
-
-                                                                                                                    $('.priceTotal_@item.ProductID').text(tien(@item.Total));
-                                                                                                                }) </script>
-                                                                                                        </div>
-                                                                                                    </td>
-
-                                                                                                </tr>
-                                                                                            }
-
-                                                                                        </tbody>
-                                                                                    </table>
-                                                                                </div>
-                                                                                <table class="table total">
-                                                                                    <tbody>
-                                                                                        <tr>
-
-                                                                                            <td class="text-left">
-                                                                                                <strong>Ship</strong>
-                                                                                            </td>
-                                                                                            <td class="text-right">
-
-
-                                                                                                <span class="showShip">
-                                                                                                    0đ
-                                                                                                </span>
-
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-
-                                                                                            <td class="text-left">
-                                                                                                <strong>Sub-Total</strong>
-                                                                                            </td>
-                                                                                            <td class="text-right">
-
-                                                                                                <input type="hidden" value="" id="hdPriceNo" />
-                                                                                                <span class="pricOutSub">
-
-                                                                                                </span>
-
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                        <tr>
-
-                                                                                            <td class="text-left">
-
-                                                                                                <strong>Total</strong>
-                                                                                            </td>
-                                                                                            <td class="text-right clTotalPrcie">
-                                                                                                $100.00
-                                                                                            </td>
-                                                                                        </tr>
-                                                                                    </tbody>
-                                                                                </table>
-                                                                            </div>
-                                                                        </div>
-
+                                                                <div class="col-lg-4">
+                                                                    <div class="form-group">
+                                                                        <label>Họ và tên</label>
+                                                                        <input class="form-control" name="shipFullName" id="txtshipFullName">
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label>Địa chỉ nhà</label>
+                                                                        <textarea class="form-control" name="shipAddress" id="txtshipAddress"></textarea>
                                                                     </div>
 
+                                                                    <div class="form-group">
+                                                                        <label>Số điện thoại</label>
+                                                                        <input class="form-control" name="shipphone" id="txtPhone">
+                                                                    </div>
+                                                                    <div class="form-group cldropCity">
+                                                                        <label class="clcitycheckout">Thành phố / Tỉnh thành</label>
+                                                                        <select id="dropCity" class="form-control"></select>
+
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="cldistrictcheckout hidden">Quận/Huyện</label>
+                                                                        <select id="dropDistrict" class="form-control"></select>
+
+                                                                    </div>
+                                                                    <div class="form-group">
+                                                                        <label class="clwardcheckout hidden">Phường/Xã</label>
+                                                                        <select id="dropWard" class="form-control"></select>
+
+                                                                    </div>
                                                                 </div>
+                                                                <div class="col-lg-8">
+                                                                    <table class="table total">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <th>Tên SP</th>
+                                                                                <th>SL</th>
+                                                                                <th>Giá</th>
+                                                                                <th>Tổng</th>
+                                                                            </tr>
+                                                                            @foreach (var item in Model.Cart.ListItem)
+                                                                            {
+                                                                            <tr>
+                                                                                <th class="text-left" style="width:90%!important">
+                                                                                    <strong>
+                                                                                        <a class="link" style="margin-top:0!important;" href="@Url.Action("Detail", "WebSite" ,new { id=item.ProductName.UrlFrendly() + "-" + item.ProductID })">
+                                                                                            @item.ProductName
+                                                                                        </a>
+                                                                                    </strong>
+                                                                                </th>
+                                                                                <th class="text-right" style="width:10%!important">
+
+
+                                                                                    @item.Quanlity
+
+                                                                                </th>
+                                                                                <th class="text-right" style="width:10%!important">
+
+
+                                                                                    <div class="price priceCart_@item.ProductID">
+                                                                                        <script>
+                                                                                                $(function () {
+                                                                                                    $('.priceCart_@item.ProductID').text(tien(@item.Price));
+                                                                                                }) </script>
+                                                                                    </div>
+
+                                                                                </th>
+                                                                                <th class="text-right" style="width:10%!important">
+                                                                                    <div class="price  priceTotal_@item.ProductID">
+                                                                                        <input type="hidden" id="hdtotal1" name="hdtotal" value="@item.Total" />
+                                                                                        <script>
+                                                                                                $(function () {
+
+                                                                                                    $('.priceTotal_@item.ProductID').text(tien(@item.Total));
+                                                                                                }) </script>
+                                                                                    </div>
+
+                                                                                </th>
+                                                                            </tr>
+                                                                            }
+                                                                        </tbody>
+                                                                    </table>
+                                                                    <table class="table total">
+                                                                        <tbody>
+                                                                            <tr>
+                                                                                <td class="text-left">
+                                                                                    <strong>Ship</strong>
+                                                                                </td>
+                                                                                <td class="text-right">
+                                                                                    <span class="showShip">
+                                                                                        0đ
+                                                                                    </span>
+
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td class="text-left">
+                                                                                    <strong>Sub-Total</strong>
+                                                                                </td>
+                                                                                <td class="text-right">
+
+                                                                                    <input type="hidden" value="" id="hdPriceNo" />
+                                                                                    <span class="pricOutSub">
+
+                                                                                    </span>
+
+                                                                                </td>
+                                                                            </tr>
+                                                                            <tr>
+
+                                                                                <td class="text-left">
+
+                                                                                    <strong>Total</strong>
+                                                                                </td>
+                                                                                <td class="text-right clTotalPrcie">
+                                                                                    $100.00
+                                                                                </td>
+                                                                            </tr>
+                                                                        </tbody>
+                                                                    </table>
+
+                                                                </div>
+
+
                                                                 <!-- /.panel-body -->
                                                             </div>
                                                             <!-- /.panel -->
@@ -349,7 +327,7 @@
                                 </div>
                             </div>
                             <div class="buttons">
-                                <div class="pull-left"><a href="@Url.Action(" Index","WebSite")" class="btn btn-default">Tiếp tục mua hàng</a></div>
+                                <div class="pull-left"><a href="@Url.Action("Index","WebSite")" class="btn btn-default">Tiếp tục mua hàng</a></div>
                             </div>
                         </div>
                     </div>
@@ -370,15 +348,59 @@
                                     <h3>
                                         Thông tin Giao hàng
                                     </h3>
-                                    @foreach (var item in Model.Cart.ListItem)
-                                    {
-                                        <div class="form-group">
-                                            <input type="hidden" class="hdIdPro" value="@item.ProductID" />
-                                            <label class="cusLable">@item.ProductName</label> SL:
-                                            <label class="cusLable">@item.Quanlity</label> Giá:
-                                            <label class="cusLable">@item.Total</label>
-                                        </div>
-                                    }
+                                   
+                                    <table class="table total">
+                                        <tbody>
+                                            <tr>
+                                                <th>Tên SP</th>
+                                                <th>SL</th>
+                                                <th>Giá</th>
+                                                <th>Tổng</th>
+                                            </tr>
+                                            @foreach (var item in Model.Cart.ListItem)
+                                            {
+                                                <tr>
+                                                    <th class="text-left" style="width:90%!important">
+                                                        <input type="hidden" class="hdIdPro" value="@item.ProductID" />
+                                                        <strong>
+                                                            <a class="link" style="margin-top:0!important;" href="@Url.Action("Detail", "WebSite" ,new { id=item.ProductName.UrlFrendly() + "-" + item.ProductID })">
+                                                                @item.ProductName
+                                                            </a>
+                                                        </strong>
+                                                    </th>
+                                                    <th class="text-right" style="width:10%!important">
+
+
+                                                        @item.Quanlity
+
+                                                    </th>
+                                                    <th class="text-right" style="width:10%!important">
+
+
+                                                        <div class="price priceCart_@item.ProductID">
+                                                            <script>
+                                                                $(function () {
+                                                                    $('.priceCart_@item.ProductID').text(tien(@item.Price));
+                                                                }) </script>
+                                                        </div>
+
+                                                    </th>
+                                                    <th class="text-right" style="width:10%!important">
+                                                        <div class="price  priceTotal_@item.ProductID">
+                                                            <input type="hidden" id="hdtotal1" name="hdtotal" value="@item.Total" />
+                                                            <script>
+                                                                $(function () {
+
+                                                                    $('.priceTotal_@item.ProductID').text(tien(@item.Total));
+                                                                }) </script>
+                                                        </div>
+
+                                                    </th>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+
                                     <div class="form-group">
                                         <label>Giá</label>
                                         <label class="showPrice cusLable"></label>
@@ -410,7 +432,7 @@
 
                             <div class="buttons">
                                 <input type="hidden" id="hdPriceNoPayout" />
-                                <div class="pull-left"><a href="@Url.Action(" Index","WebSite")" class="btn btn-default">Tiếp tục mua hàng</a></div>
+                                <div class="pull-left"><a href="@Url.Action("Index","WebSite")" class="btn btn-default">Tiếp tục mua hàng</a></div>
                                 <div class="pull-right"><a href="javascript:void(0)" class="btn btn-primary checkout btnCheckOut">Thanh toán</a></div>
                             </div>
                         </div>
@@ -420,251 +442,252 @@
             </div>
         </div>
 
-    }</div>
+    }
+</div>
 
-    <div class="modal">  </div>
-        <style>
-            .cusLable {
-                color: blue;
-                font-weight: bold;
-                font-size: 15px;
-            }
+<div class="modal">  </div>
+<style>
+    .cusLable {
+        color: blue;
+        font-weight: bold;
+        font-size: 15px;
+    }
 
-            .modal {
-                display: none;
-                position: fixed;
-                z-index: 1000;
-                top: 0;
-                left: 0;
-                height: 100%;
-                width: 100%;
-                background: rgba( 255, 255, 255, .8 ) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
-            }
-
-
-            body.loading {
-                overflow: hidden;
-            }
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1000;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background: rgba( 255, 255, 255, .8 ) url('http://i.stack.imgur.com/FhHRx.gif') 50% 50% no-repeat;
+    }
 
 
-                body.loading .modal {
-                    display: block;
-                }
-        </style>
-        <script>
-            $body = $("body");
-            $('.btnContinue').click(function () {
-                $(".cldelive").click();
-                $('.licart').removeClass('active')
-                $('.lipayout').removeClass('active')
-                $('.deliveinfo').addClass('active')
-            })
-            $('.btnNextThanhtoan').click(function () {
-
-                check();
-            })
-            $('.btnCheckOut').click(function () {
-
-                var idCity = $("#dropCity option:selected").val();
-                var idDistrict = $("#dropDistrict option:selected").val();
-                var idWard = $("#dropWard option:selected").val();
-                var vlFullName = $("#txtshipFullName").val();
-                var vlAddress = $("#txtshipAddress").val();
-                var vlPhone = $("#txtPhone").val();
-                var t = 0;
-                if (vlFullName == "") {
-                    $('.lblFullName').addClass('hidden');
-                    $('#txtshipFullName').after('<label style="color:red;" class="errorLabel lblFullName">Vui lòng nhập họ tên / Full Name</label>');
-                    t++;
-                }
-                if (vlAddress == "") {
-                    $('.lblAddress').addClass('hidden');
-                    $('#txtshipAddress').after('<label style="color:red;" class="errorLabel lblAddress">Vui lòng nhập địa chỉ / Address</label>');
-                    t++;
-                }
-                if (vlPhone == "") {
-                    $('.lblPhone').addClass('hidden');
-                    $('#txtPhone').after('<label style="color:red;" class="errorLabel lblPhone">Vui lòng nhập điện thoại / Phone</label>');
-                    t++;
-                }
-                if (idCity == 0) {
-                    $('.lblCity').addClass('hidden');
-                    $('#dropCity').after('<label style="color:red;" class="errorLabel lblCity">Vui lòng chọn Thành Phố / City</label>');
-                    t++;
-                }
-                if (idDistrict == 0) {
-                    $('.lblDis').addClass('hidden');
-                    $('#dropDistrict').after('<label style="color:red;" class="errorLabel lblDis">Vui lòng chọn Quận / Ditrisct</label>');
-                    t++;
-                }
-                if (idWard == 0) {
-                    $('.lblWard').addClass('hidden');
-                    $('#dropWard').after('<label style="color:red;" class="errorLabel lblWard">Vui lòng chọn Phường / Ward</label>');
-                    t++;
-                }
-                if (t == 0) {
-                
-
-                    $(document).on({
-                        ajaxStart: function () { $body.addClass("loading"); }
-
-                    });
-                    var content = $('.OutOrder').html();
-                    var price = $('#hdPriceNoPayout').val();
-                    var url = "/WebSite/SendOrder";
-                    var obj = {};
-                    obj.content = content;
-                    $.ajax
-                   ({
-                       type: "POST",
-                       url: url,
-                       data: JSON.stringify(obj),
-                       dataType: "json",
-                       contentType: "application/json;charset=utf-8",
-                       success: function (data) {
-                           addOrder(price);
-
-                           if (data == 0) {
-                             
-
-                           }
-                       }
-                   });
-                }
+    body.loading {
+        overflow: hidden;
+    }
 
 
-            })
-            function addPro(idOr, Idpro) {
-               
-                var url = "/WebSite/AddProduct";
-                var obj = {};
-                obj.idOrder = idOr;
-                obj.idPro = Idpro;
-                $.ajax
-               ({
-                   type: "POST",
-                   url: url,
-                   data: JSON.stringify(obj),
-                   dataType: "json",
-                   contentType: "application/json;charset=utf-8",
-                   success: function (data) {
-                       $(document).on({
+        body.loading .modal {
+            display: block;
+        }
+</style>
+<script>
+    $body = $("body");
+    $('.btnContinue').click(function () {
+        $(".cldelive").click();
+        $('.licart').removeClass('active')
+        $('.lipayout').removeClass('active')
+        $('.deliveinfo').addClass('active')
+    })
+    $('.btnNextThanhtoan').click(function () {
 
-                           ajaxStop: function () { $body.removeClass("loading"); window.location.href = "/WebSite/PayOut"; }
-                       });
+        check();
+    })
+    $('.btnCheckOut').click(function () {
 
-                   }
-               });
-            }
-            function AddPoint(idOr) {
-               
-                var url = "/WebSite/AddPoint";
-                var obj = {};
-                obj.point = idOr;
+        var idCity = $("#dropCity option:selected").val();
+        var idDistrict = $("#dropDistrict option:selected").val();
+        var idWard = $("#dropWard option:selected").val();
+        var vlFullName = $("#txtshipFullName").val();
+        var vlAddress = $("#txtshipAddress").val();
+        var vlPhone = $("#txtPhone").val();
+        var t = 0;
+        if (vlFullName == "") {
+            $('.lblFullName').addClass('hidden');
+            $('#txtshipFullName').after('<label style="color:red;" class="errorLabel lblFullName">Vui lòng nhập họ tên / Full Name</label>');
+            t++;
+        }
+        if (vlAddress == "") {
+            $('.lblAddress').addClass('hidden');
+            $('#txtshipAddress').after('<label style="color:red;" class="errorLabel lblAddress">Vui lòng nhập địa chỉ / Address</label>');
+            t++;
+        }
+        if (vlPhone == "") {
+            $('.lblPhone').addClass('hidden');
+            $('#txtPhone').after('<label style="color:red;" class="errorLabel lblPhone">Vui lòng nhập điện thoại / Phone</label>');
+            t++;
+        }
+        if (idCity == 0) {
+            $('.lblCity').addClass('hidden');
+            $('#dropCity').after('<label style="color:red;" class="errorLabel lblCity">Vui lòng chọn Thành Phố / City</label>');
+            t++;
+        }
+        if (idDistrict == 0) {
+            $('.lblDis').addClass('hidden');
+            $('#dropDistrict').after('<label style="color:red;" class="errorLabel lblDis">Vui lòng chọn Quận / Ditrisct</label>');
+            t++;
+        }
+        if (idWard == 0) {
+            $('.lblWard').addClass('hidden');
+            $('#dropWard').after('<label style="color:red;" class="errorLabel lblWard">Vui lòng chọn Phường / Ward</label>');
+            t++;
+        }
+        if (t == 0) {
 
-                $.ajax
-               ({
-                   type: "POST",
-                   url: url,
-                   data: JSON.stringify(obj),
-                   dataType: "json",
-                   contentType: "application/json;charset=utf-8",
-                   success: function (data) {
+
+            $(document).on({
+                ajaxStart: function () { $body.addClass("loading"); }
+
+            });
+            var content = $('.OutOrder').html();
+            var price = $('#hdPriceNoPayout').val();
+            var url = "/WebSite/SendOrder";
+            var obj = {};
+            obj.content = content;
+            $.ajax
+           ({
+               type: "POST",
+               url: url,
+               data: JSON.stringify(obj),
+               dataType: "json",
+               contentType: "application/json;charset=utf-8",
+               success: function (data) {
+                   addOrder(price);
+
+                   if (data == 0) {
 
 
                    }
+               }
+           });
+        }
+
+
+    })
+    function addPro(idOr, Idpro) {
+
+        var url = "/WebSite/AddProduct";
+        var obj = {};
+        obj.idOrder = idOr;
+        obj.idPro = Idpro;
+        $.ajax
+       ({
+           type: "POST",
+           url: url,
+           data: JSON.stringify(obj),
+           dataType: "json",
+           contentType: "application/json;charset=utf-8",
+           success: function (data) {
+               $(document).on({
+
+                   ajaxStop: function () { $body.removeClass("loading"); window.location.href = "/WebSite/PayOut"; }
                });
-            }
-            function addOrder(price) {
-                var url = "/WebSite/AddOrder";
-                var obj = {};
-                obj.priceTotal = price;
-                $.ajax
-               ({
-                   type: "POST",
-                   url: url,
-                   data: JSON.stringify(obj),
-                   dataType: "json",
-                   contentType: "application/json;charset=utf-8",
-                   success: function (data) {
 
-                       $.each($('.hdIdPro'), function (i, o) {
-                           var t = $(o).val();
-                           console.log(t);
-                           addPro(data.IdOrder, t);
+           }
+       });
+    }
+    function AddPoint(idOr) {
 
-                       });
-                       AddPoint(data.PointTotal);
+        var url = "/WebSite/AddPoint";
+        var obj = {};
+        obj.point = idOr;
 
-                   }
+        $.ajax
+       ({
+           type: "POST",
+           url: url,
+           data: JSON.stringify(obj),
+           dataType: "json",
+           contentType: "application/json;charset=utf-8",
+           success: function (data) {
+
+
+           }
+       });
+    }
+    function addOrder(price) {
+        var url = "/WebSite/AddOrder";
+        var obj = {};
+        obj.priceTotal = price;
+        $.ajax
+       ({
+           type: "POST",
+           url: url,
+           data: JSON.stringify(obj),
+           dataType: "json",
+           contentType: "application/json;charset=utf-8",
+           success: function (data) {
+
+               $.each($('.hdIdPro'), function (i, o) {
+                   var t = $(o).val();
+                   console.log(t);
+                   addPro(data.IdOrder, t);
+
                });
-            }
-            $(function () {
-                var t = $('#hdPriceNo').val();
-                $('.pricOutSub').html(tien(t));
-                $('.clTotalPrcie').html(tien(t));
+               AddPoint(data.PointTotal);
 
-            })
-            function getInforShip() {
-                var idCity = $("#dropCity option:selected").text();
-                var idDistrict = $("#dropDistrict option:selected").text();
-                var idWard = $("#dropWard option:selected").text();
-                var vlFullName = $("#txtshipFullName").val();
-                var vlAddress = $("#txtshipAddress").val();
-                var vlPhone = $("#txtPhone").val();
-                $('.showFullname').html(vlFullName);
-                $('.showAddress').html(vlAddress + ', ' + idWard + ', ' + idDistrict + ', ' + idCity);
-                $('.showPhone').html(vlPhone);
-            }
-            function check() {
-                var idCity = $("#dropCity option:selected").val();
-                var idDistrict = $("#dropDistrict option:selected").val();
-                var idWard = $("#dropWard option:selected").val();
-                var vlFullName = $("#txtshipFullName").val();
-                var vlAddress = $("#txtshipAddress").val();
-                var vlPhone = $("#txtPhone").val();
-                var t = 0;
-                if (vlFullName == "") {
-                    $('.lblFullName').addClass('hidden');
-                    $('#txtshipFullName').after('<label style="color:red;" class="errorLabel lblFullName">Vui lòng nhập họ tên / Full Name</label>');
-                    t++;
-                }
-                if (vlAddress == "") {
-                    $('.lblAddress').addClass('hidden');
-                    $('#txtshipAddress').after('<label style="color:red;" class="errorLabel lblAddress">Vui lòng nhập địa chỉ / Address</label>');
-                    t++;
-                }
-                if (vlPhone == "") {
-                    $('.lblPhone').addClass('hidden');
-                    $('#txtPhone').after('<label style="color:red;" class="errorLabel lblPhone">Vui lòng nhập điện thoại / Phone</label>');
-                    t++;
-                }
-                if (idCity == 0) {
-                    $('.lblCity').addClass('hidden');
-                    $('#dropCity').after('<label style="color:red;" class="errorLabel lblCity">Vui lòng chọn Thành Phố / City</label>');
-                    t++;
-                }
-                if (idDistrict == 0) {
-                    $('.lblDis').addClass('hidden');
-                    $('#dropDistrict').after('<label style="color:red;" class="errorLabel lblDis">Vui lòng chọn Quận / Ditrisct</label>');
-                    t++;
-                }
-                if (idWard == 0) {
-                    $('.lblWard').addClass('hidden');
-                    $('#dropWard').after('<label style="color:red;" class="errorLabel lblWard">Vui lòng chọn Phường / Ward</label>');
-                    t++;
-                }
-                if (t == 0) {
-                    $(".cltoupayout").click();
-                    $('.licart').removeClass('active')
-                    $('.lipayout').addClass('active')
-                    $('.deliveinfo').removeClass('active')
-                    getInforShip();
-                }
-            }
-        </script>
-  
+           }
+       });
+    }
+    $(function () {
+        var t = $('#hdPriceNo').val();
+        $('.pricOutSub').html(tien(t));
+        $('.clTotalPrcie').html(tien(t));
 
-    <!-- FOOTER--->
-    @Html.Partial("Footer")
-    <!--END FOOTER--->
+    })
+    function getInforShip() {
+        var idCity = $("#dropCity option:selected").text();
+        var idDistrict = $("#dropDistrict option:selected").text();
+        var idWard = $("#dropWard option:selected").text();
+        var vlFullName = $("#txtshipFullName").val();
+        var vlAddress = $("#txtshipAddress").val();
+        var vlPhone = $("#txtPhone").val();
+        $('.showFullname').html(vlFullName);
+        $('.showAddress').html(vlAddress + ', ' + idWard + ', ' + idDistrict + ', ' + idCity);
+        $('.showPhone').html(vlPhone);
+    }
+    function check() {
+        var idCity = $("#dropCity option:selected").val();
+        var idDistrict = $("#dropDistrict option:selected").val();
+        var idWard = $("#dropWard option:selected").val();
+        var vlFullName = $("#txtshipFullName").val();
+        var vlAddress = $("#txtshipAddress").val();
+        var vlPhone = $("#txtPhone").val();
+        var t = 0;
+        if (vlFullName == "") {
+            $('.lblFullName').addClass('hidden');
+            $('#txtshipFullName').after('<label style="color:red;" class="errorLabel lblFullName">Vui lòng nhập họ tên / Full Name</label>');
+            t++;
+        }
+        if (vlAddress == "") {
+            $('.lblAddress').addClass('hidden');
+            $('#txtshipAddress').after('<label style="color:red;" class="errorLabel lblAddress">Vui lòng nhập địa chỉ / Address</label>');
+            t++;
+        }
+        if (vlPhone == "") {
+            $('.lblPhone').addClass('hidden');
+            $('#txtPhone').after('<label style="color:red;" class="errorLabel lblPhone">Vui lòng nhập điện thoại / Phone</label>');
+            t++;
+        }
+        if (idCity == 0) {
+            $('.lblCity').addClass('hidden');
+            $('#dropCity').after('<label style="color:red;" class="errorLabel lblCity">Vui lòng chọn Thành Phố / City</label>');
+            t++;
+        }
+        if (idDistrict == 0) {
+            $('.lblDis').addClass('hidden');
+            $('#dropDistrict').after('<label style="color:red;" class="errorLabel lblDis">Vui lòng chọn Quận / Ditrisct</label>');
+            t++;
+        }
+        if (idWard == 0) {
+            $('.lblWard').addClass('hidden');
+            $('#dropWard').after('<label style="color:red;" class="errorLabel lblWard">Vui lòng chọn Phường / Ward</label>');
+            t++;
+        }
+        if (t == 0) {
+            $(".cltoupayout").click();
+            $('.licart').removeClass('active')
+            $('.lipayout').addClass('active')
+            $('.deliveinfo').removeClass('active')
+            getInforShip();
+        }
+    }
+</script>
+
+
+<!-- FOOTER--->
+@Html.Partial("Footer")
+<!--END FOOTER--->

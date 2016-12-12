@@ -9,13 +9,13 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblCategory
-    {
-        public int IdCategory { get; set; }
-        public string NameCategory { get; set; }
-        public Nullable<int> StatusCategory { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblCategory
+   {
+       public int IdCategory { get; set; }
+       public string NameCategory { get; set; }
+       public Nullable<int> StatusCategory { get; set; }
+   }
 }

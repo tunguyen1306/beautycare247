@@ -2,16 +2,25 @@
 @model tblAll
 @using System.Configuration
 @foreach (var item1 in Model.ListMenu)
-{
+{  <div>
+       <a href="@Url.Action("ListProducts", "WebSite",new { id=item1.NameMenu.UrlFrendly() + "-" + item1.IdMenu })" class="clvi" style="float:right;margin-bottom:10px;margin-top:10px;">xem tất cả</a>
+       <a href="@Url.Action("ListProducts", "WebSite",new { id=item1.NameMenu_en.UrlFrendly() + "-" + item1.IdMenu })" class="clen hidden" style="float:right;margin-bottom:10px;margin-top:10px;">All Product</a>
+
+    </div>
+    
     <div class="box latest">
         <div class="clear"></div>
         <div class="box-heading">
+           
             <h3 class="clvi">
                 @item1.NameMenu
+                
             </h3>
-            <h3 class="clen hidden">
+            <h3 class="clen hidden hidden">
                 @item1.NameMenu_en
+                
             </h3>
+           
         </div>
         <div class="box-content">
             <div class="box-carousel">
@@ -93,7 +102,7 @@
                                 </div>
                                 <div class="right col-sm-7">
                                     <h2 class="clvi">@item.NameProducts</h2>
-                                    <h2 class="clen">@item.NameProducts_en</h2>
+                                    <h2 class="clen hidden">@item.NameProducts_en</h2>
                                     <div class="price">
                                         <span class="price-new price-new_@item.IdProducts">
                                             <script>
@@ -119,14 +128,14 @@
                         @if (item.IdTypeProducts == 1)
                     {
                             <div class="new-pr clvi"><span>Hàng mới</span></div>
-                            <div class="new-pr clen"><span>New</span></div>
+                            <div class="new-pr clen hidden"><span>New</span></div>
                         }
                         @if (item.IdTypeProducts == 2)
                     {
                             <div class="sale clvi">
                                 <span>Giảm giá</span>
                             </div>
-                            <div class="sale clen"><span>Discount</span></div>
+                            <div class="sale clen hidden"><span>Discount</span></div>
                         }
                         @if (item.IdTypeProducts == 3)
                     {
@@ -152,14 +161,14 @@
                             <div class="name clvi">
                                 <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts</a>
                             </div>
-                            <div class="name clen">
+                            <div class="name clen hidden">
                                 <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts_en.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts_en</a>
                             </div>
                             <div class="category-name">
                              @foreach (var itemMenu in Model.ListMenu.Where(x => x.IdMenu == item.IdCategoryProducts))
                              {
                                 <a href="@Url.Action("ListProducts", "WebSite",new { id=itemMenu.NameMenu.UrlFrendly() + "-" + itemMenu.IdMenu })" class="clvi">@itemMenu.NameMenu</a>
-                                <a href="@Url.Action("ListProducts", "WebSite",new { id=itemMenu.NameMenu_en.UrlFrendly() + "-" + itemMenu.IdMenu })" class="clen hidden">@itemMenu.NameMenu_en</a>
+                                <a href="@Url.Action("ListProducts", "WebSite",new { id=itemMenu.NameMenu_en.UrlFrendly() + "-" + itemMenu.IdMenu })" class="clen hidden hidden">@itemMenu.NameMenu_en</a>
                              }
                             </div>
                            

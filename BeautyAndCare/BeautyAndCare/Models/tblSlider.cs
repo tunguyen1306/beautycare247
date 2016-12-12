@@ -9,17 +9,17 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblSlider
-    {
-        public int IdSlider { get; set; }
-        public string NameSlider_vi { get; set; }
-        public string NameSlider_en { get; set; }
-        public string ShortDes_vi { get; set; }
-        public string ShortDes_end { get; set; }
-        public Nullable<int> StatusSlider { get; set; }
-        public string ImgSlider { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblSlider
+   {
+       public int IdSlider { get; set; }
+       public string NameSlider_vi { get; set; }
+       public string NameSlider_en { get; set; }
+       public string ShortDes_vi { get; set; }
+       public string ShortDes_end { get; set; }
+       public Nullable<int> StatusSlider { get; set; }
+       public string ImgSlider { get; set; }
+   }
 }

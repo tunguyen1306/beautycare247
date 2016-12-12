@@ -9,14 +9,14 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Country
-    {
-        public string countryCode { get; set; }
-        public int name_id { get; set; }
-        public string languages { get; set; }
-        public System.Guid rowguid { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class Country
+   {
+       public string countryCode { get; set; }
+       public int name_id { get; set; }
+       public string languages { get; set; }
+       public System.Guid rowguid { get; set; }
+   }
 }

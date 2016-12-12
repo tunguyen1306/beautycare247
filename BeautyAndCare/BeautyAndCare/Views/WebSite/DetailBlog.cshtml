@@ -27,7 +27,7 @@
                     <article class="article-info">
                         <div class="article-title">
                             <h1 class="clvi">@item.NameBlog_vi</h1>
-                            <h1 class="clen">@item.NameBlog_en</h1>
+                            <h1 class="clen hidden">@item.NameBlog_en</h1>
                         </div>
                         <div class="article-sub-title">
                             <span class="article-date material-design-clock100">@item.CreateDateBlog</span>
@@ -40,7 +40,7 @@
                             @if (item.IsVideo == 0)
                             {
                                 <img class="clvi" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_vi">
-                                <img class="clen" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_en">
+                                <img class="clen hidden" src="@ConfigurationManager.AppSettings["domain"]@item.ImgBlog.Split('_')[0]/@item.ImgBlog" alt="@item.NameBlog_en">
                             }
                             else
                             {
@@ -71,7 +71,7 @@
                             @Html.Raw(item.ShortDes_vi)
 
                         </div>
-                        <div class="article-description clen">
+                        <div class="article-description clen hidden">
                             @Html.Raw(item.ShortDes_en)
 
                         </div>

@@ -1,4 +1,66 @@
 ﻿$(function () {
+    //load lan
+   
+    var vi = getCookie("vi");
+    console.log(vi);
+   
+    if (vi != null) {
+        if (vi == 1) {
+            setCookie("vi", 1, 365);
+            $('.clvi').removeClass('hidden');
+            $('.clen').addClass('hidden');
+        }
+        if (vi == 2) {
+            setCookie("vi", 2, 365);
+            $('.clvi').addClass('hidden');
+            $('.clen').removeClass('hidden');
+        }
+
+    }
+    else {
+        setCookie("vi", 1, 365);
+    }
+    $('#hdlang').val(vi);
+    $('#btnVn').click(function () {
+        var t = $('#btnVn').attr('rel')
+        setCookie("vi", t, 365);
+        $('#btnVn').addClass('selected');
+        $('#btnEn').removeClass('selected');
+    });
+    $('#btnEn').click(function () {
+        var t = $('#btnEn').attr('rel')
+        setCookie("vi", t, 365);
+        $('#btnEn').addClass('selected');
+        $('#btnVn').removeClass('selected');
+    });
+    $('#btnJp').click(function () {
+        var t = $('#btnJp').attr('rel')
+        setCookie("vi", t, 365);
+    });
+    var url = "/WebSite/GetRowLan";
+    $.ajax
+   ({
+       type: "POST",
+       url: url, //LyricsloadMore
+       data: JSON.stringify({ lan: vi }),
+       dataType: "json",
+       contentType: "application/json;charset=utf-8",
+       success: function (data) {
+
+           $.each(data, function (i, o) {
+               if (o.KeyVocabulary.lastIndexOf("ip_") != -1)
+                   $('.' + o.KeyVocabulary).val(o.NameVocabulary);
+               else if (o.KeyVocabulary.lastIndexOf("pl_") != -1)
+                   $('.' + o.KeyVocabulary).attr("placeholder", o.NameVocabulary);
+               else
+                   $('.' + o.KeyVocabulary).html(o.NameVocabulary);
+
+           });
+
+
+       }
+   });
+
     showToCart();
        
         
@@ -46,69 +108,15 @@
         GetCity();
      
     }
-    var vi = getCookie("vi");
-    $('#hdlang').val(vi);
-    if (vi != null) {
-        if (vi == 1) {
-            $('.clvi').removeClass('hidden');
-            $('.clen').addClass('hidden');
-        }
-        if (vi == 2) {
-            $('.clvi').addClass('hidden');
-            $('.clen').removeClass('hidden');
-        }
 
-    }
-    else {
-        setCookie("vi", 1, 365);
-    }
-    $('#btnVn').click(function () {
-        var t = $('#btnVn').attr('rel')
-        setCookie("vi", t, 365);
-        $('#btnVn').addClass('selected');
-        $('#btnEn').removeClass('selected');
-    });
-    $('#btnEn').click(function () {
-        var t = $('#btnEn').attr('rel')
-        setCookie("vi", t, 365);
-        $('#btnEn').addClass('selected');
-        $('#btnVn').removeClass('selected');
-    });
-    $('#btnJp').click(function () {
-        var t = $('#btnJp').attr('rel')
-        setCookie("vi", t, 365);
-    });
+   
     $('.btnLogOut').click(function () {
        
         Logout();
     });
 
 
-    //load lan
-    var url = "/WebSite/GetRowLan";
-    $.ajax
-   ({
-       type: "POST",
-       url: url, //LyricsloadMore
-       data: JSON.stringify({ lan: vi }),
-       dataType: "json",
-       contentType: "application/json;charset=utf-8",
-       success: function (data) {
-          
-           $.each(data, function (i, o) {
-               if (o.KeyVocabulary.lastIndexOf("ip_") != -1)
-                   $('.' + o.KeyVocabulary).val(o.NameVocabulary);
-               else if (o.KeyVocabulary.lastIndexOf("pl_") != -1)
-                   $('.' + o.KeyVocabulary).attr("placeholder", o.NameVocabulary);
-               else
-                   $('.' + o.KeyVocabulary).html(o.NameVocabulary);
-
-           });
-
-
-       }
-   });
-    
+   
    
 });
 
@@ -507,6 +515,9 @@ function checkLoginState() {
     FB.getLoginStatus(function (response) {
         statusChangeCallback(response);
     });
+    FB.login(function (response) {
+        // handle the response
+    });
 }
 window.fbAsyncInit = function () {
     FB.init({
@@ -536,7 +547,7 @@ window.fbAsyncInit = function () {
 
 function LoginFBAPI() {
     FB.api('/me', function (response) {
-      
+        console.log(response);
         LoginFB(response.id, response.name);
     });
 }

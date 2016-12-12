@@ -9,13 +9,13 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblType
-    {
-        public int IdType { get; set; }
-        public string NameType { get; set; }
-        public Nullable<int> StatusType { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblType
+   {
+       public int IdType { get; set; }
+       public string NameType { get; set; }
+       public Nullable<int> StatusType { get; set; }
+   }
 }

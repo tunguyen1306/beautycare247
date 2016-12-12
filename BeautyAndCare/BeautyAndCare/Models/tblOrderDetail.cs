@@ -9,14 +9,14 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblOrderDetail
-    {
-        public int IdOrderDetail { get; set; }
-        public Nullable<int> IdProducts { get; set; }
-        public Nullable<int> IdOrder { get; set; }
-        public Nullable<System.DateTime> DateCreate { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblOrderDetail
+   {
+       public int IdOrderDetail { get; set; }
+       public Nullable<int> IdProducts { get; set; }
+       public Nullable<int> IdOrder { get; set; }
+       public Nullable<System.DateTime> DateCreate { get; set; }
+   }
 }

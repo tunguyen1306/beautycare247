@@ -169,7 +169,12 @@ namespace BeautyAndCare.Controllers
             }
 
             ShoppingCartModel model = new ShoppingCartModel();
+
             model.Cart = (ShoppingCart)Session["Cart"];
+            if (model.Cart==null)
+            {
+                return RedirectToAction("Index");
+            }
             return View(model);
         }
         [HttpPost]
@@ -621,6 +626,11 @@ namespace BeautyAndCare.Controllers
             {
                 var tblUser = new tblUser();
                 tblUser.TypeRegister = 2;
+                tblUser.IdTypeUser = 3;
+                tblUser.IdRoleUser = 1;
+                tblUser.TotalPointUser = 0;
+                tblUser.SubscribeUser = 1;
+                tblUser.StatusUser = 1;
                 tblUser.IdRegisterFB = UserId;
                 tblUser.NameUser = name;
                 db.tblUsers.Add(tblUser);
@@ -637,6 +647,10 @@ namespace BeautyAndCare.Controllers
 
                 var tblUser = db.tblUsers.Find(GetId);
                 tblUser.TypeRegister = 2;
+                tblUser.IdTypeUser = 3;
+                tblUser.IdRoleUser = 1;
+                tblUser.SubscribeUser = 1;
+                tblUser.StatusUser = 1;
                 tblUser.IdRegisterFB = UserId;
                 tblUser.NameUser = name;
                 db.Entry(tblUser).State = EntityState.Modified;

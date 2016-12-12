@@ -9,14 +9,14 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblShip
-    {
-        public int idShip { get; set; }
-        public Nullable<int> IdCityShip { get; set; }
-        public string PriceShip { get; set; }
-        public string NameCityShip { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblShip
+   {
+       public int idShip { get; set; }
+       public Nullable<int> IdCityShip { get; set; }
+       public string PriceShip { get; set; }
+       public string NameCityShip { get; set; }
+   }
 }

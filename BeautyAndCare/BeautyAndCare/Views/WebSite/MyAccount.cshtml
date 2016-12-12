@@ -128,9 +128,11 @@
                                     <thead>
                                         <tr>
                                             <td></td>
+                                            <td>Mã đơn hàng</td>
                                             <td class="text-left">Giá tiền</td>
                                             <td class="text-left">Điểm</td>
                                             <td class="text-left">Ngày mua</td>
+                                            <td class="text-left">Trạng thái</td>
 
 
                                         </tr>
@@ -162,7 +164,7 @@
                                                                                     <tr>
                                                                                         <td class="text-left">Tên sản phẩm</td>
                                                                                         <td class="text-left">Giá</td>
-                                                                                        @*<td class="text-left">Số lượng</td>*@
+                                                                                       
                                                                                         <td class="text-left">Ngày mua</td>
 
 
@@ -220,10 +222,14 @@
 
                                                     </td>
                                                     <td class="text-left">
+                                                        @itemorder.IdOrder
+                                                    </td>
+                                                    <td class="text-left">
                                                         @itemorder.PointTotal
 
                                                 </td>
                                                 <td class="text-left">@itemorder.DateCreate</td>
+                                                    <td class="text-left">Trạng thái</td>
                                             </tr>
 
 

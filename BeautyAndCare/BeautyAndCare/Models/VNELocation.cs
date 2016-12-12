@@ -9,18 +9,18 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class VNELocation
-    {
-        public Nullable<int> ID { get; set; }
-        public string State { get; set; }
-        public string District { get; set; }
-        public string Ward { get; set; }
-        public Nullable<int> state_id { get; set; }
-        public Nullable<int> district_id { get; set; }
-        public Nullable<int> ward_id { get; set; }
-        public System.Guid rowguid { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class VNELocation
+   {
+       public Nullable<int> ID { get; set; }
+       public string State { get; set; }
+       public string District { get; set; }
+       public string Ward { get; set; }
+       public Nullable<int> state_id { get; set; }
+       public Nullable<int> district_id { get; set; }
+       public Nullable<int> ward_id { get; set; }
+       public System.Guid rowguid { get; set; }
+   }
 }

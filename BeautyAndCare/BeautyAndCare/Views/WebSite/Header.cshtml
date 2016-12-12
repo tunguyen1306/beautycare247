@@ -168,7 +168,7 @@
                                     {
 
                                         <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })" class="clvi">@item.NameMenu</a>
-                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu_en.UrlFrendly() + "-" + item.IdMenu })" class="clen hidden">@item.NameMenu_en</a>
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu_en.UrlFrendly() + "-" + item.IdMenu })" class="clen hidden hidden">@item.NameMenu_en</a>
 
                                     }
 
@@ -176,7 +176,7 @@
                                     {
 
                                         <a href="@item.LinkMenu" class="clvi">@item.NameMenu</a>
-                                        <a href="@item.LinkMenu" class="clen hidden">@item.NameMenu_en</a>
+                                        <a href="@item.LinkMenu" class="clen hidden hidden">@item.NameMenu_en</a>
 
                                     }
 
@@ -191,13 +191,13 @@
                                         {
 
                                             <a class="clvi hidden" href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu</a>
-                                            <a class="clen hidden" href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu_en.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu_en</a>
+                                            <a class="clen hidden hidden" href="@Url.Action("ListProducts", "WebSite",new { id=item.NameMenu_en.UrlFrendly() + "-" + item.IdMenu })">@item.NameMenu_en</a>
                                         }
                                         else
                                         {
 
                                             <a href="@item.LinkMenu" class="clvi hidden">@item.NameMenu</a>
-                                            <a href="@item.LinkMenu" class="clen hidden">@item.NameMenu_en</a>
+                                            <a href="@item.LinkMenu" class="clen hidden hidden">@item.NameMenu_en</a>
 
                                         }
                                         <ul class="sf-mega">
@@ -212,13 +212,13 @@
                                                                 {
 
                                                                     <a href="@Url.Action("ListProducts", "WebSite",new { id=child.NameMenu.UrlFrendly() + "-" + child.IdMenu })" class="clvi hidden">@child.NameMenu</a>
-                                                                    <a href="@Url.Action("ListProducts", "WebSite",new { id=child.NameMenu_en.UrlFrendly() + "-" + child.IdMenu })" class="clen hidden">@child.NameMenu_en</a>
+                                                                    <a href="@Url.Action("ListProducts", "WebSite",new { id=child.NameMenu_en.UrlFrendly() + "-" + child.IdMenu })" class="clen hidden hidden">@child.NameMenu_en</a>
                                                                 }
                                                                 else
                                                                 {
 
                                                                     <a href="@child.LinkMenu" class="clvi hidden">@child.NameMenu</a>
-                                                                    <a href="@child.LinkMenu" class="clen hidden">@child.NameMenu_en</a>
+                                                                    <a href="@child.LinkMenu" class="clen hidden hidden">@child.NameMenu_en</a>
                                                                 }
                                                             </li>
                                                         </ul>

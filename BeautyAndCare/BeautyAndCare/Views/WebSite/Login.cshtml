@@ -45,8 +45,27 @@
                             <div class="form-group">
                                 <input type="submit" value="Login" class="btn btn-primary">
                                 <a href="javascript:void(0)" style="margin-top:0!important;color: #fff!important; background-color: #337ab7!important;border-color: #2e6da4!important;" onclick="checkLoginState();" class="btn btn-primary">Facebook Login</a>
+                                <a href="javascript:void(0)" class="g-signin2 hidden" data-onsuccess="onSignIn" >Google Login</a>
+                              
                             </div>
                         
+                            <script>
+      function onSignIn(googleUser) {
+        // Useful data for your client-side scripts:
+        var profile = googleUser.getBasicProfile();
+        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+        console.log('Full Name: ' + profile.getName());
+        console.log('Given Name: ' + profile.getGivenName());
+        console.log('Family Name: ' + profile.getFamilyName());
+        console.log("Image URL: " + profile.getImageUrl());
+        console.log("Email: " + profile.getEmail());
+
+        // The ID token you need to pass to your backend:
+        var id_token = googleUser.getAuthResponse().id_token;
+        console.log("ID Token: " + id_token);
+      };
+                            </script>
+
                           
                         </div>
                     </div>

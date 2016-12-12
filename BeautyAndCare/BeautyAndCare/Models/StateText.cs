@@ -9,14 +9,14 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class StateText
-    {
-        public int id { get; set; }
-        public string language_id { get; set; }
-        public string text { get; set; }
-        public System.Guid rowguid { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class StateText
+   {
+       public int id { get; set; }
+       public string language_id { get; set; }
+       public string text { get; set; }
+       public System.Guid rowguid { get; set; }
+   }
 }

@@ -397,7 +397,7 @@
                                 <div class="name">
                                     <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts</a>
                                 </div>
-                                <div class="name clen">
+                                <div class="name clen hidden">
                                     <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts_en.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts_en</a>
                                 </div>
                                 @if (item.IdCategoryProducts!=null)
@@ -405,7 +405,7 @@
                                     <div class="category-name">
                                     
                                         <a href="@Url.Action("ListProducts", "WebSite",new { id=db.tblMenus.Find(item.IdCategoryProducts).NameMenu.UrlFrendly() + "-" + db.tblMenus.Find(item.IdCategoryProducts).IdMenu })" class="clvi">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu</a>
-                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en.UrlFrendly() + "-" + db.tblMenus.Find(item.IdCategoryProducts).IdMenu })" class="clen hidden">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en</a>
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en.UrlFrendly() + "-" + db.tblMenus.Find(item.IdCategoryProducts).IdMenu })" class="clen hidden hidden">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en</a>
 
                                     </div>
                                   

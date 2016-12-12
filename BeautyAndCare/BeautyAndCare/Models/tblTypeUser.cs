@@ -9,12 +9,12 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblTypeUser
-    {
-        public int IdTypeUser { get; set; }
-        public string NameTypeUser { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblTypeUser
+   {
+       public int IdTypeUser { get; set; }
+       public string NameTypeUser { get; set; }
+   }
 }

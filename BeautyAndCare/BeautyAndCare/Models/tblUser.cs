@@ -9,31 +9,31 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblUser
-    {
-        public int IdUser { get; set; }
-        public string NameUser { get; set; }
-        public string PassUser { get; set; }
-        public Nullable<int> IdTypeUser { get; set; }
-        public Nullable<double> TotalPointUser { get; set; }
-        public Nullable<int> PhoneUser { get; set; }
-        public string EmailUser { get; set; }
-        public string FirtNameUser { get; set; }
-        public string LastNameUser { get; set; }
-        public string AddressUser { get; set; }
-        public Nullable<int> SubscribeUser { get; set; }
-        public Nullable<int> StatusUser { get; set; }
-        public Nullable<int> IdRoleUser { get; set; }
-        public string FullNameShip { get; set; }
-        public string AddressShip { get; set; }
-        public string PhoneShip { get; set; }
-        public Nullable<int> IdWard { get; set; }
-        public Nullable<int> IdDistrict { get; set; }
-        public Nullable<int> IdCity { get; set; }
-        public Nullable<int> TypeRegister { get; set; }
-        public string IdRegisterFB { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblUser
+   {
+       public int IdUser { get; set; }
+       public string NameUser { get; set; }
+       public string PassUser { get; set; }
+       public Nullable<int> IdTypeUser { get; set; }
+       public Nullable<double> TotalPointUser { get; set; }
+       public Nullable<int> PhoneUser { get; set; }
+       public string EmailUser { get; set; }
+       public string FirtNameUser { get; set; }
+       public string LastNameUser { get; set; }
+       public string AddressUser { get; set; }
+       public Nullable<int> SubscribeUser { get; set; }
+       public Nullable<int> StatusUser { get; set; }
+       public Nullable<int> IdRoleUser { get; set; }
+       public string FullNameShip { get; set; }
+       public string AddressShip { get; set; }
+       public string PhoneShip { get; set; }
+       public Nullable<int> IdWard { get; set; }
+       public Nullable<int> IdDistrict { get; set; }
+       public Nullable<int> IdCity { get; set; }
+       public Nullable<int> TypeRegister { get; set; }
+       public string IdRegisterFB { get; set; }
+   }
 }

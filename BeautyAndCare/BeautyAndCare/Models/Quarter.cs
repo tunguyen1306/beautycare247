@@ -9,17 +9,17 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Quarter
-    {
-        public int quarter_id { get; set; }
-        public int location_id { get; set; }
-        public int name_id { get; set; }
-        public string zipCode { get; set; }
-        public Nullable<decimal> latitude { get; set; }
-        public Nullable<decimal> longitude { get; set; }
-        public System.Guid rowguid { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class Quarter
+   {
+       public int quarter_id { get; set; }
+       public int location_id { get; set; }
+       public int name_id { get; set; }
+       public string zipCode { get; set; }
+       public Nullable<decimal> latitude { get; set; }
+       public Nullable<decimal> longitude { get; set; }
+       public System.Guid rowguid { get; set; }
+   }
 }

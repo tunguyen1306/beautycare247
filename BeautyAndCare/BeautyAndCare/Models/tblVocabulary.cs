@@ -9,14 +9,14 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblVocabulary
-    {
-        public int IdVocabulary { get; set; }
-        public string NameVocabulary { get; set; }
-        public string KeyVocabulary { get; set; }
-        public Nullable<int> IdLangVocabulary { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblVocabulary
+   {
+       public int IdVocabulary { get; set; }
+       public string NameVocabulary { get; set; }
+       public string KeyVocabulary { get; set; }
+       public Nullable<int> IdLangVocabulary { get; set; }
+   }
 }

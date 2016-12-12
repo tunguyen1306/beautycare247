@@ -9,26 +9,26 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class Ip2City
-    {
-        public string network { get; set; }
-        public string ipfrom { get; set; }
-        public string ipto { get; set; }
-        public Nullable<long> ipvaluefrom { get; set; }
-        public Nullable<long> ipvalueto { get; set; }
-        public string geoname_id { get; set; }
-        public string registered_country_geoname_id { get; set; }
-        public string represented_country_geoname_id { get; set; }
-        public string is_anonymous_proxy { get; set; }
-        public string is_satellite_provider { get; set; }
-        public string postal_code { get; set; }
-        public string latitude { get; set; }
-        public string longitude { get; set; }
-        public string city { get; set; }
-        public Nullable<int> cityId { get; set; }
-        public System.Guid rowguid { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class Ip2City
+   {
+       public string network { get; set; }
+       public string ipfrom { get; set; }
+       public string ipto { get; set; }
+       public Nullable<long> ipvaluefrom { get; set; }
+       public Nullable<long> ipvalueto { get; set; }
+       public string geoname_id { get; set; }
+       public string registered_country_geoname_id { get; set; }
+       public string represented_country_geoname_id { get; set; }
+       public string is_anonymous_proxy { get; set; }
+       public string is_satellite_provider { get; set; }
+       public string postal_code { get; set; }
+       public string latitude { get; set; }
+       public string longitude { get; set; }
+       public string city { get; set; }
+       public Nullable<int> cityId { get; set; }
+       public System.Guid rowguid { get; set; }
+   }
 }

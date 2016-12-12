@@ -9,17 +9,17 @@
 
 namespace BeautyAndCare.Models
 {
-    using System;
-    using System.Collections.Generic;
-    
-    public partial class tblHistory
-    {
-        public int IdHistory { get; set; }
-        public Nullable<int> IdUser { get; set; }
-        public Nullable<int> IdProducts { get; set; }
-        public string TotalScore { get; set; }
-        public Nullable<System.DateTime> DateBuy { get; set; }
-        public string TotalPrice { get; set; }
-        public Nullable<int> Quantity { get; set; }
-    }
+   using System;
+   using System.Collections.Generic;
+   
+   public partial class tblHistory
+   {
+       public int IdHistory { get; set; }
+       public Nullable<int> IdUser { get; set; }
+       public Nullable<int> IdProducts { get; set; }
+       public string TotalScore { get; set; }
+       public Nullable<System.DateTime> DateBuy { get; set; }
+       public string TotalPrice { get; set; }
+       public Nullable<int> Quantity { get; set; }
+   }
 }
