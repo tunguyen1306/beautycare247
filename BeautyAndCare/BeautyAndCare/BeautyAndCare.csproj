@@ -147,6 +147,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\adminBlogsController.cs" />
     <Compile Include="Controllers\adminMenuController.cs" />
+    <Compile Include="Controllers\adminOrdersController.cs" />
     <Compile Include="Controllers\adminProductController.cs" />
     <Compile Include="Controllers\adminShipController.cs" />
     <Compile Include="Controllers\adminSlidersController.cs" />
@@ -1407,6 +1408,11 @@
     <Content Include="Template\fonts\fontawesome-webfont.woff2" />
     <Content Include="Views\WebSite\Search.cshtml" />
     <Content Include="Views\WebSite\searchProductsById.cshtml" />
+    <Content Include="Views\adminOrders\Create.cshtml" />
+    <Content Include="Views\adminOrders\Delete.cshtml" />
+    <Content Include="Views\adminOrders\Details.cshtml" />
+    <Content Include="Views\adminOrders\Edit.cshtml" />
+    <Content Include="Views\adminOrders\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

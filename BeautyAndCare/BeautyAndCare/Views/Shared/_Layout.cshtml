@@ -66,7 +66,20 @@
                 $('.date').datetimepicker();
      
         });
+        function tien(val) {
 
+            if (val != null) {
+
+                while (/(\d+)(\d{3})/.test(val.toString())) {
+                    val = val.toString().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,");
+                }
+                return val + 'đ';
+            }
+            else {
+                return '';
+            }
+
+        }
       
     </script>
         @RenderSection("scripts", required: false)

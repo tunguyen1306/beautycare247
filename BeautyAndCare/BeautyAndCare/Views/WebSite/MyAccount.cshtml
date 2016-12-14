@@ -143,6 +143,7 @@
                                             foreach (var itemorder in db.tblOrders.Where(x => x.IdUser == item2.IdUser).OrderByDescending(t => t.IdOrder))
                                             {
                                                 <tr>
+                                                   
                                                     <td>
 
                                                         <!-- Trigger the modal with a button -->
@@ -164,7 +165,7 @@
                                                                                     <tr>
                                                                                         <td class="text-left">Tên sản phẩm</td>
                                                                                         <td class="text-left">Giá</td>
-                                                                                       
+
                                                                                         <td class="text-left">Ngày mua</td>
 
 
@@ -209,6 +210,7 @@
                                                         </div>
 
                                                     </td>
+                                                    <td>@itemorder.IdOrder</td>
                                                     <td class="text-left">
 
 
@@ -221,16 +223,31 @@
                                                         </script>
 
                                                     </td>
-                                                    <td class="text-left">
-                                                        @itemorder.IdOrder
-                                                    </td>
+                                                   
                                                     <td class="text-left">
                                                         @itemorder.PointTotal
 
-                                                </td>
-                                                <td class="text-left">@itemorder.DateCreate</td>
-                                                    <td class="text-left">Trạng thái</td>
-                                            </tr>
+                                                    </td>
+                                                    <td class="text-left">@itemorder.DateCreate</td>
+                                                    <td class="text-left">
+
+                                                        @if (itemorder.StatusOrder == 1)
+                                                        {
+                                                            @("Đã giao")
+
+                                                        }
+                                                        @if (itemorder.StatusOrder == 2)
+                                                        {
+                                                            @("Đang giao")
+
+                                                        }
+                                                        @if (itemorder.StatusOrder == 3)
+                                                        {
+                                                            @("Đã hủy")
+
+                                                        }
+                                                    </td>
+                                                </tr>
 
 
 

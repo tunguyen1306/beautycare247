@@ -510,10 +510,11 @@ namespace BeautyAndCare.Controllers
         }
         [HttpPost]
         public ActionResult AddOrder(int priceTotal)
-        {
+        {//1 đã giao 2 đang giao 3 đã huy
             var tblorder = new tblOrder();
             tblorder.IdUser = int.Parse(Session["IdUser"].ToString());
             tblorder.DateCreate = DateTime.Now;
+            tblorder.StatusOrder = 2;
             tblorder.PriceTotal = priceTotal.ToString();
             tblorder.PointTotal = priceTotal / 10000;
             db.tblOrders.Add(tblorder);
