@@ -35,7 +35,9 @@
                         <li>
                             <a href="javascript:void(0)" class="clhistory btnMyHistory">Lịch sử mua hàng</a>
                         </li>
-
+                        <li>
+                            <a href="javascript:void(0)" class="clpromotion btMySavePromotion">Khuyễn mãi thành viên</a>
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -253,7 +255,79 @@
 
                                             }
                                         }
-                                        <tr class="odd"><td valign="top" colspan="4" class="dataTables_empty"></td></tr>
+                                      
+                                    </tbody>
+                                </table>
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </article>
+            <article class="blog_article tabMySavePromotion hidden">
+                <div class="row">
+
+                    <div class="col-sm-12 col-md-8">
+
+                        <div class="well">
+                            <h2 class="clpromotion">Danh sách mã khuyến mãi</h2>
+                            <div class="table-responsive">
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                           
+                                            <td>Mã khuyến mãi</td>
+                                            <td class="text-left">Giá trị</td>
+                                            <td class="text-left">Ngày bất đầu</td>
+                                            <td class="text-left">Ngày kết thúc</td>
+                                            <td class="text-left">Trạng thái</td>
+                                           
+
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (var item2 in Model.Take(1))
+                                        {
+                                            foreach (var itemPromo in db.tblSavePromotions.Where(x => x.IdUserSavePromotion == item2.IdUser))
+                                            {
+                                                foreach (var itemPromItem in db.tblPromotions.Where(x => x.IdCode == itemPromo.IdPromotion).OrderByDescending(t => t.DateEndCode))
+                                                {
+                                                <tr>
+
+                                                 
+                                                    <td>@itemPromItem.NameCode</td>
+                                                    <td class="text-left">
+                                                        @itemPromItem.PriceCode %
+                                                    </td>
+                                                    <td class="text-left">
+                                                        @itemPromItem.DateBeginCode
+                                                    </td>
+                                                    <td class="text-left">
+                                                        @itemPromItem.DateEndCode
+                                                    </td>
+                                                    <td class="text-left">
+                                                        @if (itemPromItem.DateEndCode < DateTime.Now)
+	                                                    {
+		                                                           @("Đã hết hạn")           
+                                                        }
+                                                        else
+                                                        {
+                                                            @("Có thể sử dụng")
+                                                        }
+
+
+                                                    </td>
+                                                </tr>
+                                                }
+
+
+                                            }
+                                        }
+                                  
                                     </tbody>
                                 </table>
                             </div>
@@ -270,16 +344,23 @@
             $('.btnUserInfo').click(function () {
                 $('.tabUserInfo').removeClass('hidden');
                 $('.tabMyOrder').addClass('hidden');
-                $('.tabMyHistory').addClass('hidden');
+                $('.tabMyHistory').addClass('hidden'); $('.tabMySavePromotion').addClass('hidden');
             });
             $('.btnMyOrder').click(function () {
                 $('.tabMyOrder').removeClass('hidden');
                 $('.tabMyHistory').addClass('hidden');
-                $('.tabUserInfo').addClass('hidden');
+                $('.tabUserInfo').addClass('hidden'); $('.tabMySavePromotion').addClass('hidden');
             });
             $('.btnMyHistory').click(function () {
 
                 $('.tabMyHistory').removeClass('hidden');
+                $('.tabUserInfo').addClass('hidden');
+                $('.tabMyOrder').addClass('hidden');
+                $('.tabMySavePromotion').addClass('hidden');
+            });
+            $('.btMySavePromotion').click(function () {
+                $('.tabMySavePromotion').removeClass('hidden');
+                $('.tabMyHistory').addClass('hidden');
                 $('.tabUserInfo').addClass('hidden');
                 $('.tabMyOrder').addClass('hidden');
             });

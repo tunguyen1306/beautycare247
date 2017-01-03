@@ -36,6 +36,7 @@
         <EntityTypeShape EntityType="WebSiteModel.tblShip" Width="1.5" PointX="0.75" PointY="16.75" />
         <EntityTypeShape EntityType="WebSiteModel.tblOrderDetail" Width="1.5" PointX="16.375" PointY="4.75" />
         <EntityTypeShape EntityType="WebSiteModel.tblOrder" Width="1.5" PointX="3.375" PointY="16.75" />
+        <EntityTypeShape EntityType="WebSiteModel.tblSavePromotion" Width="1.5" PointX="16.375" PointY="7.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

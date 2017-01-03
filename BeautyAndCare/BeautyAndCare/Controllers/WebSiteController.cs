@@ -153,9 +153,9 @@ namespace BeautyAndCare.Controllers
         public ActionResult Detail(string id)
         {
             var id_ = int.Parse(id.Split('-').Last());
-
+            var idcate = db.tblProducts.Where(t => t.IdProducts == id_).Select(e => e.IdCategoryProducts).FirstOrDefault();
             tblAll pic = new tblAll {
-                tblProductRel = db.tblProducts.ToList(),
+                tblProductRel = db.tblProducts.Where(x=>x.IdCategoryProducts== idcate).ToList(),
                 tblPro = db.tblProducts.Where(t => t.IdProducts == id_).ToList(),
                 ListPicture = db.tblPictures.Where(x=>x.ProductsId== id_).ToList()
             };
@@ -229,12 +229,13 @@ namespace BeautyAndCare.Controllers
 
 
         }
-        public ActionResult CheckCoupon(string coupon)
+        public ActionResult CheckCoupon(string coupon,int IdUser)
         {
-            var dataCoupon = from data in db.tblPromotions
-                             where data.NameCode == coupon
-                             select data;
-            return Json(dataCoupon.ToList());
+            var dataCoupon = from data in db.tblSavePromotions
+                             join dataPro in db.tblPromotions on data.IdPromotion equals dataPro.IdCode
+                             where dataPro.NameCode == coupon && data.IdUserSavePromotion== IdUser && dataPro.StatusCode==1
+                             select new tblAll {tblPromotion=dataPro,tblSavePromotion= data };
+            return Json(dataCoupon.ToList().Take(1));
         }
         //public ActionResult UpdateToCartCoupon(int showSubTotal,int showSubTotalAll,int index)
         //{

@@ -14,7 +14,7 @@ namespace BeautyAndCare.Models
    
    public partial class tblUser
    {
-       public int? IdUser { get; set; }
+       public int IdUser { get; set; }
        public string NameUser { get; set; }
        public string PassUser { get; set; }
        public Nullable<int> IdTypeUser { get; set; }

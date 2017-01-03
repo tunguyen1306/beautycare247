@@ -338,6 +338,15 @@ warning 6002: The table/view 'nhvanxol_beauty.dbo.phuong' does not have a primar
           <Property Name="DateEndCode" Type="datetime" />
           <Property Name="PriceCode" Type="decimal" Precision="18" Scale="2" />
         </EntityType>
+        <EntityType Name="tblSavePromotion">
+          <Key>
+            <PropertyRef Name="IdSavePromotion" />
+          </Key>
+          <Property Name="IdSavePromotion" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdUserSavePromotion" Type="int" />
+          <Property Name="IdPromotion" Type="int" />
+          <Property Name="StatusSavePromotion" Type="int" />
+        </EntityType>
         <EntityType Name="tblShip">
           <Key>
             <PropertyRef Name="idShip" />
@@ -445,6 +454,7 @@ warning 6002: The table/view 'nhvanxol_beauty.dbo.VNELocation' does not have a p
           <EntitySet Name="tblPicture" EntityType="Self.tblPicture" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblProducts" EntityType="Self.tblProducts" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblPromotion" EntityType="Self.tblPromotion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblSavePromotion" EntityType="Self.tblSavePromotion" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblShip" EntityType="Self.tblShip" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblSlider" EntityType="Self.tblSlider" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="tblType" EntityType="Self.tblType" Schema="dbo" store:Type="Tables" />
@@ -586,6 +596,7 @@ FROM [dbo].[VNELocation] AS [VNELocation]</DefiningQuery>
           <EntitySet Name="tblShips" EntityType="WebSiteModel.tblShip" />
           <EntitySet Name="tblOrderDetails" EntityType="WebSiteModel.tblOrderDetail" />
           <EntitySet Name="tblOrders" EntityType="WebSiteModel.tblOrder" />
+          <EntitySet Name="tblSavePromotions" EntityType="WebSiteModel.tblSavePromotion" />
         </EntityContainer>
         <EntityType Name="tblProduct">
           <Key>
@@ -978,6 +989,15 @@ FROM [dbo].[VNELocation] AS [VNELocation]</DefiningQuery>
           <Property Name="PointTotal" Type="Double" />
           <Property Name="DateCreate" Type="DateTime" Precision="3" />
           <Property Name="StatusOrder" Type="Int32" />
+        </EntityType>
+        <EntityType Name="tblSavePromotion">
+          <Key>
+            <PropertyRef Name="IdSavePromotion" />
+          </Key>
+          <Property Name="IdSavePromotion" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdUserSavePromotion" Type="Int32" />
+          <Property Name="IdPromotion" Type="Int32" />
+          <Property Name="StatusSavePromotion" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1417,6 +1437,16 @@ FROM [dbo].[VNELocation] AS [VNELocation]</DefiningQuery>
                 <ScalarProperty Name="PriceTotal" ColumnName="PriceTotal" />
                 <ScalarProperty Name="IdUser" ColumnName="IdUser" />
                 <ScalarProperty Name="IdOrder" ColumnName="IdOrder" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tblSavePromotions">
+            <EntityTypeMapping TypeName="WebSiteModel.tblSavePromotion">
+              <MappingFragment StoreEntitySet="tblSavePromotion">
+                <ScalarProperty Name="StatusSavePromotion" ColumnName="StatusSavePromotion" />
+                <ScalarProperty Name="IdPromotion" ColumnName="IdPromotion" />
+                <ScalarProperty Name="IdUserSavePromotion" ColumnName="IdUserSavePromotion" />
+                <ScalarProperty Name="IdSavePromotion" ColumnName="IdSavePromotion" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

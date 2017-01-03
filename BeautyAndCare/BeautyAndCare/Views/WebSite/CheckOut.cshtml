@@ -128,6 +128,7 @@
                                             <label class="col-sm-2 control-label" for="input-coupon">Enter your coupon here</label>
                                             <div class="input-group">
                                                 <input type="text" name="coupon" value="" placeholder="Enter your coupon here" id="input-coupon" class="form-control">
+                                                <input type="hidden" name="IdUser" value="@Session["IdUser"]" id="IdUser" class="form-control">
                                                 <span class="input-group-btn">
                                                     <input type="hidden" id="hdValueCoupon" />
                                                     <input type="button" value="Apply Coupon" onclick="CheckCoupon()" id="button-coupon" data-loading-text="Loading..." class="btn btn-primary">
@@ -343,6 +344,23 @@
                                     <h3>
                                         Hướng dẫn mua hàng
                                     </h3>
+                                    <div class="clHuongdanmuahang" style="white-space:pre-line">
+                                       
+                                        I. Gọi điện thoại đặt hàng trực tiếp  : HotLine: 0918214088
+                                        Nhận nghe điện thoại từ 9h - > 21h mỗi ngày
+                                        II. Đặt hàng qua Facebook : Beauty and Care 247
+                                        III. Đặt hàng trực tuyến :
+                                        a. Hướng dẫn mua hàng từ 2 sản phẩm :
+                                        Bước 1 : Chọn các sản phẩm bỏ vào giỏ hàng
+                                        Bước 2 : thanh toán đơn hàng
+                                        - Click giỏ hàng
+                                        - Click thanh toán ( kiểm tra kỹ thông tin số lượng sản phẩm và thông tin giao hàng)
+                                        b. Mua hàng nhanh :
+                                        Bước 1 : chọn sản phẩm
+                                        Bước 2 : chọn nút ( mua )
+
+                                    </div>
+                                   
                                 </div>
                                 <div class="col-lg-6 OutOrder">
                                     <h3>

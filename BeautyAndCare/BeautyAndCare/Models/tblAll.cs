@@ -16,7 +16,10 @@ namespace BeautyAndCare.Models
         public tblCategory tblCategory { get; set; }
         public tblTypeUser tblTypeUser { get; set; }
         public tblPromotion tblPromotion { get; set; }
+        public tblSavePromotion tblSavePromotion { get; set; }
         public tblUser tblUser { get; set; }
+        public List<tblUser>ListUser { get; set; }
+        public List<tblPromotion> listPromotion { get; set; }
 
         public List<tblCategory> ListCategory { get; set; }
         public List<tblType> ListType { get; set; }

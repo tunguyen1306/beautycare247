@@ -367,9 +367,10 @@ function showToCart() {
     $('.LoadProducts').html('');
     $.post(url,
    function (o, status) {
+     
        $('#cart-total2').html(o.count);
       
-       var stringHtml;
+       var stringHtml="";
      
        $.each(o.dataPro, function (i, t) {
         
@@ -425,26 +426,33 @@ function UpdateToCart(id) {
 function CheckCoupon() {
     $('.alert-danger').addClass('hidden');
     var hdUser = $('#hdUserName').val();
+   
     if (hdUser != null) {
         var url = "/WebSite/CheckCoupon"
         var valueCoupon = $('#input-coupon').val();
+        var hdUserId = $('#IdUser').val();
         if (valueCoupon == "") {
             $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Vui lòng nhập mã giảm giá ! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
-
             $('html, body').animate({ scrollTop: 0 }, 'slow');
         }
         $.post(url,
        {
-           coupon: valueCoupon
+           coupon: valueCoupon,
+           IdUser:hdUserId
+
        },
        function (o, status) {
+           
            if (o[0] == null) {
-               $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Sai mã giảm giá .Vui lòng nhập lại ! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+               $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Sai mã giảm giá hoặc bạn không có khuyến mãi .Vui lòng nhập lại ! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
                $('html, body').animate({ scrollTop: 0 }, 'slow');
            }
            if (o[0] != null) {
-               var dateEnd = new Date(parseInt(o[0].DateEndCode.substr(6)));
+               if (o[0].tblPromotion.StatusSavePromotion==0) {
+
+               
+               var dateEnd = new Date(parseInt(o[0].tblPromotion.DateEndCode.substr(6)));
                var dateNow = new Date($.now());
                if (convert(dateEnd) < convert(dateNow)) {
 
@@ -453,11 +461,12 @@ function CheckCoupon() {
                    $('html, body').animate({ scrollTop: 0 }, 'slow');
                }
                if (convert(dateEnd) > convert(dateNow)) {
-                   $('#hdValueCoupon').val(o[0].PriceCode);
+                   $('#hdValueCoupon').val(o[0].tblPromotion.PriceCode);
                    var showSubTotal = $('.priceHd').html();
 
                    if (showSubTotal >= 300000) {
-                       var cal = showSubTotal - o[0].PriceCode;
+           
+                       var cal = showSubTotal-(showSubTotal * o[0].tblPromotion.PriceCode / 100);
                       
                        $('.showTotalAll').html(tien(cal));
                        $('#hdPriceNo').val(cal);
@@ -468,13 +477,19 @@ function CheckCoupon() {
 
                    $('html, body').animate({ scrollTop: 0 }, 'slow');
                } else {
-                       $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Bạn không đủ điều xử dụng mã giảm giá! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+                       $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Bạn không đủ điều sử dụng mã giảm giá! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
 
                        $('html, body').animate({ scrollTop: 0 }, 'slow');
                    }
 
 
                }
+               }
+           }
+           else {
+               $('.breadcrumb').after('<div class="alert alert-danger"><i class="fa fa-exclamation-circle"></i>Thông báo: Bạn đã sử dụng mã giảm giá! <button type="button" class="close" data-dismiss="alert">&times;</button></div>');
+
+               $('html, body').animate({ scrollTop: 0 }, 'slow');
            }
        });
     }

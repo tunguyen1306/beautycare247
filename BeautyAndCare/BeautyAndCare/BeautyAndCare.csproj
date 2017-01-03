@@ -149,6 +149,7 @@
     <Compile Include="Controllers\adminMenuController.cs" />
     <Compile Include="Controllers\adminOrdersController.cs" />
     <Compile Include="Controllers\adminProductController.cs" />
+    <Compile Include="Controllers\adminSavePromotionsController.cs" />
     <Compile Include="Controllers\adminShipController.cs" />
     <Compile Include="Controllers\adminSlidersController.cs" />
     <Compile Include="Controllers\adminUserController.cs" />
@@ -240,6 +241,9 @@
       <DependentUpon>WebSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblPromotion.cs">
+      <DependentUpon>WebSite.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\tblSavePromotion.cs">
       <DependentUpon>WebSite.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\tblShip.cs">
@@ -1413,6 +1417,11 @@
     <Content Include="Views\adminOrders\Details.cshtml" />
     <Content Include="Views\adminOrders\Edit.cshtml" />
     <Content Include="Views\adminOrders\Index.cshtml" />
+    <Content Include="Views\adminSavePromotions\Create.cshtml" />
+    <Content Include="Views\adminSavePromotions\Delete.cshtml" />
+    <Content Include="Views\adminSavePromotions\Details.cshtml" />
+    <Content Include="Views\adminSavePromotions\Edit.cshtml" />
+    <Content Include="Views\adminSavePromotions\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

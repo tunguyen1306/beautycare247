@@ -33,12 +33,20 @@ namespace BeautyAndCare
             bundles.Add(new ScriptBundle("~/bundles/jqueryWeb").Include(
 "~/Template/js/jquery-2.1.1.min.js",
 "~/Template/js/bootstrap.min.js",
-"~/Template/js/owl.carousel.min.js", "~/Template/js/superfish.min.js", "~/Template/js/jquery.rd-navbar.min.js", "~/Template/js/bootstrap-tabcollapse.js",
-"~/Template/js/jquery.cookies.js", "~/Template/js/style_switcher_demo.js", "~/Template/js/CusWeb.js", "~/Template/js/code.photoswipe-3.0.5.min.js", "~/Template/js/jquery.bxslider.js"
+"~/Template/js/owl.carousel.min.js",
+"~/Template/js/superfish.min.js",
+"~/Template/js/jquery.rd-navbar.min.js",
+"~/Template/js/bootstrap-tabcollapse.js",
+"~/Template/js/jquery.cookies.js",
+"~/Template/js/style_switcher_demo.js",
+
+"~/Template/js/jquery.bxslider.js",
+"~/Template/js/jquery.elevatezoom.js",
+"~/Template/js/CusWeb.js"
 
 ));
             bundles.Add(new ScriptBundle("~/bundles/jqueryWebPlug").Include(
-"~/Template/js/jquery.elevatezoom.js",
+
 "~/Template/js/device.min.js",
 "~/Template/js/livesearch.min.js", "~/Template/js/common.js", "~/Template/js/script.js"
 ));

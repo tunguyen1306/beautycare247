@@ -10,6 +10,15 @@
                     where data.StatusMenu == 1
                     orderby data.OrderMenu ascending
                     select data;
+
+    var queryProductFeature = from data in db.tblProducts
+                              join datapic in db.tblPictures on data.IdProducts equals datapic.ProductsId
+                              where data.StatusProducts == 1 && datapic.Position == 1 
+                              orderby data.IdProducts descending
+                              select new tblAll { tblProducts = data, clPicture = datapic };
+
+    var dataProductFeature = queryProductFeature.OrderBy(x => Guid.NewGuid());
+
 }
 <!--HEADER--->
 @Html.Partial("Header", queryMenu.ToList())
@@ -38,8 +47,11 @@
                                         @foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.IdProducts))
                                         {
                                             <li>
-                                                <a href="#" data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
-                                                    <img width="126" height="126" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" alt="@item.NameProducts" />
+                                                <a href="#" class="clvi" data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
+                                                 <img width="126" class="clvi" height="126" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" alt="@item.NameProducts" />
+                                                </a>
+                                                <a href="#" class="clen"  data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
+                                                    <img width="126" class="clen" height="126" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" alt="@item.NameProducts_en" />
                                                 </a>
                                             </li>
                                         }
@@ -48,11 +60,14 @@
                                 </div>
                                 <div class="col-xs-12 hidden-lg image-thumb">
                                     <ul id="productFullGallery" class="image-additional" data-slide-width="126">
-                                        @foreach (var itemPic in Model.ListPicture.Where(x=>x.ProductsId== item.IdProducts))
+                                        @foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.IdProducts))
                                         {
                                             <li>
-                                                <a href="#" data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
-                                                    <img width="126" height="126" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" alt="@item.NameProducts" />
+                                                <a href="#" class="clvi" data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
+                                                    <img width="126" class="clvi" height="126" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" alt="@item.NameProducts" />
+                                                </a>
+                                                <a href="#" class="clen" data-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" data-zoom-image="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 1)">
+                                                    <img width="126" class="clen" height="126" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" alt="@item.NameProducts_en" />
                                                 </a>
                                             </li>
                                         }
@@ -310,79 +325,78 @@
             </div>
             <div class="box-content related">
                 <div class="box-carousel">
-                    @foreach (var item in Model.tblProductRel.Where(x=>x.StatusProducts==1))
+                    @foreach (var item in dataProductFeature)
                     {
                         <div class="product-thumb transition options">
 
                             <div class="quick_info">
-                                <div id="quickview_@item.IdProducts" class="quickview-style">
+                                <div id="quickview_@item.tblProducts.IdProducts" class="quickview-style">
                                     <div class="left col-sm-4">
                                         <div class="quickview_image image">
-                                            <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">
-                                                @foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.IdProducts && x.Position == 1))
-                                                {
-                                                    <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" />
-                                                }
+                                            <a href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts.UrlFrendly() + "-" + item.tblProducts.IdProducts })">
+                                                @*@foreach (var itemPic in Model.ListPicture.Where(x => x.ProductsId == item.tblProducts.IdProducts && x.Position == 1))
+                                                {*@
+                                                    <img width="310" height="310" alt="@item.tblProducts.NameProducts" title="@item.tblProducts.NameProducts" class="img-responsive" src="@ConfigurationManager.AppSettings["domain"]@String.Format(item.clPicture.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(item.clPicture.ConvertedFilename, 2)" />
+                                               @*}*@
+                                                 
                                             </a>
                                         </div>
                                     </div>
                                     <div class="right col-sm-8">
-                                        <h3>@item.NameProducts</h3>
+                                        <h3>@item.tblProducts.NameProducts</h3>
                                         <div class="inf">
-                                            @*<p class="quickview_manufacture manufacture manufacture">
-                                                    Brand: <a href="http://livedemo00.template-help.com/opencart_59086/index.php?route=product/manufacturer/info&amp;manufacturer_id=25">CeraVe</a>
-                                                </p>
-                                                <p class="product_model model">
-                                                    Product Code: Classic
-                                                </p>*@
+                                           
                                             <div class="price">
-                                                <span class="price-new price-new_@item.IdProducts">
+                                                <span class="price-new price-new_@item.tblProducts.IdProducts">
                                                     <script>
                                                         $(function () {
 
-                                                            $('.price-new_@item.IdProducts').text(tien(@item.PriceNewProducts));
+                                                            $('.price-new_@item.tblProducts.IdProducts').text(tien(@item.tblProducts.PriceNewProducts));
                                                         }) </script>
                                                 </span>
-                                                <span class="price-old price-old_@item.IdProducts">
+                                                <span class="price-old price-old_@item.tblProducts.IdProducts">
                                                     <script>
                                                         $(function () {
 
-                                                            $('.price-old_@item.IdProducts').text(tien(@item.PriceProducts));
+                                                            $('.price-old_@item.tblProducts.IdProducts').text(tien(@item.tblProducts.PriceProducts));
                                                         }) </script>
                                                 </span>
                                             </div>
                                         </div>
-                                        <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="addToCart(@item.IdProducts);"> <span>Thêm vào giỏ hàng</span> </button>
-                                        @*<ul class="product-buttons">
-                                                <li>
-                                                    <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Wishlist" onclick="wishlist.add('28');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span> </button>
-                                                </li>
-                                                <li>
-                                                    <button class="product-btn" type="button" data-toggle="tooltip" title="Add to Compare" onclick="compare.add('28');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span> </button>
-                                                </li>
-                                            </ul>*@
-                                        @*<div class="rating">
-                                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                                <span class="fa-stack"> <i class="fa fa-star active fa-stack-1x"></i> </span>
-                                                <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                                                <span class="fa-stack"> <i class="fa fa-star fa-stack-1x"></i> </span>
-                                            </div>*@
+                                        <button class="btn-primary" data-toggle="tooltip" title="Thêm vào giỏ hàng" type="button" onclick="addToCart(@item.tblProducts.IdProducts);"> <span>Thêm vào giỏ hàng</span> </button>
+                                      
                                         <div class="clear"></div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="sale">
-                                <span>Sale</span>
-                            </div>
+                            @if (item.tblProducts.IdTypeProducts == 1)
+                            {
+                                <div class="new-pr clvi"><span>Hàng mới</span></div>
+                                    <div class="new-pr clen hidden"><span>New</span></div>
+                            }
+                            @if (item.tblProducts.IdTypeProducts == 2)
+                            {
+                                <div class="sale clvi">
+                                    <span>Giảm giá</span>
+                                </div>
+                                    <div class="sale clen hidden"><span>Discount</span></div>
+                            }
+                            @if (item.tblProducts.IdTypeProducts == 3)
+                            {
+                                <div class="discount"><span>Hết hàng</span></div>
+                            }
+                            @if (item.tblProducts.IdTypeProducts == 4)
+                            {
+                                <div class="discount"><span>Đang về</span></div>
+                            }
                             <div class="image">
-                                <a rel="" href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">
-                                    @foreach (var itemPic in Model.ListPicture.Where(x =>x.Position == 1 && x.ProductsId==item.IdProducts))
-                                    {
-                                        <img width="310" height="310" alt="@item.NameProducts" title="@item.NameProducts" class="img-responsive" src="@ConfigurationManager.AppSettings["domain"]@String.Format(itemPic.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(itemPic.ConvertedFilename, 2)" />
-                                    }
+                                <a rel="" href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts.UrlFrendly() + "-" + item.tblProducts.IdProducts })">
+                                    @*@foreach (var itemPic in Model.ListPicture.Where(x =>x.Position == 1 && x.ProductsId==item.tblProducts.IdProducts))
+                                    {*@
+                                        <img width="310" height="310" alt="@item.tblProducts.NameProducts" title="@item.tblProducts.NameProducts" class="img-responsive" src="@ConfigurationManager.AppSettings["domain"]@String.Format(item.clPicture.ConvertedFilename, 2).ToString().Split('_')[0]/@String.Format(item.clPicture.ConvertedFilename, 2)" />
+                                    @*}*@
                                 </a>
-                                <a class="quickview" data-rel="details" href="#quickview_@item.IdProducts">
+                                <a class="quickview" data-rel="details" href="#quickview_@item.tblProducts.IdProducts">
                                     Xem nhanh
                                 </a>
                                 <div class="rating">
@@ -395,46 +409,44 @@
                             </div>
                             <div class="caption">
                                 <div class="name">
-                                    <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts</a>
+                                    <a href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts.UrlFrendly() + "-" + item.tblProducts.IdProducts })">@item.tblProducts.NameProducts</a>
                                 </div>
                                 <div class="name clen hidden">
-                                    <a href="@Url.Action("Detail", "WebSite",new { id=item.NameProducts_en.UrlFrendly() + "-" + item.IdProducts })">@item.NameProducts_en</a>
+                                    <a href="@Url.Action("Detail", "WebSite",new { id=item.tblProducts.NameProducts_en.UrlFrendly() + "-" + item.tblProducts.IdProducts })">@item.tblProducts.NameProducts_en</a>
                                 </div>
-                                @if (item.IdCategoryProducts!=null)
+                                @if (item.tblProducts.IdCategoryProducts!=null)
                                 {
                                     <div class="category-name">
                                     
-                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=db.tblMenus.Find(item.IdCategoryProducts).NameMenu.UrlFrendly() + "-" + db.tblMenus.Find(item.IdCategoryProducts).IdMenu })" class="clvi">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu</a>
-                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en.UrlFrendly() + "-" + db.tblMenus.Find(item.IdCategoryProducts).IdMenu })" class="clen hidden hidden">@db.tblMenus.Find(item.IdCategoryProducts).NameMenu_en</a>
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=db.tblMenus.Find(item.tblProducts.IdCategoryProducts).NameMenu.UrlFrendly() + "-" + db.tblMenus.Find(item.tblProducts.IdCategoryProducts).IdMenu })" class="clvi">@db.tblMenus.Find(item.tblProducts.IdCategoryProducts).NameMenu</a>
+                                        <a href="@Url.Action("ListProducts", "WebSite",new { id=db.tblMenus.Find(item.tblProducts.IdCategoryProducts).NameMenu_en.UrlFrendly() + "-" + db.tblMenus.Find(item.tblProducts.IdCategoryProducts).IdMenu })" class="clen hidden hidden">@db.tblMenus.Find(item.tblProducts.IdCategoryProducts).NameMenu_en</a>
 
                                     </div>
                                   
                                 }
                                
                                 <div class="price">
-                                    <span class="price-new price-new_@item.IdProducts">
+                                    <span class="price-new price-new_@item.tblProducts.IdProducts">
                                         <script>
                                             $(function () {
 
-                                                $('.price-new_@item.IdProducts').text(tien(@item.PriceNewProducts));
+                                                $('.price-new_@item.tblProducts.IdProducts').text(tien(@item.tblProducts.PriceNewProducts));
                                             }) </script>
                                     </span>
-                                    <span class="price-old price-old_@item.IdProducts">
+                                    <span class="price-old price-old_@item.tblProducts.IdProducts">
                                         <script>
                                             $(function () {
 
-                                                $('.price-old_@item.IdProducts').text(tien(@item.PriceProducts));
+                                                $('.price-old_@item.tblProducts.IdProducts').text(tien(@item.tblProducts.PriceProducts));
                                             }) </script>
                                     </span>
                                 </div>
 
                             </div>
                             <div class="cart-button">
-                                <button class="btn-primary" type="button" onclick="addToCart(@item.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
+                                <button class="btn-primary" type="button" onclick="addToCart(@item.tblProducts.IdProducts);"> <i class="fl-outicons-shopping-cart13"></i> <span>Thêm vào giỏ hàng</span></button>
                                 <div class="clear"></div>
-                                @*<button class="product-btn" type="button" onclick="wishlist.add('28');"> <i class="material-icons-favorite_border"></i> <span>Add to Wishlist</span></button>
-                                    <button class="product-btn" type="button" onclick="compare.add('28');"> <i class="material-icons-shuffle"></i> <span>Add to Compare</span></button>*@
-                            </div>
+                                </div>
                         </div>
                     }
 

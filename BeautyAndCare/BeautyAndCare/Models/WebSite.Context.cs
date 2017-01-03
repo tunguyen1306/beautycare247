@@ -56,5 +56,6 @@ namespace BeautyAndCare.Models
        public DbSet<tblShip> tblShips { get; set; }
        public DbSet<tblOrderDetail> tblOrderDetails { get; set; }
        public DbSet<tblOrder> tblOrders { get; set; }
+       public DbSet<tblSavePromotion> tblSavePromotions { get; set; }
    }
 }
