@@ -17,9 +17,9 @@ namespace BeautyAndCare.Controllers
         // GET: adminMenu
         public ActionResult Index()
         {
-            var dataMenu1 = from data in db.tblMenus where data.StatusMenu==1 select data ;
+            var dataMenu1 = from data in db.tblMenus  select data ;
             var dataMenu = from data in db.tblMenus
-                           where data.StatusMenu == 1
+                           
                            select new tblMenuDto
                            {
                                tblMenu = data,
